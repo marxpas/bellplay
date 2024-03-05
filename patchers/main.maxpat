@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 335.0, 99.0, 839.0, 894.0 ],
+		"rect" : [ 44.0, 95.0, 645.0, 835.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2565.0, 2718.0, 88.0, 23.0 ],
+					"text" : "loadmess clear"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 1570.0, 297.0, 58.0, 23.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-233",
 					"maxclass" : "newobj",
@@ -262,6 +286,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
 						"style" : "subtle",
 						"tags" : ""
@@ -453,7 +478,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 33.0, 284.0, 35.0 ],
+					"patching_rect" : [ 62.0, 4.0, 71.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 312.0, 8.0, 268.0, 35.0 ],
 					"text" : "script"
@@ -502,8 +527,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 2060.0, 3469.0, 49.0, 23.0 ],
-					"text" : "buffer~"
+					"patching_rect" : [ 2060.0, 3469.0, 87.0, 23.0 ],
+					"text" : "buffer~ #0tmp"
 				}
 
 			}
@@ -550,7 +575,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "stop", "" ],
-					"patching_rect" : [ 1800.0, 2713.0, 45.0, 23.0 ],
+					"patching_rect" : [ 1800.0, 2953.0, 45.0, 23.0 ],
 					"text" : "t stop l"
 				}
 
@@ -840,7 +865,6 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "msg = (\n\t$to, $msg -> (\n\t\t[$to $msg]\n\t)\n);\n\nquery = (\n\t$x -> msg('db', 'query' $x)\n);\n\nloaddb = (\n\t$x -> msg('db', 'read' $x)\n);\n\ngetsegments = (-> SEGMENTS);\n\naddchord = (\n\t$x -> msg('roll', 'addchord' $x)\n);\n\nclipsegdur = (\n\t$seg, $dur -> (\n\t\t$x = flat($seg, 1);\n\t\t$x.'duration' = min($x.'duration', $dur);\n\t\t[ $x ]\n\t)\n);\n\nmapkey = (\n\t$x, $key, $fun -> (\n\t\tsetkey($x, $key, $fun(getkey($x, $key)))\n\t)\n);\n\nbpf = (\n\t$pts, $curve = 0. -> (\n\t\t$N = length($pts);\n\t\tif $N == 1 then (\n\t\t\t$pts = flat($pts):1;\n\t\t\t[0 $pts 0] [ 1 $pts 0]\n\t\t) else (\n\t\t\tfor $pt $i in $pts collect (\n\t\t\t\t$idx = ($i - 1.) / max($N - 1, 1);\n\t\t\t\t[(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n\t\t\t)\n\t\t)\n\t)\n);\n\nscale = (\n\t$x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n\t\t(($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n\t)\n);\n\nfrand = (\n\t$a = 1, $b = null -> (\n\t\t$x = random(0, 1000) / 1000.;\n\t\tif $b == null then (\n\t\t\t$min = 0;\n\t\t\t$max = $a\n\t\t) else (\n\t\t\t$min = $a;\n\t\t\t$max = $b\n\t\t);\n\t\tscale($x, 0, 1, $min, $max)\n\t)\n);\n\npickrand = (\n\t$x, $n = 1 -> (\n\t\tfor $i in 1...$n collect $x:(random(1, length($x)))\n\t)\n);\n\nclearroll = (-> msg('roll', 'clear'));\n\nc2r = (\n\t$c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n\t$r -> log2($r) * 1200\n);\n\nseg2chord = (\n\t$segs, $onset = 0, $pan = null, $gain = null, $shift = 0, $rate = null -> (\n\t\t$notes = for $seg in $segs collect (\n\t\t\t$seg = flat($seg, 1);\n\t\t\t$file = [ 7 $seg.'file'];\n\t\t\t$offset = [ 10 $seg.'offset'];\n\t\t\t$pan = (if $pan then [ 2 $pan ] else null);\n\t\t\t$mc = $seg.'pitch';\n\t\t\t$gain = [1 $gain ||| bpf(0 127 127 0)];\n\t\t\t$rate = [11 ($rate ||| (if $shift && $shift != 1 then c2r($shift)))];\n\t\t\t$speed = $rate::(1 2);\n\t\t\t$color = $mc; \n\t\t\tif $speed then (\n\t\t\t\t$mc += r2c($rate::(1 2))\n\t\t\t) else (\n\t\t\t\t$rate = null\n\t\t\t);\n\t\t\t$vel = minmax(flat($gain)):3;\n\t\t\t$color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n\t\t\t$dur = $seg.'duration';\n\t\t\t[ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n\t\t);\n\t\t[ $onset $notes ]\n\t)\n);\n\nsetkey = (\n\t$x, $key, $val -> (\n\t\t$x = flat($x, 1);\n\t\t$x.$key = $val;\n\t\t[ $x ]\n\t)\n);\n\ngetkey = (\n\t$x, $key -> flat($x, 1).$key\n);\n\ncompile = (-> msg('roll', 'dump'));\n\nplay = (-> msg('roll', 'play'));\n\nmergechords = (\n\t$ms = 5, $mc = 0 -> (\n\t\tmsg('roll', 'merge' $ms $mc)\n\t)\n);\n\nnull ",
 					"id" : "obj-181",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -848,7 +872,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1828.0, 1922.0, 241.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 1,
+						"embed" : 0,
 						"versionnumber" : 80300
 					}
 ,
@@ -1078,7 +1102,6 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "$do1 = loaddb(\"/Users/felipe-tovar-henao/Documents/audio samples/nonverbal/harp.llll\");\n$do1 = query(\"SELECT * FROM segments WHERE pitch > 0 AND (\n\tpitchclass == 0 OR \n\tpitchclass == 2 OR \n\tpitchclass == 4 OR \n\tpitchclass == 7 OR\n\tpitchclass == 11.5 \n)\");\n$do1 = clearroll();\n$segs = getsegments();\n$onset = 0;\n$env = bpf(rev(0 127 60 20 10 4 2 1 0));\nfor $i in 1...100 do (\n\t$prog = $i/100;\n\t$seg = pickrand($segs);\n\tif $seg then (\n\t\t$seg = clipsegdur($seg, scale($prog ** 2, 0, 1, 10, 4000));\n\t\t$chord = seg2chord($seg, @gain $env, @onset $onset, @pan bpf(frand()));\n\t\t$do1 = addchord($chord);\n\t\t$onset += frand(3, 90)\n\t)\n);\ncompile() ",
 					"id" : "obj-157",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1086,7 +1109,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1800.0, 2430.0, 163.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 1,
+						"embed" : 0,
 						"versionnumber" : 80300
 					}
 ,
@@ -1228,7 +1251,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3.0, 4.0, 270.0, 35.0 ],
+					"patching_rect" : [ 3.0, 4.0, 61.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 311.0, 35.0 ],
 					"text" : "grain",
@@ -1429,7 +1452,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 254.0, 111.0, 36.0, 23.0 ],
+					"patching_rect" : [ 198.0, 297.0, 36.0, 23.0 ],
 					"text" : "write"
 				}
 
@@ -1442,7 +1465,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 254.0, 77.0, 100.0, 20.0 ],
+					"patching_rect" : [ 198.0, 262.599999487400055, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 119.0, 145.0, 22.0 ],
 					"text" : "save database"
@@ -1456,7 +1479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 144.0, 111.0, 33.0, 23.0 ],
+					"patching_rect" : [ 87.599998354911804, 297.0, 33.0, 23.0 ],
 					"text" : "read"
 				}
 
@@ -1469,7 +1492,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 144.0, 77.0, 100.0, 20.0 ],
+					"patching_rect" : [ 87.599998354911804, 262.599999487400055, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 95.0, 145.0, 22.0 ],
 					"text" : "load database"
@@ -1510,7 +1533,7 @@
 					"patching_rect" : [ 812.0, 1621.0, 71.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 158.0, 417.0, 422.0, 18.0 ],
-					"text" : "86 segments",
+					"text" : "333 segments",
 					"textcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 1.0 ],
 					"textjustification" : 1
 				}
@@ -1760,7 +1783,7 @@
 					"patching_rect" : [ 876.0, 1881.0, 155.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 157.0, 417.0, 423.0, 18.0 ],
-					"text" : "Hp-harm_fngr-D6-f-N-N.wav",
+					"text" : "RDB6_15_2_1_30_0_0_0.wav",
 					"textcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 1.0 ]
 				}
 
@@ -1929,7 +1952,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 95.0, 111.0, 44.0, 23.0 ],
+					"patching_rect" : [ 38.799997627735138, 297.0, 44.0, 23.0 ],
 					"text" : "r #0db"
 				}
 
@@ -2063,7 +2086,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 144.0, 148.0, 103.0, 23.0 ],
+					"patching_rect" : [ 198.0, 366.0, 103.0, 23.0 ],
 					"text" : "dada.base corpus"
 				}
 
@@ -2075,7 +2098,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 345.0, 366.0, 116.0, 23.0 ],
+					"patching_rect" : [ 346.0, 366.0, 116.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
@@ -2091,7 +2114,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 345.0, 332.0, 112.0, 23.0 ],
+					"patching_rect" : [ 346.0, 331.599999487400055, 112.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
@@ -2577,7 +2600,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 345.0, 297.0, 44.0, 23.0 ],
+					"patching_rect" : [ 346.0, 296.399998962879181, 44.0, 23.0 ],
 					"text" : "r #0db"
 				}
 
@@ -2810,7 +2833,8 @@
 , 			{
 				"box" : 				{
 					"allowcentershift" : 0,
-					"center" : [ -0.00001945125, -4632.903905251249853 ],
+					"allowzoom" : 0,
+					"center" : [ -0.00702145875, -4632.903905251249853 ],
 					"colorfield" : "pitchclass",
 					"contentfield" : [ "file", "offset", "duration" ],
 					"convexcombmax" : [ 1.0 ],
@@ -2839,7 +2863,7 @@
 					"xlabel" : "loudness",
 					"yfield" : "pitch",
 					"ylabel" : "pitch",
-					"zoom" : 196290482.004767715930939
+					"zoom" : 561529.289091611630283
 				}
 
 			}
@@ -3408,7 +3432,7 @@
 			}
 , 			{
 				"box" : 				{
-					"buffername" : "u470006090",
+					"buffername" : "u384002667",
 					"id" : "obj-25",
 					"maxclass" : "waveform~",
 					"numinlets" : 5,
@@ -3437,7 +3461,6 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-114", 0 ],
-					"midpoints" : [ 237.5, 396.0, 318.5, 396.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -3648,7 +3671,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-74", 0 ],
-					"midpoints" : [ 64.5, 867.0, 42.0, 867.0, 42.0, 612.0, 64.5, 612.0 ],
 					"source" : [ "obj-121", 0 ]
 				}
 
@@ -4159,6 +4181,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-200", 0 ]
 				}
@@ -4209,7 +4238,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
-					"midpoints" : [ 1504.5, 3403.0, 1809.5, 3403.0 ],
 					"source" : [ "obj-210", 0 ]
 				}
 
@@ -4433,6 +4461,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-205", 0 ],
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-114", 1 ],
 					"source" : [ "obj-37", 0 ]
 				}
@@ -4647,7 +4682,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
-					"midpoints" : [ 1605.5, 2793.0, 1671.0, 2793.0, 1671.0, 3402.0, 1809.5, 3402.0 ],
 					"order" : 0,
 					"source" : [ "obj-64", 0 ]
 				}
