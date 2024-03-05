@@ -200,8 +200,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 197.0, 437.0, 105.0, 22.0 ],
-					"text" : "trapezoid~ 0.2 0.8"
+					"patching_rect" : [ 197.0, 437.0, 118.0, 22.0 ],
+					"text" : "trapezoid~ 0.05 0.95"
 				}
 
 			}
@@ -470,9 +470,7 @@
 				}
 
 			}
- ],
-		"dependency_cache" : [  ],
-		"autosave" : 0
+ ]
 	}
 
 }
