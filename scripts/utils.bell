@@ -83,6 +83,17 @@ r2c = (
 	$r -> log2($r) * 1200
 );
 
+filtersegments = (
+	$segs, $fun -> (
+		$lambda = (
+			$x  -^ $fun -> (
+				$fun($x)
+			)
+		);
+		finditems($segs, 0, $lambda, @maxdepth 1, @unwrap 1)
+	)
+);
+
 seg2chord = (
 	$segs, $onset = 0, $pan = null, $gain = null, $shift = 0, $rate = null -> (
 		$notes = for $seg in $segs collect (
