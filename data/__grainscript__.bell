@@ -9,8 +9,11 @@ setcorpus = (
 );
 
 query = (
-	$x -> msg("db", "query" $x);
-	SEGMENTS
+	$x -> msg("db", "query" $x)
+);
+
+getsegments = (
+	-> SEGMENTS
 );
 
 addchord = (
