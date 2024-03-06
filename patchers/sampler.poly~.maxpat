@@ -117,6 +117,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 8.0, 512.0, 42.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out~ 1"
 				}
 
@@ -200,8 +204,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 197.0, 437.0, 118.0, 22.0 ],
-					"text" : "trapezoid~ 0.05 0.95"
+					"patching_rect" : [ 197.0, 437.0, 138.0, 22.0 ],
+					"text" : "trapezoid~ 0.0125 0.975"
 				}
 
 			}
@@ -297,6 +301,10 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 8.0, 8.0, 28.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "in 1"
 				}
 
