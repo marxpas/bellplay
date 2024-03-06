@@ -94,8 +94,14 @@ filtersegments = (
 	)
 );
 
+getshift = (
+	$seg, $mc -> (
+		$mc - getkey($seg, 'pitch')
+	)
+);
+
 seg2chord = (
-	$segs, $onset = 0, $pan = null, $gain = null, $shift = 0, $rate = null -> (
+	$segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (
 		$notes = for $seg in $segs collect (
 			$seg = flat($seg, 1);
 			$file = [ 7 $seg.'file'];
@@ -103,9 +109,9 @@ seg2chord = (
 			$pan = (if $pan then [ 2 $pan ] else null);
 			$mc = $seg.'pitch';
 			$gain = [1 $gain ||| bpf(0 127 127 0)];
-			$rate = [11 ($rate ||| (if $shift && $shift != 1 then c2r($shift)))];
-			$speed = $rate::(1 2);
+			$rate = [11 (if $shift && $shift != 0 then c2r($shift))];
 			$color = $mc; 
+			$speed = $rate::(1 2);
 			if $speed then (
 				$mc += r2c($rate::(1 2))
 			) else (
