@@ -41,6 +41,19 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"color" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ],
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1181.5, 712.0, 87.0, 23.0 ],
+					"style" : "subtle",
+					"text" : "s #0playtoggle"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"color" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ],
 					"id" : "obj-50",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -325,7 +338,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "msg = (\n\t$to, $msg -> (\n\t\t[$to $msg]\n\t)\n);\n\nquery = (\n\t$x -> msg('db', 'query' $x)\n);\n\nloaddb = (\n\t$x -> msg('db', 'read' $x)\n);\n\ngetsegments = (-> SEGMENTS);\n\naddchord = (\n\t$x -> msg('roll', 'addchord' $x)\n);\n\nclipsegdur = (\n\t$seg, $dur -> (\n\t\t$x = flat($seg, 1);\n\t\t$x.'duration' = min($x.'duration', $dur);\n\t\t[ $x ]\n\t)\n);\n\nmapkey = (\n\t$x, $key, $fun -> (\n\t\tsetkey($x, $key, $fun(getkey($x, $key)))\n\t)\n);\n\nbpf = (\n\t$pts, $curve = 0. -> (\n\t\t$N = length($pts);\n\t\tif $N == 1 then (\n\t\t\t$pts = flat($pts):1;\n\t\t\t[0 $pts 0] [ 1 $pts 0]\n\t\t) else (\n\t\t\tfor $pt $i in $pts collect (\n\t\t\t\t$idx = ($i - 1.) / max($N - 1, 1);\n\t\t\t\t[(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n\t\t\t)\n\t\t)\n\t)\n);\n\nscale = (\n\t$x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n\t\t(($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n\t)\n);\n\nfrand = (\n\t$a = 1, $b = null -> (\n\t\t$x = random(0, 1000) / 1000.;\n\t\tif $b == null then (\n\t\t\t$min = 0;\n\t\t\t$max = $a\n\t\t) else (\n\t\t\t$min = $a;\n\t\t\t$max = $b\n\t\t);\n\t\tscale($x, 0, 1, $min, $max)\n\t)\n);\n\npickrand = (\n\t$x, $n = 1 -> (\n\t\tfor $i in 1...$n collect $x:(random(1, length($x)))\n\t)\n);\n\nclearroll = (-> msg('roll', 'clear'));\n\nc2r = (\n\t$c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n\t$r -> log2($r) * 1200\n);\n\nfiltersegments = (\n\t$segs, $fun -> (\n\t\t$lambda = (\n\t\t\t$x  -^ $fun -> (\n\t\t\t\t$fun($x)\n\t\t\t)\n\t\t);\n\t\tfinditems($segs, 0, $lambda, @maxdepth 1, @unwrap 1)\n\t)\n);\n\nseg2chord = (\n\t$segs, $onset = 0, $pan = null, $gain = null, $shift = 0, $rate = null -> (\n\t\t$notes = for $seg in $segs collect (\n\t\t\t$seg = flat($seg, 1);\n\t\t\t$file = [ 7 $seg.'file'];\n\t\t\t$offset = [ 10 $seg.'offset'];\n\t\t\t$pan = (if $pan then [ 2 $pan ] else null);\n\t\t\t$mc = $seg.'pitch';\n\t\t\t$gain = [1 $gain ||| bpf(0 127 127 0)];\n\t\t\t$rate = [11 ($rate ||| (if $shift && $shift != 1 then c2r($shift)))];\n\t\t\t$speed = $rate::(1 2);\n\t\t\t$color = $mc; \n\t\t\tif $speed then (\n\t\t\t\t$mc += r2c($rate::(1 2))\n\t\t\t) else (\n\t\t\t\t$rate = null\n\t\t\t);\n\t\t\t$vel = minmax(flat($gain)):3;\n\t\t\t$color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n\t\t\t$dur = $seg.'duration';\n\t\t\t[ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n\t\t);\n\t\t[ $onset $notes ]\n\t)\n);\n\nsetkey = (\n\t$x, $key, $val -> (\n\t\t$x = flat($x, 1);\n\t\t$x.$key = $val;\n\t\t[ $x ]\n\t)\n);\n\ngetkey = (\n\t$x, $key -> flat($x, 1).$key\n);\n\ncompile = (-> msg('roll', 'dump'));\n\nplay = (-> msg('roll', 'play'));\n\nmergechords = (\n\t$ms = 5, $mc = 0 -> (\n\t\tmsg('roll', 'merge' $ms $mc)\n\t)\n);\n\nnull ",
+					"code" : "msg = (\n\t$to, $msg -> (\n\t\t[$to $msg]\n\t)\n);\n\nsetcorpus = (\n\t$x -> msg(\"db\", \"read\" $x)\n);\n\nquery = (\n\t$x -> msg(\"db\", \"query\" $x);\n\tSEGMENTS\n);\n\naddchord = (\n\t$x -> msg(\"roll\", \"addchord\" $x)\n);\n\nsetkey = (\n\t$x, $key, $val -> (\n\t\t$x = $x::1;\n\t\t$x.$key = $val;\n\t\t[ $x ]\n\t)\n);\n\ngetkey = (\n\t$x, $key -> ($x::1).$key\n);\n\nmapkey = (\n\t$x, $key, $fun -> (\n\t\tsetkey($x, $key, $fun(getkey($x, $key)))\n\t)\n);\n\nbpf = (\n\t$pts, $curve = 0. -> (\n\t\t$N = length($pts);\n\t\tif $N == 1 then (\n\t\t\t$pts = flat($pts):1;\n\t\t\t[0 $pts 0] [ 1 $pts 0]\n\t\t) else (\n\t\t\tfor $pt $i in $pts collect (\n\t\t\t\t$idx = ($i - 1.) / max($N - 1, 1);\n\t\t\t\t[(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n\t\t\t)\n\t\t)\n\t)\n);\n\nscale = (\n\t$x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n\t\t(($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n\t)\n);\n\nfrand = (\n\t$a = 1, $b = null, $res = 1000 -> (\n\t\tif $b == null then (\n\t\t\t$min = 0;\n\t\t\t$max = $a\n\t\t) else (\n\t\t\t$min = $a;\n\t\t\t$max = $b\n\t\t);\n\t\tscale(random(0, $res), 0, $res, $min, $max)\n\t)\n);\n\nchoose = (\n\t$x, $n = 1 -> (\n\t\tfor $i in 1...$n collect $x:(random(1, length($x)))\n\t)\n);\n\nresetroll = (-> msg(\"roll\", \"clear\"));\n\nc2r = (\n\t$c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n\t$r -> log2($r) * 1200\n);\n\nfiltersegments = (\n\t$segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (\n\t\t$lambda = (\n\t\t\t$x  -^ $fun -> (\n\t\t\t\t$fun($x)\n\t\t\t)\n\t\t);\n\t\tfinditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)\n\t)\n);\n\ngetshift = (\n\t$seg, $mc -> (\n\t\t$mc - getkey($seg, \"pitch\")\n\t)\n);\n\nseg2chord = (\n\t$segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (\n\t\t$notes = for $seg in $segs collect (\n\t\t\t$seg = flat($seg, 1);\n\t\t\t$file = [ 7 $seg.'file'];\n\t\t\t$offset = [ 10 $seg.'offset'];\n\t\t\t$pan = (if $pan then [ 2 $pan ] else null);\n\t\t\t$mc = $seg.'pitch';\n\t\t\t$gain = [1 $gain ||| bpf(0 127 127 0)];\n\t\t\t$rate = [11 (if $shift && $shift != 0 then c2r($shift))];\n\t\t\t$color = $mc; \n\t\t\t$speed = $rate::(1 2);\n\t\t\tif $speed then (\n\t\t\t\t$mc += r2c($rate::(1 2))\n\t\t\t) else (\n\t\t\t\t$rate = null\n\t\t\t);\n\t\t\t$vel = minmax(flat($gain)):3;\n\t\t\t$color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n\t\t\t$dur = $seg.'duration';\n\t\t\t[ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n\t\t);\n\t\t[ $onset $notes ]\n\t)\n);\n\nrender = (-> msg(\"roll\", \"dump\"));\n\nplay = (-> msg(\"playtoggle\", \"bang\"));\n\nmergechords = (\n\t$ms = 5, $mc = 0 -> (\n\t\tmsg(\"roll\", \"merge\" $ms $mc)\n\t)\n);\n\nnull ",
 					"color" : [ 0.188235294117647, 0.6, 0.815686274509804, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "newobj",
@@ -338,7 +351,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval @auto 1 @watch 1 @file utils.bell"
+					"text" : "bach.eval @auto 1 @watch 1 @file __grainscript__.bell"
 				}
 
 			}
@@ -1099,15 +1112,15 @@
 					"id" : "obj-158",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "bang" ],
-					"patching_rect" : [ 409.0, 671.0, 791.0, 23.0 ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "bang" ],
+					"patching_rect" : [ 409.0, 671.0, 1049.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
 ,
 					"style" : "subtle",
-					"text" : "bach.keys roll db sampler"
+					"text" : "bach.keys roll db sampler playtoggle"
 				}
 
 			}
@@ -1498,6 +1511,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-154", 0 ],
 					"source" : [ "obj-158", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-158", 3 ]
 				}
 
 			}

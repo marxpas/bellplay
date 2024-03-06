@@ -308,7 +308,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 317.0, 551.0, 132.0, 23.0 ],
-					"text" : "print granulab @level 3"
+					"text" : "print grainscript @level 3"
 				}
 
 			}

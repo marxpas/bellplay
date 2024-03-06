@@ -39,7 +39,7 @@
 		}
 ,
 		"data" : 		{
-			"utils.bell" : 			{
+			"__grainscript__.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
