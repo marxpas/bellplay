@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 54.0, 87.0, 796.0, 864.0 ],
+		"rect" : [ 54.0, 87.0, 796.0, 842.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -139,7 +139,7 @@
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 1080.0, 137.0, 735.0, 443.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 51.0, 510.0, 740.0, 351.0 ],
+					"presentation_rect" : [ 51.0, 510.0, 740.0, 325.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -236,13 +236,16 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
+					"color" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ],
+					"elementcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
 					"id" : "obj-116",
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"patching_rect" : [ 284.0, 830.0, 54.75, 54.75 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 6.0, 810.0, 45.0, 45.0 ]
+					"presentation_rect" : [ 6.0, 786.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -257,7 +260,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 284.0, 646.0, 83.0, 162.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 6.0, 510.0, 45.0, 298.0 ],
+					"presentation_rect" : [ 10.0, 523.0, 37.0, 261.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -385,6 +388,10 @@
 			}
 , 			{
 				"name" : "bach.group.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.gt.mxo",
 				"type" : "iLaX"
 			}
 , 			{
