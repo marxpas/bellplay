@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3792544690,
+	"modificationdate" : 3792548678,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -39,34 +39,9 @@
 		}
 ,
 		"data" : 		{
-			"test.bell" : 			{
-				"kind" : "textfile",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/scripts",
-					"projectrelativepath" : "./scripts"
-				}
-
-			}
-,
 			"utils.bell" : 			{
 				"kind" : "textfile",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/scripts",
-					"projectrelativepath" : "./scripts"
-				}
-
-			}
-,
-			"cmaj.bell" : 			{
-				"kind" : "textfile",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/scripts",
-					"projectrelativepath" : "./scripts"
-				}
-
+				"local" : 1
 			}
 
 		}

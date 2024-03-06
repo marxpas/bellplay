@@ -2,5 +2,5 @@
 **/.DS_Store
 **/Icon?
 !.gitignore
-scripts/*
+**/*.bell
 !utils.bell
