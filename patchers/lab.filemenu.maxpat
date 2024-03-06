@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 140.0, 1397.0, 724.0 ],
+		"rect" : [ 111.0, 163.0, 345.0, 398.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -280,6 +280,9 @@
 			}
 , 			{
 				"box" : 				{
+					"alternatecolor" : [ 0.964705882352941, 0.964705882352941, 0.964705882352941, 1.0 ],
+					"checkcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
+					"clickedtextcolor" : [ 0.0, 0.694117647058824, 0.454901960784314, 1.0 ],
 					"embed" : 0,
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Medium",

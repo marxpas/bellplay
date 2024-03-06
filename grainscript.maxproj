@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3792537625,
+	"modificationdate" : 3792544690,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -27,6 +27,11 @@
 			}
 ,
 			"lab.filemenu.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"lab.scripter.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
