@@ -354,20 +354,19 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "msg = (\n    $to, $msg -> (\n        [$to $msg]\n    )\n);\n\nsetcorpus = (\n    $x -> msg(\"db\", \"read\" $x)\n);\n\nquery = (\n    $x -> msg(\"db\", \"query\" $x)\n);\n\ngetsegments = (\n    -> SEGMENTS\n);\n\nsetkey = (\n    $x, $key, $val -> (\n        $x = $x::1;\n        $x.$key = $val;\n        [ $x ]\n    )\n);\n\ngetkey = (\n    $x, $key -> ($x::1).$key\n);\n\nmapkey = (\n    $x, $key, $fun -> (\n        setkey($x, $key, $fun(getkey($x, $key)))\n    )\n);\n\nbpf = (\n    $pts, $curve = 0. -> (\n        $N = length($pts);\n        if $N == 1 then (\n            $pts = flat($pts):1;\n            [0 $pts 0] [ 1 $pts 0]\n        ) else (\n            for $pt $i in $pts collect (\n                $idx = ($i - 1.) / max($N - 1, 1);\n                [(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n            )\n        )\n    )\n);\n\nscale = (\n    $x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n        (($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n    )\n);\n\nfrand = (\n    $a = 1, $b = null, $res = 1000 -> (\n        if $b == null then (\n            $min = 0;\n            $max = $a\n        ) else (\n            $min = $a;\n            $max = $b\n        );\n        scale(random(0, $res), 0, $res, $min, $max)\n    )\n);\n\nchoose = (\n    $x, $n = 1 -> (\n        for $i in 1...$n collect $x:(random(1, length($x)))\n    )\n);\n\nresetroll = (-> msg(\"roll\", \"clear\"));\n\nc2r = (\n    $c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n    $r -> log2($r) * 1200\n);\n\nfiltersegments = (\n    $segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (\n        $lambda = (\n            $x  -^ $fun -> (\n                $fun($x)\n            )\n        );\n        finditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)\n    )\n);\n\ngetshift = (\n    $seg, $mc -> (\n        $mc - getkey($seg, \"pitch\")\n    )\n);\n\nseg2chord = (\n    $segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (\n        $notes = (\n            for $seg in $segs collect (\n                $seg = flat($seg, 1);\n                $file = [ 7 $seg.'file'];\n                $offset = [ 10 $seg.'offset'];\n                $pan = (if $pan then [ 2 $pan ] else null);\n                $mc = $seg.'pitch';\n                $gain = [1 $gain ||| bpf(0 127 127 0)];\n                $rate = [11 (if $shift && $shift != 0 then c2r($shift))];\n                $color = $mc; \n                $speed = $rate::(1 2);\n                if $speed then (\n                    $mc += r2c($rate::(1 2))\n                ) else (\n                    $rate = null\n                );\n                $vel = minmax(flat($gain)):3;\n                $color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n                $dur = $seg.'duration';\n                [ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n            )\n        );\n        [ $onset $notes ]\n    )\n);\n\naddchord = (\n    $x -> msg(\"roll\", \"addchord\" $x)\n);\n\nrender = (-> msg(\"roll\", \"dump\"));\n\nplay = (-> msg(\"playtoggle\", \"bang\"));\n\nmergechords = (\n    $ms = 5, $mc = 0 -> (\n        msg(\"roll\", \"merge\" $ms $mc)\n    )\n);\n\nnull ",
 					"color" : [ 0.188235294117647, 0.6, 0.815686274509804, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 574.0, 629.0, 306.0, 23.0 ],
+					"patching_rect" : [ 643.0, 629.0, 366.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 1,
+						"embed" : 0,
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval @auto 1 @watch 1 @file __grainscript__.bell"
+					"text" : "bach.eval @auto 1 @watch 1 @embed 0 @file __grainscript__.bell"
 				}
 
 			}
@@ -1148,14 +1147,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 629.0, 163.0, 23.0 ],
+					"patching_rect" : [ 409.0, 629.0, 223.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"versionnumber" : 80300
 					}
 ,
 					"style" : "subtle",
-					"text" : "bach.eval @auto 1 @watch 1"
+					"text" : "bach.eval @auto 1 @watch 1 @embed 0"
 				}
 
 			}
