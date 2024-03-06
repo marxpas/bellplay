@@ -40,12 +40,28 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"patching_rect" : [ 1181.5, 713.0, 115.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"versionnumber" : 80300
+					}
+,
+					"text" : "bach.portal @out m"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"color" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ],
 					"id" : "obj-18",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1181.5, 712.0, 87.0, 23.0 ],
+					"patching_rect" : [ 1181.5, 755.0, 87.0, 23.0 ],
 					"style" : "subtle",
 					"text" : "s #0playtoggle"
 				}
@@ -338,14 +354,14 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "msg = (\n\t$to, $msg -> (\n\t\t[$to $msg]\n\t)\n);\n\nsetcorpus = (\n\t$x -> msg(\"db\", \"read\" $x)\n);\n\nquery = (\n\t$x -> msg(\"db\", \"query\" $x);\n\tSEGMENTS\n);\n\naddchord = (\n\t$x -> msg(\"roll\", \"addchord\" $x)\n);\n\nsetkey = (\n\t$x, $key, $val -> (\n\t\t$x = $x::1;\n\t\t$x.$key = $val;\n\t\t[ $x ]\n\t)\n);\n\ngetkey = (\n\t$x, $key -> ($x::1).$key\n);\n\nmapkey = (\n\t$x, $key, $fun -> (\n\t\tsetkey($x, $key, $fun(getkey($x, $key)))\n\t)\n);\n\nbpf = (\n\t$pts, $curve = 0. -> (\n\t\t$N = length($pts);\n\t\tif $N == 1 then (\n\t\t\t$pts = flat($pts):1;\n\t\t\t[0 $pts 0] [ 1 $pts 0]\n\t\t) else (\n\t\t\tfor $pt $i in $pts collect (\n\t\t\t\t$idx = ($i - 1.) / max($N - 1, 1);\n\t\t\t\t[(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n\t\t\t)\n\t\t)\n\t)\n);\n\nscale = (\n\t$x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n\t\t(($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n\t)\n);\n\nfrand = (\n\t$a = 1, $b = null, $res = 1000 -> (\n\t\tif $b == null then (\n\t\t\t$min = 0;\n\t\t\t$max = $a\n\t\t) else (\n\t\t\t$min = $a;\n\t\t\t$max = $b\n\t\t);\n\t\tscale(random(0, $res), 0, $res, $min, $max)\n\t)\n);\n\nchoose = (\n\t$x, $n = 1 -> (\n\t\tfor $i in 1...$n collect $x:(random(1, length($x)))\n\t)\n);\n\nresetroll = (-> msg(\"roll\", \"clear\"));\n\nc2r = (\n\t$c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n\t$r -> log2($r) * 1200\n);\n\nfiltersegments = (\n\t$segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (\n\t\t$lambda = (\n\t\t\t$x  -^ $fun -> (\n\t\t\t\t$fun($x)\n\t\t\t)\n\t\t);\n\t\tfinditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)\n\t)\n);\n\ngetshift = (\n\t$seg, $mc -> (\n\t\t$mc - getkey($seg, \"pitch\")\n\t)\n);\n\nseg2chord = (\n\t$segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (\n\t\t$notes = for $seg in $segs collect (\n\t\t\t$seg = flat($seg, 1);\n\t\t\t$file = [ 7 $seg.'file'];\n\t\t\t$offset = [ 10 $seg.'offset'];\n\t\t\t$pan = (if $pan then [ 2 $pan ] else null);\n\t\t\t$mc = $seg.'pitch';\n\t\t\t$gain = [1 $gain ||| bpf(0 127 127 0)];\n\t\t\t$rate = [11 (if $shift && $shift != 0 then c2r($shift))];\n\t\t\t$color = $mc; \n\t\t\t$speed = $rate::(1 2);\n\t\t\tif $speed then (\n\t\t\t\t$mc += r2c($rate::(1 2))\n\t\t\t) else (\n\t\t\t\t$rate = null\n\t\t\t);\n\t\t\t$vel = minmax(flat($gain)):3;\n\t\t\t$color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n\t\t\t$dur = $seg.'duration';\n\t\t\t[ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n\t\t);\n\t\t[ $onset $notes ]\n\t)\n);\n\nrender = (-> msg(\"roll\", \"dump\"));\n\nplay = (-> msg(\"playtoggle\", \"bang\"));\n\nmergechords = (\n\t$ms = 5, $mc = 0 -> (\n\t\tmsg(\"roll\", \"merge\" $ms $mc)\n\t)\n);\n\nnull ",
+					"code" : "msg = (\n    $to, $msg -> (\n        [$to $msg]\n    )\n);\n\nsetcorpus = (\n    $x -> msg(\"db\", \"read\" $x)\n);\n\nquery = (\n    $x -> msg(\"db\", \"query\" $x)\n);\n\ngetsegments = (\n    -> SEGMENTS\n);\n\nsetkey = (\n    $x, $key, $val -> (\n        $x = $x::1;\n        $x.$key = $val;\n        [ $x ]\n    )\n);\n\ngetkey = (\n    $x, $key -> ($x::1).$key\n);\n\nmapkey = (\n    $x, $key, $fun -> (\n        setkey($x, $key, $fun(getkey($x, $key)))\n    )\n);\n\nbpf = (\n    $pts, $curve = 0. -> (\n        $N = length($pts);\n        if $N == 1 then (\n            $pts = flat($pts):1;\n            [0 $pts 0] [ 1 $pts 0]\n        ) else (\n            for $pt $i in $pts collect (\n                $idx = ($i - 1.) / max($N - 1, 1);\n                [(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]\n            )\n        )\n    )\n);\n\nscale = (\n    $x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (\n        (($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin\n    )\n);\n\nfrand = (\n    $a = 1, $b = null, $res = 1000 -> (\n        if $b == null then (\n            $min = 0;\n            $max = $a\n        ) else (\n            $min = $a;\n            $max = $b\n        );\n        scale(random(0, $res), 0, $res, $min, $max)\n    )\n);\n\nchoose = (\n    $x, $n = 1 -> (\n        for $i in 1...$n collect $x:(random(1, length($x)))\n    )\n);\n\nresetroll = (-> msg(\"roll\", \"clear\"));\n\nc2r = (\n    $c -> 2 ** ($c / 1200)\n);\n\nr2c = (\n    $r -> log2($r) * 1200\n);\n\nfiltersegments = (\n    $segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (\n        $lambda = (\n            $x  -^ $fun -> (\n                $fun($x)\n            )\n        );\n        finditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)\n    )\n);\n\ngetshift = (\n    $seg, $mc -> (\n        $mc - getkey($seg, \"pitch\")\n    )\n);\n\nseg2chord = (\n    $segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (\n        $notes = (\n            for $seg in $segs collect (\n                $seg = flat($seg, 1);\n                $file = [ 7 $seg.'file'];\n                $offset = [ 10 $seg.'offset'];\n                $pan = (if $pan then [ 2 $pan ] else null);\n                $mc = $seg.'pitch';\n                $gain = [1 $gain ||| bpf(0 127 127 0)];\n                $rate = [11 (if $shift && $shift != 0 then c2r($shift))];\n                $color = $mc; \n                $speed = $rate::(1 2);\n                if $speed then (\n                    $mc += r2c($rate::(1 2))\n                ) else (\n                    $rate = null\n                );\n                $vel = minmax(flat($gain)):3;\n                $color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];\n                $dur = $seg.'duration';\n                [ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]\n            )\n        );\n        [ $onset $notes ]\n    )\n);\n\naddchord = (\n    $x -> msg(\"roll\", \"addchord\" $x)\n);\n\nrender = (-> msg(\"roll\", \"dump\"));\n\nplay = (-> msg(\"playtoggle\", \"bang\"));\n\nmergechords = (\n    $ms = 5, $mc = 0 -> (\n        msg(\"roll\", \"merge\" $ms $mc)\n    )\n);\n\nnull ",
 					"color" : [ 0.188235294117647, 0.6, 0.815686274509804, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 574.0, 629.0, 241.0, 23.0 ],
+					"patching_rect" : [ 574.0, 629.0, 306.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1516,15 +1532,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"source" : [ "obj-158", 3 ]
+					"destination" : [ "obj-183", 0 ],
+					"source" : [ "obj-158", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-183", 0 ],
-					"source" : [ "obj-158", 1 ]
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-158", 3 ]
 				}
 
 			}
@@ -1686,6 +1702,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-185", 0 ],
 					"source" : [ "obj-189", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-19", 0 ]
 				}
 
 			}

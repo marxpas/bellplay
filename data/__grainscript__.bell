@@ -135,7 +135,7 @@ addchord = (
 
 render = (-> msg("roll", "dump"));
 
-play = (-> msg("playtoggle", "bang"));
+play = (-> msg("playtoggle", 1));
 
 mergechords = (
     $ms = 5, $mc = 0 -> (
