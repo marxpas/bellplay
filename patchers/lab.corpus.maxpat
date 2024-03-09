@@ -708,7 +708,8 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 636.0, 273.0, 146.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "scatterplot features"
+					"text" : "scatterplot features",
+					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
 
 			}
@@ -1195,6 +1196,7 @@
 					"presentation_rect" : [ 116.0, 439.0, 115.0, 18.0 ],
 					"style" : "subtlelight",
 					"text" : "seg. threshold",
+					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
 
@@ -1450,6 +1452,7 @@
 					"presentation_rect" : [ 361.0, 392.0, 273.0, 18.0 ],
 					"style" : "subtlelight",
 					"text" : "0 segments",
+					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
 
@@ -1488,7 +1491,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1651.0, 2338.0, 31.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 636.0, 343.0, 78.0, 21.0 ],
+					"presentation_rect" : [ 637.0, 341.0, 29.0, 21.0 ],
 					"style" : "subtlelight",
 					"text" : "size",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1503,7 +1506,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1530.0, 2338.0, 38.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 636.0, 368.0, 77.0, 21.0 ],
+					"presentation_rect" : [ 637.0, 366.0, 36.0, 21.0 ],
 					"style" : "subtlelight",
 					"text" : "color",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1518,7 +1521,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1409.0, 2338.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 636.0, 318.0, 76.0, 21.0 ],
+					"presentation_rect" : [ 637.0, 316.0, 38.0, 21.0 ],
 					"style" : "subtlelight",
 					"text" : "y axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1533,7 +1536,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1289.0, 2338.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 636.0, 293.0, 77.0, 21.0 ],
+					"presentation_rect" : [ 637.0, 291.0, 77.0, 21.0 ],
 					"style" : "subtlelight",
 					"text" : "x axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
