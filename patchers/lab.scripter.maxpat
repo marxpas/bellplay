@@ -147,6 +147,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-44",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -254,6 +255,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-20",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -285,6 +287,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-17",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -303,7 +306,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-10",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -315,7 +318,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-9",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -369,7 +372,7 @@
 					"patching_rect" : [ 521.0, 265.0, 177.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 97.0, 733.0, 21.0 ],
-					"text" : "chans.bell",
+					"text" : " ",
 					"textcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
 					"textjustification" : 2
 				}
@@ -565,6 +568,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-219",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -677,6 +681,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"bgcolor" : [ 0.054901960784314, 0.435294117647059, 0.372549019607843, 1.0 ],
 					"bgoncolor" : [ 0.564705882352941, 0.129411764705882, 0.129411764705882, 1.0 ],
 					"id" : "obj-31",
@@ -1413,6 +1418,7 @@
 					"pitcheditrange" : [ "null" ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 97.0, 733.0, 225.0 ],
+					"showborder" : 0,
 					"showdurations" : 0,
 					"showstems" : 0,
 					"showvelocity" : 3,
@@ -2247,6 +2253,88 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "bach.args.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.eq.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.eval.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.filternull.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.gt.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.join.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.keys.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.portal.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.prepend.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.reg.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.roll.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.wrap.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "dada.base.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.info~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mixdown~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.reg~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.roll.sampling~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "thru.maxpat",
+				"bootpath" : "C74:/patchers/m4l/Pluggo for Live resources/patches",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "subtle",
 				"default" : 				{

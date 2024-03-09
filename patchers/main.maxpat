@@ -48,7 +48,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 145.0, 34.0, 207.0, 7.0 ]
+					"presentation_rect" : [ 145.0, 35.0, 207.0, 7.0 ]
 				}
 
 			}
@@ -77,7 +77,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 35.0, 46.0, 200.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 152.0, 11.5, 200.0, 23.0 ],
+					"presentation_rect" : [ 148.0, 12.0, 200.0, 23.0 ],
 					"text" : "corpus-based audio granulation"
 				}
 
