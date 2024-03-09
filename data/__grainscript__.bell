@@ -5,7 +5,10 @@ msg = (
 );
 
 setcorpus = (
-    $x -> msg("db", "read" $x)
+    $x -> (
+        SEGMENTS = null;
+        msg("db", "read" $x)
+    )
 );
 
 audioconfig = (
