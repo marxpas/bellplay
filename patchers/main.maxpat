@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 54.0, 87.0, 796.0, 842.0 ],
+		"rect" : [ 19.0, 68.0, 796.0, 842.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -29,8 +29,8 @@
 		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 0,
-		"enablevscroll" : 0,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
@@ -46,7 +46,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 198.0, 8.0, 5.0, 100.0 ],
+					"patching_rect" : [ 25.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 145.0, 34.0, 207.0, 7.0 ]
 				}
@@ -60,7 +60,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 316.0, 28.0, 5.0, 100.0 ],
+					"patching_rect" : [ 18.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 141.0, 8.0, 9.0, 30.0 ]
 				}
@@ -72,11 +72,10 @@
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
 					"id" : "obj-1",
-					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 139.0, 3.0, 27.0, 225.0 ],
+					"patching_rect" : [ 35.0, 46.0, 200.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 152.0, 11.5, 200.0, 23.0 ],
 					"text" : "corpus-based audio granulation"
@@ -92,7 +91,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4.0, 40.0, 5.0, 100.0 ],
+					"patching_rect" : [ 11.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.0, 43.0, 779.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
@@ -114,7 +113,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 466.0, 674.0, 5.0, 100.0 ],
+					"patching_rect" : [ 4.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 506.0, 779.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
@@ -132,11 +131,10 @@
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 10.0,
 					"id" : "obj-6",
-					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 4.0, 41.0, 79.0 ],
+					"patching_rect" : [ 32.0, 69.0, 154.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 466.0, 15.0, 325.0, 18.0 ],
 					"text" : "©  2024 | felipe-tovar-henao.com",
@@ -150,7 +148,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1796.0, 593.0, 77.0, 23.0 ],
+					"patching_rect" : [ 1764.0, 463.0, 77.0, 23.0 ],
 					"text" : "send~ chan2"
 				}
 
@@ -161,7 +159,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1080.0, 593.0, 77.0, 23.0 ],
+					"patching_rect" : [ 1048.0, 463.0, 77.0, 23.0 ],
 					"text" : "send~ chan1"
 				}
 
@@ -182,7 +180,7 @@
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 1080.0, 137.0, 735.0, 443.0 ],
+					"patching_rect" : [ 1048.0, 7.0, 735.0, 443.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 51.0, 510.0, 740.0, 325.0 ],
 					"viewvisibility" : 1
@@ -205,7 +203,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 284.0, 99.0, 783.0, 467.0 ],
+					"patching_rect" : [ 258.0, 7.0, 783.0, 467.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 6.0, 43.0, 785.0, 462.0 ],
 					"viewvisibility" : 1
@@ -219,7 +217,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.0, 670.0, 87.0, 23.0 ],
+					"patching_rect" : [ 157.0, 578.0, 87.0, 23.0 ],
 					"text" : "loadmess start"
 				}
 
@@ -229,11 +227,10 @@
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 24.0,
 					"id" : "obj-145",
-					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 125.0, 70.0, 41.0, 93.0 ],
+					"patching_rect" : [ 92.0, 7.0, 85.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 58.0, 6.0, 85.0, 35.0 ],
 					"text" : "script~"
@@ -247,7 +244,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 422.0, 590.0, 90.0, 23.0 ],
+					"patching_rect" : [ 396.0, 498.0, 90.0, 23.0 ],
 					"text" : "receive~ chan2"
 				}
 
@@ -259,7 +256,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 181.0, 590.0, 90.0, 23.0 ],
+					"patching_rect" : [ 155.0, 498.0, 90.0, 23.0 ],
 					"text" : "receive~ chan1"
 				}
 
@@ -272,7 +269,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 65.0, 70.0, 68.0, 35.0 ],
+					"patching_rect" : [ 32.0, 7.0, 61.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 6.0, 6.0, 61.0, 35.0 ],
 					"text" : "grain"
@@ -288,7 +285,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 284.0, 830.0, 54.75, 54.75 ],
+					"patching_rect" : [ 258.0, 738.0, 54.75, 54.75 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 6.0, 786.0, 45.0, 45.0 ]
 				}
@@ -306,7 +303,7 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"overloadcolor" : [ 0.815686274509804, 0.188235294117647, 0.188235294117647, 1.0 ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 284.0, 646.0, 83.0, 162.0 ],
+					"patching_rect" : [ 258.0, 554.0, 83.0, 162.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 523.0, 37.0, 261.0 ],
 					"saved_attribute_attributes" : 					{

@@ -8,6 +8,17 @@ setcorpus = (
     $x -> msg("db", "read" $x)
 );
 
+audioconfig = (
+    $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0 -> (
+        msg("sampler", 
+            [ "panmode" $panmode] 
+            [ "numchannels" $numchannels ] 
+            [ "sr" $sr ]
+            [ "normalize" $normalize ]
+        )
+    )
+);
+
 query = (
     $x -> msg("db", "query" $x)
 );
