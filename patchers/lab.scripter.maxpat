@@ -384,7 +384,8 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 3.0, 97.0, 733.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : " "
+					"text" : " ",
+					"textjustification" : 2
 				}
 
 			}
