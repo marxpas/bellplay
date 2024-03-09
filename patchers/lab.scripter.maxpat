@@ -286,7 +286,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 2.0, 6.0, 481.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 68.0, 4.0, 668.0, 18.0 ],
+					"presentation_rect" : [ 3.0, 4.0, 733.0, 18.0 ],
 					"style" : "subtlelight",
 					"text" : "Load a .bell script to generate a granular audio file and roll sequence, and export it as in .wav or .llll format."
 				}
@@ -691,6 +691,7 @@
 , 			{
 				"box" : 				{
 					"active" : 0,
+					"bgoncolor" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
 					"id" : "obj-31",
 					"maxclass" : "textbutton",
 					"mode" : 1,
