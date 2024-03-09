@@ -1192,9 +1192,10 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1151.0, 1102.0, 72.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 116.0, 440.5, 115.0, 18.0 ],
+					"presentation_rect" : [ 116.0, 439.0, 115.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "seg. threshold"
+					"text" : "seg. threshold",
+					"textjustification" : 2
 				}
 
 			}
