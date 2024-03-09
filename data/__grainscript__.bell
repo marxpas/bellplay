@@ -19,6 +19,17 @@ audioconfig = (
     )
 );
 
+sampletable = (
+    $x, $i -> (
+        $N = length($x);
+        $i = scale($i, 0, 1, 1, $N);
+        $l = floor($i);
+        $r = min($l + 1, $N);
+        $m = fmod($i, 1);
+        $x:$l * (1 - $m) + $x:$r * $m
+    )
+);
+
 query = (
     $x -> msg("db", "query" $x)
 );
