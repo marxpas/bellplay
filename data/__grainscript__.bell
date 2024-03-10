@@ -21,17 +21,6 @@ setcorpus = (
     )
 );
 
-audioconfig = (
-    $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0 -> (
-        msg("sampler", 
-            [ "panmode" $panmode] 
-            [ "numchannels" $numchannels ] 
-            [ "sr" $sr ]
-            [ "normalize" $normalize ]
-        )
-    )
-);
-
 sampletable = (
     $x, $i -> (
         $N = length($x);
@@ -109,8 +98,6 @@ choose = (
     )
 );
 
-resetroll = (-> msg("roll", "clear"));
-
 c2r = (
     $c -> 2 ** ($c / 1200)
 );
@@ -170,17 +157,22 @@ seg2chord = (
                 [ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]
             )
         );
-        [ $onset $notes ]
+        msg("roll", "addchord" [ $onset $notes ])
     )
 );
 
-addchord = (
-    $x -> msg("roll", "addchord" $x)
+render = (
+   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0 -> (
+        msg("sampler", 
+            [ "panmode" $panmode] 
+            [ "numchannels" $numchannels ] 
+            [ "sr" $sr ]
+            [ "normalize" $normalize ]
+        )
+        msg("roll", "dump")
+        (if $play then msg("playtoggle", 1))
+    )
 );
-
-render = (-> msg("roll", "dump"));
-
-play = (-> msg("playtoggle", 1));
 
 mergechords = (
     $ms = 5, $mc = 0 -> (
