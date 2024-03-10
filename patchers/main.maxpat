@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 278.0, 68.0, 796.0, 861.0 ],
+		"rect" : [ 214.0, 67.0, 796.0, 872.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -49,7 +49,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 386.0, 322.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 743.0, 510.0, 48.0, 18.0 ],
+					"presentation_rect" : [ 743.0, 522.0, 48.0, 18.0 ],
 					"text" : "scripting",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textjustification" : 2
@@ -64,7 +64,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 386.0, 322.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 743.0, 510.0, 48.0, 18.0 ],
+					"presentation_rect" : [ 743.0, 522.0, 48.0, 18.0 ],
 					"rounded" : 12,
 					"style" : "subtlelight"
 				}
@@ -80,7 +80,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 371.0, 307.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 736.0, 36.5, 55.0, 18.0 ],
+					"presentation_rect" : [ 736.0, 42.0, 55.0, 18.0 ],
 					"text" : "corpus lab",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textjustification" : 2
@@ -95,7 +95,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 371.0, 307.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 736.0, 36.5, 55.0, 18.0 ],
+					"presentation_rect" : [ 736.0, 42.0, 55.0, 18.0 ],
 					"rounded" : 12,
 					"style" : "subtlelight"
 				}
@@ -193,7 +193,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 11.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 9.0, 43.0, 779.0, 5.0 ],
+					"presentation_rect" : [ 9.0, 48.0, 779.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
 						"linecolor" : 						{
 							"expression" : ""
@@ -215,7 +215,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 4.0, 7.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 9.0, 517.0, 779.0, 5.0 ],
+					"presentation_rect" : [ 9.0, 529.0, 779.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
 						"linecolor" : 						{
 							"expression" : ""
@@ -282,7 +282,7 @@
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 1048.0, 7.0, 735.0, 443.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 51.0, 530.0, 740.0, 325.0 ],
+					"presentation_rect" : [ 51.0, 542.0, 740.0, 325.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -305,7 +305,7 @@
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 258.0, 7.0, 783.0, 467.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 6.0, 43.0, 785.0, 462.0 ],
+					"presentation_rect" : [ 6.0, 55.0, 785.0, 462.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -386,7 +386,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 258.0, 738.0, 49.0, 49.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 6.0, 806.0, 45.0, 45.0 ]
+					"presentation_rect" : [ 6.0, 818.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -404,7 +404,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 258.0, 554.0, 139.0, 153.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 543.0, 37.0, 261.0 ],
+					"presentation_rect" : [ 10.0, 555.0, 37.0, 261.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -527,11 +527,22 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.div.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.eq.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.eval.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
