@@ -849,7 +849,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "lab.filemenu.maxpat",
+					"name" : "gs.filemenu.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -1553,7 +1553,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1002.0, 2101.0, 107.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 297.0, 442.0, 484.0, 18.0 ],
+					"presentation_rect" : [ 297.0, 440.0, 484.0, 18.0 ],
 					"style" : "subtlelight",
 					"text" : "grain scatterplot filter",
 					"textcolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
@@ -1768,9 +1768,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1337.0, 3492.0, 132.0, 23.0 ],
+					"patching_rect" : [ 1337.0, 3492.0, 148.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "poly~ sampler.poly~ 48"
+					"text" : "poly~ gs.sampler.poly~ 48"
 				}
 
 			}
@@ -3782,14 +3782,14 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "lab.filemenu.maxpat",
+				"name" : "gs.filemenu.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "sampler.poly~.maxpat",
+				"name" : "gs.sampler.poly~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

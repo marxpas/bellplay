@@ -275,7 +275,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "lab.scripter.maxpat",
+					"name" : "gs.scripter.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -298,7 +298,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "lab.corpus.maxpat",
+					"name" : "gs.corpus.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -656,28 +656,28 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "lab.corpus.maxpat",
+				"name" : "gs.corpus.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "lab.filemenu.maxpat",
+				"name" : "gs.filemenu.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "lab.scripter.maxpat",
+				"name" : "gs.scripter.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "sampler.poly~.maxpat",
+				"name" : "gs.sampler.poly~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

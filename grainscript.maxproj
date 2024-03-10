@@ -16,22 +16,22 @@
 				"toplevel" : 1
 			}
 ,
-			"sampler.poly~.maxpat" : 			{
+			"gs.sampler.poly~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"lab.corpus.maxpat" : 			{
+			"gs.corpus.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"lab.filemenu.maxpat" : 			{
+			"gs.filemenu.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"lab.scripter.maxpat" : 			{
+			"gs.scripter.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
