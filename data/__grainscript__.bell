@@ -4,6 +4,16 @@ msg = (
     )
 );
 
+pcdiff = (
+	$a, $b, $mod = 12 -> ( 
+		$a = fmod($a, $mod); 
+		$b = fmod($b, $mod); 
+		$da = $b - $a; 
+		$db = $da + $mod * -(sgn($da) || 1); 
+		$mask = for $xa in $da, $xb in $db collect int(abs($xa) < abs($xb)); 
+		$da * $mask + $db * (1 - $mask)) 
+);
+
 setcorpus = (
     $x -> (
         SEGMENTS = null;
@@ -121,8 +131,18 @@ filtersegments = (
 );
 
 getshift = (
-    $seg, $mc -> (
-        $mc - getkey($seg, "pitch")
+    $seg, $targets -> (
+        $source = getkey($seg, "pitch");
+        $distances = (
+            for $pitch in $targets collect (
+                if $pitch <= 12 then (
+                    pcdiff($source / 100., $pitch) * 100
+                ) else (
+                    $pitch - $source
+                )
+            )
+        );
+        $distances:(minmax(abs($distances)):2)
     )
 );
 
