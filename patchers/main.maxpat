@@ -41,6 +41,38 @@
 		"title" : "grainscript",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 4.0, 123.0, 236.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"allwindowsactive" : 0,
+						"appicon_mac" : "",
+						"appicon_win" : "",
+						"audiosupport" : 1,
+						"bundleidentifier" : "com.mycompany.myprogram",
+						"cantclosetoplevelpatchers" : 1,
+						"cefsupport" : 0,
+						"copysupport" : 1,
+						"database" : 0,
+						"extensions" : 1,
+						"gensupport" : 0,
+						"midisupport" : 1,
+						"noloadbangdefeating" : 0,
+						"overdrive" : 0,
+						"preffilename" : "",
+						"searchformissingfiles" : 1,
+						"statusvisible" : 1,
+						"usesearchpath" : 0
+					}
+,
+					"text" : "standalone @cefsupport 0 @gensupport 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-25",
 					"linecount" : 2,
 					"maxclass" : "message",
@@ -71,6 +103,7 @@
 					"fontsize" : 12.0,
 					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
 					"id" : "obj-17",
+					"linkend" : [ "null" ],
 					"linkstart" : [ "https://" ],
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
@@ -91,7 +124,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 386.0, 322.0, 55.0, 18.0 ],
+					"patching_rect" : [ 180.0, 89.0, 55.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 743.0, 522.0, 48.0, 18.0 ],
 					"text" : "scripting",
@@ -106,7 +139,7 @@
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 386.0, 322.0, 55.0, 18.0 ],
+					"patching_rect" : [ 180.0, 89.0, 55.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 743.0, 522.0, 48.0, 18.0 ],
 					"rounded" : 12,
@@ -122,7 +155,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 371.0, 307.0, 55.0, 18.0 ],
+					"patching_rect" : [ 35.0, 89.0, 55.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 736.0, 42.0, 55.0, 18.0 ],
 					"text" : "corpus lab",
@@ -137,7 +170,7 @@
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 371.0, 307.0, 55.0, 18.0 ],
+					"patching_rect" : [ 35.0, 89.0, 55.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 736.0, 42.0, 55.0, 18.0 ],
 					"rounded" : 12,
@@ -152,7 +185,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 420.0, 554.0, 58.0, 23.0 ],
+					"patching_rect" : [ 410.0, 554.0, 58.0, 23.0 ],
 					"text" : "loadbang"
 				}
 
@@ -164,7 +197,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 420.0, 591.0, 91.0, 23.0 ],
+					"patching_rect" : [ 410.0, 591.0, 91.0, 23.0 ],
 					"text" : "title grainscript"
 				}
 
@@ -176,7 +209,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 420.0, 632.0, 70.0, 23.0 ],
+					"patching_rect" : [ 410.0, 632.0, 70.0, 23.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
@@ -372,7 +405,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 374.0, 498.0, 90.0, 23.0 ],
+					"patching_rect" : [ 378.0, 498.0, 90.0, 23.0 ],
 					"text" : "receive~ chan2"
 				}
 
