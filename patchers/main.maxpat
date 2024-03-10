@@ -41,6 +41,50 @@
 		"title" : "grainscript",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-25",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 615.0, 694.0, 129.0, 37.0 ],
+					"text" : ";\rmax launchbrowser $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 615.0, 653.0, 182.0, 23.0 ],
+					"text" : "combine https:// url @triggers 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Ableton Sans Light",
+					"fontsize" : 12.0,
+					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
+					"id" : "obj-17",
+					"linkstart" : [ "https://" ],
+					"maxclass" : "bach.hypercomment",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 778.0, 614.0, 224.0, 21.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 570.0, 13.0, 221.0, 21.0 ],
+					"text" : "© 2024 | https://felipe-tovar-henao.com"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 10.0,
 					"id" : "obj-15",
@@ -228,22 +272,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Ableton Sans Light",
-					"fontsize" : 10.0,
-					"id" : "obj-6",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 32.0, 69.0, 154.0, 18.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 466.0, 15.0, 325.0, 18.0 ],
-					"text" : "©  2024 | felipe-tovar-henao.com",
-					"textjustification" : 2
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -392,8 +420,8 @@
 			}
 , 			{
 				"box" : 				{
-					"coldcolor" : [ 0.0, 0.694117647058824, 0.454901960784314, 1.0 ],
-					"hotcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 1.0 ],
+					"coldcolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
+					"hotcolor" : [ 0.768627450980392, 0.964705882352941, 1.0, 1.0 ],
 					"id" : "obj-115",
 					"lastchannelcount" : 0,
 					"maxclass" : "live.gain~",
@@ -406,6 +434,10 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 10.0, 555.0, 37.0, 261.0 ],
 					"saved_attribute_attributes" : 					{
+						"slidercolor" : 						{
+							"expression" : ""
+						}
+,
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
 							"parameter_mmax" : 6.0,
@@ -418,8 +450,9 @@
 
 					}
 ,
+					"slidercolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"varname" : "live.gain~",
-					"warmcolor" : [ 0.372549019607843, 0.890196078431372, 0.772549019607843, 1.0 ]
+					"warmcolor" : [ 0.647058823529412, 0.882352941176471, 0.925490196078431, 1.0 ]
 				}
 
 			}
@@ -454,8 +487,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-22", 1 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-116", 0 ],
 					"source" : [ "obj-195", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
@@ -527,22 +574,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.div.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bach.eq.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.eval.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -562,6 +598,10 @@
 			}
 , 			{
 				"name" : "bach.gt.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.hypercomment.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -670,14 +710,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.scripter.maxpat",
+				"name" : "gs.sampler.poly~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.sampler.poly~.maxpat",
+				"name" : "gs.scripter.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
