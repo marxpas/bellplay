@@ -48,7 +48,7 @@ pcdiff = (
 
 addref(
     @name "pcdiff",
-    @description "signed pitch class difference.",
+    @description "Signed pitch class difference.",
     @arguments (
         addarg(@name "a",  @description "pitch classes.")
         addarg(@name "b", @description "pitch classes.")
@@ -66,7 +66,7 @@ setcorpus = (
 
 addref(
     @name "setcorpus",
-    @description "loads an audio corpus, given a path to a .llll file.",
+    @description "Loads an audio corpus, given an absolute path to a .llll file.",
     @arguments (
         addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
     ),
@@ -88,7 +88,7 @@ sampletable = (
 
 addref(
     @name "sampletable",
-    @description "samples an interpolated value from a numeric list given a normalized index.",
+    @description "Samples an interpolated value from a numeric list given a normalized index.",
     @arguments (
         addarg(@name "x", @type "list", @description "list to sample from.")
     )
@@ -97,14 +97,14 @@ addref(
 ## ------------------------------------------------------------
 
 query = (
-    $x -> msg("db", "query" $x)
+    $x = "SELECT * FROM segments LIMIT 50" -> msg("db", "query" $x)
 );
 
 addref(
     @name "query",
-    @description "creates a SQLite3 query on the current corpus. For instance: 'SELECT * FROM segments'.",
+    @description "Creates a SQLite3 query on the current corpus. For instance: 'SELECT * FROM segments'.",
     @arguments (
-        addarg(@name "query", @type "symbol", @description "SQLite3 query.")
+        addarg(@name "query", @type "symbol", @default "SELECT * FROM segments LIMIT 50", @description "SQLite3 query.")
     ),
     @routing 1
 );
@@ -117,7 +117,7 @@ getsegments = (
 
 addref(
     @name "getsegments",
-    @description "returns list of resulting segments from last query. See 'query' function."
+    @description "Returns list of resulting segments from last query. See 'query' function."
 );
 
 ## ------------------------------------------------------------
@@ -132,7 +132,7 @@ setkey = (
 
 addref(
     @name "setkey",
-    @description "modifies the key or field of a query segment.",
+    @description "Modifies the key or field of a query segment.",
     @arguments (
         addarg(@name "seg", @type "list", @description "segment to modify.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
@@ -148,7 +148,7 @@ getkey = (
 
 addref(
     @name "getkey",
-    @description "returns value associated with a segment's key.",
+    @description "Returns value associated with a segment's key.",
     @arguments (
         addarg(@name "seg", @type "list", @description "segment.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
@@ -165,7 +165,7 @@ mapkey = (
 
 addref(
     @name "mapkey",
-    @description "modifies the key of a corpus segment via a lambda function.",
+    @description "Modifies the key of a corpus segment via a lambda function.",
     @arguments (
         addarg(@name "seg", @type "list", @description "segment to modify.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
@@ -209,7 +209,7 @@ scale = (
 
 addref(
     @name "scale",
-    @description "scales an input value or list from a given range to another.",
+    @description "Scales an input value or list from a given range to another.",
     @arguments (
         addarg(@name "x", @type "int/float/list", @description "value to scale.")
         addarg(@name "inmin", @type "int/float", @default 0, @description "input minimum value.")
@@ -236,7 +236,7 @@ frand = (
 
 addref(
     @name "frand",
-    @description "returns a random floating point number.",
+    @description "Returns a random floating point number.",
     @arguments (
         addarg(@name "a", @type "int/float", @description "max. value if $b is null, else min. value.")
         addarg(@name "b", @type "int/float", @description "min. value.")
@@ -254,7 +254,7 @@ choose = (
 
 addref(
     @name "choose",
-    @description "choose randomly one or more elements from list.",
+    @description "Choose randomly one or more elements from list.",
     @arguments (
         addarg(@name "x", @type "list", @description "list to choose from.")
         addarg(@name "n", @type "int", @description "number of random choices.")
@@ -269,7 +269,7 @@ c2r = (
 
 addref(
     @name "c2r",
-    @description "cents to ratio conversion to.",
+    @description "Cents to ratio conversion to.",
     @arguments (
         addarg(@name "cents", @type "int/float", @description "cents to convert.")
     )
