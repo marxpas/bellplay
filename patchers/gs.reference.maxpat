@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 79.0, 122.0, 808.0, 589.0 ],
+		"rect" : [ 79.0, 122.0, 808.0, 578.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -29,8 +29,8 @@
 		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
-		"enablevscroll" : 1,
+		"enablehscroll" : 0,
+		"enablevscroll" : 0,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
@@ -272,7 +272,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.0, 36.0, 170.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 176.0, 567.0, 5.0 ],
+					"presentation_rect" : [ 234.0, 162.0, 567.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
 						"linecolor" : 						{
 							"expression" : ""
@@ -322,7 +322,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 412.0, 1481.0, 214.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 79.0, 567.0, 26.0 ],
+					"presentation_rect" : [ 234.0, 65.0, 567.0, 26.0 ],
 					"text" : "bpf(@pts, @curve 0)",
 					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
 				}
@@ -338,7 +338,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1329.0, 969.0, 420.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 111.0, 567.0, 23.0 ],
+					"presentation_rect" : [ 234.0, 97.0, 567.0, 23.0 ],
 					"text" : "Converts a numeric list into a breaking point function."
 				}
 
@@ -379,10 +379,9 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.0, 13.0, 1179.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 8.0, 42.0, 793.0, 35.0 ],
+					"presentation_rect" : [ 8.0, 42.0, 793.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "In addition to the native functions in bell, these are all available functions in grainscript. Routing functions are those whose output must be sent to grainscript to take effect, via the $do1 local variable in every script."
+					"text" : "In addition to the native functions in bell, the following functions are included in grainscript. Click on the menu to learn more about each of them."
 				}
 
 			}
@@ -528,7 +527,7 @@
 			}
 , 			{
 				"box" : 				{
-					"alternate" : 0,
+					"alternatecolor" : [ 0.964705882352941, 0.964705882352941, 0.964705882352941, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"clickedtextcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
@@ -549,7 +548,7 @@
 					"outlettype" : [ "", "", "", "", "bang" ],
 					"patching_rect" : [ 971.0, 1292.0, 736.0, 307.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 190.0, 567.0, 392.0 ],
+					"presentation_rect" : [ 234.0, 176.0, 567.0, 392.0 ],
 					"preventedit" : 1,
 					"rowvpad" : 2.47,
 					"showfocus" : 0,
@@ -586,16 +585,16 @@
 			}
 , 			{
 				"box" : 				{
-					"alternate" : 0,
-					"alternatecolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"alternatecolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
 					"bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
-					"clickedstripcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 1.0 ],
-					"clickedtextcolor" : [ 0.368627450980392, 0.545098039215686, 0.576470588235294, 1.0 ],
+					"clickedstripcolor" : [ 0.145098039215686, 0.776470588235294, 0.635294117647059, 1.0 ],
+					"clickedtextcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
 					"embed" : 0,
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 14.0,
+					"hoverstripcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 0.41 ],
 					"id" : "obj-13",
 					"maxclass" : "bach.tree",
 					"mode" : 1,
@@ -605,7 +604,7 @@
 					"outlettype" : [ "", "", "", "", "bang" ],
 					"patching_rect" : [ 312.0, 415.0, 219.0, 283.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 79.0, 219.0, 503.0 ],
+					"presentation_rect" : [ 8.0, 65.0, 219.0, 503.0 ],
 					"preventedit" : 1,
 					"rowvpad" : 4.0,
 					"versionnumber" : 80300
@@ -659,7 +658,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1377.0, 1117.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 111.0, 567.0, 57.0 ],
+					"presentation_rect" : [ 234.0, 97.0, 567.0, 57.0 ],
 					"proportion" : 0.5
 				}
 

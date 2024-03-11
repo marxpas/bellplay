@@ -7,7 +7,7 @@ addref = (
     $name, $description, $arguments, $routing = 0 -> (
         REF _= [
             $name
-            [ "description:" ($description + (if $routing then (" The output of this function must be routed into grainscript via the $do1 script variable. — i.e., $do1 = " + $name + "(...)") else "")) ] 
+            [ "description:" ($description + (if $routing then (" Note that the output of this function must be routed into grainscript via the $do1 script variable, like so: $do1 = " + $name + "(...)") else "")) ] 
             [ "arguments:" ($arguments ||| "none") ] 
         ]
     )
@@ -21,7 +21,7 @@ addarg = (
             "@" + $name 
             [ "description:" $description ]
             [ "type:" $type ]
-            [ "default:" ($default ||| "none") ]
+            (if $default != null then [ "default:" $default ])
         ]
     )
 );
@@ -104,7 +104,7 @@ addref(
     @name "query",
     @description "Creates a SQLite3 query on the current corpus. For instance: 'SELECT * FROM segments'.",
     @arguments (
-        addarg(@name "query", @type "symbol", @default "SELECT * FROM segments LIMIT 50", @description "SQLite3 query.")
+        addarg(@name "query", @type "symbol", @default "'SELECT * FROM segments LIMIT 50'", @description "SQLite3 query.")
     ),
     @routing 1
 );
@@ -134,7 +134,7 @@ addref(
     @name "setkey",
     @description "Modifies the key or field of a query segment.",
     @arguments (
-        addarg(@name "seg", @type "list", @description "segment to modify.")
+        addarg(@name "seg", @type "llll", @description "segment to modify.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
         addarg(@name "val", @type "anything", @description "new value for segment key.")
     )
@@ -150,7 +150,7 @@ addref(
     @name "getkey",
     @description "Returns value associated with a segment's key.",
     @arguments (
-        addarg(@name "seg", @type "list", @description "segment.")
+        addarg(@name "seg", @type "llll", @description "segment.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
     )
 );
@@ -167,7 +167,7 @@ addref(
     @name "mapkey",
     @description "Modifies the key of a corpus segment via a lambda function.",
     @arguments (
-        addarg(@name "seg", @type "list", @description "segment to modify.")
+        addarg(@name "seg", @type "llll", @description "segment to modify.")
         addarg(@name "key", @type "symbol", @description "name of segment key.")
         addarg(@name "fun", @type "lambda function", @description "lambda function with signature $key -> $val.")
     )
