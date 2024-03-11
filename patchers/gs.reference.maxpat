@@ -287,6 +287,7 @@
 					"patching_rect" : [ 412.0, 1466.0, 214.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 234.0, 79.0, 567.0, 26.0 ],
+					"text" : "bpf(@pts, @curve 0)",
 					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
 				}
 
@@ -301,7 +302,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1329.0, 954.0, 419.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 111.0, 567.0, 23.0 ]
+					"presentation_rect" : [ 234.0, 111.0, 567.0, 23.0 ],
+					"text" : "Converts a numeric list into a breaking point function."
 				}
 
 			}
@@ -618,13 +620,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 33.0, 201.0, 136.0, 23.0 ],
+					"patching_rect" : [ 33.0, 201.0, 83.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval REF @auto 1"
+					"text" : "bach.eval REF"
 				}
 
 			}
