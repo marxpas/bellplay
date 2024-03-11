@@ -1,8 +1,40 @@
+SEGMENTS = null;
+REF = null;
+
+## ------------------------------------------------------------
+
+addref = (
+    $name, $description, $arguments, $routing = 0 -> (
+        REF _= [
+            $name
+            [ "description:" ($description + (if $routing then (" The output of this function must be routed into grainscript via the $do1 script variable. — i.e., $do1 = " + $name + "(...)") else "")) ] 
+            [ "arguments:" ($arguments ||| "none") ] 
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
+addarg = (
+    $name, $description, $type = "list", $default = null -> (
+        [
+            "@" + $name 
+            [ "description:" $description ]
+            [ "type:" $type ]
+            [ "default:" ($default ||| "none") ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 msg = (
     $to, $msg -> (
         [$to $msg]
     )
 );
+
+## ------------------------------------------------------------
 
 pcdiff = (
 	$a, $b, $mod = 12 -> ( 
@@ -14,12 +46,34 @@ pcdiff = (
 		$da * $mask + $db * (1 - $mask)) 
 );
 
-setcorpus = (
-    $x -> (
-        SEGMENTS = null;
-        msg("db", "read" $x)
+addref(
+    @name "pcdiff",
+    @description "signed pitch class difference.",
+    @arguments (
+        addarg(@name "a",  @description "pitch classes.")
+        addarg(@name "b", @description "pitch classes.")
     )
 );
+
+## ------------------------------------------------------------
+
+setcorpus = (
+    $filepath -> (
+        SEGMENTS = null;
+        msg("db", "read" $filepath)
+    )
+);
+
+addref(
+    @name "setcorpus",
+    @description "loads an audio corpus, given a path to a .llll file.",
+    @arguments (
+        addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
+    ),
+    @routing 1
+);
+
+## ------------------------------------------------------------
 
 sampletable = (
     $x, $i -> (
@@ -32,31 +86,94 @@ sampletable = (
     )
 );
 
+addref(
+    @name "sampletable",
+    @description "samples an interpolated value from a numeric list given a normalized index.",
+    @arguments (
+        addarg(@name "x", @type "list", @description "list to sample from.")
+    )
+);
+
+## ------------------------------------------------------------
+
 query = (
     $x -> msg("db", "query" $x)
 );
+
+addref(
+    @name "query",
+    @description "creates a SQLite3 query on the current corpus. For instance: 'SELECT * FROM segments'.",
+    @arguments (
+        addarg(@name "query", @type "symbol", @description "SQLite3 query.")
+    ),
+    @routing 1
+);
+
+## ------------------------------------------------------------
 
 getsegments = (
     -> SEGMENTS
 );
 
+addref(
+    @name "getsegments",
+    @description "returns list of resulting segments from last query. See 'query' function."
+);
+
+## ------------------------------------------------------------
+
 setkey = (
-    $x, $key, $val -> (
-        $x = $x::1;
-        $x.$key = $val;
-        [ $x ]
+    $seg, $key, $val -> (
+        $seg = $seg::1;
+        $seg.$key = $val;
+        [ $seg ]
     )
 );
 
-getkey = (
-    $x, $key -> ($x::1).$key
+addref(
+    @name "setkey",
+    @description "modifies the key or field of a query segment.",
+    @arguments (
+        addarg(@name "seg", @type "list", @description "segment to modify.")
+        addarg(@name "key", @type "symbol", @description "name of segment key.")
+        addarg(@name "val", @type "anything", @description "new value for segment key.")
+    )
 );
+
+## ------------------------------------------------------------
+
+getkey = (
+    $seg, $key -> ($seg::1).$key
+);
+
+addref(
+    @name "getkey",
+    @description "returns value associated with a segment's key.",
+    @arguments (
+        addarg(@name "seg", @type "list", @description "segment.")
+        addarg(@name "key", @type "symbol", @description "name of segment key.")
+    )
+);
+
+## ------------------------------------------------------------
 
 mapkey = (
     $x, $key, $fun -> (
         setkey($x, $key, $fun(getkey($x, $key)))
     )
 );
+
+addref(
+    @name "mapkey",
+    @description "modifies the key of a corpus segment via a lambda function.",
+    @arguments (
+        addarg(@name "seg", @type "list", @description "segment to modify.")
+        addarg(@name "key", @type "symbol", @description "name of segment key.")
+        addarg(@name "fun", @type "lambda function", @description "lambda function with signature $key -> $val.")
+    )
+);
+
+## ------------------------------------------------------------
 
 bpf = (
     $pts, $curve = 0. -> (
@@ -73,11 +190,36 @@ bpf = (
     )
 );
 
+addref(
+    @name "bpf",
+    @description "Converts a numeric list into a breaking point function.",
+    @arguments (
+        addarg(@name "pts", @type "list", @description "numeric list")
+        addarg(@name "curve", @type "int/float", @default 0, @description "default curve value")
+    )
+);
+
+## ------------------------------------------------------------
+
 scale = (
     $x, $inmin = 0, $inmax = 1, $outmin = 0, $outmax = 1 -> (
         (($x - $inmin) / ($inmax - $inmin)) * ($outmax - $outmin) + $outmin
     )
 );
+
+addref(
+    @name "scale",
+    @description "scales an input value or list from a given range to another.",
+    @arguments (
+        addarg(@name "x", @type "int/float/list", @description "value to scale.")
+        addarg(@name "inmin", @type "int/float", @default 0, @description "input minimum value.")
+        addarg(@name "inmax", @type "int/float", @default 1, @description "input maxiumum value.")
+        addarg(@name "outmin", @type "int/float", @default 0, @description "output minimum value.")
+        addarg(@name "outmax", @type "int/float", @default 1, @description "output maxiumum value.")
+    )
+);
+
+## ------------------------------------------------------------
 
 frand = (
     $a = 1, $b = null, $res = 1000 -> (
@@ -92,19 +234,54 @@ frand = (
     )
 );
 
+addref(
+    @name "frand",
+    @description "returns a random floating point number.",
+    @arguments (
+        addarg(@name "a", @type "int/float", @description "max. value if $b is null, else min. value.")
+        addarg(@name "b", @type "int/float", @description "min. value.")
+        addarg(@name "res", @type "int", @default 1000, @description "random value resolution.")
+    )
+);
+
+## ------------------------------------------------------------
+
 choose = (
     $x, $n = 1 -> (
         for $i in 1...$n collect $x:(random(1, length($x)))
     )
 );
 
-c2r = (
-    $c -> 2 ** ($c / 1200)
+addref(
+    @name "choose",
+    @description "choose randomly one or more elements from list.",
+    @arguments (
+        addarg(@name "x", @type "list", @description "list to choose from.")
+        addarg(@name "n", @type "int", @description "number of random choices.")
+    )
 );
+
+## ------------------------------------------------------------
+
+c2r = (
+    $cents -> 2 ** ($cents / 1200)
+);
+
+addref(
+    @name "c2r",
+    @description "cents to ratio conversion to.",
+    @arguments (
+        addarg(@name "cents", @type "int/float", @description "cents to convert.")
+    )
+);
+
+## ------------------------------------------------------------
 
 r2c = (
     $r -> log2($r) * 1200
 );
+
+## ------------------------------------------------------------
 
 filtersegments = (
     $segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
@@ -116,6 +293,8 @@ filtersegments = (
         finditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)
     )
 );
+
+## ------------------------------------------------------------
 
 getshift = (
     $seg, $targets -> (
@@ -133,10 +312,21 @@ getshift = (
     )
 );
 
+addref(
+    @name "getshift",
+    @description "Given a list of target midicents and/or pitch classes, it returns the difference between a segments' original pitch and the nearest pitch/pitch class target.",
+    @arguments (
+        addarg(@name "seg", @type "llll", @description "reference segment.")
+        addarg(@name "targets", @type "list", @description "list of midicent or pitch class targets.")
+    )
+);
+
+## ------------------------------------------------------------
+
 seg2chord = (
-    $segs, $onset = 0, $pan = null, $gain = null, $shift = null -> (
+    $segments, $onset = 0, $pan = null, $gain = null, $shift = null -> (
         $notes = (
-            for $seg in $segs collect (
+            for $seg in $segments collect (
                 $seg = flat($seg, 1);
                 $file = [ 7 $seg.'file'];
                 $offset = [ 10 $seg.'offset'];
@@ -161,6 +351,21 @@ seg2chord = (
     )
 );
 
+addref(
+    @name "seg2chord",
+    @description "Segments to chord event conversion.",
+    @arguments (
+        addarg(@name "segments", @type "list/llll", @description "list of segments to convert to chords.")
+        addarg(@name "onset", @type "int/float", @default 0, @description "chord onset in milliseconds.")
+        addarg(@name "pan", @type "llll", @description "normalized panning envelope.")
+        addarg(@name "gain", @type "llll", @description "velocity envelope.")
+        addarg(@name "shift", @type "int/float", @description "pitch shift in cents.")
+    ),
+    @routing 1
+);
+
+## ------------------------------------------------------------
+
 render = (
    $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0 -> (
         msg("sampler", 
@@ -174,10 +379,27 @@ render = (
     )
 );
 
+addref(
+    @name "render",
+    @description "Trigger script rendering into an audio buffer.",
+    @arguments (
+        addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
+        addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
+        addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
+        addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
+        addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
+    ),
+    @routing 1
+);
+
+## ------------------------------------------------------------
+
 mergechords = (
     $ms = 5, $mc = 0 -> (
         msg("roll", "merge" $ms $mc)
     )
 );
+
+## ------------------------------------------------------------
 
 null
