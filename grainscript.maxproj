@@ -10,7 +10,7 @@
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
-			"main.maxpat" : 			{
+			"grainscript.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
