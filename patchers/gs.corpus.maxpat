@@ -418,7 +418,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 13.0, 55.0, 760.0, 22.0 ],
-									"text" : "bang, database #0corpus, table segments, xfield none, yfield none, xlabel none, ylabel none, colorfield none, sizefield none, contentfield none"
+									"text" : "bang, database #0corpus, table grains, xfield none, yfield none, xlabel none, ylabel none, colorfield none, sizefield none, contentfield none"
 								}
 
 							}
@@ -501,7 +501,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 916.0, 918.0, 115.0, 37.0 ],
 					"style" : "subtlelight",
-					"text" : "erase, addtable segments [y f] [x f]"
+					"text" : "erase, addtable grains [y f] [x f]"
 				}
 
 			}
@@ -637,7 +637,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 5.0, 49.0, 1049.0, 23.0 ],
-									"text" : "bang, database #0corpus, table segments, contentfield file offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numgrains, where null"
+									"text" : "bang, database #0corpus, table grains, contentfield file offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numgrains, where null"
 								}
 
 							}
@@ -1283,7 +1283,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 116.0, 439.0, 115.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "seg. threshold",
+					"text" : "onset threshold",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
@@ -1309,7 +1309,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1196.0, 1683.0, 78.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "get segment"
+					"text" : "get grain"
 				}
 
 			}
@@ -1333,7 +1333,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1664.0, 1831.0, 126.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "get segment duration"
+					"text" : "get grain duration"
 				}
 
 			}
@@ -1539,7 +1539,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 361.0, 392.0, 273.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "0 segments",
+					"text" : "0 grains",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
@@ -1567,7 +1567,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1581.0, 3302.0, 114.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "sprintf %i segments"
+					"text" : "sprintf %i grains"
 				}
 
 			}
@@ -1909,7 +1909,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1042.0, 933.0, 660.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "erase, addtable segments [file s] [pitch f] [pitchclass f] [pitchconfidence f] [loudness f] [duration f] [centroid f] [offset f]"
+					"text" : "erase, addtable grains [file s] [pitch f] [pitchclass f] [pitchconfidence f] [loudness f] [duration f] [centroid f] [offset f]"
 				}
 
 			}
@@ -2324,10 +2324,10 @@
 					"patching_rect" : [ 1260.0, 2763.0, 500.0, 481.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 298.0, 53.0, 335.0, 335.0 ],
-					"query" : "SELECT * FROM segments",
+					"query" : "SELECT * FROM grains",
 					"showaxeslabels" : 1,
 					"showborder" : 1,
-					"table" : "segments",
+					"table" : "grains",
 					"versionnumber" : 30100,
 					"vzoom" : 517.199787716505057,
 					"where" : [ "null" ],
@@ -2598,7 +2598,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 893.0, 1938.0, 188.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "bach.prepend addentry segments"
+					"text" : "bach.prepend addentry grains"
 				}
 
 			}

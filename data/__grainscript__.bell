@@ -1,4 +1,4 @@
-SEGMENTS = null;
+GRAINS = null;
 REF = null;
 
 ## ------------------------------------------------------------
@@ -59,7 +59,7 @@ addref(
 
 setcorpus = (
     $filepath -> (
-        SEGMENTS = null;
+        GRAINS = null;
         msg("db", "read" $filepath)
     )
 );
@@ -75,7 +75,7 @@ addref(
 
 ## ------------------------------------------------------------
 
-sampletable = (
+samplelist = (
     $x, $i -> (
         $N = length($x);
         $i = scale($i, 0, 1, 1, $N);
@@ -87,7 +87,7 @@ sampletable = (
 );
 
 addref(
-    @name "sampletable",
+    @name "samplelist",
     @description "Samples an interpolated value from a numeric list given a normalized index.",
     @arguments (
         addarg(@name "x", @type "list", @description "list to sample from.")
@@ -97,61 +97,61 @@ addref(
 ## ------------------------------------------------------------
 
 query = (
-    $x = "SELECT * FROM segments LIMIT 50" -> msg("db", "query" $x)
+    $x = "SELECT * FROM grains LIMIT 50" -> msg("db", "query" $x)
 );
 
 addref(
     @name "query",
-    @description "Creates a SQLite3 query on the current corpus. For instance: 'SELECT * FROM segments'.",
+    @description "Creates a SQLite3 query on the current corpus.",
     @arguments (
-        addarg(@name "query", @type "symbol", @default "'SELECT * FROM segments LIMIT 50'", @description "SQLite3 query.")
+        addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "SQLite3 query.")
     ),
     @routing 1
 );
 
 ## ------------------------------------------------------------
 
-getsegments = (
-    -> SEGMENTS
+getgrains = (
+    -> GRAINS
 );
 
 addref(
-    @name "getsegments",
-    @description "Returns list of resulting segments from last query. See 'query' function."
+    @name "getgrains",
+    @description "Returns list of resulting grains from last query. See 'query' function."
 );
 
 ## ------------------------------------------------------------
 
 setkey = (
-    $seg, $key, $val -> (
-        $seg = $seg::1;
-        $seg.$key = $val;
-        [ $seg ]
+    $grain, $key, $val -> (
+        $grain = $grain::1;
+        $grain.$key = $val;
+        [ $grain ]
     )
 );
 
 addref(
     @name "setkey",
-    @description "Modifies the key or field of a query segment.",
+    @description "Modifies the key or field of a query grain.",
     @arguments (
-        addarg(@name "seg", @type "llll", @description "segment to modify.")
-        addarg(@name "key", @type "symbol", @description "name of segment key.")
-        addarg(@name "val", @type "anything", @description "new value for segment key.")
+        addarg(@name "grain", @type "llll", @description "grain to modify.")
+        addarg(@name "key", @type "symbol", @description "name of grain key.")
+        addarg(@name "val", @type "anything", @description "new value for grain key.")
     )
 );
 
 ## ------------------------------------------------------------
 
 getkey = (
-    $seg, $key -> ($seg::1).$key
+    $grain, $key -> ($grain::1).$key
 );
 
 addref(
     @name "getkey",
-    @description "Returns value associated with a segment's key.",
+    @description "Returns value associated with a grain's key.",
     @arguments (
-        addarg(@name "seg", @type "llll", @description "segment.")
-        addarg(@name "key", @type "symbol", @description "name of segment key.")
+        addarg(@name "grain", @type "llll", @description "grain.")
+        addarg(@name "key", @type "symbol", @description "name of grain key.")
     )
 );
 
@@ -165,10 +165,10 @@ mapkey = (
 
 addref(
     @name "mapkey",
-    @description "Modifies the key of a corpus segment via a lambda function.",
+    @description "Modifies the key of a corpus grain via a lambda function.",
     @arguments (
-        addarg(@name "seg", @type "llll", @description "segment to modify.")
-        addarg(@name "key", @type "symbol", @description "name of segment key.")
+        addarg(@name "grain", @type "llll", @description "grain to modify.")
+        addarg(@name "key", @type "symbol", @description "name of grain key.")
         addarg(@name "fun", @type "lambda function", @description "lambda function with signature $key -> $val.")
     )
 );
@@ -283,22 +283,22 @@ r2c = (
 
 ## ------------------------------------------------------------
 
-filtersegments = (
-    $segs, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
+filtergrains = (
+    $grains, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
         $lambda = (
             $x  -^ $fun -> (
                 $fun($x)
             )
         );
-        finditems($segs, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)
+        finditems($grains, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)
     )
 );
 
 ## ------------------------------------------------------------
 
 getshift = (
-    $seg, $targets -> (
-        $source = getkey($seg, "pitch");
+    $grain, $targets -> (
+        $source = getkey($grain, "pitch");
         $distances = (
             for $pitch in $targets collect (
                 if $pitch <= 12 then (
@@ -314,9 +314,9 @@ getshift = (
 
 addref(
     @name "getshift",
-    @description "Given a list of target midicents and/or pitch classes, it returns the difference between a segments' original pitch and the nearest pitch/pitch class target.",
+    @description "Given a list of target midicents and/or pitch classes, it returns the difference between a grains' original pitch and the nearest pitch/pitch class target.",
     @arguments (
-        addarg(@name "seg", @type "llll", @description "reference segment.")
+        addarg(@name "grain", @type "llll", @description "reference grain.")
         addarg(@name "targets", @type "list", @description "list of midicent or pitch class targets.")
     )
 );
@@ -327,39 +327,33 @@ gs_cleanbpf = ($x, $f = 1 -> (if length($x) == 1 || depth($x) == 1 then bpf($x *
 
 ## ------------------------------------------------------------
 
-seg2chord = (
-    $segments, $onset = 0, $pan = null, $gain = null, $shift = null -> (
-        $notes = (
-            for $seg in $segments collect (
-                $seg = flat($seg, 1);
-                $file = [ 7 $seg."file"];
-                $offset = [ 10 $seg."offset"];
-                $mc = $seg."pitch";
-                $rate = [11 (if $shift && $shift != 0 then c2r($shift))];
-                $color = $mc; 
-                $speed = $rate::(1 2);
-                if $speed then (
-                    $mc += r2c($rate::(1 2))
-                ) else (
-                    $rate = null
-                );
-                $pan = (if $pan != null then [ 2 gs_cleanbpf($pan) ]);
-                $gain = (if $gain != null then [ 1 gs_cleanbpf($gain, 127)]);
-                $vel = (if $gain then minmax(flat($gain)):3 else min(127, $seg."loudness" * 512));
-                $color = [ 6 fmod(abs(($color - $mc) / 1200) + .5, 1) ];
-                $dur = $seg."duration";
-                [ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]
-            )
+addgrain = (
+    $grain, $onset = 0, $pan = null, $gain = null, $shift = null -> (
+        $grain = $grain::1;
+        $mc = $grain."pitch";
+        $rate = [11 (if $shift && $shift != 0 then c2r($shift))];
+        $color = $mc; 
+        $speed = $rate::(1 2);
+        if $speed then (
+            $mc += r2c($rate::(1 2))
+        ) else (
+            $rate = null
         );
-        msg("roll", "addchord" [ $onset $notes ])
+        $pan = (if $pan != null then [ 2 gs_cleanbpf($pan) ]);
+        $gain = (if $gain != null then [ 1 gs_cleanbpf($gain, 127)]);
+        $vel = (if $gain then minmax(flat($gain)):3 else min(127, $grain."loudness" * 512));
+        $color = [ 6 fmod(abs(($color - $mc) / 1200) + .5, 1) ];
+        $dur = $grain."duration";
+        $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color]];
+        msg("roll", "addchord" [ $onset $note ])
     )
 );
 
 addref(
-    @name "seg2chord",
-    @description "Segments to chord event conversion.",
+    @name "addgrain",
+    @description "Add grains to rendering queue.",
     @arguments (
-        addarg(@name "segments", @type "list/llll", @description "list of segments to convert to chords.")
+        addarg(@name "grains", @type "list/llll", @description "list of grains to convert to chords.")
         addarg(@name "onset", @type "int/float", @default 0, @description "chord onset in milliseconds.")
         addarg(@name "pan", @type "llll", @description "normalized panning envelope.")
         addarg(@name "gain", @type "llll", @description "velocity envelope.")

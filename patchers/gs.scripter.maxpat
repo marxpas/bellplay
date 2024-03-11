@@ -1279,7 +1279,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "SEGMENTS = $x1 ",
+					"code" : "GRAINS = $x1 ",
 					"id" : "obj-164",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1292,7 +1292,7 @@
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.eval SEGMENTS = $x1"
+					"text" : "bach.eval GRAINS = $x1"
 				}
 
 			}

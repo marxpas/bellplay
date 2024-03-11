@@ -323,23 +323,21 @@
 					"patching_rect" : [ 412.0, 1481.0, 214.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 234.0, 65.0, 567.0, 26.0 ],
-					"text" : "bpf(@pts, @curve 0)",
 					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
 					"id" : "obj-12",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1329.0, 969.0, 420.0, 23.0 ],
+					"patching_rect" : [ 1329.0, 969.0, 405.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.0, 97.0, 567.0, 23.0 ],
-					"text" : "Converts a numeric list into a breaking point function."
+					"presentation_rect" : [ 234.0, 97.0, 567.0, 23.0 ]
 				}
 
 			}
