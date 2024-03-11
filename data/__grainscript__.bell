@@ -323,16 +323,18 @@ addref(
 
 ## ------------------------------------------------------------
 
+gs_cleanbpf = ($x, $f = 1 -> (if length($x) == 1 || depth($x) == 1 then bpf($x * float($f)) else $x));
+
+## ------------------------------------------------------------
+
 seg2chord = (
     $segments, $onset = 0, $pan = null, $gain = null, $shift = null -> (
         $notes = (
             for $seg in $segments collect (
                 $seg = flat($seg, 1);
-                $file = [ 7 $seg.'file'];
-                $offset = [ 10 $seg.'offset'];
-                $pan = (if $pan then [ 2 $pan ] else null);
-                $mc = $seg.'pitch';
-                $gain = [1 $gain ||| bpf(0 127 127 0)];
+                $file = [ 7 $seg."file"];
+                $offset = [ 10 $seg."offset"];
+                $mc = $seg."pitch";
                 $rate = [11 (if $shift && $shift != 0 then c2r($shift))];
                 $color = $mc; 
                 $speed = $rate::(1 2);
@@ -341,9 +343,11 @@ seg2chord = (
                 ) else (
                     $rate = null
                 );
-                $vel = minmax(flat($gain)):3;
-                $color = [6 fmod(abs(($color - $mc) / 1200) + .5, 1)];
-                $dur = $seg.'duration';
+                $pan = (if $pan != null then [ 2 gs_cleanbpf($pan) ]);
+                $gain = (if $gain != null then [ 1 gs_cleanbpf($gain, 127)]);
+                $vel = (if $gain then minmax(flat($gain)):3 else min(127, $seg."loudness" * 512));
+                $color = [ 6 fmod(abs(($color - $mc) / 1200) + .5, 1) ];
+                $dur = $seg."duration";
                 [ $mc $dur $vel ['slots' $file $offset $pan $rate $gain $color]]
             )
         );
