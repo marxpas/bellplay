@@ -138,7 +138,7 @@ addref(
 
 ## ------------------------------------------------------------
 
-setkey = ($grain, $key, $val -> ($grain::1).$key = $val);
+setkey = ($grain, $key, $val -> [($grain::1).$key = $val]);
 
 addref(
     @name "setkey",
