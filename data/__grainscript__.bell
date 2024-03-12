@@ -113,7 +113,7 @@ query = (
 
 addref(
     @name "query",
-    @description "Executes an sqlite3 query on the current audio corpus, and returns the results.",
+    @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'grains' as the table name. For instance: 'SELECT * FROM grains'",
     @arguments (
         addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "sqlite3 query.")
     ),
