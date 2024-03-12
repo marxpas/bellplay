@@ -4,11 +4,12 @@ REF = null;
 ## ------------------------------------------------------------
 
 addref = (
-    $name, $description, $arguments, $routing = 0 -> (
+    $name, $description, $arguments, $output -> (
         REF _= [
             $name
-            [ "description:" ($description + (if $routing then (" Note that the output of this function must be routed into grainscript via the $do1 script variable, like so: $do1 = " + $name + "(...)") else "")) ] 
+            [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
+            ["output:" ($output ||| "null")]
         ]
     )
 );
@@ -28,9 +29,15 @@ addarg = (
 
 ## ------------------------------------------------------------
 
+addout = (
+    $description, $type -> ["description:" $description] ["type:" $type]
+);
+
+## ------------------------------------------------------------
+
 msg = (
     $to, $msg -> (
-        [$to $msg]
+        $do1 = [$to $msg]
     )
 );
 
@@ -52,7 +59,8 @@ addref(
     @arguments (
         addarg(@name "a",  @description "pitch classes.")
         addarg(@name "b", @description "pitch classes.")
-    )
+    ),
+    @output addout(@description "signed difference", @type "int/float/list")
 );
 
 ## ------------------------------------------------------------
@@ -69,8 +77,7 @@ addref(
     @description "Loads an audio corpus, given an absolute path to a .llll file.",
     @arguments (
         addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
-    ),
-    @routing 1
+    )
 );
 
 ## ------------------------------------------------------------
@@ -91,53 +98,26 @@ addref(
     @description "Samples an interpolated value from a numeric list given a normalized index.",
     @arguments (
         addarg(@name "x", @type "list", @description "list to sample from.")
-    )
+    ),
+    @output addout(@description "interpolated sample", @type "int/float/list")
 );
 
 ## ------------------------------------------------------------
 
 query = (
-    $x = "SELECT * FROM grains LIMIT 50" -> msg("db", "query" $x)
+    $x = "SELECT * FROM grains LIMIT 50" -> (
+        msg("db", "query" $x);
+        GRAINS
+    )
 );
 
 addref(
     @name "query",
-    @description "Creates a SQLite3 query on the current corpus.",
+    @description "Executes an sqlite3 query on the current audio corpus, and returns the results.",
     @arguments (
-        addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "SQLite3 query.")
+        addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "sqlite3 query.")
     ),
-    @routing 1
-);
-
-## ------------------------------------------------------------
-
-getgrains = (
-    -> GRAINS
-);
-
-addref(
-    @name "getgrains",
-    @description "Returns list of resulting grains from last query. See 'query' function."
-);
-
-## ------------------------------------------------------------
-
-setkey = (
-    $grain, $key, $val -> (
-        $grain = $grain::1;
-        $grain.$key = $val;
-        [ $grain ]
-    )
-);
-
-addref(
-    @name "setkey",
-    @description "Modifies the key or field of a query grain.",
-    @arguments (
-        addarg(@name "grain", @type "llll", @description "grain to modify.")
-        addarg(@name "key", @type "symbol", @description "name of grain key.")
-        addarg(@name "val", @type "anything", @description "new value for grain key.")
-    )
+    @output addout(@description "list of grains", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -152,25 +132,42 @@ addref(
     @arguments (
         addarg(@name "grain", @type "llll", @description "grain.")
         addarg(@name "key", @type "symbol", @description "name of grain key.")
-    )
+    ),
+    @output addout(@description "value associated with key", @type "anything")
+);
+
+## ------------------------------------------------------------
+
+setkey = ($grain, $key, $val -> ($grain::1).$key = $val);
+
+addref(
+    @name "setkey",
+    @description "Modifies the key of a grain.",
+    @arguments (
+        addarg(@name "grain", @type "llll", @description "grain to modify.")
+        addarg(@name "key", @type "symbol", @description "name of grain key.")
+        addarg(@name "val", @type "anything", @description "new value for grain key.")
+    ),
+    @output addout(@description "modified grain", @type "llll")
 );
 
 ## ------------------------------------------------------------
 
 mapkey = (
-    $x, $key, $fun -> (
-        setkey($x, $key, $fun(getkey($x, $key)))
+    $grain, $key, $func -> (
+        setkey($grain, $key, $func(getkey($grain, $key)))
     )
 );
 
 addref(
     @name "mapkey",
-    @description "Modifies the key of a corpus grain via a lambda function.",
+    @description "Modifies the key of a grain via a lambda function.",
     @arguments (
         addarg(@name "grain", @type "llll", @description "grain to modify.")
         addarg(@name "key", @type "symbol", @description "name of grain key.")
-        addarg(@name "fun", @type "lambda function", @description "lambda function with signature $key -> $val.")
-    )
+        addarg(@name "func", @type "lambda function", @description "lambda function with signature $currentvalue -> $newvalue.")
+    ),
+    @output addout(@description "modified grain", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -192,11 +189,12 @@ bpf = (
 
 addref(
     @name "bpf",
-    @description "Converts a numeric list into a breaking point function.",
+    @description "Converts a numeric list into a breaking point function, in the form of [<x> <y> <curve>] tuples.",
     @arguments (
         addarg(@name "pts", @type "list", @description "numeric list")
         addarg(@name "curve", @type "int/float", @default 0, @description "default curve value")
-    )
+    ),
+    @output addout(@description "breaking point function", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -216,7 +214,8 @@ addref(
         addarg(@name "inmax", @type "int/float", @default 1, @description "input maxiumum value.")
         addarg(@name "outmin", @type "int/float", @default 0, @description "output minimum value.")
         addarg(@name "outmax", @type "int/float", @default 1, @description "output maxiumum value.")
-    )
+    ),
+    @output addout(@description "scaled input", @type "int/float/list/llll")
 );
 
 ## ------------------------------------------------------------
@@ -241,7 +240,8 @@ addref(
         addarg(@name "a", @type "int/float", @description "max. value if $b is null, else min. value.")
         addarg(@name "b", @type "int/float", @description "min. value.")
         addarg(@name "res", @type "int", @default 1000, @description "random value resolution.")
-    )
+    ),
+    @output addout(@description "random floating point number", @type "int/float")
 );
 
 ## ------------------------------------------------------------
@@ -258,7 +258,8 @@ addref(
     @arguments (
         addarg(@name "x", @type "list", @description "list to choose from.")
         addarg(@name "n", @type "int", @description "number of random choices.")
-    )
+    ),
+    @output addout(@description "random elements", @type "anything")
 );
 
 ## ------------------------------------------------------------
@@ -272,7 +273,8 @@ addref(
     @description "Cents to ratio conversion to.",
     @arguments (
         addarg(@name "cents", @type "int/float", @description "cents to convert.")
-    )
+    ),
+    @output addout(@description "list of ratios", @type "int/float/list")
 );
 
 ## ------------------------------------------------------------
@@ -284,10 +286,10 @@ r2c = (
 ## ------------------------------------------------------------
 
 filtergrains = (
-    $grains, $fun, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
+    $grains, $func, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
         $lambda = (
-            $x  -^ $fun -> (
-                $fun($x)
+            $x  -^ $func -> (
+                $func($x)
             )
         );
         finditems($grains, $max, $lambda, @maxdepth $maxdepth, @unwrap $unwrap)
@@ -301,7 +303,7 @@ getshift = (
         $source = getkey($grain, "pitch");
         $distances = (
             for $pitch in $targets collect (
-                if $pitch <= 12 then (
+                if $pitch < 12 then (
                     pcdiff($source / 100., $pitch) * 100
                 ) else (
                     $pitch - $source
@@ -314,11 +316,12 @@ getshift = (
 
 addref(
     @name "getshift",
-    @description "Given a list of target midicents and/or pitch classes, it returns the difference between a grains' original pitch and the nearest pitch/pitch class target.",
+    @description "Given a list of target midicents and/or pitch classes (mod 12), returns the difference between a grains' original pitch and the nearest pitch/pitch class target.",
     @arguments (
         addarg(@name "grain", @type "llll", @description "reference grain.")
         addarg(@name "targets", @type "list", @description "list of midicent or pitch class targets.")
-    )
+    ),
+    @output addout(@description "pitch shifting amount in cents", @type "int/float")
 );
 
 ## ------------------------------------------------------------
@@ -358,8 +361,7 @@ addref(
         addarg(@name "pan", @type "llll", @description "normalized panning envelope.")
         addarg(@name "gain", @type "llll", @description "velocity envelope.")
         addarg(@name "shift", @type "int/float", @description "pitch shift in cents.")
-    ),
-    @routing 1
+    )
 );
 
 ## ------------------------------------------------------------
@@ -371,8 +373,8 @@ render = (
             [ "numchannels" $numchannels ] 
             [ "sr" $sr ]
             [ "normalize" $normalize ]
-        )
-        msg("roll", "dump")
+        );
+        msg("roll", "dump");
         (if $play then msg("playtoggle", 1))
     )
 );
@@ -386,15 +388,6 @@ addref(
         addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
         addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
-    ),
-    @routing 1
-);
-
-## ------------------------------------------------------------
-
-mergechords = (
-    $ms = 5, $mc = 0 -> (
-        msg("roll", "merge" $ms $mc)
     )
 );
 
