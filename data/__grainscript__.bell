@@ -393,4 +393,20 @@ addref(
 
 ## ------------------------------------------------------------
 
+export = (
+    $path -> (
+        msg("export", $path)
+    )
+);
+
+addref(
+    @name "export",
+    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path.",
+    @arguments (
+        addarg(@name "path", @type "symbol", @description "output file path.")
+    )
+);
+
+## ------------------------------------------------------------
+
 null
