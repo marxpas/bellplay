@@ -270,9 +270,9 @@ c2r = (
 
 addref(
     @name "c2r",
-    @description "Cents to ratio conversion to.",
+    @description "Cents to ratio conversion.",
     @arguments (
-        addarg(@name "cents", @type "int/float", @description "cents to convert.")
+        addarg(@name "cents", @type "list/int/float", @description "cents to convert.")
     ),
     @output addout(@description "list of ratios", @type "int/float/list")
 );
@@ -281,6 +281,43 @@ addref(
 
 r2c = (
     $r -> log2($r) * 1200
+);
+
+addref(
+    @name "r2c",
+    @description "Ratio to cents conversion.",
+    @arguments (
+        addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
+    ),
+    @output addout(@description "list of cents", @type "list/int/float")
+);
+
+## ------------------------------------------------------------
+
+sortgrains = (
+    $grains, $keys -> (
+        sort($grains, ($a, $b -^ $keys -> (
+            $i = 0;
+            $N = length($keys);
+            $pass = 0;
+            while $i < $N do (
+                $key = $keys:($i + 1);
+                $pass = getkey($a, $key) < getkey($b, $key);
+                if $pass == 1 then ($i = $N) else ($i += 1)
+            );
+            $pass
+        )))
+    )
+);
+
+addref(
+    @name "sortgrains",
+    @description "Sorts grains by a given key (grain_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
+    @arguments (
+        addarg(@name "grains", @type "llll", @description "grains to sort.")
+        addarg(@name "keys", @type "list/symbol", @description "grain keys to sort by.")
+    ),
+    @output addout(@description "list of sorted grains", @type "llll")
 );
 
 ## ------------------------------------------------------------
