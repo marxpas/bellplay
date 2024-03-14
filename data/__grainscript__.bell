@@ -74,7 +74,7 @@ setcorpus = (
 
 addref(
     @name "setcorpus",
-    @description "Loads an audio corpus, given an absolute path to a .llll file.",
+    @description "Loads an audio corpus, given an absolute path to a .llll file. See #query function.",
     @arguments (
         addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
     )
@@ -113,7 +113,7 @@ query = (
 
 addref(
     @name "query",
-    @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'grains' as the table name. For instance: 'SELECT * FROM grains'",
+    @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'grains' as the table name. For instance: 'SELECT * FROM grains'. See #setcorpus.",
     @arguments (
         addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "sqlite3 query.")
     ),
@@ -391,7 +391,7 @@ addgrain = (
 
 addref(
     @name "addgrain",
-    @description "Add grains to rendering queue.",
+    @description "Add grains to rendering queue. See #setcorpus, #query, and #render functions.",
     @arguments (
         addarg(@name "grains", @type "list/llll", @description "list of grains to convert to chords.")
         addarg(@name "onset", @type "int/float", @default 0, @description "chord onset in milliseconds.")
@@ -418,7 +418,7 @@ render = (
 
 addref(
     @name "render",
-    @description "Trigger script rendering into an audio buffer.",
+    @description "Trigger script rendering into an audio buffer. See #addgrain function.",
     @arguments (
         addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
         addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
@@ -438,7 +438,7 @@ export = (
 
 addref(
     @name "export",
-    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path.",
+    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. See #render function.",
     @arguments (
         addarg(@name "path", @type "symbol", @description "output file path.")
     )
