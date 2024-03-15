@@ -236,7 +236,7 @@ rand = (
 
 addref(
     @name "rand",
-    @description "Returns a random floating point number.",
+    @description "Random floating point number generator.",
     @arguments (
         addarg(@name "a", @type "int/float", @description "max. value if @b is null, else min. value.")
         addarg(@name "b", @type "int/float", @description "min. value.")
