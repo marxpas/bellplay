@@ -58,8 +58,8 @@ addref(
     @name "pcdiff",
     @description "Signed pitch class difference.",
     @arguments (
-        addarg(@name "a",  @description "pitch classes.")
-        addarg(@name "b", @description "pitch classes.")
+        addarg(@name "a",  @type "int/float/list",@description "pitch classes.")
+        addarg(@name "b", @type "int/float/list",@description "pitch classes.")
     ),
     @output addout(@description "signed difference", @type "int/float/list")
 );
