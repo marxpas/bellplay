@@ -221,7 +221,7 @@ addref(
 
 ## ------------------------------------------------------------
 
-frand = (
+rand = (
     $a = 1, $b = null, $res = 1000 -> (
         if $b == null then (
             $min = 0;
@@ -235,7 +235,7 @@ frand = (
 );
 
 addref(
-    @name "frand",
+    @name "rand",
     @description "Returns a random floating point number.",
     @arguments (
         addarg(@name "a", @type "int/float", @description "max. value if $b is null, else min. value.")
