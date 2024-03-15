@@ -238,7 +238,7 @@ addref(
     @name "rand",
     @description "Returns a random floating point number.",
     @arguments (
-        addarg(@name "a", @type "int/float", @description "max. value if $b is null, else min. value.")
+        addarg(@name "a", @type "int/float", @description "max. value if @b is null, else min. value.")
         addarg(@name "b", @type "int/float", @description "min. value.")
         addarg(@name "res", @type "int", @default 1000, @description "random value resolution.")
     ),
