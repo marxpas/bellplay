@@ -295,18 +295,8 @@ addref(
 ## ------------------------------------------------------------
 
 sortgrains = (
-    $grains, $keys -> (
-        sort($grains, ($a, $b -^ $keys -> (
-            $i = 0;
-            $N = length($keys);
-            $pass = 0;
-            while $i < $N do (
-                $key = $keys:($i + 1);
-                $pass = getkey($a, $key) < getkey($b, $key);
-                if $pass == 1 then ($i = $N) else ($i += 1)
-            );
-            $pass
-        )))
+    $grains, $key -> (
+        sort($grains, ($a, $b -^ $key -> (getkey($a, $key) < getkey($b, $key))))
     )
 );
 
