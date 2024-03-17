@@ -624,13 +624,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-18",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 8.0, 517.0, 122.0, 37.0 ],
-					"text" : ";\rmax clearmaxwindow"
+					"patching_rect" : [ 8.0, 517.0, 125.0, 52.0 ],
+					"text" : ";\rmax clearmaxwindow;\rmax maxwindow"
 				}
 
 			}
