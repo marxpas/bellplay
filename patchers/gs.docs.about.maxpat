@@ -180,7 +180,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 15,
 					"presentation_rect" : [ 10.5, 319.0, 783.0, 224.0 ],
-					"text" : "\n## step 1: load corpus\nsetcorpus(\"/path/to/corpus.llll\");\n\n## step 2: retrieve grains\n$grains = query();\n\n## step 3: add all grains to rendering queue, with random onset between 0 and 2000 ms\nfor $grain in $grains do addgrain($grain, @onset rand(2000));\n\n## step 4: trigger audio rendering\nrender();\n\n## step 5: export to audio\nexport(\"./out.wav\")\n",
+					"text" : "\n## step 1: load corpus\nsetcorpus(\"/path/to/corpus.llll\");\n\n## step 2: retrieve all grains\n$grains = query();\n\n## step 3: add all grains to rendering queue, with random onset between 0 and 2000 ms\nfor $grain in $grains do addgrain($grain, @onset rand(2000));\n\n## step 4: trigger audio rendering\nrender();\n\n## step 5: export to audio\nexport(\"./out.wav\")\n",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
 
