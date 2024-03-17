@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 474.0, 84.0, 791.0, 884.0 ],
+		"rect" : [ 50.0, 68.0, 791.0, 884.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1324,10 +1324,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bach.find.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "bach.flat.mxo",
 				"type" : "iLaX"
 			}
@@ -1356,25 +1352,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.locate.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bach.lookup.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bach.mapelem.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.nth.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1402,14 +1380,6 @@
 			}
 , 			{
 				"name" : "bach.roll.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.slice.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.sort.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1468,7 +1438,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.docs.reference.maxpat",
+				"name" : "gs.docs.about.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
