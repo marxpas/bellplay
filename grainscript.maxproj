@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3793533565,
+	"modificationdate" : 3793541217,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -36,12 +36,22 @@
 				"local" : 1
 			}
 ,
-			"gs.reference.maxpat" : 			{
+			"gs.docs.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"gs.utils.adjustpath.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.docs.about.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

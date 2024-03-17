@@ -445,7 +445,8 @@ addref(
     @description "Generates a hanning window.",
     @arguments (
         addarg(@name "N", @type "int", @default 16, @description "window resolution.")
-    )
+    ),
+    @output addout(@description "hanning window" @type "list")
 );
 
 ## ------------------------------------------------------------
