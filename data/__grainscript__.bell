@@ -1,6 +1,7 @@
 GRAINS = null;
 REF = null;
 VERSION = "v0.0.0-beta";
+PI = 3.14159265359;
 
 ## ------------------------------------------------------------
 
@@ -432,6 +433,18 @@ addref(
     @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. See #render function.",
     @arguments (
         addarg(@name "path", @type "symbol", @description "output file path.")
+    )
+);
+
+## ------------------------------------------------------------
+
+hanning = ($N = 16 -> ($N -= 1; sin((PI * (0...$N)) / $N) ** 2.));
+
+addref(
+    @name "hanning",
+    @description "Generates a hanning window.",
+    @arguments (
+        addarg(@name "N", @type "int", @default 16, @description "window resolution.")
     )
 );
 
