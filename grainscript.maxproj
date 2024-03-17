@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3793541217,
+	"modificationdate" : 3793563826,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -54,6 +54,24 @@
 			"gs.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
+			}
+,
+			"gs.utils.errorcatch.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+
+		}
+,
+		"media" : 		{
+			"alert.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/grainscript/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}
