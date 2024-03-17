@@ -106,7 +106,7 @@ addref(
 ## ------------------------------------------------------------
 
 query = (
-    $x = "SELECT * FROM grains LIMIT 50" -> (
+    $x = "SELECT * FROM grains" -> (
         msg("db", "query" $x);
         GRAINS
     )
@@ -116,7 +116,7 @@ addref(
     @name "query",
     @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'grains' as the table name. For instance: 'SELECT * FROM grains'. See #setcorpus.",
     @arguments (
-        addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains LIMIT 50'", @description "sqlite3 query.")
+        addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains'", @description "sqlite3 query.")
     ),
     @output addout(@description "list of grains", @type "llll")
 );
