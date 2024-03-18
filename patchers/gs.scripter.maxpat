@@ -2067,7 +2067,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1122.0, 1510.0, 704.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "ears.roll.sampling~ @audioslot 7 @offsetslot 10 @usedurations 1 @panslot 2 @gainslot 1 @velmode 0 @rateslot 11 @normalize 0"
+					"text" : "ears.roll.sampling~ @audioslot 7 @offsetslot 10 @usedurations 1 @panslot 2 @gainslot 1 @velmode 0 @rateslot 11 @normalize 0 @assemble 1"
 				}
 
 			}
