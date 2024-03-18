@@ -1984,8 +1984,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 54.0, 579.0, 35.0 ],
-									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]]]"
+									"patching_rect" : [ 8.0, 54.0, 599.0, 35.0 ],
+									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]]], bgslots 1"
 								}
 
 							}
@@ -2065,7 +2065,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1122.0, 1510.0, 704.0, 23.0 ],
+					"patching_rect" : [ 1122.0, 1510.0, 777.0, 23.0 ],
 					"style" : "subtlelight",
 					"text" : "ears.roll.sampling~ @audioslot 7 @offsetslot 10 @usedurations 1 @panslot 2 @gainslot 1 @velmode 0 @rateslot 11 @normalize 0 @assemble 1"
 				}
