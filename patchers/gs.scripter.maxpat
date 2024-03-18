@@ -1985,7 +1985,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 8.0, 54.0, 599.0, 35.0 ],
-									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]]], bgslots 1"
+									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]]]"
 								}
 
 							}
