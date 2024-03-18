@@ -327,7 +327,7 @@ filtergrains = (
 
 ## ------------------------------------------------------------
 
-getshift = (
+detuning = (
     $grain, $targets -> (
         $source = getkey($grain, "pitch");
         $distances = (
@@ -344,11 +344,11 @@ getshift = (
 );
 
 $addref(
-    @name "getshift",
-    @description "Given a list of target midicents and/or pitch classes (mod 12), returns the difference between a grains' original pitch and the nearest pitch/pitch class target.",
+    @name "detuning",
+    @description "Given a list of target midicents and/or pitch classes, returns the difference between a grains' original pitch and the nearest midicent/pitch class target. See #addgrain function.",
     @arguments (
         $addarg(@name "grain", @type "llll", @description "reference grain.")
-        $addarg(@name "targets", @type "list", @description "list of midicent or pitch class targets.")
+        $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
     ),
     @output $addout(@description "pitch shifting amount in cents", @type "int/float")
 );
@@ -360,10 +360,10 @@ gs_cleanbpf = ($x, $f = 1 -> (if length($x) == 1 || depth($x) == 1 then bpf($x *
 ## ------------------------------------------------------------
 
 addgrain = (
-    $grain, $onset = 0, $pan = null, $gain = null, $shift = null -> (
+    $grain, $onset = 0, $pan = null, $gain = null, $detune = null -> (
         $grain = $grain::1;
         $mc = $grain."pitch";
-        $rate = [ 11 (if $shift && $shift != 0 then c2r($shift)) ];
+        $rate = [ 11 (if $detune && $detune != 0 then c2r($detune)) ];
         $color = $mc; 
         $speed = $rate::(1 2);
         if $speed then (
@@ -383,13 +383,13 @@ addgrain = (
 
 $addref(
     @name "addgrain",
-    @description "Add grains to rendering queue. See #setcorpus, #query, and #render functions.",
+    @description "Adds a grain to the rendering queue. See #setcorpus, #query, and #render functions.",
     @arguments (
-        $addarg(@name "grains", @type "list/llll", @description "list of grains to convert to chords.")
-        $addarg(@name "onset", @type "int/float", @default 0, @description "chord onset in milliseconds.")
-        $addarg(@name "pan", @type "llll", @description "normalized panning envelope.")
-        $addarg(@name "gain", @type "llll", @description "velocity envelope.")
-        $addarg(@name "shift", @type "int/float", @description "pitch shift in cents.")
+        $addarg(@name "grain", @type "llll", @description "grain to add to rendering queue.")
+        $addarg(@name "onset", @type "int/float", @default 0, @description "grain onset in milliseconds.")
+        $addarg(@name "pan", @type "int/float/list/llll", @description "normalized panning value or envelope.")
+        $addarg(@name "gain", @type "int/float/llll", @description "gain value or envelope.")
+        $addarg(@name "detune", @type "int/float", @description "detuning amount in cents.")
     )
 );
 
@@ -410,7 +410,7 @@ render = (
 
 $addref(
     @name "render",
-    @description "Trigger script rendering into an audio buffer. See #addgrain function.",
+    @description "Triggers script rendering into an audio buffer. See #addgrain function.",
     @arguments (
         $addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
