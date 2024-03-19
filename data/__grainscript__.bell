@@ -175,26 +175,29 @@ $addref(
 ## ------------------------------------------------------------
 
 bpf = (
-    $pts, $curve = 0. -> (
-        $N = length($pts);
-        if $N == 1 then (
-            $pts = flat($pts):1;
-            [ 0 $pts 0 ] [ 1 $pts 0 ]
-        ) else (
-            for $pt $i in $pts collect (
-                $idx = ($i - 1.) / max($N - 1, 1);
-                [(if depth($pt) > 1 then flat($pt) else $idx $pt) $curve]
-            )
+    $pts, $func = null -> (
+        $depth = depth($pts);
+        $size = length($pts);
+        if $depth == 1 then (
+            for $p $i in $pts collect [ ($i - 1.) / max(1, $size - 1.) (if $func then $func($p) else $p) 0. ]
+        ) else if $depth == 2 then (
+            $cols = trans($pts);
+            $dims = length($cols);
+            $norm = maximum(($cols::1) ||| 1.);
+            $x = [sort(float($cols::1) / if $norm != 0 then $norm else 1.)];
+            $y = [ if $func then $func($cols::2) else $cols::2 ];
+            $curve = [for $i in 1...$size collect ($pts::($i 3)) ||| 0];
+            trans($x $y $curve)
         )
     )
 );
 
 $addref(
     @name "bpf",
-    @description "Converts a numeric list into a breaking point function, in the form of [<x> <y> <curve>] tuples.",
+    @description "Formats an numeric list into a breaking point function, in the form of [<x> <y> <curve>] tuples, where <x> is normalized to the 0-1 range.",
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
-        $addarg(@name "curve", @type "int/float", @default 0, @description "default curve value")
+        $addarg(@name "func", @type "function", @description "optional mapping function for y axis")
     ),
     @output $addout(@description "breaking point function", @type "llll")
 );
@@ -355,27 +358,38 @@ $addref(
 
 ## ------------------------------------------------------------
 
-gs_cleanbpf = ($x, $f = 1 -> (if length($x) == 1 || depth($x) == 1 then bpf($x * float($f)) else $x));
-
-## ------------------------------------------------------------
-
 addgrain = (
     $grain, $onset = 0, $pan = null, $gain = null, $detune = null -> (
+        ## unpack grain
         $grain = $grain::1;
-        $mc = $grain."pitch";
+
+        ## check for non-zero detuning
         $rate = [ 11 (if $detune && $detune != 0 then c2r($detune)) ];
-        $color = $mc; 
-        $speed = $rate::(1 2);
-        if $speed then (
+
+        ## get pitch value and keep a copy
+        $mc = $grain."pitch";
+        $mccopy = $mc; 
+        
+        ## check if detuning is applied
+        if $rate::(1 2) then (
+            ## update pitch value based on detuning
             $mc += r2c($rate::(1 2))
         ) else (
+            ## nullify unused slot for optimization
             $rate = null
         );
-        $pan = (if $pan != null then [ 2 gs_cleanbpf($pan) ]);
-        $gain = (if $gain != null then [ 1 gs_cleanbpf($gain, 127) ]);
-        $vel = (if $gain then minmax(flat($gain)):3 else min(127, $grain."loudness" * 512));
-        $color = [ 6 fmod(abs(($color - $mc) / 1200) + .5, 1) ];
+        ## color note based on detuning
+        $color = [ 6 fmod(abs(($mccopy - $mc) / 1200) + .5, 1) ];
+
+        ## clean gain and panning slots
+        $pan = if $pan != null then [ 2 bpf($pan) ];
+        $gain = if $gain != null then [ 1 bpf($gain, ($y -> max(1, $y * 127.))) ];
+
+        ## get chord velocity and duration
+        $vel = if $gain then maximum(trans($gain.1)::2) else min(127, $grain."loudness" * 512);
         $dur = $grain."duration";
+
+        ## format note and add to roll
         $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color ]];
         msg("roll", "addchord" [ $onset $note ])
     )
