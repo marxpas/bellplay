@@ -41,6 +41,54 @@
 		"title" : "grainscript~ | audio granulation in bell",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-34",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 419.0, 874.0, 31.0, 23.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 565.0, 782.0, 65.0, 23.0 ],
+					"text" : "t b l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 419.0, 782.0, 58.0, 23.0 ],
+					"text" : "t b l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 419.0, 910.0, 31.0, 23.0 ],
+					"text" : "qlim"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-59",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -226,7 +274,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1687.0, 686.0, 58.0, 23.0 ],
+					"patching_rect" : [ 692.0, 747.0, 58.0, 23.0 ],
 					"style" : "subtlelight",
 					"text" : "loadbang"
 				}
@@ -242,7 +290,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1435.0, 686.0, 100.0, 23.0 ],
+					"patching_rect" : [ 419.0, 747.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 598.0, 5.0, 189.0, 23.0 ],
 					"style" : "subtlelight",
@@ -257,7 +305,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
-					"patching_rect" : [ 1435.0, 721.0, 89.0, 23.0 ],
+					"patching_rect" : [ 458.0, 825.0, 89.0, 23.0 ],
 					"style" : "subtlelight",
 					"text" : "adstatus driver"
 				}
@@ -267,13 +315,13 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "Loopback pass-through", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "Loopback pass-through", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1560.0, 686.0, 100.0, 23.0 ],
+					"patching_rect" : [ 565.0, 747.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 598.0, 30.0, 189.0, 23.0 ],
 					"style" : "subtlelight",
@@ -288,7 +336,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
-					"patching_rect" : [ 1560.0, 721.0, 102.0, 23.0 ],
+					"patching_rect" : [ 692.0, 825.0, 102.0, 23.0 ],
 					"style" : "subtlelight",
 					"text" : "adstatus option 1"
 				}
@@ -674,7 +722,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 619.0, 774.0, 129.0, 37.0 ],
+					"patching_rect" : [ 1372.0, 657.0, 129.0, 37.0 ],
 					"text" : ";\rmax launchbrowser $1"
 				}
 
@@ -686,7 +734,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 619.0, 733.0, 182.0, 23.0 ],
+					"patching_rect" : [ 1372.0, 616.0, 182.0, 23.0 ],
 					"text" : "combine https:// url @triggers 1"
 				}
 
@@ -704,7 +752,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 782.0, 694.0, 224.0, 21.0 ],
+					"patching_rect" : [ 1535.0, 577.0, 224.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 39.0, 221.0, 21.0 ],
 					"text" : "© 2024 | https://felipe-tovar-henao.com"
@@ -945,7 +993,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 764.0, 87.0, 23.0 ],
+					"patching_rect" : [ 419.0, 946.0, 87.0, 23.0 ],
 					"text" : "loadmess start"
 				}
 
@@ -1012,7 +1060,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 818.0, 49.0, 49.0 ],
+					"patching_rect" : [ 262.0, 1007.0, 49.0, 49.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 5.0, 832.0, 45.0, 45.0 ]
 				}
@@ -1030,7 +1078,7 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"overloadcolor" : [ 0.815686274509804, 0.188235294117647, 0.188235294117647, 1.0 ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 262.0, 634.0, 139.0, 153.0 ],
+					"patching_rect" : [ 262.0, 634.0, 139.0, 335.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.0, 569.0, 37.0, 261.0 ],
 					"saved_attribute_attributes" : 					{
@@ -1094,14 +1142,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-138", 0 ],
+					"destination" : [ "obj-32", 0 ],
 					"source" : [ "obj-155", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-159", 0 ],
+					"destination" : [ "obj-31", 0 ],
 					"source" : [ "obj-158", 0 ]
 				}
 
@@ -1196,6 +1244,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-195", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
 					"source" : [ "obj-26", 0 ]
 				}
@@ -1238,8 +1293,43 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-159", 0 ],
+					"source" : [ "obj-31", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-138", 0 ],
+					"source" : [ "obj-32", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"source" : [ "obj-32", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-34", 0 ]
 				}
 
 			}
@@ -1474,6 +1564,13 @@
 			}
 , 			{
 				"name" : "gs.utils.adjustpath.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.utils.errorcatch.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
