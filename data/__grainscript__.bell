@@ -1,13 +1,13 @@
-GRAINS = null;
-REF = null;
-VERSION = "v0.0.0-beta";
+GS_GRAINS = null;
+GS_REF = null;
+GS_VERSION = "v0.0.0-beta";
 PI = 3.14159265359;
 
 ## ------------------------------------------------------------
 
 $addref = (
     $name, $description, $arguments, $output -> (
-        REF _= [
+        GS_REF _= [
             $name
             [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
@@ -69,7 +69,7 @@ $addref(
 
 setcorpus = (
     $filepath -> (
-        GRAINS = null;
+        GS_GRAINS = null;
         msg("db", "read" $filepath)
     )
 );
@@ -109,7 +109,7 @@ $addref(
 query = (
     $x = "SELECT * FROM grains" -> (
         msg("db", "query" $x);
-        GRAINS
+        GS_GRAINS
     )
 );
 

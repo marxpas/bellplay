@@ -1865,7 +1865,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GRAINS = $x1 ",
+					"code" : "GS_GRAINS = $x1 ",
 					"id" : "obj-164",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1878,7 +1878,7 @@
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.eval GRAINS = $x1"
+					"text" : "bach.eval GS_GRAINS = $x1"
 				}
 
 			}

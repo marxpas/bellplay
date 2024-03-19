@@ -208,7 +208,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "VERSION ",
+					"code" : "GS_VERSION ",
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -220,7 +220,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval VERSION @out m"
+					"text" : "bach.eval GS_VERSION @out m"
 				}
 
 			}

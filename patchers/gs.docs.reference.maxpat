@@ -731,7 +731,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "REF ",
+					"code" : "GS_REF ",
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -743,7 +743,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval REF"
+					"text" : "bach.eval GS_REF"
 				}
 
 			}
