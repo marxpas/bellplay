@@ -465,4 +465,51 @@ $addref(
 
 ## ------------------------------------------------------------
 
+#( 
+    adapted from emmanuel jourdan: https://cycling74.com/forums/math-behind-function-curve
+    NOTE: this is implementation is different from both bach's (closest) and Max.
+)#
+
+interpolate = (
+    $x, $a, $b, $curve = 0 -> (
+        $ca = 1.2;
+        $cb = .41;
+        $cc = .91;
+        $m = 1e-20;
+        $xrange = $b:1 - $a:1;
+        $yrange = $b:2 - $a:2;
+        if abs($curve) < .001 then (
+            (($x - $a:1) / $xrange) * $yrange + $a:2
+        ) else (
+            if $curve < 0 then (
+                $gx = ($b:1 - $x) / $xrange;
+                $hp = (($m - $curve) * $ca) ** $cb * $cc;
+                $fp = $hp / (1.0 - $hp);
+                $gp = (exp($fp * $gx) - 1.) / (exp($fp) - 1.0);
+                $b:2 - $gp * $yrange
+            ) else (
+                $gx = ($x - $a:1) / $xrange;
+                $hp = (($curve + $m) * $ca)  ** $cb * $cc;
+                $fp = $hp / (1.0 - $hp);
+                $gp = (exp($fp * $gx) - 1.) / (exp($fp) - 1.0);
+                $gp * $yrange + $a:2
+            )
+        )
+    )
+);
+
+$addref(
+    @name "interpolate",
+    @description "Curve interpolation between two points.",
+    @arguments (
+        $addarg(@name "x", @type "int/float/list", @description "interpolation point")
+        $addarg(@name "a", @type "list", @description "point A")
+        $addarg(@name "b", @type "list", @description "point B")
+        $addarg(@name "curve", @type "list", @default 0, @description "curvature between the two points, in the -1 to 1 range")
+    ),
+    @output $addout(@description "interpolated values" @type "int/float/list")
+);
+
+## ------------------------------------------------------------
+
 null
