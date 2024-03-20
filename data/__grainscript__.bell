@@ -512,4 +512,45 @@ $addref(
 
 ## ------------------------------------------------------------
 
+samplebpf = (
+    $bpf, $pts -> (
+        $cols = trans($bpf);
+        $xvals = $cols::1;
+        $yvals = $cols::2;
+        $cvals = $cols::3;
+        $N = length($bpf);
+        for $pt in $pts collect (
+            $xdiffs = $xvals - $pt;
+            $i = 1;
+            $pos = null;
+            while $i <= $N do (
+                $dx = $xdiffs:$i;
+                if $dx >= 0 then (
+                    $pos = max(1, $i - 1);
+                    $i = $N + 1
+                ) else (
+                    $i += 1
+                )
+            );
+            $a = left(($bpf:$pos)::1, 2);
+            $b = ($bpf:(min($pos + 1, $N)))::1;
+            $curve = $b:3;
+            $b = left($b, 2);
+            interpolate($pt, $a, $b, $curve)
+        )
+    )
+);
+
+$addref(
+    @name "samplebpf",
+    @description "Samples an interpolated value from a breaking point function, given a list of normalized indices. See #bpf function.",
+    @arguments (
+        $addarg(@name "bpf", @type "llll", @description "breaking point function")
+        $addarg(@name "pts", @type "int/float/list", @description "sampling point/s")
+    ),
+    @output $addout(@description "interpolated bpf values" @type "int/float/list")
+);
+
+## ------------------------------------------------------------
+
 null
