@@ -310,7 +310,7 @@ $addref(
     @description "Sorts grains by a given key (grain_id, file_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
     @arguments (
         $addarg(@name "grains", @type "llll", @description "grains to sort.")
-        $addarg(@name "keys", @type "list/symbol", @description "grain keys to sort by.")
+        $addarg(@name "key", @type "symbol", @description "grain key to sort by.")
     ),
     @output $addout(@description "list of sorted grains", @type "llll")
 );
