@@ -503,8 +503,8 @@ $addref(
     @description "Curve interpolation between two points.",
     @arguments (
         $addarg(@name "x", @type "int/float/list", @description "interpolation point")
-        $addarg(@name "a", @type "list", @description "point A")
-        $addarg(@name "b", @type "list", @description "point B")
+        $addarg(@name "a", @type "list", @description "xy coordinates for point A")
+        $addarg(@name "b", @type "list", @description "xy coordinates for point B")
         $addarg(@name "curve", @type "list", @default 0, @description "curvature between the two points, in the -1 to 1 range")
     ),
     @output $addout(@description "interpolated values" @type "int/float/list")
