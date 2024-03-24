@@ -554,7 +554,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-processgrain = (
+process = (
     $grain, $fx -> (
         $offset = $grain.getkey("offset");
         msg(
@@ -575,20 +575,33 @@ processgrain = (
     )
 );
 
+$addref(
+    @name "process",
+    @description "Applies a chain of audio processes to the input grain, prior to rendering. For instance, see #reverse, #paulstretch, or #freeverb.",
+    @arguments (
+        $addarg(@name "grain", @type "llll", @description "grain to process.")
+        $addarg(@name "fx", @type "llll", @description "list of audio process commands.")
+    ),
+    @output $addout(@description "processed grain" @type "llll")
+);
+
+
 ## ------------------------------------------------------------
 
-fxrev = (
-    -> [
-        ["fx" "reverse"]
-    ]
+reverse = ( -> [ [ "fx" "reverse" ] ]);
+
+$addref(
+    @name "reverse",
+    @description "Audio process command for reversing a buffer. See #process.",
+    @output $addout(@description "reverse command" @type "llll")
 );
 
 ## ------------------------------------------------------------
 
-fxfreeverb = (
+freeverb = (
     $roomsize = .5,
     $damp = .5,
-    $width = 1.,
+    $width = .5,
     $tail = -1,
     $dry = 1., 
     $wet = 1/3. -> (
@@ -606,31 +619,128 @@ fxfreeverb = (
     )
 );
 
-## ------------------------------------------------------------
-
-fxpaulstretch = (
-    $factor -> (
-        $factor = if depth($factor) > 1 then [$factor] else $factor;
-        [
-            [ "fx" "paulstretch" ]
-            [ "params" [$factor ||| 1 ] ]
-        ]
-    )
+$addref(
+    @name "freeverb",
+    @description "Audio process command for applying reverb to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "roomsize", @default .5, @type "int/float", @description "reverb room size")
+        $addarg(@name "damp", @default .5, @type "int/float", @description "damping coefficient")
+        $addarg(@name "width", @default .5, @type "int/float", @description "panning width/spread, from 0 to 1.")
+        $addarg(@name "tail", @default -1, @type "int/float", @description "Duration of reverb tail in ms. -1: auto, 0: no tail.")
+        $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
+        $addarg(@name "wet", @default 1/3, @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
+    ),
+    @output $addout(@description "freeverb command" @type "llll")
 );
 
 ## ------------------------------------------------------------
 
-fxpaulfreeze = (
-    $duration,
-    $onset = 0 -> (
+paulstretch = (
+    $stretching = 1,
+    $timeunit = 2,
+    $envtimeunit = 2,
+    $spectral = 1,
+    $framesize = 8192 -> (
+        $stretching = if depth($stretching) > 1 then [$stretching] else $stretching;
+        [
+            [ "fx" "paulstretch" ]
+            [ "params" 
+                [ "stretching" $stretching ]
+                [ "timeunit" $timeunit ]
+                [ "spectral" $spectral ] 
+                [ "framesize" $framesize ] 
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "paulstretch",
+    @description "Audio process command for applying time-stretching to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode. 0: frequency domain, 1: time domain.")
+        $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
+    ),
+    @output $addout(@description "paulstretch command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+paulfreeze = (
+    $duration = 1,
+    $onset = 0,
+    $timeunit = 2,
+    $spectral = 1,
+    $framesize = 8192 -> (
         [
             [ "fx" "paulfreeze" ]
             [ "params" 
                 [ "duration" $duration ||| 1000 ]
-                [ "onset" $onset ||| 0 ]
+                [ "onset" (if length($onset) > 1 then [$onset] else $onset) ||| 0 ]
+                [ "timeunit" $timeunit ]
+                [ "spectral" $spectral ]
+                [ "framesize" $framesize ]
             ]
         ]
     )
+);
+
+$addref(
+    @name "paulfreeze",
+    @description "Audio process command for freezing a buffer. See #process.",
+    @arguments (
+        $addarg(@name "duration", @default 1, @type "int/float", @description "freezing duration.")
+        $addarg(@name "onset", @default 0, @type "int/float/llll", @description "freezing duration.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode. 0: frequency domain, 1: time domain.")
+        $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
+    ),
+    @output $addout(@description "paulfreeze command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+overdrive = (
+    $factor -> (
+        [
+            [ "fx" "overdrive" ]
+            [ "params" 
+                [ "factor" $factor ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "overdrive",
+    @description "Audio process command for applying soft-clip distortion to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "factor", @type "int/float/llll", @description "distortion amount, either as single number or envelope.")
+    ),
+    @output $addout(@description "overdrive command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+resynth = (
+    $func -> (
+        GS_RESYNTH_FQ_FUNC = $func ||| ($x -> $x);
+        [
+            [ "fx" "resynth" ]
+        ]
+    )
+);
+
+$addref(
+    @name "resynth",
+    @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "func", @type "function", @description "frequency mapping function, with signature $oldpartials -> $newpartials.")
+    ),
+    @output $addout(@description "resynth command" @type "llll")
 );
 
 ## ------------------------------------------------------------
