@@ -553,4 +553,54 @@ $addref(
 
 ## ------------------------------------------------------------
 
+processgrain = (
+    $grain, $fx -> (
+        $offset = $grain.getkey("offset");
+        msg(
+            "process",
+            [ "source" $grain.getkey("file") ]
+            [ "process" 
+                [
+                    ["fx" "crop"]
+                    ["params" 
+                        ["start" $offset ]
+                        ["end" $offset + $grain.getkey("duration") ]
+                    ]
+                ]
+                $fx 
+            ]
+        );
+        [ GS_TMP_GRAIN ]
+    )
+);
+
+## ------------------------------------------------------------
+
+fxrev = (
+    -> [
+        ["fx" "reverse"]
+    ]
+);
+
+## ------------------------------------------------------------
+
+fxfreeverb = (
+    $roomsize = .5,
+    $damp = .5,
+    $width = 1.,
+    $tail = -1,
+    $dry = 1., 
+    $wet = 1/3. -> (
+        [
+            ["fx" "freeverb"]
+            [ "params" 
+                [ "dry" $dry ]
+                [ "roomsize" $roomsize ]
+            ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 null
