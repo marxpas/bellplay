@@ -410,7 +410,7 @@ $addref(
 ## ------------------------------------------------------------
 
 render = (
-   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0 -> (
+   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0, $fx = null -> (
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
@@ -418,7 +418,8 @@ render = (
             [ "normalize" $normalize ]
         );
         msg("roll", "dump");
-        (if $play then msg("playtoggle", 1))
+        ($fx &&& msg("sampler", [ "process" $fx ] ));
+        ($play == 1 && msg("playtoggle", 1))
     )
 );
 
@@ -594,9 +595,25 @@ fxfreeverb = (
         [
             ["fx" "freeverb"]
             [ "params" 
-                [ "dry" $dry ]
                 [ "roomsize" $roomsize ]
+                [ "damp" $damp ]
+                [ "width" $width ]
+                [ "tail" $tail ]
+                [ "dry" if depth($dry) > 1 then [$dry] else $dry ]
+                [ "wet" if depth($wet) > 1 then [$wet] else $wet ]
             ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
+fxpaulstretch = (
+    $factor -> (
+        $factor = if depth($factor) > 1 then [$factor] else $factor;
+        [
+            [ "fx" "paulstretch" ]
+            [ "params" [$factor ||| 1 ] ]
         ]
     )
 );
