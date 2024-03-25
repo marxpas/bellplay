@@ -757,7 +757,7 @@ resynth = (
     $wintype = "hann",
     $stochastic = 0,
     $stocf = 0.2 -> (
-        GS_RESYNTH_FQ_FUNC = $func ||| ($x -> $x);
+        GS_RESYNTH_FUNC = $func ||| ($x, $y, $z, $w -> [$x] [$y] [$z] [$w]);
         [
             [ "fx" "resynth" ]
             [ "params"
@@ -770,7 +770,6 @@ resynth = (
                 [ "hopsize" $hopsize ]
                 [ "minfrequency" $minfrequency ]
                 [ "maxfrequency" $maxfrequency ]
-                [ "stocf" $maxfrequency ]
                 (if $stochastic == 0 then [ "wintype" $wintype ])
                 (if $stochastic == 1 then [ "stocf" $stocf ])
             ]
