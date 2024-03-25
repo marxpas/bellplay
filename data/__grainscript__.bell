@@ -427,7 +427,7 @@ $addref(
 ## ------------------------------------------------------------
 
 render = (
-   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0, $fx = null -> (
+   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0, $process = null -> (
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
@@ -435,7 +435,7 @@ render = (
             [ "normalize" $normalize ]
         );
         msg("roll", "dump");
-        ($fx &&& msg("sampler", [ "process" $fx ] ));
+        ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1))
     )
 );
@@ -449,6 +449,7 @@ $addref(
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
         $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
+        $addarg(@name "process", @type "llll", @description "post-rendering audio processing commands. For instance, see 'reverse' or 'paulstretch' functions.")
     )
 );
 
@@ -638,14 +639,14 @@ freeverb = (
 
 $addref(
     @name "freeverb",
-    @description "Audio process command for applying reverb to a buffer. See #process.",
+    @description "Audio process command for applying reverb to a buffer. See #process function.",
     @arguments (
-        $addarg(@name "roomsize", @default .5, @type "int/float", @description "reverb room size")
-        $addarg(@name "damp", @default .5, @type "int/float", @description "damping coefficient")
-        $addarg(@name "width", @default .5, @type "int/float", @description "panning width/spread, from 0 to 1.")
-        $addarg(@name "tail", @default -1, @type "int/float", @description "Duration of reverb tail in ms. -1: auto, 0: no tail.")
-        $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
-        $addarg(@name "wet", @default 1/3, @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
+        $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
+        $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
+        $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
+        $addarg(@name "tail", @default "-1", @type "int/float", @description "Duration of reverb tail in ms. -1: auto, 0: no tail.")
+        $addarg(@name "dry", @default "1", @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
+        $addarg(@name "wet", @default "0.33", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
     @output $addout(@description "freeverb command" @type "llll")
 );
@@ -778,7 +779,7 @@ $addref(
         $addarg(@name "func", @type "function", @description "frequency mapping function, with signature $oldpartials -> $newpartials.")
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
-        $addarg(@name "magnitudethreshold", @default 0.0002, @type "float", @description "peak amplitude threshold.")
+        $addarg(@name "magnitudethreshold", @default "0.0002", @type "float", @description "peak amplitude threshold.")
         $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
         $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples")
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
