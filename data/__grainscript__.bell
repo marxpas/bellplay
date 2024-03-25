@@ -331,19 +331,35 @@ filtergrains = (
 
 ## ------------------------------------------------------------
 
-detuning = (
-    $grain, $targets -> (
-        $source = getkey($grain, "pitch");
+pitchdiff = (
+    $source, $targets -> (
         $distances = (
-            for $pitch in $targets collect (
-                if $pitch < 12 then (
-                    pcdiff($source / 100., $pitch) * 100
-                ) else (
-                    $pitch - $source
-                )
+            if $targets:1 < 12 then (
+                pcdiff($source / 100., $targets) * 100
+            ) else (
+                $pitch - $targets
             )
         );
         $distances:(minmax(abs($distances)):2)
+    )
+);
+
+$addref(
+    @name "pitchdiff",
+    @description "Given a list of target midicents and/or pitch classes, returns the signed difference between a pitch in midicents and the nearest midicent/pitch class target.",
+    @arguments (
+        $addarg(@name "pitch", @type "int/float", @description "reference pitch in midicents.")
+        $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
+    ),
+    @output $addout(@description "signed difference to closest target, in cents.", @type "int/float")
+);
+
+## ------------------------------------------------------------
+
+detuning = (
+    $grain, $targets -> (
+        $source = getkey($grain, "pitch");
+        pitchdiff($source, $targets)
     )
 );
 
@@ -551,21 +567,6 @@ $addref(
         $addarg(@name "pts", @type "int/float/list", @description "sampling point/s")
     ),
     @output $addout(@description "interpolated bpf values" @type "int/float/list")
-);
-
-## ------------------------------------------------------------
-
-pitchdiff = (
-    $source, $targets -> (
-        $distances = (
-            if $targets:1 < 12 then (
-                pcdiff($source / 100., $targets) * 100
-            ) else (
-                $pitch - $targets
-            )
-        );
-        $distances:(minmax(abs($distances)):2)
-    )
 );
 
 ## ------------------------------------------------------------
