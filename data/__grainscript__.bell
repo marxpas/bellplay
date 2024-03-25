@@ -51,8 +51,9 @@ pcdiff = (
 		$b = fmod($b, $mod); 
 		$da = $b - $a; 
 		$db = $da + $mod * -(sgn($da) || 1); 
-		$mask = for $xa in $da, $xb in $db collect int(abs($xa) < abs($xb)); 
-		$da * $mask + $db * (1 - $mask)) 
+        $mask = max(0, sgn(abs($db) - abs($da)));
+		$da * $mask + $db * (1 - $mask)
+    ) 
 );
 
 $addref(
