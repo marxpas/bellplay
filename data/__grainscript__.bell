@@ -188,18 +188,18 @@ bpf = (
             $norm = maximum(($cols::1) ||| 1.);
             $x = [sort(float($cols::1) / if $norm != 0 then $norm else 1.)];
             $y = [ if $func then $func($cols::2) else $cols::2 ];
-            $curve = [for $i in 1...$size collect ($pts::($i 3)) ||| 0];
-            trans($x $y $curve)
+            $slope = [for $i in 1...$size collect ($pts::($i 3)) ||| 0];
+            trans($x $y $slope)
         )
     )
 );
 
 $addref(
     @name "bpf",
-    @description "Formats an numeric list into a breaking point function, in the form of [<x> <y> <curve>] tuples, where <x> is normalized to the 0-1 range.",
+    @description "Formats an numeric list into a breaking point function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range.",
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
-        $addarg(@name "func", @type "function", @description "optional mapping function for y axis")
+        $addarg(@name "func", @type "function", @description "optional lambda function for y axis")
     ),
     @output $addout(@description "breaking point function", @type "llll")
 );
@@ -450,7 +450,7 @@ $addref(
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
         $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
-        $addarg(@name "process", @type "llll", @description "post-rendering audio processing commands. For instance, see 'reverse' or 'paulstretch' functions.")
+        $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
 );
 
@@ -491,25 +491,25 @@ $addref(
 )#
 
 interpolate = (
-    $x, $a, $b, $curve = 0 -> (
+    $x, $a, $b, $slope = 0 -> (
         $ca = 1.2;
         $cb = .41;
         $cc = .91;
         $m = 1e-20;
         $xrange = $b:1 - $a:1;
         $yrange = $b:2 - $a:2;
-        if abs($curve) < .001 then (
+        if abs($slope) < .001 then (
             (($x - $a:1) / $xrange) * $yrange + $a:2
         ) else (
-            if $curve < 0 then (
+            if $slope < 0 then (
                 $gx = ($b:1 - $x) / $xrange;
-                $hp = (($m - $curve) * $ca) ** $cb * $cc;
+                $hp = (($m - $slope) * $ca) ** $cb * $cc;
                 $fp = $hp / (1.0 - $hp);
                 $gp = (exp($fp * $gx) - 1.) / (exp($fp) - 1.0);
                 $b:2 - $gp * $yrange
             ) else (
                 $gx = ($x - $a:1) / $xrange;
-                $hp = (($curve + $m) * $ca)  ** $cb * $cc;
+                $hp = (($slope + $m) * $ca)  ** $cb * $cc;
                 $fp = $hp / (1.0 - $hp);
                 $gp = (exp($fp * $gx) - 1.) / (exp($fp) - 1.0);
                 $gp * $yrange + $a:2
@@ -525,7 +525,7 @@ $addref(
         $addarg(@name "x", @type "int/float/list", @description "interpolation point")
         $addarg(@name "a", @type "list", @description "xy coordinates for point A")
         $addarg(@name "b", @type "list", @description "xy coordinates for point B")
-        $addarg(@name "curve", @type "list", @default 0, @description "curvature between the two points, in the -1 to 1 range")
+        $addarg(@name "slope", @type "list", @default 0, @description "slope of curve between the two points, in the -1 to 1 range")
     ),
     @output $addout(@description "interpolated values" @type "int/float/list")
 );
@@ -554,9 +554,9 @@ samplebpf = (
             );
             $a = left(($bpf:$pos)::1, 2);
             $b = ($bpf:(min($pos + 1, $N)))::1;
-            $curve = $b:3;
+            $slope = $b:3;
             $b = left($b, 2);
-            interpolate($pt, $a, $b, $curve)
+            interpolate($pt, $a, $b, $slope)
         )
     )
 );
@@ -754,11 +754,14 @@ resynth = (
     $hopsize = 512,
     $minfrequency = 0,
     $maxfrequency = 22050,
-    $wintype = "hann" -> (
+    $wintype = "hann",
+    $stochastic = 0,
+    $stocf = 0.2 -> (
         GS_RESYNTH_FQ_FUNC = $func ||| ($x -> $x);
         [
             [ "fx" "resynth" ]
             [ "params"
+                [ "stochastic" $stochastic ]
                 [ "frequnit" $frequnit ]
                 [ "maxnsines" $maxnsines ]
                 [ "maxpeaks" $maxpeaks ]
@@ -767,7 +770,9 @@ resynth = (
                 [ "hopsize" $hopsize ]
                 [ "minfrequency" $minfrequency ]
                 [ "maxfrequency" $maxfrequency ]
-                [ "wintype" $wintype ]
+                [ "stocf" $maxfrequency ]
+                (if $stochastic == 0 then [ "wintype" $wintype ])
+                (if $stochastic == 1 then [ "stocf" $stocf ])
             ]
         ]
     )
@@ -777,7 +782,8 @@ $addref(
     @name "resynth",
     @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
     @arguments (
-        $addarg(@name "func", @type "function", @description "frequency mapping function, with signature $oldpartials -> $newpartials.")
+        $addarg(@name "func", @type "function", @description "pitch/frequency lambda function, with signature $oldpartials -> $newpartials.")
+        $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func. 0: Hertz, 1: BPM, 2: midicents, 3: MIDI")
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
         $addarg(@name "magnitudethreshold", @default "0.0002", @type "float", @description "peak amplitude threshold.")
@@ -786,6 +792,8 @@ $addref(
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
         $addarg(@name "maxfrequency", @default 22050, @type "int/float", @description "max. frequency of the range to evaluate")
         $addarg(@name "wintype", @default "'hann'", @type "sym/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
+        $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode. 0: sinusoidal, 1: sinusoidal + stochastic.")
+        $addarg(@name "stocf", @default '0.2', @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
     ),
     @output $addout(@description "resynth command" @type "llll")
 );

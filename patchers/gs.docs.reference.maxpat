@@ -803,6 +803,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
+					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
 					"id" : "obj-34",
 					"linecount" : 2,
 					"maxclass" : "bach.hypercomment",

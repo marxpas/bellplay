@@ -357,7 +357,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 10.0, 113.0, 293.0, 22.0 ],
+													"patching_rect" : [ 10.0, 113.0, 293.0, 23.0 ],
 													"saved_object_attributes" : 													{
 														"embed" : 1,
 														"versionnumber" : 80300
@@ -448,6 +448,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-17", 0 ],
 													"source" : [ "obj-19", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-18", 3 ],
+													"source" : [ "obj-19", 3 ]
 												}
 
 											}
