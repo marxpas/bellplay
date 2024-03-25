@@ -101,6 +101,7 @@ $addref(
     @description "Samples an interpolated value from a numeric list given a normalized index.",
     @arguments (
         $addarg(@name "x", @type "list", @description "list to sample from.")
+        $addarg(@name "i", @type "list", @description "normalized sampling index.")
     ),
     @output $addout(@description "interpolated sample", @type "int/float/list")
 );
