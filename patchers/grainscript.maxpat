@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -214,7 +214,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1113.0, 767.0, 156.0, 23.0 ],
+					"patching_rect" : [ 1113.0, 767.0, 178.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -315,7 +315,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "Loopback pass-through", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "Loopback pass-through", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -365,7 +365,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 1,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1399,6 +1399,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.deferlow.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.eq.mxo",
 				"type" : "iLaX"
 			}
@@ -1412,6 +1416,10 @@
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.find.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.flat.mxo",
@@ -1442,7 +1450,25 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.locate.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.lookup.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.mapelem.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.nth.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1469,7 +1495,19 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.rev.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.roll.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.slice.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.sort.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1501,6 +1539,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.freeverb~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.info~.mxo",
 				"type" : "iLaX"
 			}
@@ -1509,11 +1551,35 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.model.sine.analysis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.model.sine.synthesis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.overdrive~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.paulfreeze~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.paulstretch~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.read~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "ears.reg~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.rev~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1528,7 +1594,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.docs.about.maxpat",
+				"name" : "gs.docs.reference.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.features.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -1536,6 +1609,13 @@
 			}
 , 			{
 				"name" : "gs.filemenu.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

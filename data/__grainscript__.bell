@@ -554,6 +554,21 @@ $addref(
 
 ## ------------------------------------------------------------
 
+pitchdiff = (
+    $source, $targets -> (
+        $distances = (
+            if $targets:1 < 12 then (
+                pcdiff($source / 100., $targets) * 100
+            ) else (
+                $pitch - $targets
+            )
+        );
+        $distances:(minmax(abs($distances)):2)
+    )
+);
+
+## ------------------------------------------------------------
+
 process = (
     $grain, $fx -> (
         $offset = $grain.getkey("offset");
@@ -726,10 +741,30 @@ $addref(
 ## ------------------------------------------------------------
 
 resynth = (
-    $func -> (
+    $func,
+    $frequnit = 2,
+    $maxnsines = 100,
+    $maxpeaks = 100,
+    $magnitudethreshold = .0002,
+    $framesize = 2048,
+    $hopsize = 512,
+    $minfrequency = 0,
+    $maxfrequency = 22050,
+    $wintype = "hann" -> (
         GS_RESYNTH_FQ_FUNC = $func ||| ($x -> $x);
         [
             [ "fx" "resynth" ]
+            [ "params"
+                [ "frequnit" $frequnit ]
+                [ "maxnsines" $maxnsines ]
+                [ "maxpeaks" $maxpeaks ]
+                [ "magnitudethreshold" $magnitudethreshold ]
+                [ "framesize" $framesize ]
+                [ "hopsize" $hopsize ]
+                [ "minfrequency" $minfrequency ]
+                [ "maxfrequency" $maxfrequency ]
+                [ "wintype" $wintype ]
+            ]
         ]
     )
 );
@@ -739,6 +774,14 @@ $addref(
     @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
     @arguments (
         $addarg(@name "func", @type "function", @description "frequency mapping function, with signature $oldpartials -> $newpartials.")
+        $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
+        $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
+        $addarg(@name "magnitudethreshold", @default 0.0002, @type "float", @description "peak amplitude threshold.")
+        $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
+        $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples")
+        $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
+        $addarg(@name "maxfrequency", @default 22050, @type "int/float", @description "max. frequency of the range to evaluate")
+        $addarg(@name "wintype", @default "'hann'", @type "sym/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
     ),
     @output $addout(@description "resynth command" @type "llll")
 );
