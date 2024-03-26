@@ -573,7 +573,7 @@ $addref(
 ## ------------------------------------------------------------
 
 process = (
-    $grain, $fx -> (
+    $grain, $commands -> (
         $offset = $grain.getkey("offset");
         msg(
             "process",
@@ -586,7 +586,7 @@ process = (
                         ["end" $offset + $grain.getkey("duration") ]
                     ]
                 ]
-                $fx 
+                $commands 
             ]
         );
         [ GS_TMP_GRAIN ]
@@ -595,7 +595,7 @@ process = (
 
 $addref(
     @name "process",
-    @description "Applies a chain of audio processes to the input grain, prior to rendering. For instance, see #reverse, #paulstretch, or #freeverb.",
+    @description "Applies a sequence of DSP operations to the input grain, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation.",
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "fx", @type "llll", @description "list of audio process commands.")
@@ -630,8 +630,8 @@ freeverb = (
                 [ "damp" $damp ]
                 [ "width" $width ]
                 [ "tail" $tail ]
-                [ "dry" if depth($dry) > 1 then [$dry] else $dry ]
-                [ "wet" if depth($wet) > 1 then [$wet] else $wet ]
+                [ "dry" if depth($dry) > 1 || length($dry) > 1 then [ bpf($dry) ] else $dry ]
+                [ "wet" if depth($wet) > 1 || length($wet) > 1 then [ bpf($wet) ] else $wet ]
             ]
         ]
     )
@@ -659,12 +659,13 @@ paulstretch = (
     $envtimeunit = 2,
     $spectral = 1,
     $framesize = 8192 -> (
-        $stretching = if depth($stretching) > 1 then [$stretching] else $stretching;
+        $stretching = if depth($stretching) > 1 || length($stretching) > 1 then [ bpf($stretching) ] else $stretching;
         [
             [ "fx" "paulstretch" ]
             [ "params" 
-                [ "stretching" $stretching ]
+                [ "stretching" $stretching ||| 1 ]
                 [ "timeunit" $timeunit ]
+                [ "envtimeunit" $envtimeunit ]
                 [ "spectral" $spectral ] 
                 [ "framesize" $framesize ] 
             ]
@@ -722,7 +723,8 @@ $addref(
 ## ------------------------------------------------------------
 
 overdrive = (
-    $factor -> (
+    $factor = 1 -> (
+        $factor = if depth($factor) > 1 || length($factor) > 1 then [ bpf($factor) ] else $factor;
         [
             [ "fx" "overdrive" ]
             [ "params" 
@@ -739,6 +741,69 @@ $addref(
         $addarg(@name "factor", @type "int/float/llll", @description "distortion amount, either as single number or envelope.")
     ),
     @output $addout(@description "overdrive command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+rubberband = (
+    $stretching = 1,
+    $pitchshift = 0,
+    $pitchunit = 0,
+    $timeunit = 2,
+    $envtimeunit = 2,
+    $blocksize = 1024,
+    $fftwin = 1,
+    $phase = 0,
+    $pitchmode = 2,
+    $formants = 0,
+    $smoothing = 0,
+    $stretchmode = 0,
+    $detector = 0,
+    $transients = 2 -> (
+        $stretching = if depth($stretching) > 1 || length($stretching) > 1 then [ bpf($stretching) ] else $stretching;
+        $pitchshift = if depth($pitchshift) > 1 || length($pitchshift) > 1 then [ bpf($pitchshift) ] else $pitchshift;
+        [
+            [ "fx" "rubberband" ]
+            [ "params" 
+                [ "stretching" $stretching ||| 1 ]
+                [ "pitchshift" $pitchshift ||| 1 ]
+                [ "pitchunit" $pitchunit ]
+                [ "timeunit" $timeunit ]
+                [ "envtimeunit" $envtimeunit ]
+                [ "blocksize" $blocksize ]
+                [ "fftwin" $fftwin ]
+                [ "phase" $phase ]
+                [ "pitchmode" $pitchmode ]
+                [ "formants" $formants ]
+                [ "smoothing" $smoothing ]
+                [ "stretchmode" $stretchmode ]
+                [ "detector" $detector ]
+                [ "transients" $transients ] 
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "rubberband",
+    @description "Audio process command for applying rubberband pitch-shifting/time-stretching to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
+        $addarg(@name "pitchshift", @default 0, @type "int/float/llll", @description "pitch shifting amount, as single number or envelope.")
+        $addarg(@name "pitchunit", @default 0, @type "int/float/llll", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "blocksize", @default 1024, @type "int", @description "size for granular processes, such as envelopes, in samples.")
+        $addarg(@name "fftwin", @default 1, @type "int", @description "FFT window type. 0: short, 1: standard, 2: long")
+        $addarg(@name "phase", @default 0, @type "int", @description "Phase adjustment mode. 0: elastic, 1: precise.")
+        $addarg(@name "pitchmode", @default 2, @type "int", @description "Pitch shift mode. 0: high speed, 1: high quality, 2: high consistency.")
+        $addarg(@name "formants", @default 0, @type "int", @description "Formant processing. 0: off, 1: on")
+        $addarg(@name "smoothing", @default 0, @type "int", @description "Time-domain smoothing. 0: off, 1: on")
+        $addarg(@name "stretchmode", @default 0, @type "int", @description "Stretch mode. 0: elastic, 1: precise.")
+        $addarg(@name "detector", @default 0, @type "int", @description "Transient detection algorithm. 0: compound, 1: percussive, 2: soft")
+        $addarg(@name "transients", @default 2, @type "int", @description "Transient type. 0: crisp, 1: mixed, 2: smooth")
+    ),
+    @output $addout(@description "rubberband command" @type "llll")
 );
 
 ## ------------------------------------------------------------
