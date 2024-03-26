@@ -427,7 +427,7 @@ $addref(
 ## ------------------------------------------------------------
 
 render = (
-   $panmode = 0, $numchannels = 2, $sr = 48000, $normalize = 0, $play = 0, $process = null -> (
+   $numchannels = 2, $panmode = 0, $sr = 48000, $normalize = 0, $play = 0, $process = null -> (
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
@@ -444,8 +444,8 @@ $addref(
     @name "render",
     @description "Triggers script rendering into an audio buffer. See #transcribe function.",
     @arguments (
-        $addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
+        $addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
         $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
@@ -595,10 +595,10 @@ process = (
 
 $addref(
     @name "process",
-    @description "Applies a sequence of DSP operations to the input grain, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation.",
+    @description "Applies a sequence of DSP operations to the input grain, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. Note that these post-rendering operations won't be reflected in the score transcription.",
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
-        $addarg(@name "fx", @type "llll", @description "list of audio process commands.")
+        $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
     ),
     @output $addout(@description "processed grain" @type "llll")
 );
