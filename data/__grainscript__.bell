@@ -808,6 +808,21 @@ $addref(
 
 ## ------------------------------------------------------------
 
+repeat = (
+    $duration,
+    $timeunit = 2 -> (
+        [
+            [ "fx" "repeat" ]
+            [ "params"
+                [ "duration" $duration ]
+                [ "timeunit" $timeunit ]
+            ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 resynth = (
     $func,
     $frequnit = 2,
