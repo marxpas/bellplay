@@ -270,7 +270,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2627.0, 234.0, 35.0, 23.0 ],
+					"patching_rect" : [ 2470.0, 234.0, 35.0, 23.0 ],
 					"text" : "start"
 				}
 
@@ -282,7 +282,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 2657.0, 191.0, 143.0, 23.0 ],
+					"patching_rect" : [ 2504.0, 191.0, 143.0, 23.0 ],
 					"text" : "buffer~ #0alert alert.wav"
 				}
 
@@ -293,7 +293,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2729.0, 327.0, 91.0, 23.0 ],
+					"patching_rect" : [ 2572.0, 327.0, 91.0, 23.0 ],
 					"text" : "send~ #0chan2"
 				}
 
@@ -304,7 +304,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2627.0, 327.0, 91.0, 23.0 ],
+					"patching_rect" : [ 2470.0, 327.0, 91.0, 23.0 ],
 					"text" : "send~ #0chan1"
 				}
 
@@ -340,31 +340,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "bang" ],
-					"patching_rect" : [ 2627.0, 276.0, 80.0, 23.0 ],
+					"patching_rect" : [ 2470.0, 276.0, 80.0, 23.0 ],
 					"text" : "play~ #0alert"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-150",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 2470.0, 234.0, 146.0, 23.0 ],
-					"text" : "Error while parsing script."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-147",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 2470.0, 276.0, 151.0, 23.0 ],
-					"text" : "print grainscript~ @level 1"
 				}
 
 			}
@@ -480,10 +457,10 @@
 					"id" : "obj-102",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 6,
-					"outlettype" : [ "", "", "", "", "", "" ],
-					"patching_rect" : [ 1842.0, 191.0, 804.0, 23.0 ],
-					"text" : "t l l l l l l"
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "bang" ],
+					"patching_rect" : [ 1842.0, 191.0, 647.0, 23.0 ],
+					"text" : "t l l l l b"
 				}
 
 			}
@@ -568,7 +545,6 @@
 						"style" : "subtlelight",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-202",
@@ -656,6 +632,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -2504,15 +2481,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-150", 0 ],
-					"source" : [ "obj-102", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-59", 0 ],
-					"source" : [ "obj-102", 5 ]
+					"source" : [ "obj-102", 4 ]
 				}
 
 			}
@@ -2646,13 +2616,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-147", 0 ],
-					"source" : [ "obj-150", 0 ]
 				}
 
 			}
@@ -3771,13 +3734,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bach.filternull.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -3786,10 +3742,6 @@
 			}
 , 			{
 				"name" : "bach.gt.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.is.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -3802,10 +3754,6 @@
 			}
 , 			{
 				"name" : "bach.keys.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.neq.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -3868,6 +3816,22 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.model.sine.analysis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.model.sine.synthesis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.model.sps.analysis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.model.sps.synthesis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.overdrive~.mxo",
 				"type" : "iLaX"
 			}
@@ -3893,6 +3857,10 @@
 			}
 , 			{
 				"name" : "ears.roll.sampling~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.rubberband~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
