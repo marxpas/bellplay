@@ -365,7 +365,7 @@ detuning = (
 
 $addref(
     @name "detuning",
-    @description "Given a list of target midicents and/or pitch classes, returns the difference between a grains' original pitch and the nearest midicent/pitch class target. See #addgrain function.",
+    @description "Given a list of target midicents and/or pitch classes, returns the difference between a grains' original pitch and the nearest midicent/pitch class target. See #transcribe function.",
     @arguments (
         $addarg(@name "grain", @type "llll", @description "reference grain.")
         $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
@@ -375,7 +375,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-addgrain = (
+transcribe = (
     $grain, $onset = 0, $pan = null, $gain = null, $detune = null -> (
         ## unpack grain
         $grain = $grain::1;
@@ -413,10 +413,10 @@ addgrain = (
 );
 
 $addref(
-    @name "addgrain",
-    @description "Adds a grain to the rendering queue. See #setcorpus, #query, and #render functions.",
+    @name "transcribe",
+    @description "Adds input grain to the rendering sequence. See #setcorpus, #query, and #render functions.",
     @arguments (
-        $addarg(@name "grain", @type "llll", @description "grain to add to rendering queue.")
+        $addarg(@name "grain", @type "llll", @description "grain to add to rendering sequence.")
         $addarg(@name "onset", @type "int/float", @default 0, @description "grain onset in milliseconds.")
         $addarg(@name "pan", @type "int/float/list/llll", @description "normalized panning value or envelope.")
         $addarg(@name "gain", @type "int/float/llll", @description "gain value or envelope.")
@@ -442,7 +442,7 @@ render = (
 
 $addref(
     @name "render",
-    @description "Triggers script rendering into an audio buffer. See #addgrain function.",
+    @description "Triggers script rendering into an audio buffer. See #transcribe function.",
     @arguments (
         $addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
