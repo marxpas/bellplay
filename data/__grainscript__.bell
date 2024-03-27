@@ -939,6 +939,113 @@ $addref(
 
 ## ------------------------------------------------------------
 
+timesquash = (
+    $duration,
+    $mode = 1,
+    $timeblock = 4096,
+    $xfadetype = 2,
+    $xfade = 4096,
+    $xfadecurve = 0,
+    $glbleed = 4,
+    $glnumiter = 10,
+    $glrandomize = 0,
+    $glrect = 1,
+    $batchsize = 1,
+    $energy = 2,
+    $forwardenergy = 1.,
+    $forwardenergyembed = 1,
+    $forwardenergytype = 1,
+    $batchinterrupt = 0,
+    $phasehandling = 2,
+    $regularization = 0.01,
+    $hopsize = 1024,
+    $framesize = 2048,
+    $wintype = "sqrthann" "sqrthann",
+    $timeunit = 2 -> (
+        [
+            [ "fx" "timesquash" ]
+            [ "params"
+                [ "duration" $duration ]
+                [ "mode" $mode ]
+                [ "timeblock" $timeblock ]
+                [ "xfadetype" $xfadetype ]
+                [ "xfade" $xfade ]
+                [ "xfadecurve" $xfadecurve ]
+                [ "glbleed" $glbleed ]
+                [ "glnumiter" $glnumiter ]
+                [ "glrandomize" $glrandomize ]
+                [ "glrect" $glrect ]
+                [ "batchsize" $batchsize ]
+                [ "energy" $energy ]
+                [ "forwardenergy" $forwardenergy ]
+                [ "forwardenergyembed" $forwardenergyembed ]
+                [ "forwardenergytype" $forwardenergytype ]
+                [ "batchinterrupt" $batchinterrupt ]
+                [ "phasehandling" $phasehandling ]
+                [ "regularization" $regularization ]
+                [ "hopsize" $hopsize ]
+                [ "framesize" $framesize ]
+                [ "wintype" $wintype ]
+                [ "timeunit" $timeunit ]
+            ]
+        ]
+    )
+);
+
+## $addref(
+##     @name "timesquash",
+##     @description "Audio process command for applying timesquash time compression to a buffer. See #process.",
+##     @arguments (
+##         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
+##         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+##     ),
+##     @output $addout(@description "timesquash command" @type "llll")
+## );
+
+## ------------------------------------------------------------
+
+resample = (
+    $duration,
+    $timeunit = 2,
+    $changesr = 1,
+    $antimeunit = 1,
+    $resamplingmode = 0,
+    $resamplingfiltersize = 11 -> (
+        [
+            [ "fx" "resample" ]
+            [ "params"
+                [ "duration" $duration ]
+                [ "timeunit" $timeunit ]
+                [ "changesr" $changesr ]
+                [ "antimeunit" $antimeunit ]
+                [ "resamplingmode" $resamplingmode ]
+                [ "resamplingfiltersize" $resamplingfiltersize ]
+            ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
+normalize = (
+    $level = 1,
+    $mix = 1,
+    $rms = 0,
+    $ampunit = 1 -> (
+        [
+            [ "fx" "normalize" ]
+            [ "params"
+                [ "level" $level ]
+                [ "mix" $mix ]
+                [ "rms" $rms ]
+                [ "ampunit" $ampunit ]
+            ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 gain = (
     $gain,
     $resamplingfiltersize = 11,
