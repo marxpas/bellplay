@@ -745,6 +745,29 @@ $addref(
 
 ## ------------------------------------------------------------
 
+clip = (
+    $factor = 1 -> (
+        $factor = if depth($factor) > 1 || length($factor) > 1 then [ bpf($factor) ] else $factor;
+        [
+            [ "fx" "clip" ]
+            [ "params" 
+                [ "factor" $factor ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "clip",
+    @description "Audio process command for applying hard-clip distortion to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "factor", @type "int/float/llll", @description "distortion amount, either as single number or envelope.")
+    ),
+    @output $addout(@description "clip command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 rubberband = (
     $stretching = 1,
     $pitchshift = 0,
@@ -790,7 +813,7 @@ $addref(
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "pitchshift", @default 0, @type "int/float/llll", @description "pitch shifting amount, as single number or envelope.")
-        $addarg(@name "pitchunit", @default 0, @type "int/float/llll", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
+        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
         $addarg(@name "blocksize", @default 1024, @type "int", @description "size for granular processes, such as envelopes, in samples.")
@@ -808,6 +831,46 @@ $addref(
 
 ## ------------------------------------------------------------
 
+soundtouch = (
+    $stretching = 1,
+    $pitchshift = 0,
+    $pitchunit = 0,
+    $timeunit = 2,
+    $antialias = 0,
+    $quick = 0,
+    $speech = 0 -> (
+        [
+            [ "fx" "soundtouch" ]
+            [ "params" 
+                [ "stretching" $stretching ||| 1 ]
+                [ "pitchshift" $pitchshift ||| 1 ]
+                [ "pitchunit" $pitchunit ]
+                [ "timeunit" $timeunit ]
+                [ "naa" $antialias ]
+                [ "quick" $quick ]
+                [ "speech" $speech ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "soundtouch",
+    @description "Audio process command for applying soundtouch pitch-shifting/time-stretching to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as single number or envelope.")
+        $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number or envelope.")
+        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "antialias", @default 0, @type "int", @description "Anti-aliasing filter. 0: off, 1: on.")
+        $addarg(@name "quick", @default 0, @type "int", @description "Quick processing. 0: off, 1: on.")
+        $addarg(@name "speech", @default 0, @type "int", @description "Tune algorithm for speech. 0: off, 1: on.")
+    ),
+    @output $addout(@description "soundtouch command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 repeat = (
     $duration,
     $timeunit = 2 -> (
@@ -819,6 +882,121 @@ repeat = (
             ]
         ]
     )
+);
+
+$addref(
+    @name "repeat",
+    @description "Audio process command for repeating a buffer. See #process.",
+    @arguments (
+        $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+    ),
+    @output $addout(@description "repeat command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+onepole = (
+    $cutoff,
+    $highpass = 0 -> (
+        [
+            [ "fx" "onepole" ]
+            [ "params"
+                [ "cutoff" $cutoff ]
+                [ "highpass" $highpass ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "onepole",
+    @description "Audio process command for applying single-pole lowpass or highpass filtering to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "cutoff", @default 1, @type "int/float", @description "cutoff frequency.")
+        $addarg(@name "highpass", @default 0, @type "int", @description "Highpass filter mode. 0: off, 1: on.")
+    ),
+    @output $addout(@description "onepole command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+gain = (
+    $gain,
+    $resamplingfiltersize = 11,
+    $resamplingmode = 0,
+    $ampunit = 0,
+    $envampunit = 0,
+    $envtimeunit = 2 -> (
+        [
+            [ "fx" "gain" ]
+            [ "params"
+                [ "gain" $gain ]
+                [ "resamplingfiltersize" $resamplingfiltersize ]
+                [ "resamplingmode" $resamplingmode ]
+                [ "ampunit" $ampunit ]
+                [ "envampunit" $envampunit ]
+                [ "envtimeunit" $envtimeunit ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "gain",
+    @description "Audio process command for modifying a buffer's gain. See #process.",
+    @arguments (
+        $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
+        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "Resampling filter size, in samples.")
+        $addarg(@name "resamplingmode", @default 0, @type "int", @description "Resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
+        $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
+        $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope. 0: linear, 1: decibels.")
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope. 0: ms, 1: samples, 2: duration ratio.")
+    ),
+    @output $addout(@description "gain command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+dynamics = (
+    $attack = 10,
+    $release = 50,
+    $knee = 0.7,
+    $makeup = 0,
+    $ratio = 1.5,
+    $thresh = -20.,
+    $ampunit = 1,
+    $timeunit = 0 -> (
+        [
+            [ "fx" "dynamics" ]
+            [ "params"
+                [ "attack" $attack ]
+                [ "release" $release ]
+                [ "knee" $knee ]
+                [ "makeup" $makeup ]
+                [ "ratio" $ratio ]
+                [ "thresh" $thresh ]
+                [ "ampunit" $ampunit ]
+                [ "timeunit" $timeunit ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "dynamics",
+    @description "Audio process command for applying simple compression to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "attack", @default 10, @type "int/float", @description "attack time.")
+        $addarg(@name "release", @default 50, @type "int/float", @description "release time.")
+        $addarg(@name "knee", @default "0.7", @type "int/float", @description "knee width.")
+        $addarg(@name "makeup", @default 0, @type "int/float", @description "make-up gain.")
+        $addarg(@name "ratio", @default "1.5", @type "int/float", @description "compression ratio.")
+        $addarg(@name "thresh", @default -20, @type "int/float", @description "amplitude threshold.")
+        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit. 0: ms, 1: samples, 2: duration ratio, 3: ms difference, 4: diff. in samples.")
+    ),
+    @output $addout(@description "dynamics command" @type "llll")
 );
 
 ## ------------------------------------------------------------
