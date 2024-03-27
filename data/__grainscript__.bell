@@ -63,13 +63,13 @@ $addref(
 ## ------------------------------------------------------------
 
 pcdiff = (
-	$a, $b, $mod = 12 -> ( 
-		$a = fmod($a, $mod); 
-		$b = fmod($b, $mod); 
-		$da = $b - $a; 
-		$db = $da + $mod * -(sgn($da) || 1); 
+    $a, $b, $mod = 12 -> ( 
+        $a = fmod($a, $mod); 
+        $b = fmod($b, $mod); 
+        $da = $b - $a; 
+        $db = $da + $mod * -(sgn($da) || 1); 
         $mask = max(0, sgn(abs($db) - abs($da)));
-		$da * $mask + $db * (1 - $mask)
+        $da * $mask + $db * (1 - $mask)
     ) 
 );
 
