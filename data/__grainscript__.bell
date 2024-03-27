@@ -44,6 +44,24 @@ msg = (
 
 ## ------------------------------------------------------------
 
+sym = (
+    $x -> (
+        msg("sym", $x);
+        GS_SYMBOL
+    )
+);
+
+$addref(
+    @name "sym",
+    @description "Casts input value as a symbol.",
+    @arguments (
+        $addarg(@name "x",  @type "anything",@description "value to cast")
+    ),
+    @output $addout(@description "symbol", @type "symbol")
+);
+
+## ------------------------------------------------------------
+
 pcdiff = (
 	$a, $b, $mod = 12 -> ( 
 		$a = fmod($a, $mod); 

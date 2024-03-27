@@ -40,6 +40,64 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-81",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2486.0, 523.0, 57.0, 23.0 ],
+					"text" : "tosymbol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-80",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 2365.0, 568.0, 140.0, 23.0 ],
+					"text" : "combine ` in @triggers 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "GS_SYMBOL = $x1 ",
+					"id" : "obj-66",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2365.0, 604.0, 163.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"embed" : 1,
+						"versionnumber" : 80300
+					}
+,
+					"text" : "bach.eval GS_SYMBOL = $x1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"patching_rect" : [ 2486.000000000000455, 486.0, 115.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"versionnumber" : 80300
+					}
+,
+					"text" : "bach.portal @out m"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-130",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3811,15 +3869,15 @@
 					"id" : "obj-158",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 9,
-					"outlettype" : [ "", "", "", "", "", "", "", "", "bang" ],
-					"patching_rect" : [ 1445.0, 441.0, 1060.0, 23.0 ],
+					"numoutlets" : 10,
+					"outlettype" : [ "", "", "", "", "", "", "", "", "", "bang" ],
+					"patching_rect" : [ 1445.0, 441.0, 1190.125000000000455, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.keys roll db sampler playtoggle buffer export process kdtree"
+					"text" : "bach.keys roll db sampler playtoggle buffer export process kdtree sym"
 				}
 
 			}
@@ -4352,6 +4410,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"source" : [ "obj-158", 8 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-67", 0 ],
 					"source" : [ "obj-158", 4 ]
 				}
@@ -4744,6 +4809,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-81", 0 ],
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
 					"source" : [ "obj-37", 0 ]
 				}
@@ -5073,6 +5145,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"source" : [ "obj-80", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-80", 1 ],
+					"source" : [ "obj-81", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
 					"source" : [ "obj-89", 0 ]
 				}
@@ -5266,7 +5352,15 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.clip~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.crop~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.dynamics~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -5275,6 +5369,10 @@
 			}
 , 			{
 				"name" : "ears.freeverb~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.gain~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -5299,6 +5397,10 @@
 			}
 , 			{
 				"name" : "ears.model.sps.synthesis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.onepole~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -5335,6 +5437,10 @@
 			}
 , 			{
 				"name" : "ears.rubberband~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.soundtouch~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
