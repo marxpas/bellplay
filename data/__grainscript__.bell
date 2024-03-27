@@ -662,7 +662,7 @@ $addref(
         $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
         $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
         $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
-        $addarg(@name "tail", @default "-1", @type "int/float", @description "Duration of reverb tail in ms. -1: auto, 0: no tail.")
+        $addarg(@name "tail", @default "-1", @type "int/float", @description "duration of reverb tail in ms. -1: auto, 0: no tail.")
         $addarg(@name "dry", @default "1", @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
         $addarg(@name "wet", @default "0.33", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
@@ -1080,13 +1080,31 @@ buildtree = (
     )
 );
 
+$addref(
+    @name "buildtree",
+    @description "Builds a k-dimensional tree on a set of grains, given one or more grain features. This tree can be queried via the #searchtree function. Note that there can only be one tree at a time.",
+    @arguments (
+        $addarg(@name "grains", @type "llll", @description "list of grains.")
+        $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "Features to build tree on.")
+    )
+);
+
 ## ------------------------------------------------------------
 
 searchtree = (
-    $grain -> (
-        msg("kdtree", [ "query" $grain]);
+    $target -> (
+        msg("kdtree", [ "query" $target]);
         GS_TREE_RESULT
     )
+);
+
+$addref(
+    @name "searchtree",
+    @description "k-nearest neighbor search on the current k-dimensional tree. The search input can be either a single grain or, more directly, the values associated with the features the tree was based on. See #buildtree.",
+    @arguments (
+        $addarg(@name "target", @type "llll", @description "target grain or feature value to find nearest neighbor for.")
+    ),
+    @output $addout(@description "nearest grain" @type "llll")
 );
 
 ## ------------------------------------------------------------

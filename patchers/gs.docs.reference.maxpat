@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 294.0, 180.0, 1051.0, 845.0 ],
+		"rect" : [ 35.0, 151.0, 1051.0, 845.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -805,16 +805,15 @@
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
 					"id" : "obj-34",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1261.0, 1094.0, 311.0, 57.0 ],
+					"patching_rect" : [ 1261.0, 1094.0, 311.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 169.0, 91.0, 632.0, 40.0 ],
-					"text" : "Formats an numeric list into a breaking point function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range."
+					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ],
+					"text" : "Loads an audio corpus, given an absolute path to a .llll file. See #query function."
 				}
 
 			}
@@ -852,7 +851,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1783.0, 1014.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 763.0, 132.0, 38.0, 18.0 ],
+					"presentation_rect" : [ 763.0, 115.0, 38.0, 18.0 ],
 					"text" : "details",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textjustification" : 2
@@ -867,7 +866,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1932.0, 1014.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 763.0, 132.0, 38.0, 18.0 ],
+					"presentation_rect" : [ 763.0, 115.0, 38.0, 18.0 ],
 					"rounded" : 12,
 					"style" : "subtlelight"
 				}
@@ -1027,7 +1026,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1797.0, 1205.0, 170.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 138.0, 629.0, 5.0 ],
+					"presentation_rect" : [ 169.0, 121.0, 629.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
 						"linecolor" : 						{
 							"expression" : ""
@@ -1078,7 +1077,7 @@
 					"patching_rect" : [ 393.0, 1554.0, 270.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 169.0, 65.0, 632.0, 26.0 ],
-					"text" : "bpf(@pts, @func)",
+					"text" : "setcorpus(@filepath)",
 					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
 				}
 
@@ -1275,7 +1274,7 @@
 					"outlettype" : [ "", "", "", "", "bang" ],
 					"patching_rect" : [ 1010.0, 1555.0, 345.0, 250.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 151.0, 632.0, 450.0 ],
+					"presentation_rect" : [ 169.0, 134.0, 632.0, 467.0 ],
 					"preventedit" : 1,
 					"rowvpad" : 2.5,
 					"showfocus" : 0,
@@ -1333,7 +1332,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 65.0, 159.0, 536.0 ],
 					"preventedit" : 1,
-					"rowvpad" : 10.0,
+					"rowvpad" : 6.0,
 					"versionnumber" : 80300
 				}
 
@@ -1385,7 +1384,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1111.0, 804.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 91.0, 632.0, 40.0 ],
+					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ],
 					"proportion" : 0.5
 				}
 
