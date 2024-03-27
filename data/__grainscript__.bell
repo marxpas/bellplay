@@ -355,7 +355,7 @@ pitchdiff = (
             if $targets:1 < 12 then (
                 pcdiff($source / 100., $targets) * 100
             ) else (
-                $pitch - $targets
+                $targets - $source
             )
         );
         $distances:(minmax(abs($distances)):2)
