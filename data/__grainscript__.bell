@@ -958,7 +958,7 @@ wavesetrepeat = (
     $span = 1,
     $normalize = 0 -> (
         [
-            [ "fx" "repeatws" ]
+            [ "fx" "wavesetrepeat" ]
             [ "params"
                 [ "times" $times ]
                 [ "span" $span ]
@@ -985,7 +985,7 @@ wavesetshuffle = (
     $maxdist = 1,
     $span = 1 -> (
         [
-            [ "fx" "repeatws" ]
+            [ "fx" "wavesetshuffle" ]
             [ "params"
                 [ "maxdist" $maxdist ]
                 [ "span" $span ]
