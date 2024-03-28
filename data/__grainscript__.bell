@@ -763,6 +763,37 @@ $addref(
 
 ## ------------------------------------------------------------
 
+biquad = (
+    $freq,
+    $type = 0,
+    $gain,
+    $q -> (
+        [
+            [ "fx" "overdrive" ]
+            [ "params" 
+                [ "type" $type + 1 ]
+                [ "freq" $freq ]
+                [ "gain" $gain ]
+                [ "q" $q ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "biquad",
+    @description "Audio process command for applying biquad filtering to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "type", @type "int", @description "0: lowpass, 1: highpass, 2: bandpass, 3: bandstop, 4: peaknotch, 5: lowshelf, 6: highshelf, 7: resonant, 8: allpass")
+        $addarg(@name "freq", @type "int/float", @description "cutoff/center frequency.")
+        $addarg(@name "gain", @type "int/float", @description "filter gain.")
+        $addarg(@name "q", @type "int/float", @description "resonance or slope, depending on @type.")
+    ),
+    @output $addout(@description "biquad command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 clip = (
     $factor = 1 -> (
         $factor = if depth($factor) > 1 || length($factor) > 1 then [ bpf($factor) ] else $factor;
