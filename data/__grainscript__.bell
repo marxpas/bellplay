@@ -377,6 +377,9 @@ $addref(
 detuning = (
     $grain, $targets -> (
         $source = getkey($grain, "pitch");
+        if $source < 0 then (
+            $source = mc2f(getkey($grain, "centroid"))
+        );
         pitchdiff($source, $targets)
     )
 );
