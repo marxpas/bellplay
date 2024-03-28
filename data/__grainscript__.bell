@@ -914,6 +914,59 @@ $addref(
 
 ## ------------------------------------------------------------
 
+wavesetrepeat = (
+    $times,
+    $span = 1,
+    $normalize = 0 -> (
+        [
+            [ "fx" "repeatws" ]
+            [ "params"
+                [ "times" $times ]
+                [ "span" $span ]
+                [ "normalize" $normalize ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "wavesetrepeat",
+    @description "Audio process command for applying waveset repetition to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "times", @type "int", @description "number of repetitions.")
+        $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
+        $addarg(@name "normalize", @default 0, @type "int", @description "waveset normalization. 0: off, 1: on.")
+    ),
+    @output $addout(@description "waveset repeat command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+wavesetshuffle = (
+    $maxdist = 1,
+    $span = 1 -> (
+        [
+            [ "fx" "repeatws" ]
+            [ "params"
+                [ "maxdist" $maxdist ]
+                [ "span" $span ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "wavesetshuffle",
+    @description "Audio process command for applying waveset shuffling to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "maxdist", @type "int", @description "maximum shuffling distance.")
+        $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
+    ),
+    @output $addout(@description "waveset shuffle command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 onepole = (
     $cutoff,
     $highpass = 0 -> (
@@ -994,7 +1047,7 @@ timesquash = (
 
 $addref(
     @name "timesquash",
-    @description "Audio process command for applying timesquash time compression to a buffer. See #process.",
+    @description "Audio process command for applying timesquash time compression to a buffer. This removes time from a sample by shifting portions of the spectrogram while preserving the relevant content. See #process.",
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
@@ -1076,6 +1129,18 @@ normalize = (
             ]
         ]
     )
+);
+
+$addref(
+    @name "normalize",
+    @description "Audio process command for normalizing the amplitude of a buffer. See #process.",
+    @arguments (
+        $addarg(@name "level", @default 1, @type "int/float", @description "reference level.")
+        $addarg(@name "mix", @default 1, @type "int", @description "dry/wet mix, between 0 and 1.")
+        $addarg(@name "rms", @default 0, @type "int", @description "use root mean square. 0: off, 1: on.")
+        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit for @level. 0: linear, 1: decibels.")
+    ),
+    @output $addout(@description "normalize command" @type "llll")
 );
 
 ## ------------------------------------------------------------
