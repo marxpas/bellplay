@@ -836,13 +836,13 @@ $addref(
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
         $addarg(@name "blocksize", @default 1024, @type "int", @description "size for granular processes, such as envelopes, in samples.")
         $addarg(@name "fftwin", @default 1, @type "int", @description "FFT window type. 0: short, 1: standard, 2: long")
-        $addarg(@name "phase", @default 0, @type "int", @description "Phase adjustment mode. 0: elastic, 1: precise.")
-        $addarg(@name "pitchmode", @default 2, @type "int", @description "Pitch shift mode. 0: high speed, 1: high quality, 2: high consistency.")
-        $addarg(@name "formants", @default 0, @type "int", @description "Formant processing. 0: off, 1: on")
-        $addarg(@name "smoothing", @default 0, @type "int", @description "Time-domain smoothing. 0: off, 1: on")
-        $addarg(@name "stretchmode", @default 0, @type "int", @description "Stretch mode. 0: elastic, 1: precise.")
-        $addarg(@name "detector", @default 0, @type "int", @description "Transient detection algorithm. 0: compound, 1: percussive, 2: soft")
-        $addarg(@name "transients", @default 2, @type "int", @description "Transient type. 0: crisp, 1: mixed, 2: smooth")
+        $addarg(@name "phase", @default 0, @type "int", @description "phase adjustment mode. 0: elastic, 1: precise.")
+        $addarg(@name "pitchmode", @default 2, @type "int", @description "pitch shift mode. 0: high speed, 1: high quality, 2: high consistency.")
+        $addarg(@name "formants", @default 0, @type "int", @description "formant processing. 0: off, 1: on")
+        $addarg(@name "smoothing", @default 0, @type "int", @description "time-domain smoothing. 0: off, 1: on")
+        $addarg(@name "stretchmode", @default 0, @type "int", @description "stretch mode. 0: elastic, 1: precise.")
+        $addarg(@name "detector", @default 0, @type "int", @description "transient detection algorithm. 0: compound, 1: percussive, 2: soft")
+        $addarg(@name "transients", @default 2, @type "int", @description "transient type. 0: crisp, 1: mixed, 2: smooth")
     ),
     @output $addout(@description "rubberband command" @type "llll")
 );
@@ -880,9 +880,9 @@ $addref(
         $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number or envelope.")
         $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "antialias", @default 0, @type "int", @description "Anti-aliasing filter. 0: off, 1: on.")
-        $addarg(@name "quick", @default 0, @type "int", @description "Quick processing. 0: off, 1: on.")
-        $addarg(@name "speech", @default 0, @type "int", @description "Tune algorithm for speech. 0: off, 1: on.")
+        $addarg(@name "antialias", @default 0, @type "int", @description "anti-aliasing filter. 0: off, 1: on.")
+        $addarg(@name "quick", @default 0, @type "int", @description "quick processing. 0: off, 1: on.")
+        $addarg(@name "speech", @default 0, @type "int", @description "tune algorithm for speech. 0: off, 1: on.")
     ),
     @output $addout(@description "soundtouch command" @type "llll")
 );
@@ -932,7 +932,7 @@ $addref(
     @description "Audio process command for applying single-pole lowpass or highpass filtering to a buffer. See #process.",
     @arguments (
         $addarg(@name "cutoff", @default 1, @type "int/float", @description "cutoff frequency.")
-        $addarg(@name "highpass", @default 0, @type "int", @description "Highpass filter mode. 0: off, 1: on.")
+        $addarg(@name "highpass", @default 0, @type "int", @description "highpass filter mode. 0: off, 1: on.")
     ),
     @output $addout(@description "onepole command" @type "llll")
 );
@@ -941,36 +941,36 @@ $addref(
 
 timesquash = (
     $duration,
-    $mode = 1,
+    $timeunit = 2, 
     $timeblock = 4096,
-    $xfadetype = 2,
+    $mode = 1,
     $xfade = 4096,
     $xfadecurve = 0,
+    $xfadetype = 2,
     $glbleed = 4,
     $glnumiter = 10,
     $glrandomize = 0,
     $glrect = 1,
     $batchsize = 1,
+    $batchinterrupt = 0,
     $energy = 2,
     $forwardenergy = 1.,
     $forwardenergyembed = 1,
     $forwardenergytype = 1,
-    $batchinterrupt = 0,
+    $framesize = 2048,
+    $hopsize = 1024,
     $phasehandling = 2,
     $regularization = 0.01,
-    $hopsize = 1024,
-    $framesize = 2048,
-    $wintype = "sqrthann" "sqrthann",
-    $timeunit = 2 -> (
+    $wintype = "sqrthann" "sqrthann" -> (
         [
             [ "fx" "timesquash" ]
             [ "params"
                 [ "duration" $duration ]
                 [ "mode" $mode ]
                 [ "timeblock" $timeblock ]
-                [ "xfadetype" $xfadetype ]
                 [ "xfade" $xfade ]
                 [ "xfadecurve" $xfadecurve ]
+                [ "xfadetype" $xfadetype ]
                 [ "glbleed" $glbleed ]
                 [ "glnumiter" $glnumiter ]
                 [ "glrandomize" $glrandomize ]
@@ -992,22 +992,42 @@ timesquash = (
     )
 );
 
-## $addref(
-##     @name "timesquash",
-##     @description "Audio process command for applying timesquash time compression to a buffer. See #process.",
-##     @arguments (
-##         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
-##         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
-##     ),
-##     @output $addout(@description "timesquash command" @type "llll")
-## );
+$addref(
+    @name "timesquash",
+    @description "Audio process command for applying timesquash time compression to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "timeblock", @default 4096, @type "int", @description "duration of each time block to be removed.")
+        $addarg(@name "mode", @default 1, @type "int", @description "working mode. 0: time-domain, 1: frequency domain")
+        $addarg(@name "xfade", @default 4096, @type "int/float", @description "duration of the crossfade, in samples.")
+        $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
+        $addarg(@name "xfadetype", @default 2, @type "int", @description "cross fade type. 0: none, 1: linear, 2: sine, 3: curve, 4: s-curve.")
+        $addarg(@name "glbleed", @default 4, @type "int", @description "number of frames of invalidation for the Griffin-Lim algorithm, when @phasehandling is 2.")
+        $addarg(@name "glnumiter", @default 10, @type "int", @description "number of Griffin-Lim iterations, when @phasehandling is 2.")
+        $addarg(@name "glrandomize", @default 0, @type "int", @description "randomize the phases of the regions subject to the Griffin-Lim algorithm, when @phasehandling is 2. 0: off, 1: on.")
+        $addarg(@name "glrect", @default 1, @type "int", @description "invalidate whole rectangular regions whose phases are recomputed via the Griffin-Lim algorithm, when @phasehandling is 2. 0: off, 1: on.")
+        $addarg(@name "batchsize", @default 1, @type "int", @description "number of seams processed in batch.")
+        $addarg(@name "batchinterrupt", @default 0, @type "int", @description "interrupt batch when crossing.")
+        $addarg(@name "energy", @default 2, @type "int", @description "energy function used for computing seams. 0: magnitude, 1: gradient magnitude, 2: Sobel.")
+        $addarg(@name "forwardenergy", @default "1.", @type "int/float", @description "amount of forward energy contribution.")
+        $addarg(@name "forwardenergyembed", @default 1, @type "int", @description "embed forward energy in cumulative matrix. 0: off, 1: on.")
+        $addarg(@name "forwardenergytype", @default 1, @type "int", @description "forward energy type. 0: gradient L1 norm, 1: energy L2 norm.")
+        $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
+        $addarg(@name "hopsize", @default 1024, @type "int", @description "hop size, in samples")
+        $addarg(@name "phasehandling", @default 2, @type "int", @description "phase handling mode: 0: keep, 1: compensate, 2: Griffin-Lim.")
+        $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
+        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type. For instance, 'hann', 'sine', 'triangular', etc.")
+    ),
+    @output $addout(@description "timesquash command" @type "llll")
+);
 
 ## ------------------------------------------------------------
 
 resample = (
     $duration,
     $timeunit = 2,
-    $changesr = 1,
+    $changesr = 0,
     $antimeunit = 1,
     $resamplingmode = 0,
     $resamplingfiltersize = 11 -> (
@@ -1023,6 +1043,20 @@ resample = (
             ]
         ]
     )
+);
+
+$addref(
+    @name "resample",
+    @description "Audio process command for applying stretching/pitch shifting a buffer via resampling. See #process.",
+    @arguments (
+        $addarg(@name "duration", @type "int/float", @description "target duration, based on @timeunit.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "changesr", @default 0, @type "int", @description "change sampling rate. 0: off, 1: on.")
+        $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "resamplingmode", @default 0, @type "int", @description "resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
+        $addarg(@name "resamplingfiltersize", @default 0, @type "int", @description "resampling filter size.")
+    ),
+    @output $addout(@description "resample command" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1072,8 +1106,8 @@ $addref(
     @description "Audio process command for modifying a buffer's gain. See #process.",
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
-        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "Resampling filter size, in samples.")
-        $addarg(@name "resamplingmode", @default 0, @type "int", @description "Resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
+        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
+        $addarg(@name "resamplingmode", @default 0, @type "int", @description "resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
         $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope. 0: linear, 1: decibels.")
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope. 0: ms, 1: samples, 2: duration ratio.")
@@ -1192,7 +1226,7 @@ $addref(
     @description "Builds a k-dimensional tree on a set of grains, given one or more grain features. This tree can be queried via the #searchtree function. Note that there can only be one tree at a time.",
     @arguments (
         $addarg(@name "grains", @type "llll", @description "list of grains.")
-        $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "Features to build tree on.")
+        $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "features to build tree on.")
     )
 );
 
