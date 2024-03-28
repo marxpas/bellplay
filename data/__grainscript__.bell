@@ -44,7 +44,7 @@ msg = (
 
 ## ------------------------------------------------------------
 
-sym = (
+tosymbol = (
     $x -> (
         msg("sym", $x);
         GS_SYMBOL
@@ -52,7 +52,7 @@ sym = (
 );
 
 $addref(
-    @name "sym",
+    @name "tosymbol",
     @description "Casts input value as a symbol.",
     @arguments (
         $addarg(@name "x",  @type "anything",@description "value to cast")
