@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 64.0, 108.0, 1193.0, 908.0 ],
+		"rect" : [ 453.0, 108.0, 1193.0, 908.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -68,7 +68,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2252.0, 1607.0, 80.0, 23.0 ],
+					"patching_rect" : [ 2252.0, 1607.0, 94.0, 23.0 ],
 					"text" : "s #0feedback"
 				}
 
@@ -3917,7 +3917,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Arial",
+						"default_fontname" : "Ableton Sans Medium",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -3937,19 +3937,20 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "",
+						"style" : "subtlelight",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-148",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 54.0, 599.0, 35.0 ],
-									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]]]"
+									"patching_rect" : [ 8.0, 54.0, 627.0, 52.0 ],
+									"text" : "preventedit notes slotinfo, zoom 100, vzoom 100, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]] [23 [name notehead] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23"
 								}
 
 							}
@@ -3974,7 +3975,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 103.0, 30.0, 30.0 ]
+									"patching_rect" : [ 8.0, 123.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -3993,6 +3994,33 @@
 								}
 
 							}
+ ],
+						"styles" : [ 							{
+								"name" : "subtlelight",
+								"default" : 								{
+									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"bgfillcolor" : 									{
+										"angle" : 270.0,
+										"autogradient" : 0.0,
+										"color" : [ 0.717647058823529, 0.717647058823529, 0.717647058823529, 1.0 ],
+										"color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+										"color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+										"proportion" : 0.5,
+										"type" : "color"
+									}
+,
+									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
+									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
+									"fontname" : [ "Ableton Sans Medium" ],
+									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
+									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
+									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
  ]
 					}
 ,
@@ -4001,6 +4029,7 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
+						"style" : "subtlelight",
 						"tags" : ""
 					}
 ,
@@ -4077,7 +4106,6 @@
 					"linkdynamicstoslot" : 0,
 					"linklyricstoslot" : 0,
 					"linknotecolortoslot" : 6,
-					"linknoteheadtoslot" : 0,
 					"loop" : [ 0.0, 1000.0 ],
 					"lyricsfont" : "Ableton Sans Light",
 					"markersfont" : "Ableton Sans Light",
@@ -4140,7 +4168,7 @@
 , 			{
 				"box" : 				{
 					"allowdrag" : 0,
-					"buffername" : "",
+					"buffername" : "u558008123",
 					"fontname" : "Ableton Sans Light",
 					"id" : "obj-25",
 					"ignoreclick" : 1,

@@ -401,8 +401,16 @@ transcribe = (
         ## check for non-zero detuning
         $rate = [ 11 (if $detune && $detune != 0 then c2r($detune)) ];
 
-        ## get pitch value and keep a copy
+        ## get pitch value
         $mc = $grain."pitch";
+
+        ## assign notehead based on pitch value
+        $notehead = [ 23 if $mc < 0 then 88 else 85];
+
+        ## replace pitch with mc centroid if unpitched.
+        $mc = if $mc < 0 then f2mc($grain."centroid") else $mc;
+
+        ## keep copy before pitch shifting
         $mccopy = $mc; 
         
         ## check if detuning is applied
@@ -425,7 +433,7 @@ transcribe = (
         $dur = $grain."duration";
 
         ## format note and add to roll
-        $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color ]];
+        $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color $notehead ]];
         msg("roll", "addchord" [ $onset $note ])
     )
 );
