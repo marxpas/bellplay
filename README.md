@@ -9,7 +9,7 @@ First, users create a database (i.e., a _corpus_) of grains from a folder of aud
 These scripts are written in the bach evaluation language for lllls, or `bell` for short. The typical structure of a script is as follows:
 
 1) *Load* a corpus.
-2) *Retrieve* grains from the corpus using #sqlite3 queries.
+2) *Retrieve* grains from the corpus using `SQLite` queries.
 3) *Manipulate* grains and add them to the rendering queue.
 4) *Render* all aded grains into an audio buffer.
 5) *Export* the rendered sequence as audio, midi, or native .llll format.
