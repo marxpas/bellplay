@@ -4,7 +4,7 @@
 
 **grainscript~** is a simple application for offline, corpus-based audio granulation. In **grainscript~**, the general workflow is comprised of two main stages: _corpus creation_, and _audio generation_ via `.bell` scripts. 
 
-First, users create a database (i.e., a _corpus_) of grains from a folder of audio samples, where each grain is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, and more. Then, users can manipulate these grains via `.bell` scripts, and generate sequences that can be rendered and exported as either .wav, .mid, or .llll (native) files. 
+First, users create a database (i.e., a _corpus_) of grains from a folder of audio samples, where each grain is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, and more. Then, users can manipulate these grains via `.bell` scripts, and generate sequences that can be rendered and exported as either `.wav`, `.mid`, or `.llll` (native) files. 
 
 These scripts are written in the bach evaluation language for lllls, or `bell` for short. The typical structure of a script is as follows:
 
