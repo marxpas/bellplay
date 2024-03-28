@@ -1121,7 +1121,7 @@ resample = (
     $timeunit = 2,
     $changesr = 0,
     $antimeunit = 1,
-    $resamplingmode = 0,
+    $resamplingmode = "sinc",
     $resamplingfiltersize = 11 -> (
         [
             [ "fx" "resample" ]
@@ -1145,7 +1145,7 @@ $addref(
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
         $addarg(@name "changesr", @default 0, @type "int", @description "change sampling rate. 0: off, 1: on.")
         $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "resamplingmode", @default 0, @type "int", @description "resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode: 'sinc', 'nearest neighbor', 'sample and hold', 'linear', 'quad', 'cubic'")
         $addarg(@name "resamplingfiltersize", @default 0, @type "int", @description "resampling filter size.")
     ),
     @output $addout(@description "resample command" @type "llll")
@@ -1187,10 +1187,11 @@ $addref(
 gain = (
     $gain,
     $resamplingfiltersize = 11,
-    $resamplingmode = 0,
+    $resamplingmode = 'sinc',
     $ampunit = 0,
     $envampunit = 0,
     $envtimeunit = 2 -> (
+        $gain = if depth($gain) > 1 || length($gain) > 1 then [ bpf($gain) ] else $gain;
         [
             [ "fx" "gain" ]
             [ "params"
@@ -1211,7 +1212,7 @@ $addref(
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
-        $addarg(@name "resamplingmode", @default 0, @type "int", @description "resampling mode. 0: sinc, 1: nearest neighbor, 2: S&H, 3: linear, 4: quad, 5: cubic")
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode: 'sinc', 'nearest neighbor', 'sample and hold', 'linear', 'quad', 'cubic'")
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
         $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope. 0: linear, 1: decibels.")
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope. 0: ms, 1: samples, 2: duration ratio.")
