@@ -954,13 +954,13 @@ $addref(
 ## ------------------------------------------------------------
 
 wavesetrepeat = (
-    $times,
+    $times = 2,
     $span = 1,
     $normalize = 0 -> (
         [
             [ "fx" "wavesetrepeat" ]
             [ "params"
-                [ "times" $times ]
+                [ "times" max(1, $times) ]
                 [ "span" $span ]
                 [ "normalize" $normalize ]
             ]
@@ -972,7 +972,7 @@ $addref(
     @name "wavesetrepeat",
     @description "Audio process command for applying waveset repetition to a buffer. See #process.",
     @arguments (
-        $addarg(@name "times", @type "int", @description "number of repetitions.")
+        $addarg(@name "times",  @default 2, @type "int", @description "number of repetitions.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
         $addarg(@name "normalize", @default 0, @type "int", @description "waveset normalization. 0: off, 1: on.")
     ),
