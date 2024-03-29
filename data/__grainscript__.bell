@@ -1,6 +1,8 @@
 GS_VERSION = "v0.0.0-beta";
 GS_GRAINS = null;
 GS_REF = null;
+GS_REF_TIMEUNIT_OPTIONS = null;
+GS_REF_AUDIO_DOMAIN_OPTIONS = null;
 
 ## ------------------------------------------------------------
 
@@ -18,20 +20,81 @@ $addref = (
 ## ------------------------------------------------------------
 
 $addarg = (
-    $name, $description, $type = "list", $default = null -> (
+    $name, $description, $type = "list", $default = null, $options = null -> (
         [
             "@" + $name 
             [ "description:" $description ]
             [ "type:" $type ]
-            (if $default != null then [ "default:" $default ])
+            ($default &&& [ "default:" $default ])
+            ($options &&& [ "options:" $options ])
         ]
     )
 );
 
-## ------------------------------------------------------------
+$addopt = (
+    $value, $description -> (
+        [ (if $description then (tosymbol($value) + ":") else $value) $description ]
+    )
+);
 
 $addout = (
     $description, $type -> [ "description:" $description ] [ "type:" $type ]
+);
+
+## ------------------------------------------------------------
+
+GS_REF_TIMEUNIT_OPTIONS = (
+    $addopt(@value 0, @description "milliseconds")
+    $addopt(@value 1, @description "samples")
+    $addopt(@value 2, @description "duration" "ratio")
+    $addopt(@value 3, @description "milliseconds" "difference")
+    $addopt(@value 4, @description "samples" "difference")
+);
+
+GS_REF_AUDIO_DOMAIN_OPTIONS = (
+    $addopt(@value 0, @description "frequency domain")
+    $addopt(@value 1, @description "time domain")
+);
+
+GS_REF_PITCH_FORMAT_OPTIONS = (
+    $addopt(@value 0 @description "cents")
+    $addopt(@value 1 @description "MIDI" )
+    $addopt(@value 2 @description "Hertz")
+    $addopt(@value 3 @description "frequency ratio")
+);
+
+GS_REF_SWITCH_OPTIONS = (
+    $addopt(@value 0 @description "off")
+    $addopt(@value 1 @description "on" )
+);
+
+GS_REF_WINDOW_OPTIONS = (
+    $addopt(@value "rectangular")
+    $addopt(@value "triangular")
+    $addopt(@value "sine")
+    $addopt(@value "hann")
+    $addopt(@value "hamming")
+    $addopt(@value "blackman")
+    $addopt(@value "nuttall")
+    $addopt(@value "blackmannuttall")
+    $addopt(@value "blackmanharris")
+    $addopt(@value "gaussian")
+    $addopt(@value "sqrthann")
+    $addopt(@value "sqrthamming")
+);
+
+GS_REF_AMPUNIT_OPTIONS = (
+    $addopt(@value 0, @description "linear")
+    $addopt(@value 1, @description "decibels")
+);
+
+GS_REF_RESAMPLINGMODE_OPTIONS = (
+    $addopt(@value "sinc")
+    $addopt(@value "nearest neighbor")
+    $addopt(@value "sample and hold")
+    $addopt(@value "linear")
+    $addopt(@value "quad")
+    $addopt(@value "cubic")
 );
 
 ## ------------------------------------------------------------
@@ -474,7 +537,10 @@ $addref(
     @description "Triggers script rendering into an audio buffer. See #transcribe function.",
     @arguments (
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
-        $addarg(@name "panmode", @type "int", @default 0, @description "panning mode. 0: linear panning; 1: circular panning.")
+        $addarg(@name "panmode", @type "int", @default 0, @description "panning mode." @options 
+            $addopt(@value 0, @description "linear")
+            $addopt(@value 1, @description "circular")
+        )
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
         $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
@@ -673,7 +739,11 @@ $addref(
         $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
         $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
         $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
-        $addarg(@name "tail", @default "-1", @type "int/float", @description "duration of reverb tail in ms. -1: auto, 0: no tail.")
+        $addarg(@name "tail", @default "-1", @type "int/float", @description "duration of reverb tail in ms." @options 
+            $addopt(@value -1 @description "auto")
+            $addopt(@value 0 @description "no tail")
+            $addopt(@value ">0" @description "duration in ms")
+        )
         $addarg(@name "dry", @default "1", @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
         $addarg(@name "wet", @default "0.33", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
@@ -707,9 +777,15 @@ $addref(
     @description "Audio process command for applying time-stretching to a buffer. See #process.",
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode. 0: frequency domain, 1: time domain.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options (
+            GS_REF_TIMEUNIT_OPTIONS
+        ))
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope." @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 
+            GS_REF_AUDIO_DOMAIN_OPTIONS
+        )
         $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
     ),
     @output $addout(@description "paulstretch command" @type "llll")
@@ -742,8 +818,12 @@ $addref(
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "freezing duration.")
         $addarg(@name "onset", @default 0, @type "int/float/llll", @description "freezing duration.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode. 0: frequency domain, 1: time domain.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration.", @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 
+            GS_REF_AUDIO_DOMAIN_OPTIONS
+        )
         $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
     ),
     @output $addout(@description "paulfreeze command" @type "llll")
@@ -795,7 +875,17 @@ $addref(
     @name "biquad",
     @description "Audio process command for applying biquad filtering to a buffer. See #process.",
     @arguments (
-        $addarg(@name "type", @type "int", @description "0: lowpass, 1: highpass, 2: bandpass, 3: bandstop, 4: peaknotch, 5: lowshelf, 6: highshelf, 7: resonant, 8: allpass")
+        $addarg(@name "type", @type "int", @description "filter type." @options
+            $addopt(@value 0 @description "lowpass")
+            $addopt(@value 1 @description "highpass")
+            $addopt(@value 2 @description "bandpass")
+            $addopt(@value 3 @description "bandstop")
+            $addopt(@value 4 @description "peaknotch")
+            $addopt(@value 5 @description "lowshelf")
+            $addopt(@value 6 @description "highshelf")
+            $addopt(@value 7 @description "resonant")
+            $addopt(@value 8 @description "allpass")
+        )
         $addarg(@name "freq", @type "int/float", @description "cutoff/center frequency.")
         $addarg(@name "gain", @type "int/float", @description "filter gain.")
         $addarg(@name "q", @type "int/float", @description "resonance or slope, depending on @type.")
@@ -873,18 +963,50 @@ $addref(
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "pitchshift", @default 0, @type "int/float/llll", @description "pitch shifting amount, as single number or envelope.")
-        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift." @options
+            GS_REF_PITCH_FORMAT_OPTIONS
+        )
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
         $addarg(@name "blocksize", @default 1024, @type "int", @description "size for granular processes, such as envelopes, in samples.")
-        $addarg(@name "fftwin", @default 1, @type "int", @description "FFT window type. 0: short, 1: standard, 2: long")
-        $addarg(@name "phase", @default 0, @type "int", @description "phase adjustment mode. 0: elastic, 1: precise.")
-        $addarg(@name "pitchmode", @default 2, @type "int", @description "pitch shift mode. 0: high speed, 1: high quality, 2: high consistency.")
-        $addarg(@name "formants", @default 0, @type "int", @description "formant processing. 0: off, 1: on")
-        $addarg(@name "smoothing", @default 0, @type "int", @description "time-domain smoothing. 0: off, 1: on")
-        $addarg(@name "stretchmode", @default 0, @type "int", @description "stretch mode. 0: elastic, 1: precise.")
-        $addarg(@name "detector", @default 0, @type "int", @description "transient detection algorithm. 0: compound, 1: percussive, 2: soft")
-        $addarg(@name "transients", @default 2, @type "int", @description "transient type. 0: crisp, 1: mixed, 2: smooth")
+        $addarg(@name "fftwin", @default 1, @type "int", @description "FFT window type." @options
+            $addopt(@value 0 @description "short") 
+            $addopt(@value 1 @description "standard") 
+            $addopt(@value 2 @description "long")
+        )
+        $addarg(@name "phase", @default 0, @type "int", @description "phase adjustment mode." @options
+            $addopt(@value 0 @description "elastic") 
+            $addopt(@value 1 @description "precise") 
+        )
+        $addarg(@name "pitchmode", @default 2, @type "int", @description "pitch shift mode." @options
+            $addopt(@value 0 @description "high speed") 
+            $addopt(@value 1 @description "high quality") 
+            $addopt(@value 2 @description "high consistency") 
+        )
+        $addarg(@name "formants", @default 0, @type "int", @description "formant processing." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "smoothing", @default 0, @type "int", @description "time-domain smoothing." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "stretchmode", @default 0, @type "int", @description "stretch mode." @options 
+            $addopt(@value 0 @description "elastic") 
+            $addopt(@value 1 @description "precise") 
+        )
+        $addarg(@name "detector", @default 0, @type "int", @description "transient detection algorithm." @options
+            $addopt(@value 0 @description "compound") 
+            $addopt(@value 1 @description "percussive") 
+            $addopt(@value 2 @description "soft") 
+        )
+        $addarg(@name "transients", @default 2, @type "int", @description "transient type." @options
+            $addopt(@value 0 @description "crisp") 
+            $addopt(@value 1 @description "mixed") 
+            $addopt(@value 2 @description "smooth") 
+        )
     ),
     @output $addout(@description "rubberband command" @type "llll")
 );
@@ -920,11 +1042,21 @@ $addref(
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as single number or envelope.")
         $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number or envelope.")
-        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift. 0: cents, 1: MIDI, 2: Hertz, 3: frequency ratio.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "antialias", @default 0, @type "int", @description "anti-aliasing filter. 0: off, 1: on.")
-        $addarg(@name "quick", @default 0, @type "int", @description "quick processing. 0: off, 1: on.")
-        $addarg(@name "speech", @default 0, @type "int", @description "tune algorithm for speech. 0: off, 1: on.")
+        $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift." @options
+            GS_REF_PITCH_FORMAT_OPTIONS
+        )
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "antialias", @default 0, @type "int", @description "anti-aliasing filter." @options 
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "quick", @default 0, @type "int", @description "quick processing. " @options 
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "speech", @default 0, @type "int", @description "tune algorithm for speech. " @options 
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "soundtouch command" @type "llll")
 );
@@ -949,7 +1081,9 @@ $addref(
     @description "Audio process command for repeating a buffer. See #process.",
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
     ),
     @output $addout(@description "repeat command" @type "llll")
 );
@@ -977,7 +1111,9 @@ $addref(
     @arguments (
         $addarg(@name "times",  @default 2, @type "int", @description "number of repetitions.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
-        $addarg(@name "normalize", @default 0, @type "int", @description "waveset normalization. 0: off, 1: on.")
+        $addarg(@name "normalize", @default 0, @type "int", @description "waveset normalization." @options 
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "waveset repeat command" @type "llll")
 );
@@ -1027,7 +1163,9 @@ $addref(
     @description "Audio process command for applying single-pole lowpass or highpass filtering to a buffer. See #process.",
     @arguments (
         $addarg(@name "cutoff", @default 1, @type "int/float", @description "cutoff frequency.")
-        $addarg(@name "highpass", @default 0, @type "int", @description "highpass filter mode. 0: off, 1: on.")
+        $addarg(@name "highpass", @default 0, @type "int", @description "highpass filter mode." @options
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "onepole command" @type "llll")
 );
@@ -1092,27 +1230,54 @@ $addref(
     @description "Audio process command for applying timesquash time compression to a buffer. This removes time from a sample by shifting portions of the spectrogram while preserving the relevant content. See #process.",
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration."
+            GS_REF_TIMEUNIT_OPTIONS
+        )
         $addarg(@name "timeblock", @default 4096, @type "int", @description "duration of each time block to be removed.")
-        $addarg(@name "mode", @default 1, @type "int", @description "working mode. 0: time-domain, 1: frequency domain")
+        $addarg(@name "mode", @default 1, @type "int", @description "working mode." @options 
+            GS_REF_AUDIO_DOMAIN_OPTIONS
+        )
         $addarg(@name "xfade", @default 4096, @type "int/float", @description "duration of the crossfade, in samples.")
         $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
-        $addarg(@name "xfadetype", @default 2, @type "int", @description "cross fade type. 0: none, 1: linear, 2: sine, 3: curve, 4: s-curve.")
+        $addarg(@name "xfadetype", @default 2, @type "int", @description "cross fade type.." @options 
+            $addopt(@value 0, @description "none")
+            $addopt(@value 1, @description "linear")
+            $addopt(@value 2, @description "sine")
+            $addopt(@value 3, @description "curve")
+            $addopt(@value 4, @description "s-curve")
+        )
         $addarg(@name "glbleed", @default 4, @type "int", @description "number of frames of invalidation for the Griffin-Lim algorithm, when @phasehandling is 2.")
         $addarg(@name "glnumiter", @default 10, @type "int", @description "number of Griffin-Lim iterations, when @phasehandling is 2.")
-        $addarg(@name "glrandomize", @default 0, @type "int", @description "randomize the phases of the regions subject to the Griffin-Lim algorithm, when @phasehandling is 2. 0: off, 1: on.")
-        $addarg(@name "glrect", @default 1, @type "int", @description "invalidate whole rectangular regions whose phases are recomputed via the Griffin-Lim algorithm, when @phasehandling is 2. 0: off, 1: on.")
+        $addarg(@name "glrandomize", @default 0, @type "int", @description "randomize the phases of the regions subject to the Griffin-Lim algorithm, when @phasehandling is 2." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "glrect", @default 1, @type "int", @description "invalidate whole rectangular regions whose phases are recomputed via the Griffin-Lim algorithm, when @phasehandling is 2." @options 
+            GS_REF_SWITCH_OPTIONS
+        )
         $addarg(@name "batchsize", @default 1, @type "int", @description "number of seams processed in batch.")
         $addarg(@name "batchinterrupt", @default 0, @type "int", @description "interrupt batch when crossing.")
-        $addarg(@name "energy", @default 2, @type "int", @description "energy function used for computing seams. 0: magnitude, 1: gradient magnitude, 2: Sobel.")
+        $addarg(@name "energy", @default 2, @type "int", @description "energy function used for computing seams." @options
+            $addopt(@value 0, @description "magnitude")
+            $addopt(@value 1, @description "gradient magnitude")
+            $addopt(@value 2, @description "Sobel")
+        )
         $addarg(@name "forwardenergy", @default "1.", @type "int/float", @description "amount of forward energy contribution.")
-        $addarg(@name "forwardenergyembed", @default 1, @type "int", @description "embed forward energy in cumulative matrix. 0: off, 1: on.")
-        $addarg(@name "forwardenergytype", @default 1, @type "int", @description "forward energy type. 0: gradient L1 norm, 1: energy L2 norm.")
+        $addarg(@name "forwardenergyembed", @default 1, @type "int", @description "embed forward energy in cumulative matrix." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "forwardenergytype", @default 1, @type "int", @description "forward energy type." @options
+            $addopt(@value 0, @description "gradient L1 norm")
+            $addopt(@value 1, @description "energy L2 norm")
+        )
         $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
         $addarg(@name "hopsize", @default 1024, @type "int", @description "hop size, in samples")
-        $addarg(@name "phasehandling", @default 2, @type "int", @description "phase handling mode: 0: keep, 1: compensate, 2: Griffin-Lim.")
+        $addarg(@name "phasehandling", @default 2, @type "int", @description "phase handling mode." @options
+            $addopt(@value 0, @description "keep")
+            $addopt(@value 1, @description "compensate")
+            $addopt(@value 2, @description "Griffin-Lim")
+        )
         $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
-        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type. For instance, 'hann', 'sine', 'triangular', etc.")
+        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type." @options GS_REF_WINDOW_OPTIONS)
     ),
     @output $addout(@description "timesquash command" @type "llll")
 );
@@ -1145,10 +1310,18 @@ $addref(
     @description "Audio process command for applying stretching/pitch shifting a buffer via resampling. See #process.",
     @arguments (
         $addarg(@name "duration", @type "int/float", @description "target duration, based on @timeunit.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "changesr", @default 0, @type "int", @description "change sampling rate. 0: off, 1: on.")
-        $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis. 0: ms, 1: samples, 2: duration ratio.")
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode: 'sinc', 'nearest neighbor', 'sample and hold', 'linear', 'quad', 'cubic'")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "changesr", @default 0, @type "int", @description "change sampling rate." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis." @options 
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+            GS_REF_RESAMPLINGMODE_OPTIONS
+        )
         $addarg(@name "resamplingfiltersize", @default 0, @type "int", @description "resampling filter size.")
     ),
     @output $addout(@description "resample command" @type "llll")
@@ -1179,8 +1352,12 @@ $addref(
     @arguments (
         $addarg(@name "level", @default 1, @type "int/float", @description "reference level.")
         $addarg(@name "mix", @default 1, @type "int", @description "dry/wet mix, between 0 and 1.")
-        $addarg(@name "rms", @default 0, @type "int", @description "use root mean square. 0: off, 1: on.")
-        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit for @level. 0: linear, 1: decibels.")
+        $addarg(@name "rms", @default 0, @type "int", @description "use root mean square." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit for @level." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
     ),
     @output $addout(@description "normalize command" @type "llll")
 );
@@ -1215,10 +1392,18 @@ $addref(
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode: 'sinc', 'nearest neighbor', 'sample and hold', 'linear', 'quad', 'cubic'")
-        $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
-        $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope. 0: linear, 1: decibels.")
-        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope. 0: ms, 1: samples, 2: duration ratio.")
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+            GS_REF_RESAMPLINGMODE_OPTIONS
+        )
+        $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
     ),
     @output $addout(@description "gain command" @type "llll")
 );
@@ -1260,8 +1445,12 @@ $addref(
         $addarg(@name "makeup", @default 0, @type "int/float", @description "make-up gain.")
         $addarg(@name "ratio", @default "1.5", @type "int/float", @description "compression ratio.")
         $addarg(@name "thresh", @default -20, @type "int/float", @description "amplitude threshold.")
-        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit. 0: linear, 1: decibels.")
-        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit. 0: ms, 1: samples, 2: duration ratio, 3: ms difference, 4: diff. in samples.")
+        $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
     ),
     @output $addout(@description "dynamics command" @type "llll")
 );
@@ -1306,7 +1495,12 @@ $addref(
     @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
     @arguments (
         $addarg(@name "func", @type "function", @description "pitch/frequency lambda function, with signature $oldpartials -> $newpartials.")
-        $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func. 0: Hertz, 1: BPM, 2: midicents, 3: MIDI")
+        $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func." @options 
+            $addopt(@value 0 @description "Hertz")
+            $addopt(@value 1 @description "BPM")
+            $addopt(@value 2 @description "midicents")
+            $addopt(@value 3 @description "MIDI")
+        )
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
         $addarg(@name "magnitudethreshold", @default "0.0002", @type "float", @description "peak amplitude threshold.")
@@ -1315,7 +1509,10 @@ $addref(
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
         $addarg(@name "maxfrequency", @default 22050, @type "int/float", @description "max. frequency of the range to evaluate")
         $addarg(@name "wintype", @default "'hann'", @type "sym/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
-        $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode. 0: sinusoidal, 1: sinusoidal + stochastic.")
+        $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode." @options
+            $addopt(@value 0 @description "sinusoidal")
+            $addopt(@value 1 @description "stochastic + sinusoidal")
+        )
         $addarg(@name "stocf", @default '0.2', @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
     ),
     @output $addout(@description "resynth command" @type "llll")
