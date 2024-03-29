@@ -215,12 +215,12 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 106.0, 785.0, 510.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Arial",
+						"default_fontname" : "Ableton Sans Medium",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -240,7 +240,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "",
+						"style" : "subtlelight",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -250,7 +250,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 169.0, 177.0, 100.0, 23.0 ],
+									"patching_rect" : [ 130.0, 150.0, 86.0, 23.0 ],
+									"style" : "subtlelight",
 									"text" : "r #0scriptpath"
 								}
 
@@ -262,7 +263,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 169.0, 209.0, 108.0, 23.0 ],
+									"patching_rect" : [ 130.0, 182.0, 108.0, 23.0 ],
+									"style" : "subtlelight",
 									"text" : "gs.utils.adjustpath"
 								}
 
@@ -270,12 +272,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-36",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 489.0, 289.0, 88.0, 23.0 ],
+									"patching_rect" : [ 450.0, 262.0, 88.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "loadmess clear"
 								}
@@ -287,7 +288,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 465.0, 327.0, 93.0, 23.0 ],
+									"patching_rect" : [ 424.0, 300.0, 64.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "s #0buffer"
 								}
@@ -300,47 +301,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "clear" ],
-									"patching_rect" : [ 434.0, 289.0, 50.0, 23.0 ],
+									"patching_rect" : [ 395.0, 262.0, 48.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "t l clear"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-153",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 119.0, 485.0, 143.0, 23.0 ],
-									"style" : "subtlelight",
-									"text" : "print grainscript @level 1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-148",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 119.0, 447.0, 102.0, 23.0 ],
-									"style" : "subtlelight",
-									"text" : "null query results"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-80",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 407.0, 88.0, 23.0 ],
-									"style" : "subtlelight",
-									"text" : "bach.filternull"
 								}
 
 							}
@@ -350,7 +313,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 434.0, 403.0, 143.0, 23.0 ],
+									"patching_rect" : [ 395.0, 376.0, 143.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "print grainscript @level 2"
 								}
@@ -363,7 +326,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 434.0, 363.0, 190.0, 23.0 ],
+									"patching_rect" : [ 395.0, 336.0, 190.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "$1 is not a valid database file path"
 								}
@@ -376,7 +339,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 346.0, 289.0, 80.0, 23.0 ],
+									"patching_rect" : [ 307.0, 262.0, 80.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "prepend read"
 								}
@@ -389,7 +352,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 169.0, 243.0, 372.0, 23.0 ],
+									"patching_rect" : [ 130.0, 216.0, 372.333333333333371, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "regexp .*\\\\.llll"
 								}
@@ -402,7 +365,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 258.0, 140.0, 57.0, 23.0 ],
+									"patching_rect" : [ 219.0, 113.0, 57.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "tosymbol"
 								}
@@ -415,7 +378,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "bang" ],
-									"patching_rect" : [ 51.0, 100.0, 434.0, 23.0 ],
+									"patching_rect" : [ 11.0, 73.0, 435.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -432,7 +395,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 140.0, 161.0, 23.0 ],
+									"patching_rect" : [ 11.0, 113.0, 161.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "bach.prepend query @out m"
 								}
@@ -442,12 +405,11 @@
 								"box" : 								{
 									"code" : "GS_GRAINS = $x1 ",
 									"id" : "obj-164",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 367.0, 160.0, 23.0 ],
+									"patching_rect" : [ 11.0, 340.0, 160.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1,
 										"versionnumber" : 80300
@@ -465,7 +427,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
-									"patching_rect" : [ 50.0, 327.0, 145.0, 23.0 ],
+									"patching_rect" : [ 11.0, 300.0, 117.0, 23.0 ],
 									"style" : "subtlelight",
 									"text" : "dada.base #0corpus"
 								}
@@ -480,7 +442,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 51.0, 40.0, 30.0, 30.0 ]
+									"patching_rect" : [ 11.0, 13.0, 30.0, 30.0 ],
+									"style" : "subtlelight"
 								}
 
 							}
@@ -508,22 +471,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-153", 0 ],
-									"source" : [ "obj-148", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-164", 0 ],
 									"source" : [ "obj-159", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-80", 0 ],
-									"source" : [ "obj-164", 0 ]
 								}
 
 							}
@@ -604,12 +553,32 @@
 								}
 
 							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-148", 0 ],
-									"source" : [ "obj-80", 1 ]
+ ],
+						"styles" : [ 							{
+								"name" : "subtlelight",
+								"default" : 								{
+									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"bgfillcolor" : 									{
+										"angle" : 270.0,
+										"autogradient" : 0.0,
+										"color" : [ 0.717647058823529, 0.717647058823529, 0.717647058823529, 1.0 ],
+										"color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+										"color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+										"proportion" : 0.5,
+										"type" : "color"
+									}
+,
+									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
+									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
+									"fontname" : [ "Ableton Sans Medium" ],
+									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
+									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
+									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
 								}
-
+,
+								"parentstyle" : "",
+								"multi" : 0
 							}
  ]
 					}
@@ -619,6 +588,7 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
+						"style" : "subtlelight",
 						"tags" : ""
 					}
 ,
@@ -5390,13 +5360,6 @@
 			}
 , 			{
 				"name" : "bach.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bach.filternull.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",

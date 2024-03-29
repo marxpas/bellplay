@@ -108,10 +108,10 @@ msg = (
 ## ------------------------------------------------------------
 
 printerror = (
-    $text, $type = 1, $code = 0 -> (
+    $text, $stop = 1 -> (
         msg("console",
-            [ "code" $code ] 
-            [ "type" $type ]
+            [ "code" $stop == 0 ]
+            [ "type" 2 - $stop ]
             [ "text" $text ]
         )
     )
@@ -203,6 +203,7 @@ $addref(
 query = (
     $x = "SELECT * FROM grains" -> (
         msg("db", "query" $x);
+        (if GS_GRAINS == null then printerror("query did not yield any results:" tosymbol($x), @stop 0));
         GS_GRAINS
     )
 );
@@ -473,6 +474,9 @@ $addref(
 
 transcribe = (
     $grain, $onset = 0, $pan = null, $gain = null, $detune = null -> (
+        if $grain == null then (
+            printerror("attempt to pass a null value as @grain in transcribe()")
+        );
         ## unpack grain
         $grain = $grain::1;
 
@@ -681,6 +685,11 @@ $addref(
 
 process = (
     $grain, $commands -> (
+        if $grain == null then (
+            printerror("attempt to pass null value as @grain in process()")
+        ) else if $commands == null then (
+            printerror("you must provide audio processing commands in process()")
+        );
         $offset = $grain.getkey("offset");
         msg(
             "process",
@@ -1076,12 +1085,12 @@ $addref(
 ## ------------------------------------------------------------
 
 repeat = (
-    $duration,
+    $duration = 2,
     $timeunit = 2 -> (
         [
             [ "fx" "repeat" ]
             [ "params"
-                [ "duration" $duration ]
+                [ "duration" max(1, $duration) ]
                 [ "timeunit" $timeunit ]
             ]
         ]
@@ -1092,7 +1101,7 @@ $addref(
     @name "repeat",
     @description "Audio process command for repeating a buffer. See #process.",
     @arguments (
-        $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
+        $addarg(@name "duration", @default 2, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options
             GS_REF_TIMEUNIT_OPTIONS
         )
@@ -1149,7 +1158,7 @@ $addref(
     @name "wavesetshuffle",
     @description "Audio process command for applying waveset shuffling to a buffer. See #process.",
     @arguments (
-        $addarg(@name "maxdist", @type "int", @description "maximum shuffling distance.")
+        $addarg(@name "maxdist", @default 1, @type "int", @description "maximum shuffling distance.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
     ),
     @output $addout(@description "waveset shuffle command" @type "llll")
@@ -1160,6 +1169,9 @@ $addref(
 onepole = (
     $cutoff,
     $highpass = 0 -> (
+        if $cutoff == null then (
+            printerror("you must provide @cutoff value in onepole()")
+        );
         [
             [ "fx" "onepole" ]
             [ "params"
@@ -1185,7 +1197,7 @@ $addref(
 ## ------------------------------------------------------------
 
 timesquash = (
-    $duration,
+    $duration = 1,
     $timeunit = 2, 
     $timeblock = 4096,
     $mode = 1,
@@ -1297,7 +1309,7 @@ $addref(
 ## ------------------------------------------------------------
 
 resample = (
-    $duration,
+    $duration = 1,
     $timeunit = 2,
     $changesr = 0,
     $antimeunit = 1,
@@ -1321,7 +1333,7 @@ $addref(
     @name "resample",
     @description "Audio process command for applying stretching/pitch shifting a buffer via resampling. See #process.",
     @arguments (
-        $addarg(@name "duration", @type "int/float", @description "target duration, based on @timeunit.")
+        $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options 
             GS_REF_TIMEUNIT_OPTIONS
         )
@@ -1383,6 +1395,9 @@ gain = (
     $ampunit = 0,
     $envampunit = 0,
     $envtimeunit = 2 -> (
+        if $gain == null then (
+            printerror("you must provide a @gain value in gain().")
+        );
         $gain = if depth($gain) > 1 || length($gain) > 1 then [ bpf($gain) ] else $gain;
         [
             [ "fx" "gain" ]
