@@ -855,10 +855,10 @@ $addref(
 ## ------------------------------------------------------------
 
 biquad = (
-    $freq,
+    $freq = 2000,
     $type = 0,
-    $gain,
-    $q -> (
+    $gain = 1,
+    $q = 80 -> (
         [
             [ "fx" "biquad" ]
             [ "params" 
@@ -886,9 +886,9 @@ $addref(
             $addopt(@value 7 @description "resonant")
             $addopt(@value 8 @description "allpass")
         )
-        $addarg(@name "freq", @type "int/float", @description "cutoff/center frequency.")
-        $addarg(@name "gain", @type "int/float", @description "filter gain.")
-        $addarg(@name "q", @type "int/float", @description "resonance or slope, depending on @type.")
+        $addarg(@name "freq", @default 2000, @type "int/float", @description "cutoff/center frequency.")
+        $addarg(@name "gain", @default 1, @type "int/float", @description "linear gain.")
+        $addarg(@name "q", @default 80, @type "int/float", @description "resonance or slope, depending on @type.")
     ),
     @output $addout(@description "biquad command" @type "llll")
 );
