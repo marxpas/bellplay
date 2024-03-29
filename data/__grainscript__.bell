@@ -860,7 +860,7 @@ biquad = (
     $gain,
     $q -> (
         [
-            [ "fx" "overdrive" ]
+            [ "fx" "biquad" ]
             [ "params" 
                 [ "type" $type + 1 ]
                 [ "freq" $freq ]
