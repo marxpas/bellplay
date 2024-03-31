@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 410.0, 230.0, 801.0, 514.0 ],
+		"rect" : [ 34.0, 167.0, 801.0, 514.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -3969,7 +3969,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 1006.0, 400.0, 640.0, 480.0 ],
+						"rect" : [ 260.0, 536.0, 721.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4005,8 +4005,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 54.0, 627.0, 52.0 ],
-									"text" : "preventedit notes slotinfo, zoom 115, vzoom 115, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [11 [name rate] [key r] [type float] [range 0.0001 16.]] [23 [name notehead] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23"
+									"patching_rect" : [ 8.0, 54.0, 713.0, 52.0 ],
+									"text" : "preventedit notes slotinfo markers, zoom 115, vzoom 115, clefs FFGG, voicenames output, voicespacing 5, [slotinfo [ 4 [ name size ] [ type floatlist ] [ default 50 ] [ range 25 300 ]] [11 [name rate] [key r] [type float] [range 0.0001 16.]] [23 [name notehead] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23, linknotesizetoslot 4"
 								}
 
 							}
@@ -4031,7 +4031,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 123.0, 30.0, 30.0 ]
+									"patching_rect" : [ 8.0, 124.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -4163,6 +4163,7 @@
 					"linkdynamicstoslot" : 0,
 					"linklyricstoslot" : 0,
 					"linknotecolortoslot" : 6,
+					"linknotesizetoslot" : 4,
 					"loop" : [ 0.0, 1000.0 ],
 					"lyricsfont" : "Ableton Sans Light",
 					"markersfont" : "Ableton Sans Light",
@@ -4176,7 +4177,7 @@
 					"pitcheditrange" : [ "null" ],
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 95.0, 794.0, 266.0 ],
-					"preventedit" : [ "notes", "slotinfo" ],
+					"preventedit" : [ "notes", "slotinfo", "markers" ],
 					"ruler" : 1,
 					"rulercolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"showborder" : 0,

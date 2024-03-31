@@ -546,9 +546,12 @@ transcribe = (
         ## get chord velocity and duration
         $vel = if $gain then maximum(trans($gain.1)::2) else min(127, $grain."loudness" * 512);
         $dur = $grain."duration";
+        
+        ## make size slot based on duration
+        $size = [ 4 scale(log2(min(16384, max(1, $dur))), 0, 14, 30, 150) ];
 
         ## format note and add to roll
-        $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color $notehead ]];
+        $note = [ $mc $dur $vel ["slots" [ 7 $grain."file" ] [ 10 $grain."offset" ] $pan $rate $gain $color $notehead $size ]];
         msg("roll", "addchord" [ $onset $note ])
     )
 );
