@@ -135,8 +135,9 @@
 				"box" : 				{
 					"drop" : 0,
 					"fontface" : 0,
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
+					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 3,
 					"linkend" : [ "null" ],
@@ -145,10 +146,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4.0, 839.0, 723.0, 57.0 ],
+					"patching_rect" : [ 4.0, 839.0, 697.0, 57.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 5.5, 547.0, 796.0, 57.0 ],
+					"presentation_rect" : [ 5.5, 547.0, 807.0, 57.0 ],
 					"text" : "To learn more about bell, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
 				}
 
@@ -188,18 +189,19 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
+					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-3",
 					"linecount" : 18,
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5.0, 153.0, 723.0, 309.0 ],
+					"patching_rect" : [ 5.0, 153.0, 721.0, 309.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 16,
-					"presentation_rect" : [ 8.0, 42.0, 799.0, 275.0 ],
+					"presentation_rect" : [ 8.0, 42.0, 795.0, 275.0 ],
 					"text" : "grainscript is a simple application for offline, corpus-based audio granulation. In grainscript, the general workflow is comprised of two main stages: corpus creation, and audio generation via .bell scripts. \n\nFirst, users create a database (i.e., a corpus) of grains from a folder of audio samples, where each grain is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, etc. Then, users can manipulate these grains via .bell scripts, and generate granular sequences that can be rendered and exported as .wav, .mid, or .llll files. \n\nThese scripts are written in the bach evaluation language for lllls, or bell for short. The typical structure of a script is as follows: \n\n       1) Load a corpus. \n       2) Retrieve grains from the corpus using #sqlite3 queries.\n        3) Manipulate grains and add them to the rendering queue.\n        4) Render all aded grains into an audio buffer .\n       5) Export the rendered sequence as audio, midi, or native .llll format.\n\nHere’s a very basic example of a bell script:"
 				}
 
