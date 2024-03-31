@@ -38,7 +38,7 @@ Giavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the b
 
 ### Requirements
 To use **grainscript~**, you will need to install the following packages through the Max Package Manager:
-- `ears` and `bach` by Andrea Agostini and Daniele Ghisi.
+- `bach`, `dada`, and `ears` by Andrea Agostini and Daniele Ghisi.
 - `ml.star` by Benjamin D. Smith.
 
 ### Acknowledgments
