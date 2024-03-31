@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Clarify documentation for `render` and `process` functions.
 - script UI is separate window from corpus lab.
 - note size changes based on grain size.
 - documentation is largely up to date with existing functions.
