@@ -139,6 +139,9 @@ $addref(
 
 pcdiff = (
     $a, $b, $mod = 12 -> ( 
+        if $a == null || $b == null then (
+            printerror("you must provide values for both @a and @b in pcdiff()")
+        );
         $a = fmod($a, $mod); 
         $b = fmod($b, $mod); 
         $da = $b - $a; 
@@ -162,6 +165,9 @@ $addref(
 
 setcorpus = (
     $filepath -> (
+        if $filepath == null then (
+            printerror("you must provide a value for @filepath in setcorpus()")
+        );
         GS_GRAINS = null;
         msg("db", "read" $filepath)
     )
@@ -179,6 +185,9 @@ $addref(
 
 samplelist = (
     $x, $i -> (
+        if $x == null || $i == null then (
+            printerror("you must provide values for @x and @i in samplelist()")
+        );
         $N = length($x);
         $i = scale($i, 0, 1, 1, $N);
         $l = floor($i);
@@ -202,6 +211,9 @@ $addref(
 
 query = (
     $x = "SELECT * FROM grains" -> (
+        if $x == null then (
+            printerror("you must provide a value for @x in query()")
+        );
         msg("db", "query" $x);
         (if GS_GRAINS == null then printerror("query did not yield any results:" tosymbol($x), @stop 0));
         GS_GRAINS
@@ -220,7 +232,11 @@ $addref(
 ## ------------------------------------------------------------
 
 getkey = (
-    $grain, $key -> ($grain::1).$key
+    $grain, $key -> (
+        if $key == null || $grain == null then (
+            printerror("you must provide values for both @grain and @key in getkey()") 
+        ) else ($grain::1).$key
+    )
 );
 
 $addref(
@@ -235,7 +251,15 @@ $addref(
 
 ## ------------------------------------------------------------
 
-setkey = ($grain, $key, $val -> [ ($grain::1).$key = $val ]);
+setkey = (
+    $grain, $key, $val -> (
+        if $key == null || $grain == null then (
+            printerror("you must provide values for both @grain and @key in setkey()") 
+        ) else (
+            [ ($grain::1).$key = $val ]
+        )
+    )
+);
 
 $addref(
     @name "setkey",
@@ -252,6 +276,9 @@ $addref(
 
 mapkey = (
     $grain, $key, $func -> (
+        if $key == null || $grain == null || $func == null then (
+            printerror("you must provide values for @grain, @key, and @func and @key in mapkey().") 
+        );
         setkey($grain, $key, $func(getkey($grain, $key)))
     )
 );
@@ -427,6 +454,9 @@ filtergrains = (
 
 pitchdiff = (
     $source, $targets -> (
+        if $targets == null then (
+            printerror("you must provide @targets in pitchdiff")
+        );
         $distances = (
             if $targets:1 < 12 then (
                 pcdiff($source / 100., $targets) * 100
@@ -452,6 +482,9 @@ $addref(
 
 detuning = (
     $grain, $targets -> (
+        if $grain == null || $targets == null then (
+            printerror("you must provide values for both @grain and @targets in detuning()")
+        );
         $source = getkey($grain, "pitch");
         if $source < 0 then (
             $source = mc2f(getkey($grain, "centroid"))
@@ -1497,6 +1530,9 @@ resynth = (
     $wintype = "hann",
     $stochastic = 0,
     $stocf = 0.2 -> (
+        if $func == null then (
+            printerror("you must provide a lambda function to the @func argument in resynth()")
+        );
         GS_RESYNTH_FUNC = $func ||| ($x, $y, $z, $w -> [$x] [$y] [$z] [$w]);
         [
             [ "fx" "resynth" ]
@@ -1549,6 +1585,9 @@ $addref(
 
 buildtree = (
     $grains, $keys = "mfcc" -> (
+        if $keys == null then (
+            printerror("you must provide a one or more features to the @keys argument in buildtree()")
+        );
         msg("kdtree", [ "features" $keys] ["grains" $grains])
     )
 );
