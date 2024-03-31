@@ -144,8 +144,8 @@ pcdiff = (
         );
         $a = fmod($a, $mod); 
         $b = fmod($b, $mod); 
-        $da = $b - $a; 
-        $db = $da + $mod * -(sgn($da) || 1); 
+        $da = $b - $a;
+        $db = $da + $mod * -sgn($da); 
         $mask = max(0, sgn(abs($db) - abs($da)));
         $da * $mask + $db * (1 - $mask)
     ) 
