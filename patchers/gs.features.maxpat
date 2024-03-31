@@ -142,19 +142,19 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "fmod((round($x1/25)*25)/100, 12) ",
+					"code" : "fmod($x1/100., 12) ",
 					"id" : "obj-125",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.600000000000009, 192.0, 257.0, 23.0 ],
+					"patching_rect" : [ 104.600000000000009, 192.0, 170.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval fmod((round($x1/25)*25)/100\\, 12)"
+					"text" : "bach.eval fmod($x1/100.\\, 12)"
 				}
 
 			}
