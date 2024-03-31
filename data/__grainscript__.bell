@@ -622,7 +622,7 @@ hanning = ($N = 16 -> ($N -= 1; sin((pi * (0...$N)) / $N) ** 2.));
 
 $addref(
     @name "hanning",
-    @description "Generates a hanning window.",
+    @description "Generates a hanning window as a numeric list.",
     @arguments (
         $addarg(@name "N", @type "int", @default 16, @description "window resolution.")
     ),
@@ -751,6 +751,39 @@ $addref(
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
+    ),
+    @output $addout(@description "processed grain" @type "llll")
+);
+
+
+## ------------------------------------------------------------
+
+
+crop = (
+    $start,
+    $end,
+    $timeunit = 0 -> (
+        if $end == null || $start == null then printerror("you must provide values for @start and @end in crop()");
+        if $end <= $start then printerror("@end must be greater than @start in crop()");
+        [
+            ["fx" "crop"]
+            ["params" 
+                ["start" $start ]
+                ["end" $end ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "crop",
+    @description "Audio process command for cropping a buffer. See #process.",
+    @arguments (
+        $addarg(@name "start", @type "int/float", @description "start time.")
+        $addarg(@name "end", @type "int/float", @description "end time.")
+        $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
     ),
     @output $addout(@description "processed grain" @type "llll")
 );
