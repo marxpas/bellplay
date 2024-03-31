@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - script UI is separate window from corpus lab.
 - use continuous value for pitch class in `gs.features` analysis
+- use spectral centroid when pitch undetected in `gs.features`.
 
 ### Fixed
 
