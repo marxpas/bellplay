@@ -466,7 +466,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1305.5, 474.0, 95.0, 23.0 ],
-					"text" : "gate 1 0"
+					"text" : "gate 1 1"
 				}
 
 			}
@@ -6024,13 +6024,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.wavesynth.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "gs.process.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
@@ -6060,6 +6053,13 @@
 			}
 , 			{
 				"name" : "gs.utils.errorcatch.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.wavesynth.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
