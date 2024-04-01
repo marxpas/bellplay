@@ -394,10 +394,10 @@ choose = (
 
 $addref(
     @name "choose",
-    @description "Choose randomly one or more elements from list.",
+    @description "Choose randomly one or more elements from a list.",
     @arguments (
         $addarg(@name "x", @type "list", @description "list to choose from.")
-        $addarg(@name "n", @type "int", @description "number of random choices.")
+        $addarg(@name "n", @default 1, @type "int", @description "number of random choices.")
     ),
     @output $addout(@description "random elements", @type "anything")
 );
