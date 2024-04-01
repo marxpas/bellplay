@@ -2,12 +2,12 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3794822100,
+	"modificationdate" : 3794840117,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
-	"showdependencies" : 0,
-	"autolocalize" : 0,
+	"showdependencies" : 1,
+	"autolocalize" : 1,
 	"contents" : 	{
 		"patchers" : 		{
 			"grainscript.maxpat" : 			{
@@ -16,52 +16,7 @@
 				"toplevel" : 1
 			}
 ,
-			"gs.sampler.poly~.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"gs.corpus.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.filemenu.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.scripter.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.docs.reference.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.utils.adjustpath.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.docs.about.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.reference.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.utils.errorcatch.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"gs.process.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -71,7 +26,47 @@
 				"local" : 1
 			}
 ,
+			"gs.filemenu.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.sampler.poly~.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"gs.utils.debugmode.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.docs.about.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.process.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.reference.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.scripter.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.utils.adjustpath.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.utils.errorcatch.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -80,10 +75,20 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"gs.docs.reference.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
 		"media" : 		{
+			"logo.png" : 			{
+				"kind" : "imagefile",
+				"local" : 1
+			}
+,
 			"alert.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1,
@@ -99,6 +104,23 @@
 		"data" : 		{
 			"__grainscript__.bell" : 			{
 				"kind" : "textfile",
+				"local" : 1
+			}
+
+		}
+,
+		"externals" : 		{
+
+		}
+,
+		"other" : 		{
+			"logo.icns" : 			{
+				"kind" : "file",
+				"local" : 1
+			}
+,
+			"logo.ico" : 			{
+				"kind" : "file",
 				"local" : 1
 			}
 
