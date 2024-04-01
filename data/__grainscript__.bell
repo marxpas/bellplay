@@ -43,62 +43,6 @@ $addout = (
 
 ## ------------------------------------------------------------
 
-GS_REF_TIMEUNIT_OPTIONS = (
-    $addopt(@value 0, @description "milliseconds")
-    $addopt(@value 1, @description "samples")
-    $addopt(@value 2, @description "duration" "ratio")
-    $addopt(@value 3, @description "milliseconds" "difference")
-    $addopt(@value 4, @description "samples" "difference")
-);
-
-GS_REF_AUDIO_DOMAIN_OPTIONS = (
-    $addopt(@value 0, @description "frequency domain")
-    $addopt(@value 1, @description "time domain")
-);
-
-GS_REF_PITCH_FORMAT_OPTIONS = (
-    $addopt(@value 0 @description "cents")
-    $addopt(@value 1 @description "MIDI" )
-    $addopt(@value 2 @description "Hertz")
-    $addopt(@value 3 @description "frequency ratio")
-);
-
-GS_REF_SWITCH_OPTIONS = (
-    $addopt(@value 0 @description "off")
-    $addopt(@value 1 @description "on" )
-);
-
-GS_REF_WINDOW_OPTIONS = (
-    $addopt(@value "rectangular")
-    $addopt(@value "triangular")
-    $addopt(@value "sine")
-    $addopt(@value "hann")
-    $addopt(@value "hamming")
-    $addopt(@value "blackman")
-    $addopt(@value "nuttall")
-    $addopt(@value "blackmannuttall")
-    $addopt(@value "blackmanharris")
-    $addopt(@value "gaussian")
-    $addopt(@value "sqrthann")
-    $addopt(@value "sqrthamming")
-);
-
-GS_REF_AMPUNIT_OPTIONS = (
-    $addopt(@value 0, @description "linear")
-    $addopt(@value 1, @description "decibels")
-);
-
-GS_REF_RESAMPLINGMODE_OPTIONS = (
-    $addopt(@value "sinc")
-    $addopt(@value "nearest neighbor")
-    $addopt(@value "sample and hold")
-    $addopt(@value "linear")
-    $addopt(@value "quad")
-    $addopt(@value "cubic")
-);
-
-## ------------------------------------------------------------
-
 msg = (
     $to, $msg -> (
         $do1 = [ $to $msg ]
@@ -133,6 +77,68 @@ $addref(
         $addarg(@name "x",  @type "anything",@description "value to cast")
     ),
     @output $addout(@description "symbol", @type "symbol")
+);
+
+## ------------------------------------------------------------
+
+GS_REF_TIMEUNIT_OPTIONS = (
+    $addopt(@value 0, @description "milliseconds")
+    $addopt(@value 1, @description "samples")
+    $addopt(@value 2, @description "duration" "ratio")
+    $addopt(@value 3, @description "milliseconds" "difference")
+    $addopt(@value 4, @description "samples" "difference")
+);
+
+GS_REF_AUDIO_DOMAIN_OPTIONS = (
+    $addopt(@value 0, @description "frequency domain")
+    $addopt(@value 1, @description "time domain")
+);
+
+GS_REF_PITCH_FORMAT_OPTIONS = (
+    $addopt(@value 0 @description "cents")
+    $addopt(@value 1 @description "MIDI" )
+    $addopt(@value 2 @description "Hertz")
+    $addopt(@value 3 @description "frequency ratio")
+);
+
+GS_REF_SWITCH_OPTIONS = (
+    $addopt(@value 0 @description "off")
+    $addopt(@value 1 @description "on" )
+);
+
+GS_REF_NORMALIZE_OPTIONS = (
+    $addopt(@value 0 @description "never")
+    $addopt(@value 1 @description "always")
+    $addopt(@value 2 @description "overload protection only" )
+);
+
+GS_REF_WINDOW_OPTIONS = (
+    $addopt(@value "rectangular")
+    $addopt(@value "triangular")
+    $addopt(@value "sine")
+    $addopt(@value "hann")
+    $addopt(@value "hamming")
+    $addopt(@value "blackman")
+    $addopt(@value "nuttall")
+    $addopt(@value "blackmannuttall")
+    $addopt(@value "blackmanharris")
+    $addopt(@value "gaussian")
+    $addopt(@value "sqrthann")
+    $addopt(@value "sqrthamming")
+);
+
+GS_REF_AMPUNIT_OPTIONS = (
+    $addopt(@value 0, @description "linear")
+    $addopt(@value 1, @description "decibels")
+);
+
+GS_REF_RESAMPLINGMODE_OPTIONS = (
+    $addopt(@value "sinc")
+    $addopt(@value "nearest neighbor")
+    $addopt(@value "sample and hold")
+    $addopt(@value "linear")
+    $addopt(@value "quad")
+    $addopt(@value "cubic")
 );
 
 ## ------------------------------------------------------------
@@ -570,13 +576,76 @@ $addref(
 
 ## ------------------------------------------------------------
 
+wavesynth = (
+    $freq = 440,
+    $amp = .5,
+    $dur = 100,
+    $waveform = 0,
+    $normalize = 0,
+    $iterationmode = 1 -> (
+        $notes = for $fq in $freq, $a in $amp, $d in $dur with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
+            ## reset bpf for each note
+            $bpf = null;
+
+            ## check for frequency envelopes
+            if length($fq) > 1 then (
+                ## get starting frequency, assuming envelope is a depth 1 list
+                $start = $fq:1;
+
+                ## if not, it's likely a bpf
+                if depth($fq) > 1 then (
+                    $start = $start:(1 2)
+                );
+                ## generate breakpoint relative to starting frequency and convert to cents
+                $bpf = [ "breakpoints" bpf($fq, ($y -^ $start -> r2c($y/$start))) ];
+                
+                ## replace @fq with starting frequency
+                $fq = $start
+            );
+            ## format note
+            [ f2mc($fq) $d $a * 127. $bpf]
+        );
+        msg("wavesynth", 
+            [ "synth" 
+                [ "normalize" $normalize ]
+                [ "waveform" $waveform + 1 ]
+            ]
+            [ 'roll' 'addchord' [ 0 $notes ] ] 
+        );
+        [ GS_TMP_GRAIN ]
+    )
+);
+
+$addref(
+    @name "wavesynth",
+    @description "Generates an grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
+    @arguments (
+        $addarg(@name "freq", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
+        $addarg(@name "amp", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial.")
+        $addarg(@name "dur", @type "int/float/list", @default 48000, @description "duration values for each partial, in milliseconds.")
+        $addarg(@name "waveform", @type "int", @default 0, @description "waveform type.", @options 
+            $addopt(@value 0, @description "sinusoid")
+            $addopt(@value 1, @description "triangular")
+            $addopt(@value 2, @description "rectangular")
+            $addopt(@value 3, @description "sawtooth")
+        )
+        $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.", @options 
+            GS_REF_NORMALIZE_OPTIONS
+        )
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 render = (
-   $numchannels = 2, $panmode = 0, $sr = 48000, $normalize = 0, $play = 0, $process = null -> (
+   $numchannels = 2, $panmode = 0, $sr = 48000, $normalize = 0, $play = 0, $spread = 0, $process = null -> (
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
             [ "sr" $sr ]
             [ "normalize" $normalize ]
+            [ "spread" $spread ]
         );
         msg("roll", "dump");
         ($process &&& msg("sampler", [ "process" $process ] ));
@@ -594,8 +663,13 @@ $addref(
             $addopt(@value 1, @description "circular")
         )
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
-        $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.")
-        $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.")
+        $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization." @options 
+            GS_REF_NORMALIZE_OPTIONS
+        )
+        $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.", @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
 );
@@ -829,12 +903,12 @@ $addref(
         $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
         $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
         $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
-        $addarg(@name "tail", @default "-1", @type "int/float", @description "duration of reverb tail in ms." @options 
+        $addarg(@name "tail", @default -1, @type "int/float", @description "duration of reverb tail in ms." @options 
             $addopt(@value -1 @description "auto")
             $addopt(@value 0 @description "no tail")
             $addopt(@value ">0" @description "duration in ms")
         )
-        $addarg(@name "dry", @default "1", @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
+        $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
         $addarg(@name "wet", @default "0.33", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
     @output $addout(@description "freeverb command" @type "llll")

@@ -207,7 +207,7 @@
 					"patching_rect" : [ 703.0, 210.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.0, 7.0, 839.0, 18.0 ],
-					"text" : "null",
+					"text" : "v0.0.0-beta",
 					"textjustification" : 1
 				}
 
@@ -1286,6 +1286,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.roll.synthesis~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.rubberband~.mxo",
 				"type" : "iLaX"
 			}
@@ -1328,6 +1332,13 @@
 			}
 , 			{
 				"name" : "gs.filemenu.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.wavesynth.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
