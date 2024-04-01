@@ -132,6 +132,13 @@ GS_REF_AMPUNIT_OPTIONS = (
     $addopt(@value 1, @description "decibels")
 );
 
+GS_REF_CURVE_OPTIONS = (
+    $addopt(@value 0, @description "linear")
+    $addopt(@value 1, @description "sine")
+    $addopt(@value 2, @description "curve")
+    $addopt(@value 3, @description "s-curve")
+);
+
 GS_REF_RESAMPLINGMODE_OPTIONS = (
     $addopt(@value "sinc")
     $addopt(@value "nearest neighbor")
@@ -325,7 +332,7 @@ $addref(
     @description "Formats an numeric list into a breaking point function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range.",
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
-        $addarg(@name "func", @type "function", @description "optional lambda function for y axis")
+        $addarg(@name "func", @default "null", @type "function/null", @description "optional lambda function for y axis")
     ),
     @output $addout(@description "breaking point function", @type "llll")
 );
@@ -794,7 +801,7 @@ $addref(
 ## ------------------------------------------------------------
 
 process = (
-    $grain, $commands -> (
+    $grain, $commands, $prefade = null -> (
         if $grain == null then (
             printerror("attempt to pass null value as @grain in process()")
         ) else if $commands == null then (
@@ -805,13 +812,8 @@ process = (
             "process",
             [ "source" $grain.getkey("file") ]
             [ "process" 
-                [
-                    ["fx" "crop"]
-                    ["params" 
-                        ["start" $offset ]
-                        ["end" $offset + $grain.getkey("duration") ]
-                    ]
-                ]
+                crop(@start $offset, @end $offset + $grain.getkey("duration"))
+                ($prefade &&& $prefade > 0 &&& fade(@fadein $prefade, @fadeout $prefade))
                 $commands 
             ]
         );
@@ -825,8 +827,56 @@ $addref(
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
+        $addarg(@name "prefade", @default "null" @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
     ),
     @output $addout(@description "processed grain" @type "llll")
+);
+
+
+## ------------------------------------------------------------
+
+fade = (
+    $fadein = 5, 
+    $fadeout = 5,
+    $fadeincurve = -0.25,
+    $fadeoutcurve = 0.25,
+    $fadeintype = 0,
+    $fadeouttype = 0,
+    $timeunit = 0 -> (
+        [
+            [ "fx" "fade" ]
+            [ "params"
+                [ "fadein" $fadein ]
+                [ "fadeout" $fadeout ]
+                [ "timeunit" $timeunit ]
+                [ "fadeincurve" $fadeincurve ]
+                [ "fadeoutcurve" $fadeoutcurve ]
+                [ "fadeintype" $fadeintype + 1 ]
+                [ "fadeouttype" $fadeouttype + 1 ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "fade",
+    @description "Audio process command for applying fadein/fadeout to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "fadein", @default 5, @type "int/float", @description "fade-in duration.")
+        $addarg(@name "fadeout", @default 5, @type "int/float", @description "fade-out duration.")
+        $addarg(@name "fadeintype", @default 0, @type "int", @description "fade-in type.", @options 
+            GS_REF_CURVE_OPTIONS
+        )
+        $addarg(@name "fadeouttype",@default 0, @type "int", @description "fade-out type.", @options 
+            GS_REF_CURVE_OPTIONS
+        )
+        $addarg(@name "fadeincurve", @default "-0.25", @type "int/float", @description "fade-in curve amount, between -1 and 1.")
+        $addarg(@name "fadeoutcurve", @default "0.25", @type "int/float", @description "fade-out curve amount, between -1 and 1.")
+        $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+    ),
+    @output $addout(@description "fade command" @type "llll")
 );
 
 

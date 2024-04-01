@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- include optional `@prefade` argument in `process()`.
+- add `fade()` function and docs.
 - standalone object with all settings.
 - first version of app logo.
   
