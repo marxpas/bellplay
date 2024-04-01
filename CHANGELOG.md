@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Set @maxtime to 0 in `bach.eval` to allow for longer computations.
+- Change font for function reference menu.
 
 ## [0.0.1-beta]
 

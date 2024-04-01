@@ -813,7 +813,7 @@
 					"patching_rect" : [ 1261.0, 1094.0, 311.0, 40.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ],
-					"text" : "Loads an audio corpus, given an absolute path to a .llll file. See #query function."
+					"text" : "Audio process command for applying biquad filtering to a buffer. See #process."
 				}
 
 			}
@@ -1071,13 +1071,14 @@
 				"box" : 				{
 					"fontsize" : 16.0,
 					"id" : "obj-16",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.0, 1554.0, 270.0, 26.0 ],
+					"patching_rect" : [ 393.0, 1554.0, 270.0, 45.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 169.0, 65.0, 632.0, 26.0 ],
-					"text" : "setcorpus(@filepath)",
+					"text" : "biquad(@type, @freq 2000, @gain 1, @q 80)",
 					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
 				}
 
@@ -1318,7 +1319,7 @@
 					"clickedtextcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
 					"embed" : 0,
 					"fontface" : 0,
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
 					"hoverstripcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 0.41 ],
 					"id" : "obj-13",
@@ -1328,7 +1329,7 @@
 					"numoutlets" : 5,
 					"out" : "nnnn",
 					"outlettype" : [ "", "", "", "", "bang" ],
-					"patching_rect" : [ 293.0, 497.0, 219.0, 283.0 ],
+					"patching_rect" : [ 293.0, 497.0, 220.0, 283.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 65.0, 159.0, 536.0 ],
 					"preventedit" : 1,
