@@ -2,11 +2,11 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3794840117,
+	"modificationdate" : 3794841616,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
-	"showdependencies" : 1,
+	"showdependencies" : 0,
 	"autolocalize" : 1,
 	"contents" : 	{
 		"patchers" : 		{
@@ -109,19 +109,25 @@
 
 		}
 ,
-		"externals" : 		{
-
-		}
-,
 		"other" : 		{
 			"logo.icns" : 			{
 				"kind" : "file",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/grainscript/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 ,
 			"logo.ico" : 			{
 				"kind" : "file",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/grainscript/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}
