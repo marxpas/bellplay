@@ -41,6 +41,36 @@
 		"title" : "grainscript~ | corpus lab",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-122",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1950.0, 1510.0, 246.0, 23.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "$x2:$i1 ",
+					"id" : "obj-121",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2177.0, 1552.0, 102.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"embed" : 1,
+						"versionnumber" : 80300
+					}
+,
+					"text" : "bach.eval $x2:$i1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-148",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -132,7 +162,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1068.0, 1225.0, 1128.0, 23.0 ],
+					"patching_rect" : [ 1068.0, 1225.0, 1211.0, 23.0 ],
 					"text" : "t l l"
 				}
 
@@ -2488,7 +2518,7 @@
 				"box" : 				{
 					"allowcentershift" : 0,
 					"allowzoom" : 0,
-					"center" : [ -0.15493237375, -4339.45301065250078 ],
+					"center" : [ -0.3433267575, -6811.436004428749584 ],
 					"convexcombmax" : [ 1.0 ],
 					"convexcombmin" : [ 0.0 ],
 					"database" : "#0corpus",
@@ -2509,7 +2539,7 @@
 					"showborder" : 1,
 					"table" : "grains",
 					"versionnumber" : 30100,
-					"vzoom" : 1.0,
+					"vzoom" : 4.582899643602607,
 					"where" : [ "null" ],
 					"xlabel" : "none",
 					"ylabel" : "none",
@@ -2977,6 +3007,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-136", 0 ],
 					"source" : [ "obj-120", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-114", 4 ],
+					"source" : [ "obj-121", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-114", 2 ],
+					"source" : [ "obj-122", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-121", 0 ],
+					"source" : [ "obj-122", 1 ]
 				}
 
 			}
@@ -3570,7 +3621,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-114", 4 ],
+					"destination" : [ "obj-121", 1 ],
 					"source" : [ "obj-61", 1 ]
 				}
 
@@ -3591,7 +3642,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-114", 2 ],
+					"destination" : [ "obj-122", 0 ],
 					"source" : [ "obj-63", 1 ]
 				}
 
