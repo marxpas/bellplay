@@ -57,7 +57,8 @@ printerror = (
             [ "code" $stop == 0 ]
             [ "type" 2 - $stop ]
             [ "text" $text ]
-        )
+        );
+        null
     )
 );
 
@@ -697,6 +698,7 @@ render = (
             [ "normalize" $normalize ]
             [ "spread" $spread ]
         );
+        msg("roll", "getlength");
         msg("roll", "dump");
         ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1))
