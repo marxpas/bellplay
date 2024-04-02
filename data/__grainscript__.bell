@@ -1361,7 +1361,7 @@ mix = (
     $interp = 0,
     $normalize = 0 -> (
         if $grains == null then printerror("you must provide a values for @grains in mix()");
-        $numgrains = length($grains);
+        $numgrains = length($grains) + 1;
         [
             [ "fx" "mix" ]
             [ "params"
