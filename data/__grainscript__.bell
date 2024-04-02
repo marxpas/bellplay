@@ -742,6 +742,28 @@ $addref(
 
 ## ------------------------------------------------------------
 
+importmidi = (
+    $path -> (
+        if $path == null then printerror("You must provide a value for @path in importmidi()");
+        msg("import", [
+            "roll"
+            $path
+        ]);
+        GS_TMP_ROLL_OUTPUT
+    )
+);
+
+$addref(
+    @name "importmidi",
+    @description "Imports a midi file, as a list of events, each with the following keys: 'pitch' , 'velocity', 'onset', 'voice', 'channel', and 'duration'",
+    @arguments (
+        $addarg(@name "path", @type "symbol", @description "input midi file path.")
+    ),
+    @output $addout(@description "midi events" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 hanning = ($N = 16 -> ($N -= 1; sin((pi * (0...$N)) / $N) ** 2.));
 
 $addref(
