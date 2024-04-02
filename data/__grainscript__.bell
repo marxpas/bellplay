@@ -1428,7 +1428,7 @@ GS_BUFFER_ARITHMETIC_FUNC = (
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
         ## raise error if @operand is null
-        if $operand == null then print("you must provide a value for @operand in " + $name + "().");
+        if $operand == null then printerror("you must provide a value for @operand in " + $name + "().");
 
         ## check if @operand is grain, envelope or scalar.
         $depth = depth($operand);
