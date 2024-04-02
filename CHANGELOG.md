@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add arithmetic buffer functions (`plus()` `multiply()` and `divide()`) with docs.
+- `gs.utils.getbuffer` abstraction to clear `file` values in grains.
 - @analyze argument in `wavesynth()` to keep analysis optional (default 0). Does not seem to make much of a difference, however.
 - include optional `@prefade` argument in `process()`.
 - add `fade()` function and docs.
