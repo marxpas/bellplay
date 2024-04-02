@@ -148,6 +148,14 @@ GS_REF_RESAMPLINGMODE_OPTIONS = (
     $addopt(@value "cubic")
 );
 
+GS_REF_RESAMPLINGPOLICY_OPTIONS = (
+    $addopt(@value 0 @description "don't")
+    $addopt(@value 1 @description "to lowest")
+    $addopt(@value 2 @description "to highest")
+    $addopt(@value 3 @description "to most common")
+    $addopt(@value 4 @description "to max. current")
+);
+
 ## ------------------------------------------------------------
 
 pcdiff = (
@@ -1339,6 +1347,217 @@ $addref(
 
 ## ------------------------------------------------------------
 
+mix = (
+    $grains = null,
+    $gains = null,
+    $offsets = null,
+    $resamplingfiltersize = 11,
+    $resamplingmode = 'sinc',
+    $resamplingpolicy = 3,
+    $ampunit = 0,
+    $envampunit = 0,
+    $timeunit = 0,
+    $envtimeunit = 2,
+    $interp = 0,
+    $normalize = 0 -> (
+        if $grains == null then printerror("you must provide a values for @grains in mix()");
+        $numgrains = length($grains);
+        [
+            [ "fx" "mix" ]
+            [ "params"
+                [ "buffers" for $g in $grains collect $g.getkey("file") ]
+                [ "gains" right(1 $gains, -$numgrains) ]
+                [ "offsets" right(0 $offsets, -$numgrains) ]
+                [ "resamplingfiltersize" $resamplingfiltersize ]
+                [ "resamplingmode" $resamplingmode ]
+                [ "resamplingpolicy" $resamplingpolicy ]
+                [ "ampunit" $ampunit ]
+                [ "envampunit" $envampunit ]
+                [ "timeunit" $timeunit ]
+                [ "envtimeunit" $envtimeunit ]
+                [ "interp" $interp ]
+                [ "normalize" $normalize ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "mix",
+    @description "Audio process command for mixing multiple buffers. See #process.",
+    @arguments (
+        $addarg(@name "grains", @type "list/llll", @description "list of grains to mix.")
+        $addarg(@name "gains", @default "null" @type "list/llll/null", @description "gain values for each grain to mix, as either a single number or envelope.")
+        $addarg(@name "offsets", @default "null", @type "list/null", @description "time offset values for each grain to mix.")
+        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+            GS_REF_RESAMPLINGMODE_OPTIONS
+        )
+        $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
+            GS_REF_RESAMPLINGPOLICY_OPTIONS
+        )
+        $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "envampunit", @default 0, @type "int", @description "envelope amplitude unit." @options
+            GS_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "envelope time unit." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "interp", @default 0, @type "int", @description "band-limited interpolation via resampling for non-integer offsets." @options 
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "normalize", @default 0, @type "int", @description "normalization." @options 
+            GS_REF_NORMALIZE_OPTIONS
+        )
+    ),
+    @output $addout(@description "mix command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+GS_BUFFER_ARITHMETIC_FUNC = (
+    $name,
+    $operand,
+    $resamplingfiltersize = 11,
+    $resamplingmode = "sinc",
+    $resamplingpolicy = 3,
+    $envtimeunit = 2 -> (
+        ## raise error if @operand is null
+        if $operand == null then print("you must provide a value for @operand in " + $name + "().");
+
+        ## check if @operand is grain, envelope or scalar.
+        $depth = depth($operand);
+        $length = length($operand);
+        if $depth > 1 || $length > 1 then (
+            $file = $operand.getkey("file");
+            ## if grain, assign file to @operand
+            if $file != null then (
+                $operand = $file
+            ) else (
+                ## if envelope, clean format and wrap if envelope
+                $operand = [ bpf($operand) ]
+            )
+        );
+        [
+            [ "fx" $name ]
+            [ "params"
+                [ "operand" left($operand, 1) ]
+                [ "resamplingfiltersize" $resamplingfiltersize ]
+                [ "resamplingmode" $resamplingmode ]
+                [ "resamplingpolicy" $resamplingpolicy ]
+                [ "envtimeunit" $envtimeunit ]
+            ]
+        ]
+    )
+);
+
+GS_BUFFER_ARITHMETIC_ARGS = (
+    $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
+    $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+        GS_REF_RESAMPLINGMODE_OPTIONS
+    )
+    $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
+        GS_REF_RESAMPLINGPOLICY_OPTIONS
+    )
+    $addarg(@name "envtimeunit", @default 2, @type "int", @description "envelope time unit." @options
+        GS_REF_TIMEUNIT_OPTIONS
+    )
+);
+
+## ------------------------------------------------------------
+
+plus = (
+    $operand,
+    $resamplingfiltersize = 11,
+    $resamplingmode = "sinc",
+    $resamplingpolicy = 3,
+    $envtimeunit = 2 -> (
+        GS_BUFFER_ARITHMETIC_FUNC(
+            @name "plus"
+            @operand $operand
+            @resamplingfiltersize $resamplingfiltersize
+            @resamplingmode $resamplingmode
+            @resamplingpolicy $resamplingpolicy
+            @envtimeunit $envtimeunit
+        )
+    )
+);
+
+$addref(
+    @name "plus",
+    @description "Audio process command for performing addition on a buffer. See #process.",
+    @arguments (
+        $addarg(@name "operand", @type "int/float/llll", @description "value to add to buffer, either as a single number, envelope, or grain.")
+        GS_BUFFER_ARITHMETIC_ARGS
+    ),
+    @output $addout(@description "plus command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+multiply = (
+    $operand,
+    $resamplingfiltersize = 11,
+    $resamplingmode = "sinc",
+    $resamplingpolicy = 3,
+    $envtimeunit = 2 -> (
+        GS_BUFFER_ARITHMETIC_FUNC(
+            @name "multiply"
+            @operand $operand
+            @resamplingfiltersize $resamplingfiltersize
+            @resamplingmode $resamplingmode
+            @resamplingpolicy $resamplingpolicy
+            @envtimeunit $envtimeunit
+        )
+    )
+);
+
+$addref(
+    @name "multiply",
+    @description "Audio process command for performing multiplication on a buffer. See #process.",
+    @arguments (
+        $addarg(@name "operand", @type "int/float/llll", @description "value to multiply buffer by, either as a single number, envelope, or grain.")
+        GS_BUFFER_ARITHMETIC_ARGS
+    ),
+    @output $addout(@description "multiply command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+divide = (
+    $operand,
+    $resamplingfiltersize = 11,
+    $resamplingmode = "sinc",
+    $resamplingpolicy = 3,
+    $envtimeunit = 2 -> (
+        GS_BUFFER_ARITHMETIC_FUNC(
+            @name "divide"
+            @operand $operand
+            @resamplingfiltersize $resamplingfiltersize
+            @resamplingmode $resamplingmode
+            @resamplingpolicy $resamplingpolicy
+            @envtimeunit $envtimeunit
+        )
+    )
+);
+
+$addref(
+    @name "divide",
+    @description "Audio process command for performing division on a buffer. See #process.",
+    @arguments (
+        $addarg(@name "operand", @type "int/float/llll", @description "value to divide buffer by, either as a single number, envelope, or grain.")
+        GS_BUFFER_ARITHMETIC_ARGS
+    ),
+    @output $addout(@description "divide command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 wavesetrepeat = (
     $times = 2,
     $span = 1,
@@ -1574,7 +1793,7 @@ $addref(
         $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
             GS_REF_RESAMPLINGMODE_OPTIONS
         )
-        $addarg(@name "resamplingfiltersize", @default 0, @type "int", @description "resampling filter size.")
+        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
     ),
     @output $addout(@description "resample command" @type "llll")
 );
