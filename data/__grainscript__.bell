@@ -589,7 +589,11 @@ wavesynth = (
     $dur = 100,
     $waveform = 0,
     $normalize = 0,
-    $iterationmode = 1 -> (
+    $iterationmode = 1,
+    $analyze = 0 -> (
+        $pitch = null;
+        $loudness = null;
+        $duration = null;
         $notes = for $fq in $freq, $a in $amp, $d in $dur with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
             ## reset bpf for each note
             $bpf = null;
@@ -609,10 +613,41 @@ wavesynth = (
                 ## replace @fq with starting frequency
                 $fq = $start
             );
+
+            ## convert to midicents
+            $mc = f2mc($fq);
+
+            ## collect pitch and loudness if analysis is skipped
+            if $analyze != 1 then (
+                $pitch _= $mc;
+                $loudness _= $a;
+                $duration _= $d
+            );
+
             ## format note
-            [ f2mc($fq) $d $a * 127. $bpf]
+            [ $mc $d $a * 127. $bpf]
         );
         msg("wavesynth", 
+            ## if analysis is skipped, construct features manually
+            (if $analyze != 1 then (
+                    $pitch = $pitch ||| 1;
+                    $loudness = $loudness ||| 1;
+                    $duration = $duration ||| 1;
+                    [ 'features' 
+                        [ "pitch" minimum($pitch) ]
+                        [ "loudness" maximum($loudness) ]
+                        [ "duration" maximum($duration) ]
+                        [ "pitchclass" fmod($pitch * .01, 12.)]
+                        [ "file_id" null ]
+                        [ "mfcc" null ]
+                        [ "pitchsalience" 1 ]
+                        [ "zerox" 0 ]
+                        [ "centroid" reduce(mc2f($pitch) * $loudness, #+) / reduce($loudness, #+) ]
+                        [ "offset" 0 ]
+                        [ "file_end" maximum($duration) ]
+                    ]
+                )
+            )
             [ "synth" 
                 [ "normalize" $normalize ]
                 [ "waveform" $waveform + 1 ]

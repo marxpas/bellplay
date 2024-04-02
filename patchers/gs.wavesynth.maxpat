@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 112.0, 165.0, 491.0, 386.0 ],
+		"rect" : [ 112.0, 165.0, 495.0, 428.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,24 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"comment" : "",
+					"id" : "obj-8",
+					"index" : 2,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 324.666666666666629, 183.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 221.0, 199.0, 242.0, 23.0 ],
+					"patching_rect" : [ 236.0, 240.0, 242.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
@@ -61,7 +73,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 296.0, 160.0, 23.0 ],
+					"patching_rect" : [ 10.0, 337.0, 160.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0
 					}
@@ -227,7 +239,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 83.0, 199.0, 35.0, 23.0 ],
+					"patching_rect" : [ 83.0, 186.5, 35.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -245,11 +257,11 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-33",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 340.0, 30.0, 30.0 ]
+					"patching_rect" : [ 10.0, 379.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -257,7 +269,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-31",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -283,14 +295,14 @@
 					"id" : "obj-17",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "bang" ],
-					"patching_rect" : [ 148.0, 145.0, 165.0, 23.0 ],
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "bang" ],
+					"patching_rect" : [ 148.0, 145.0, 284.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.keys roll synth @out nm"
+					"text" : "bach.keys roll synth features @out nm @nullmode 1"
 				}
 
 			}
@@ -301,7 +313,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 83.0, 249.0, 355.0, 23.0 ],
+					"patching_rect" : [ 83.0, 290.0, 355.0, 23.0 ],
 					"text" : "ears.roll.synthesis~ @normalize 0 @numchannels 1 @assemble 1"
 				}
 
@@ -332,6 +344,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-17", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-17", 2 ]
 				}
 
 			}
@@ -392,28 +411,6 @@
 
 			}
  ],
-		"dependency_cache" : [ 			{
-				"name" : "bach.iter.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.keys.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.roll.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.reg~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.roll.synthesis~.mxo",
-				"type" : "iLaX"
-			}
- ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "subtlelight",
 				"default" : 				{
