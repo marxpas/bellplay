@@ -558,7 +558,7 @@ transcribe = (
             $rate = null
         );
         ## color note based on detuning
-        $color = [ 6 fmod(abs(($mccopy - $mc) / 1200) + .5, 1) ];
+        $color = [ 6 fmod(abs(($mccopy - $mc) / 1200) + .66, 1) ];
 
         ## clean gain and panning slots
         $pan = if $pan != null then [ 2 bpf($pan) ];
