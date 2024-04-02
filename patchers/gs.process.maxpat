@@ -108,12 +108,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 53.0, 138.0, 58.0, 23.0 ],
+									"text" : "r #0reset"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 249.0, 125.0, 102.0, 23.0 ],
+									"patching_rect" : [ 255.0, 125.0, 102.0, 23.0 ],
 									"text" : "gs.utils.getbuffer"
 								}
 
@@ -125,7 +137,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 144.0, 89.0, 124.0, 23.0 ],
+									"patching_rect" : [ 150.0, 89.0, 124.0, 23.0 ],
 									"text" : "bach.filter - s @out m"
 								}
 
@@ -137,7 +149,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "bang" ],
-									"patching_rect" : [ 11.0, 50.0, 285.0, 23.0 ],
+									"patching_rect" : [ 11.0, 50.0, 297.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -176,8 +188,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 183.0, 152.0, 23.0 ],
-									"text" : "ears.div~ @naming copy"
+									"patching_rect" : [ 11.0, 183.0, 158.0, 23.0 ],
+									"text" : "ears.div~ @naming dynamic"
 								}
 
 							}
@@ -228,6 +240,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-7", 0 ]
 								}
 
 							}
@@ -322,12 +341,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 53.0, 138.0, 58.0, 23.0 ],
+									"text" : "r #0reset"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 249.0, 125.0, 102.0, 23.0 ],
+									"patching_rect" : [ 268.0, 125.0, 102.0, 23.0 ],
 									"text" : "gs.utils.getbuffer"
 								}
 
@@ -339,7 +370,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 144.0, 89.0, 124.0, 23.0 ],
+									"patching_rect" : [ 163.0, 89.0, 124.0, 23.0 ],
 									"text" : "bach.filter - s @out m"
 								}
 
@@ -351,7 +382,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "bang" ],
-									"patching_rect" : [ 11.0, 50.0, 285.0, 23.0 ],
+									"patching_rect" : [ 11.0, 50.0, 323.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -390,8 +421,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 185.0, 152.0, 23.0 ],
-									"text" : "ears.times~ @naming copy"
+									"patching_rect" : [ 11.0, 185.0, 171.0, 23.0 ],
+									"text" : "ears.times~ @naming dynamic"
 								}
 
 							}
@@ -442,6 +473,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-7", 0 ]
 								}
 
 							}
@@ -506,7 +544,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 377.0, 476.0, 366.0, 269.0 ],
+						"rect" : [ 377.0, 476.0, 414.0, 272.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -536,12 +574,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 53.0, 138.0, 58.0, 23.0 ],
+									"text" : "r #0reset"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 242.0, 132.0, 102.0, 23.0 ],
+									"patching_rect" : [ 261.0, 132.0, 102.0, 23.0 ],
 									"text" : "gs.utils.getbuffer"
 								}
 
@@ -553,7 +603,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 137.0, 96.0, 124.0, 23.0 ],
+									"patching_rect" : [ 156.0, 96.0, 124.0, 23.0 ],
 									"text" : "bach.filter - s @out m"
 								}
 
@@ -565,7 +615,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "bang" ],
-									"patching_rect" : [ 11.0, 50.0, 271.0, 23.0 ],
+									"patching_rect" : [ 11.0, 50.0, 309.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -604,8 +654,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 192.0, 145.0, 23.0 ],
-									"text" : "ears.plus~ @naming copy"
+									"patching_rect" : [ 11.0, 192.0, 164.0, 23.0 ],
+									"text" : "ears.plus~ @naming dynamic"
 								}
 
 							}
@@ -656,6 +706,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-7", 0 ]
 								}
 
 							}
