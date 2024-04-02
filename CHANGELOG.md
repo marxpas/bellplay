@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Change default grain color in score
 
+### Fixed
+
+- path bug in `mix()` due to native bach format input into `us.utils.getbuffer'
+
 ## [0.0.2-beta]
 
 ### Added
