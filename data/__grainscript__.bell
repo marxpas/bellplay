@@ -45,7 +45,8 @@ $addout = (
 
 msg = (
     $to, $msg -> (
-        $do1 = [ $to $msg ]
+        $do1 = [ $to $msg ];
+        null
     )
 );
 
@@ -776,9 +777,12 @@ export = (
 
 $addref(
     @name "export",
-    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. See #render function.",
+    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. For .wav files, mono stem files can be separately exported. See #render function.",
     @arguments (
         $addarg(@name "path", @type "symbol", @description "output file path.")
+        $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for .wav files." @options
+            GS_REF_SWITCH_OPTIONS
+        )
     )
 );
 
