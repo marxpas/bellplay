@@ -740,22 +740,25 @@ $addref(
 ## ------------------------------------------------------------
 
 export = (
-    $path, $stems = 0 -> (
+    $path, $stems = 0, $format = "float32" -> (
         $pathinfo = getpathinfo($path);
         $path = $pathinfo.'path';
         $ext = $pathinfo.'extension';
         $filepath = $path + $ext;
         if $ext == ".wav" then (
-            $format = [ "format" "float32" ];
+            $settings = [ "format" $format ];
             if $stems == 0 then (
-                msg("buffer", $format [ "writewav" $filepath ]))
-            else (
-                msg("stems", [ "buffer" $format ] $pathinfo )
+                for $setting in $settings with @unwrap 1 do (
+                    msg("buffer", $setting)
+                );
+                msg("buffer", "writewave" $filepath )
+            ) else (
+                msg("stems", [ "buffer" $settings ] $pathinfo )
             )
         ) else if $ext == ".mid" || $ext == ".midi" then (
-            print("roll" "exportmidi" $filepath)
+            msg("roll", "exportmidi" $filepath)
         ) else if $ext == ".llll" then (
-            print("roll" "write" $filepath)
+            msg("roll", "write" $filepath)
         ) else (
             printerror("file format is not supported:" $ext)
         )
