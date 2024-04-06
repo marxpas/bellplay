@@ -51,6 +51,16 @@ msg = (
 
 ## ------------------------------------------------------------
 
+getpathinfo = (
+    $x -> (
+        msg("pathinfo", $x);
+        if GS_PATH_INFO == null then printerror("invalid path:" $x);
+        GS_PATH_INFO
+    )
+);
+
+## ------------------------------------------------------------
+
 printerror = (
     $text, $stop = 1 -> (
         msg("console",
@@ -691,6 +701,7 @@ $addref(
 
 render = (
    $numchannels = 2, $panmode = 0, $sr = 48000, $normalize = 0, $play = 0, $spread = 0, $process = null -> (
+        if $numchannels < 1 then printerror("number of channels must be greater than 0");
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
@@ -729,8 +740,25 @@ $addref(
 ## ------------------------------------------------------------
 
 export = (
-    $path -> (
-        msg("export", $path)
+    $path, $stems = 0 -> (
+        $pathinfo = getpathinfo($path);
+        $path = $pathinfo.'path';
+        $ext = $pathinfo.'extension';
+        $filepath = $path + $ext;
+        if $ext == ".wav" then (
+            $format = [ "format" "float32" ];
+            if $stems == 0 then (
+                msg("buffer", $format [ "writewav" $filepath ]))
+            else (
+                msg("stems", [ "buffer" $format ] $pathinfo )
+            )
+        ) else if $ext == ".mid" || $ext == ".midi" then (
+            print("roll" "exportmidi" $filepath)
+        ) else if $ext == ".llll" then (
+            print("roll" "write" $filepath)
+        ) else (
+            printerror("file format is not supported:" $ext)
+        )
     )
 );
 
