@@ -9,11 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Include pathinfo router to get path and extension for any given path.
 - Handle attempts to render empty sequences.
 - Add `importmidi()` function.
 
 ### Changed
 
+- Reimplement `export` API to support audio stems.
 - Change default grain color in score
 
 ### Fixed

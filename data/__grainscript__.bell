@@ -741,18 +741,27 @@ $addref(
 
 export = (
     $path, $stems = 0, $format = "float32" -> (
+        ## get path info
         $pathinfo = getpathinfo($path);
         $path = $pathinfo.'path';
         $ext = $pathinfo.'extension';
         $filepath = $path + $ext;
+
+        ## check file type
         if $ext == ".wav" then (
+            ## get audio format
             $settings = [ "format" $format ];
+
+            ## check if stem or single file export
             if $stems == 0 then (
+                ## send settings first
                 for $setting in $settings with @unwrap 1 do (
                     msg("buffer", $setting)
                 );
+                ## send write message
                 msg("buffer", "writewave" $filepath )
             ) else (
+                ## send stem info and let subpatcher do the rest
                 msg("stems", [ "buffer" $settings ] $pathinfo )
             )
         ) else if $ext == ".mid" || $ext == ".midi" then (
