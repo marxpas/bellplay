@@ -358,12 +358,14 @@ bpf = (
 
 $addref(
     @name "bpf",
-    @description "Formats an numeric list into a breaking point function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range.",
+    @description "Formats an numeric list into a breakpoint function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range.",
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
-        $addarg(@name "func", @default "null", @type "function/null", @description "optional lambda function for y axis")
+        $addarg(@name "xfunc", @default "<normalization function>", @type "function/null", @description "optional lambda function for x axis")
+        $addarg(@name "yfunc", @default "null", @type "function/null", @description "optional lambda function for y axis")
+        $addarg(@name "sfunc", @default "null", @type "function/null", @description "optional lambda function for bpf slope")
     ),
-    @output $addout(@description "breaking point function", @type "llll")
+    @output $addout(@description "breakpoint function", @type "llll")
 );
 
 
@@ -371,9 +373,28 @@ $addref(
 
 x2dx = ($x -> for $a in left($x, -1), $b in right($x, 1) collect $b - $a);
 
+$addref(
+    @name "x2dx",
+    @description "Given a numeric list, outputs the difference between adjacent elements. Inverse of #dx2x.",
+    @arguments (
+        $addarg(@name "x", @type "list", @description "list for compute differences for.")
+    ),
+    @output $addout(@description "dx", @type "list")
+);
+
 ## ------------------------------------------------------------
 
 dx2x = ($dx, $st = 0 -> $st for $x in $dx collect $st += $x);
+
+$addref(
+    @name "dx2x",
+    @description "Outputs a numeric list where each element is the result of the cumulative sum of the input list, given a starting value. Inverse of #x2dx.",
+    @arguments (
+        $addarg(@name "dx", @type "list", @description "list of differences/deltas.")
+        $addarg(@name "st", @default 0 @type "int/float", @description "starting value")
+    ),
+    @output $addout(@description "x", @type "list")
+);
 
 ## ------------------------------------------------------------
 
@@ -385,6 +406,15 @@ revbpf = (
             ($s -> left($s, 1) rev(right($s, 1)) * -1)
         )
     )
+);
+
+$addref(
+    @name "revbpf",
+    @description "Reverses a breakpoint function.",
+    @arguments (
+        $addarg(@name "bpf", @type "llll", @description "breakpoint function to reverse")
+    ),
+    @output $addout(@description "breakpoint function", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -940,9 +970,9 @@ samplebpf = (
 
 $addref(
     @name "samplebpf",
-    @description "Samples an interpolated value from a breaking point function, given a list of normalized indices. See #bpf function.",
+    @description "Samples an interpolated value from a breakpoint function, given a list of normalized indices. See #bpf function.",
     @arguments (
-        $addarg(@name "bpf", @type "llll", @description "breaking point function")
+        $addarg(@name "bpf", @type "llll", @description "breakpoint function")
         $addarg(@name "pts", @type "int/float/list", @description "sampling point/s")
     ),
     @output $addout(@description "interpolated bpf values" @type "int/float/list")
