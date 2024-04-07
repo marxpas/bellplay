@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Correct documentation for `clip` and `overdrive`.
 - Fix bug from changing language in `wavesynth`.
 - fix `file_end` bug in `gs.corpus` where all file duration where being sent.
 - path bug in `mix()` due to native bach format input into `us.utils.getbuffer'
