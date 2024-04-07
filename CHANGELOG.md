@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Implement `pathinfo` for MIDI imports and loading corpora.
 - Reimplement `export` API to support audio stems.
 - Change default grain color in score
 
@@ -22,6 +23,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - fix `file_end` bug in `gs.corpus` where all file duration where being sent.
 - path bug in `mix()` due to native bach format input into `us.utils.getbuffer'
+
+### Removed
+
+- Remove `gs.utils.adjustpath` and keep using `getpathinfo` API to verify paths.
 
 ## [0.0.2-beta]
 

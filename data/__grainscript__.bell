@@ -201,8 +201,12 @@ setcorpus = (
         if $filepath == null then (
             printerror("you must provide a value for @filepath in setcorpus()")
         );
+        $pathinfo = getpathinfo($filepath);
+        $path = $pathinfo."path";
+        $extension = $pathinfo."extension";
+        if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
         GS_GRAINS = null;
-        msg("db", "read" $filepath)
+        msg("db", "read" $path + $extension)
     )
 );
 
@@ -790,11 +794,20 @@ $addref(
 
 importmidi = (
     $path -> (
+        GS_TMP_ROLL_OUTPUT = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
-        msg("import", [
-            "roll"
-            $path
-        ]);
+        $pathinfo = getpathinfo($path);
+        $ext = $pathinfo."extension";
+        $path = $pathinfo."path";
+        $filepath = $path + $ext;
+        if $ext == ".midi" || $ext == ".mid" then (
+            msg("import", [
+                "roll"
+                $filepath
+            ])
+        ) else (
+            printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
+        );
         GS_TMP_ROLL_OUTPUT
     )
 );
