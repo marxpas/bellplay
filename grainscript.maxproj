@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3795294582,
+	"modificationdate" : 3795295735,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -80,6 +80,11 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"gs.utils.searchbar.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
@@ -97,6 +102,11 @@
 					"projectrelativepath" : "./media"
 				}
 
+			}
+,
+			"search.png" : 			{
+				"kind" : "imagefile",
+				"local" : 1
 			}
 
 		}
