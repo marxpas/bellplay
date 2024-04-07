@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change argument naming in wavesynth to full names: `frequency`, `amplitude`, and `duration`.
 - Implement `pathinfo` for MIDI imports and loading corpora.
 - Reimplement `export` API to support audio stems.
 - Change default grain color in score

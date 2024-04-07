@@ -608,9 +608,9 @@ $addref(
 ## ------------------------------------------------------------
 
 wavesynth = (
-    $freq = 440,
-    $amp = .5,
-    $dur = 100,
+    $frequency = 440,
+    $amplitude = .5,
+    $duration = 100,
     $waveform = 0,
     $normalize = 0,
     $iterationmode = 1,
@@ -618,7 +618,7 @@ wavesynth = (
         $pitch = null;
         $loudness = null;
         $duration = null;
-        $notes = for $fq in $freq, $a in $amp, $d in $dur with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
+        $notes = for $fq in $frequency, $a in $amplitude, $d in $duration with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
             ## reset bpf for each note
             $bpf = null;
 
@@ -686,9 +686,9 @@ $addref(
     @name "wavesynth",
     @description "Generates an grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
     @arguments (
-        $addarg(@name "freq", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
-        $addarg(@name "amp", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial.")
-        $addarg(@name "dur", @type "int/float/list", @default 48000, @description "duration values for each partial, in milliseconds.")
+        $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
+        $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial.")
+        $addarg(@name "duration", @type "int/float/list", @default 100, @description "duration values for each partial, in milliseconds.")
         $addarg(@name "waveform", @type "int", @default 0, @description "waveform type.", @options 
             $addopt(@value 0, @description "sinusoid")
             $addopt(@value 1, @description "triangular")
