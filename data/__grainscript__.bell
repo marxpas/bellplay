@@ -634,7 +634,7 @@ transcribe = (
 
         ## clean gain and panning slots
         $pan = if $pan != null then [ 2 bpf($pan) ];
-        $gain = if $gain != null then [ 1 bpf($gain, ($y -> max(1, $y * 127.))) ];
+        $gain = if $gain != null then [ 1 bpf($gain, @yfunc ($y -> max(1, $y * 127.))) ];
 
         ## get chord velocity and duration
         $vel = if $gain then maximum(trans($gain.1)::2) else min(127, $grain."loudness" * 512);
@@ -673,7 +673,7 @@ wavesynth = (
     $analyze = 0 -> (
         $pitch = null;
         $loudness = null;
-        $duration = null;
+        $fullduration = null;
         $notes = for $fq in $frequency, $a in $amplitude, $d in $duration with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
             ## reset bpf for each note
             $bpf = null;
@@ -688,10 +688,19 @@ wavesynth = (
                     $start = $start:(1 2)
                 );
                 ## generate breakpoint relative to starting frequency and convert to cents
-                $bpf = [ "breakpoints" bpf($fq, ($y -^ $start -> r2c($y/$start))) ];
+                $bpf = [ "breakpoints" bpf($fq, @yfunc ($y -^ $start -> r2c($y/$start))) ];
                 
                 ## replace @fq with starting frequency
                 $fq = $start
+            );
+
+            ## check if amp is a bpf
+            if length($a) > 1 || depth($a) > 1 then (
+                $bpf = bpf($a, @yfunc ($y -> max(1, $y * 127.)));
+                $gain = [ 1 $bpf ];
+                $a = maximum((trans($bpf)::2) ||| 1)
+            ) else (
+                $a *= 127.
             );
 
             ## convert to midicents
@@ -701,22 +710,22 @@ wavesynth = (
             if $analyze != 1 then (
                 $pitch _= $mc;
                 $loudness _= $a;
-                $duration _= $d
+                $fullduration _= $d
             );
 
             ## format note
-            [ $mc $d $a * 127. $bpf]
+            [ $mc $d $a $bpf [ "slots" $gain ]]
         );
         msg("wavesynth", 
             ## if analysis is skipped, construct features manually
             (if $analyze != 1 then (
                     $pitch = $pitch ||| 1;
                     $loudness = $loudness ||| 1;
-                    $duration = $duration ||| 1;
+                    $fullduration = $fullduration ||| 1;
                     [ 'features' 
                         [ "pitch" minimum($pitch) ]
                         [ "loudness" maximum($loudness) ]
-                        [ "duration" maximum($duration) ]
+                        [ "duration" maximum($fullduration) ]
                         [ "pitchclass" fmod($pitch * .01, 12.)]
                         [ "file_id" null ]
                         [ "mfcc" null ]
@@ -743,7 +752,7 @@ $addref(
     @description "Generates an grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
     @arguments (
         $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
-        $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial.")
+        $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial. Each value can be a single number or envelope.")
         $addarg(@name "duration", @type "int/float/list", @default 100, @description "duration values for each partial, in milliseconds.")
         $addarg(@name "waveform", @type "int", @default 0, @description "waveform type.", @options 
             $addopt(@value 0, @description "sinusoid")
@@ -1111,7 +1120,7 @@ freeverb = (
     $width = .5,
     $tail = -1,
     $dry = 1., 
-    $wet = 1/3. -> (
+    $wet = 1/6. -> (
         [
             ["fx" "freeverb"]
             [ "params" 
@@ -1139,7 +1148,7 @@ $addref(
             $addopt(@value ">0" @description "duration in ms")
         )
         $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
-        $addarg(@name "wet", @default "0.33", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
+        $addarg(@name "wet", @default "0.16", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
     @output $addout(@description "freeverb command" @type "llll")
 );

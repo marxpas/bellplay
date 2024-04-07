@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add support for amplitude envelopes in `wavesynth`.
 - Add documentation for `x2dx`, `dx2x` and `revbpf`.
 - Add `x2dx`, `dx2x`, and `revbpf` functions.
 - Add searchbar to documentation.
@@ -20,13 +21,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Change language: breaking point -> breakpoint.
 - Change `bpf()` to include @xfunc, @yfunc, and @sfunc arguments.
-- Change argument naming in wavesynth to full names: `frequency`, `amplitude`, and `duration`.
+- Change argument naming in `wavesynth` to full names: `frequency`, `amplitude`, and `duration`.
 - Implement `pathinfo` for MIDI imports and loading corpora.
 - Reimplement `export` API to support audio stems.
 - Change default grain color in score
 
 ### Fixed
 
+- Fix bug from changing language in `wavesynth`.
 - fix `file_end` bug in `gs.corpus` where all file duration where being sent.
 - path bug in `mix()` due to native bach format input into `us.utils.getbuffer'
 
