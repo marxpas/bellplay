@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3795295735,
+	"modificationdate" : 3795432811,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -85,6 +85,11 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"gs.docs.credits.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
@@ -105,6 +110,21 @@
 			}
 ,
 			"search.png" : 			{
+				"kind" : "imagefile",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/grainscript/media",
+					"projectrelativepath" : "./media"
+				}
+
+			}
+,
+			"gpl_logo.png" : 			{
+				"kind" : "imagefile",
+				"local" : 1
+			}
+,
+			"ccm_logo.png" : 			{
 				"kind" : "imagefile",
 				"local" : 1
 			}
