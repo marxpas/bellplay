@@ -1458,8 +1458,8 @@ $addref(
     @name "soundtouch",
     @description "Audio process command for applying soundtouch pitch-shifting/time-stretching to a buffer. See #process.",
     @arguments (
-        $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as single number or envelope.")
-        $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number or envelope.")
+        $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as a single number.")
+        $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number.")
         $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift." @options
             GS_REF_PITCH_FORMAT_OPTIONS
         )
