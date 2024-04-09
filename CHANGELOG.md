@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Reimplemented `choose` function to support weights.
+- Exit if query is null
 
 ### Fixed
 
