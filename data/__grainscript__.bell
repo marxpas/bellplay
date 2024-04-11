@@ -1,4 +1,4 @@
-GS_VERSION = "v0.0.3-beta";
+GS_VERSION = "v0.0.4-beta";
 GS_GRAINS = null;
 GS_REF = null;
 GS_REF_TIMEUNIT_OPTIONS = null;
