@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change silence filter — using absdiff between segment min and max.
 - Major refactoring of corpus analysis module. using `gs.analysis` as UI for controlling segmentation.
 - Reimplemented `choose` function to support weights.
 - Exit if query is null
