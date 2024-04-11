@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add file playback support in corpus window.
 - Add support for blind segmentation in corpus module.
 - Basic version of `gs.docs.credits`, with logos.
 
