@@ -8,10 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add support for blind segmentation in corpus module.
 - Basic version of `gs.docs.credits`, with logos.
 
 ### Changed
 
+- Major refactoring of corpus analysis module. using `gs.analysis` as UI for controlling segmentation.
 - Reimplemented `choose` function to support weights.
 - Exit if query is null
 
