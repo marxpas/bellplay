@@ -1272,6 +1272,43 @@ $addref(
 
 ## ------------------------------------------------------------
 
+window = (
+    $wintype = "hann",
+    $winnormalized = 0,
+    $zeropadding = 0,
+    $zerophase = 0 -> (
+        [
+            [ "fx" "window" ]
+            [ "params" 
+                [ "wintype" $wintype ]
+                [ "winnormalized" $winnormalized ]
+                [ "zeropadding" $zeropadding ]
+                [ "zerophase" $zerophase ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "window",
+    @description "Audio process command for applying a windowing function to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "wintype", @default "hann", @type "symbol", @description "window type, as a symbol" @options
+            GS_REF_WINDOW_OPTIONS
+        )
+        $addarg(@name "winnormalized", @default 0, @type "int", @description "normalize window samples to sum up to 1 and multiply by a factor of 2." @options 
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "zeropadding", @default 0, @type "int", @description "number of samples for zero padding.")
+        $addarg(@name "zerophase", @default 0, @type "int", @description "zero phase windowing" @options 
+            GS_REF_SWITCH_OPTIONS
+        )
+    ),
+    @output $addout(@description "window command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 biquad = (
     $freq = 2000,
     $type = 0,
