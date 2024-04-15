@@ -685,7 +685,8 @@ wavesynth = (
     $waveform = 0,
     $normalize = 0,
     $iterationmode = 1,
-    $analyze = 0 -> (
+    $analyze = 0,
+    $sr = 48000 -> (
         $pitch = null;
         $loudness = null;
         $fullduration = null;
@@ -755,6 +756,7 @@ wavesynth = (
             [ "synth" 
                 [ "normalize" $normalize ]
                 [ "waveform" $waveform + 1 ]
+                [ "sr" $sr ]
             ]
             [ 'roll' 'addchord' [ 0 $notes ] ] 
         );
