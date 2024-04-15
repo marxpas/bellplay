@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Add `window` function with docs.
 - Include `sr` argument in `wavesynth`
+- Add `gs.generate~`.
 
 ### Changed
 
