@@ -1207,18 +1207,28 @@ envelope = (
     $duration = 1000 -> (
         $depth = depth($envelope);
         $length = length($envelope);
-        if $depth > 1 || $length > 1 then ($envelope = bpf($envelope));
+        if $depth > 1 || $length > 1 then ($envelope = [ bpf($envelope) ]);
         msg("generate", 
             [
                 [ "fx" "envelope"]
                 [ "params" 
-                    [ [ $envelope ] ]
+                    [ $envelope ]
                     [ "duration" $duration ]
                 ]
             ]
         );
         gs_makegrain(GS_TMP_BUFF, @duration $duration)
     )
+);
+
+$addref(
+    @name "envelope",
+    @description "Generates an audio envelope as a grain, given a single number or a breakpoint function.",
+    @arguments (
+        $addarg(@name "envelope", @default 0, @type "int/float/llll", @description "envelope, as either a single number or a breakpoint function.")
+        $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration, in milliseconds")
+    ),
+    @output $addout(@description "envelope" @type "llll")
 );
 
 ## ------------------------------------------------------------
