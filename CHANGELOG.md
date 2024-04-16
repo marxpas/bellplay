@@ -10,7 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Add `window` function with docs.
 - Include `sr` argument in `wavesynth`
-- Add `gs.generate~`.
+- Add `gs.generate~` with functions, pending docs.
+- Add `gs_makegrain` function for default dummy grains.
 
 ### Changed
 

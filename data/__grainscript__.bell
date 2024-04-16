@@ -1172,6 +1172,57 @@ $addref(
 
 ## ------------------------------------------------------------
 
+gs_makegrain = (
+    $file,
+    $duration,  
+    $offset = 0,
+    $file_id = -1,
+    $mfcc = 0. :* 13,
+    $pitch = 0,
+    $pitchsalience = 0,
+    $centroid = 0,
+    $loudness = 0,
+    $zerox = 0 -> (
+        [
+            [ "file" $file ]
+            [ "offset" $offset ]
+            [ "duration" $duration ]
+            [ "file_end" $duration ]
+            [ "file_id" $file_id ]
+            [ "mfcc" $mfcc ]
+            [ "pitch" $pitch ]
+            [ "pitchclass" fmod($pitch / 100.0, 12) ]
+            [ "pitchsalience" $pitchsalience ]
+            [ "centroid" $centroid ]
+            [ "loudness" $loudness ]
+            [ "zerox" $zerox ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
+envelope = (
+    $envelope = 0, 
+    $duration = 1000 -> (
+        $depth = depth($envelope);
+        $length = length($envelope);
+        if $depth > 1 || $length > 1 then ($envelope = bpf($envelope));
+        msg("generate", 
+            [
+                [ "fx" "envelope"]
+                [ "params" 
+                    [ [ $envelope ] ]
+                    [ "duration" $duration ]
+                ]
+            ]
+        );
+        gs_makegrain(GS_TMP_BUFF, @duration $duration)
+    )
+);
+
+## ------------------------------------------------------------
+
 paulstretch = (
     $stretching = 1,
     $timeunit = 2,
