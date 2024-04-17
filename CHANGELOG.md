@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Fix naming mode for `window` process.
 - Fix reset bug in `gs.generate~`.
+- Fix param order in `envelope` function.
 
 ### Removed
 

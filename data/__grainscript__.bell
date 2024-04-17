@@ -1212,8 +1212,8 @@ envelope = (
             [
                 [ "fx" "envelope"]
                 [ "params" 
-                    [ $envelope ]
                     [ "duration" $duration ]
+                    [ $envelope ]
                 ]
             ]
         );
