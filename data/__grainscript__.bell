@@ -1640,6 +1640,48 @@ $addref(
 
 ## ------------------------------------------------------------
 
+groove = (
+    $rate = 1,
+    $duration = 1000 -> (
+        if $file == null then (
+            $file = envelope($phase, @duration $duration).getkey("file")
+        );
+        [
+            [ "fx" "groove" ]
+            [ "params"
+                [ "rate" $file ]
+            ]
+        ]
+    )
+);
+
+expand = (
+    $grain -> (
+        if $grain.getkey("file") == null then printerror("invalid value for @grain in expand()");
+        $grain.setkey("offset", 0).setkey("duration", $grain.getkey("file_end"))
+    )
+);
+
+## ------------------------------------------------------------
+
+waveshape = (
+    $phase = 1,
+    $duration = 1000 -> (
+        $file = $phase.getkey("file");
+        if $file == null then (
+            $file = envelope($phase, @duration $duration).getkey("file")
+        );
+        [
+            [ "fx" "waveshape" ]
+            [ "params"
+                [ "phase" $file ]
+            ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 repeat = (
     $duration = 2,
     $timeunit = 2 -> (

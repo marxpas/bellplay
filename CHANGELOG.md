@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add `gs.generate~` with functions, pending docs.
 - Add `gs_makegrain` function for default dummy grains.
 - Add more generators: `cycle`, `noise`, and `phasor`. Pending docs.
+- New processors: `groove` and `waveshape`. Pending docs.
+- Add `expand` function.
 
 ### Changed
 
