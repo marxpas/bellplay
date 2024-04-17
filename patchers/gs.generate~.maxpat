@@ -251,7 +251,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 457.0, 212.0, 66.0, 23.0 ],
+					"patching_rect" : [ 457.0, 212.0, 73.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -261,7 +261,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p envelope"
+					"text" : "p envelope~"
 				}
 
 			}
