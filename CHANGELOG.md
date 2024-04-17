@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add `cycle` generator.
 - Add `envelope` function with docs.
 - Add `window` function with docs.
 - Include `sr` argument in `wavesynth`
@@ -15,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add `gs_makegrain` function for default dummy grains.
 
 ### Changed
+
+- Prevent `ears.essentia~` errors from interrupting code.
 
 ### Fixed
 

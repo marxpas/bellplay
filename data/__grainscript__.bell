@@ -1202,6 +1202,29 @@ gs_makegrain = (
 
 ## ------------------------------------------------------------
 
+cycle = (
+    $frequency = 0, 
+    $duration = 1000 -> (
+        $file = $frequency.getkey("file");
+        $pitch = 0;
+        if $file == null then (
+            $file = envelope($frequency, @duration $duration).getkey("file");
+            $pitch = f2mc(maximum($frequency ||| 1))
+        );
+        msg("generate", 
+            [
+                [ "fx" "cycle"]
+                [ "params" 
+                    [ $file ]
+                ]
+            ]
+        );
+        gs_makegrain(GS_TMP_BUFF, @loudness .707, @pitch $pitch @duration $duration)
+    )
+);
+
+## ------------------------------------------------------------
+
 envelope = (
     $envelope = 0, 
     $duration = 1000 -> (
