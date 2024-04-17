@@ -627,8 +627,8 @@ transcribe = (
         ## get pitch value
         $mc = $grain."pitch";
 
-        ## assign notehead based on pitch value
-        $notehead = [ 23 if $mc < 0 then 88 else 85];
+        ## assign notehead based on pitch salience
+        $notehead = [ 23 (if $grain."pitchsalience" <= 0.01 then 88 else 85) ];
 
         ## replace pitch with mc centroid if unpitched.
         $mc = if $mc < 0 then f2mc($grain."centroid") else $mc;
@@ -1202,24 +1202,60 @@ gs_makegrain = (
 
 ## ------------------------------------------------------------
 
-cycle = (
-    $frequency = 0, 
-    $duration = 1000 -> (
+GS_OSC_GEN_FUNC = (
+    $name,
+    $frequency = 440,
+    $duration = 50 -> (
         $file = $frequency.getkey("file");
-        $pitch = 0;
-        if $file == null then (
+        if $name == "noise" then (
+            $frequency = rand(40, 1500)
+        ) else if $file == null then (
             $file = envelope($frequency, @duration $duration).getkey("file");
-            $pitch = f2mc(maximum($frequency ||| 1))
+            if depth($frequency) > 1 || length($frequency) > 1 then (
+                $frequency = trans(bpf($frequency))::(2 1)
+            )
         );
         msg("generate", 
             [
-                [ "fx" "cycle"]
+                [ "fx" $name]
                 [ "params" 
-                    [ $file ]
+                    if $name == "noise" then (
+                        [ "tail" $duration ] 
+                        [ "bang" ]
+                    ) else (
+                        [ $file ]
+                    )
                 ]
             ]
         );
-        gs_makegrain(GS_TMP_BUFF, @loudness .707, @pitch $pitch @duration $duration)
+        $pitch = f2mc($frequency);
+        gs_makegrain(GS_TMP_BUFF, 
+            @pitchsalience $name != "noise" 
+            @loudness 1.0, 
+            @pitch $pitch 
+            @duration $duration
+            @centroid $frequency
+        )
+    )
+);
+
+noise = (
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("noise", @duration $duration)
+    )
+);
+
+cycle = (
+    $frequency = 440, 
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration)
+    )
+);
+
+phasor = (
+    $frequency = 440, 
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration)
     )
 );
 
