@@ -8,14 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Add `cycle` generator.
 - Add `envelope` function with docs.
 - Add `window` function with docs.
 - Include `sr` argument in `wavesynth`
-- Add `gs.generate~` with functions, pending docs.
+- Add `gs.generate~` with basic generators: `cycle`, `noise`, and `phasor`.
 - Add `gs_makegrain` function for default dummy grains.
-- Add more generators: `cycle`, `noise`, and `phasor`. Pending docs.
-- New processors: `groove` and `waveshape`. Pending docs.
+- New processors: `groove` and `waveshape`.
 - Add `expand` function.
 
 ### Changed

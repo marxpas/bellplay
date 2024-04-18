@@ -766,7 +766,7 @@ wavesynth = (
 
 $addref(
     @name "wavesynth",
-    @description "Generates an grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
+    @description "Generates a grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
     @arguments (
         $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
         $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial. Each value can be a single number or envelope.")
@@ -1250,11 +1250,24 @@ GS_OSC_GEN_FUNC = (
     )
 );
 
+## ------------------------------------------------------------
+
 noise = (
     $duration = 50 -> (
         GS_OSC_GEN_FUNC("noise", @duration $duration)
     )
 );
+
+$addref(
+    @name "noise",
+    @description "Generates white noise as a grain.",
+    @arguments (
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
 
 cycle = (
     $frequency = 440, 
@@ -1263,11 +1276,33 @@ cycle = (
     )
 );
 
+$addref(
+    @name "cycle",
+    @description "Generates a sinusoidal oscillator as a grain.",
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 phasor = (
     $frequency = 440, 
     $duration = 50 -> (
         GS_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration)
     )
+);
+
+$addref(
+    @name "phasor",
+    @description "Generates a unipolar ramp oscillator as a grain.",
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1651,6 +1686,24 @@ $addref(
 
 ## ------------------------------------------------------------
 
+expand = (
+    $grain -> (
+        if $grain.getkey("file") == null then printerror("invalid value for @grain in expand()");
+        $grain.setkey("offset", 0).setkey("duration", $grain.getkey("file_end"))
+    )
+);
+
+$addref(
+    @name "expand",
+    @description "Expands a grain to its maximum duration, such that it uses the full length of its reference buffer.",
+    @arguments (
+        $addarg(@name "grain", @type "llll", @description "grain to expand.")
+    )
+    @output $addout(@description "grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 groove = (
     $rate = 1,
     $duration = 1000 -> (
@@ -1667,17 +1720,20 @@ groove = (
     )
 );
 
-expand = (
-    $grain -> (
-        if $grain.getkey("file") == null then printerror("invalid value for @grain in expand()");
-        $grain.setkey("offset", 0).setkey("duration", $grain.getkey("file_end"))
+$addref(
+    @name "groove",
+    @description "Audio processing command for applying variable-rate sample playback to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "rate", @type "int/float/list/llll", @description "playback rate, as either a single number, envelope, or control grain.")
+        $addarg(@name "duration", @type "int/float", @description "duration in milliseconds. Ignored if @rate is a grain.")
     )
+    @output $addout(@description "groove command" @type "llll")
 );
 
 ## ------------------------------------------------------------
 
 waveshape = (
-    $phase = 1,
+    $phase = 0 1,
     $duration = 1000 -> (
         $file = $phase.getkey("file");
         if $file == null then (
@@ -1690,6 +1746,16 @@ waveshape = (
             ]
         ]
     )
+);
+
+$addref(
+    @name "waveshape",
+    @description "Audio process command for applying wave-shaping to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "phase", @default 0 1, @type "int/float", @description "phase envelope between 0 and 1, either as an envelope or a grain.")
+        $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
+    ),
+    @output $addout(@description "waveshape command" @type "llll")
 );
 
 ## ------------------------------------------------------------
