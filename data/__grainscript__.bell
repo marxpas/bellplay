@@ -1214,6 +1214,8 @@ GS_OSC_GEN_FUNC = (
             if depth($frequency) > 1 || length($frequency) > 1 then (
                 $frequency = trans(bpf($frequency))::(2 1)
             )
+        ) else (
+            $duration = $frequency.getkey("duration")
         );
         msg("generate", 
             [

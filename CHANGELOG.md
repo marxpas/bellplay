@@ -20,10 +20,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Include `ears.dcfilter~` in `gs.features` to minimize analysis errors.
 - Prevent `ears.essentia~` errors from interrupting code.
 
 ### Fixed
 
+- Fix duration bug in `cycle`, when using buffers as input.
 - Fix naming mode for `window` process.
 - Fix reset bug in `gs.generate~`.
 - Fix param order in `envelope` function.
