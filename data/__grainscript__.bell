@@ -358,7 +358,7 @@ bpf = (
 
 $addref(
     @name "bpf",
-    @description "Formats an numeric list into a breakpoint function, in the form of [<x> <y> <slope>] tuples, where <x> is normalized to the 0-1 range.",
+    @description "Formats an numeric list into a breakpoint function, in the form of [<x> <y> <slope>] tuples. By default, <x> is normalized to the 0-1 range. To prevent this, set @xfunc to null.",
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
         $addarg(@name "xfunc", @default "<normalization function>", @type "function/null", @description "optional lambda function for x axis")
