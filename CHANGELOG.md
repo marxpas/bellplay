@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix bug in `groove` function.
 - Fix duration bug in `cycle`, when using buffers as input.
 - Fix naming mode for `window` process.
 - Fix reset bug in `gs.generate~`.

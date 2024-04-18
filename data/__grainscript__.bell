@@ -1645,8 +1645,9 @@ $addref(
 groove = (
     $rate = 1,
     $duration = 1000 -> (
+        $file = $rate.getkey("file");
         if $file == null then (
-            $file = envelope($phase, @duration $duration).getkey("file")
+            $file = envelope($rate, @duration $duration).getkey("file")
         );
         [
             [ "fx" "groove" ]
