@@ -1733,6 +1733,35 @@ $addref(
 
 ## ------------------------------------------------------------
 
+freqshift = (
+    $shift -> (
+        if $shift == null then printerror("you must provide a value for @shift in freqshift().");
+        $file = $shift.getkey("file");
+        if $file != null then (
+            $shift = $file
+        ) else (
+            $shift = [ bpf($shift) ]
+        );
+        [
+            [ "fx" "freqshift" ]
+            [ "params"
+                [ "shift" $shift ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "freqshift",
+    @description "Audio process command for applying frequency shifting to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "shift", @type "int/float/list/llll", @description "frequency shift in Hertz, as either a single number, an envelope or grain.")
+    ),
+    @output $addout(@description "freqshift command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 waveshape = (
     $phase = 0 1,
     $duration = 1000 -> (
