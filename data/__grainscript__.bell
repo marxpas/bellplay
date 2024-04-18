@@ -1762,6 +1762,43 @@ $addref(
 
 ## ------------------------------------------------------------
 
+retune = (
+    $pitchgrid = 0 -> (
+        if $pitchgrid == null then printerror("you must provide a value for @pitchgrid in retune().");
+        $pitchgrid = $pitchgrid.thin().fmod(12) * 100;
+        $len = $pitchgrid.length();
+        if $len <= 2 then (
+            $pitchgrid = left($pitchgrid :* (4 - $len), 3) + (0 1 2)
+        );
+        $pitchgrid = $pitchgrid.sort();
+        $notebase = $pitchgrid:1;
+        $pitchgrid -= $notebase;
+        $pitchgrid = right($pitchgrid, 1);
+        $notebase = round($notebase * .01);
+        [
+            [ "fx" "retune" ]
+            [ "params"
+                [ "retune" 
+                    [ "enablednotes" "all" ]
+                    [ "notebase" $notebase ]
+                    [ "notelist" $pitchgrid ]
+                ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "retune",
+    @description "Audio process command for applying autotune-like pitch retuning to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "pitchgrid", @default 0, @type "int/float/list", @description "pitch grid to retune to, as a list of pitch classes.")
+    ),
+    @output $addout(@description "retune command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 waveshape = (
     $phase = 0 1,
     $duration = 1000 -> (
