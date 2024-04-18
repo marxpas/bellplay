@@ -681,7 +681,7 @@ $addref(
 wavesynth = (
     $frequency = 440,
     $amplitude = .5,
-    $duration = 100,
+    $duration = 50,
     $waveform = 0,
     $normalize = 0,
     $iterationmode = 1,
