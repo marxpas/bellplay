@@ -1809,8 +1809,9 @@ GS_BUFFER_ARITHMETIC_FUNC = (
             )
         );
         [
-            [ "fx" $name ]
+            [ "fx" "arithmetic" ]
             [ "params"
+                [ "operator" $name ]
                 [ "operand" left($operand, 1) ]
                 [ "resamplingfiltersize" $resamplingfiltersize ]
                 [ "resamplingmode" $resamplingmode ]
@@ -1865,6 +1866,35 @@ $addref(
 
 ## ------------------------------------------------------------
 
+minus = (
+    $operand,
+    $resamplingfiltersize = 11,
+    $resamplingmode = "sinc",
+    $resamplingpolicy = 3,
+    $envtimeunit = 2 -> (
+        GS_BUFFER_ARITHMETIC_FUNC(
+            @name "minus"
+            @operand $operand
+            @resamplingfiltersize $resamplingfiltersize
+            @resamplingmode $resamplingmode
+            @resamplingpolicy $resamplingpolicy
+            @envtimeunit $envtimeunit
+        )
+    )
+);
+
+$addref(
+    @name "minus",
+    @description "Audio process command for performing subtraction on a buffer. See #process.",
+    @arguments (
+        $addarg(@name "operand", @type "int/float/llll", @description "value to subtract from buffer, either as a single number, envelope, or grain.")
+        GS_BUFFER_ARITHMETIC_ARGS
+    ),
+    @output $addout(@description "minus command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 multiply = (
     $operand,
     $resamplingfiltersize = 11,
@@ -1872,7 +1902,7 @@ multiply = (
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
         GS_BUFFER_ARITHMETIC_FUNC(
-            @name "multiply"
+            @name "times"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
             @resamplingmode $resamplingmode
@@ -1901,7 +1931,7 @@ divide = (
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
         GS_BUFFER_ARITHMETIC_FUNC(
-            @name "divide"
+            @name "div"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
             @resamplingmode $resamplingmode
