@@ -829,6 +829,7 @@ $addref(
             GS_REF_SWITCH_OPTIONS
         )
         $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
+        $addarg(@name "fade", @type "int/float", @default 5, @description "fade in/out applied to every grain, in milliseconds")
         $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
 );
