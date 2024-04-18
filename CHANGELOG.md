@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [0.0.6-beta]
+
+### Added
+
 - Add `envelope` function with docs.
 - Add `window` function with docs.
 - Include `sr` argument in `wavesynth`
