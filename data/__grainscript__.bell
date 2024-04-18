@@ -787,12 +787,21 @@ $addref(
 ## ------------------------------------------------------------
 
 render = (
-   $numchannels = 2, $panmode = 0, $sr = 48000, $normalize = 0, $play = 0, $spread = 0, $process = null -> (
+   $numchannels = 2, 
+   $panmode = 0, 
+   $sr = 48000, 
+   $normalize = 0, 
+   $play = 0, 
+   $spread = 0,
+   $fade = 5,
+   $process = null -> (
         if $numchannels < 1 then printerror("number of channels must be greater than 0");
         msg("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
             [ "sr" $sr ]
+            [ "fadein" $fade ]
+            [ "fadeout" $fade ]
             [ "normalize" $normalize ]
             [ "spread" $spread ]
         );

@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Include `ears.dcfilter~` in `gs.features` to minimize analysis errors.
 - Prevent `ears.essentia~` errors from interrupting code.
+- Change routing to `sampler` to include control over @fade attribute in `ears.roll.sampler~`
 
 ### Fixed
 
