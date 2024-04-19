@@ -1141,6 +1141,16 @@ $addref(
 
 ## ------------------------------------------------------------
 
+dcfilter = ( -> [ [ "fx" "dcfilter" ] ]);
+
+$addref(
+    @name "dcfilter",
+    @description "Audio process command for removing DC offset from a buffer. See #process.",
+    @output $addout(@description "dcfilter command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 freeverb = (
     $roomsize = .5,
     $damp = .5,
