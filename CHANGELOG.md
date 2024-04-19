@@ -8,12 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Add processors: `dcfilter`, with docs.
+- Add processors: `dcfilter`, `waveshape` (using `lookup~`), with docs.
 - Add generators: `saw` and `tri`, with docs.
 - Add `gs.getcontroller~`.
 - Add `freqshift` and `retune` functions, with docs.
 
 ### Changed
+
+- Change name of `waveshape` (proxy for `wave~`) to `scrub`, to accomodate for `waveshape` (proxy for `lookup~`).
 
 ### Fixed
 

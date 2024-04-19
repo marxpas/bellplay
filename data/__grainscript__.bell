@@ -1865,12 +1865,40 @@ waveshape = (
 
 $addref(
     @name "waveshape",
+    @description "Audio process command for waveshaping a buffer. See #process.",
+    @arguments (
+        $addarg(@name "phase", @default -1 1, @type "int/float", @description "buffer phase envelope between -1 and 1, either as an envelope or a grain.")
+        $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
+    ),
+    @output $addout(@description "waveshape command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+scrub = (
+    $phase = 0 1,
+    $duration = 1000 -> (
+        $file = $phase.getkey("file");
+        if $file == null then (
+            $file = envelope($phase, @duration $duration).getkey("file")
+        );
+        [
+            [ "fx" "scrub" ]
+            [ "params"
+                [ "phase" $file ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "scrub",
     @description "Audio process command for scrubbing through a buffer. See #process.",
     @arguments (
         $addarg(@name "phase", @default 0 1, @type "int/float", @description "buffer phase envelope between 0 and 1, either as an envelope or a grain.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
     ),
-    @output $addout(@description "waveshape command" @type "llll")
+    @output $addout(@description "scrub command" @type "llll")
 );
 
 ## ------------------------------------------------------------
