@@ -670,9 +670,9 @@ $addref(
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to add to rendering sequence.")
         $addarg(@name "onset", @type "int/float", @default 0, @description "grain onset in milliseconds.")
-        $addarg(@name "pan", @type "int/float/list/llll", @description "normalized panning value or envelope.")
-        $addarg(@name "gain", @type "int/float/llll", @description "gain value or envelope.")
-        $addarg(@name "detune", @type "int/float", @description "detuning amount in cents.")
+        $addarg(@name "pan", @type "int/float/list/llll", @default "null" @description "normalized panning value or envelope.")
+        $addarg(@name "gain", @type "int/float/llll", @default "null" @description "gain value or envelope.")
+        $addarg(@name "detune", @type "int/float", @default "null" @description "detuning amount in cents.")
     )
 );
 
