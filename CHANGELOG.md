@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Add `gs.getcontroller~`.
 - Add `freqshift` and `retune` functions, with docs.
+- Add generators: `saw` and `tri`, with docs.
 
 ### Changed
 

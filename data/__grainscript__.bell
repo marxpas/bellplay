@@ -1289,6 +1289,44 @@ $addref(
 
 ## ------------------------------------------------------------
 
+saw = (
+    $frequency = 440, 
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("saw", @frequency $frequency, @duration $duration)
+    )
+);
+
+$addref(
+    @name "saw",
+    @description "Generates a bipolar, anti-aliased sawtooth oscillator as a grain.",
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+tri = (
+    $frequency = 440, 
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration)
+    )
+);
+
+$addref(
+    @name "tri",
+    @description "Generates a bipolar, anti-aliased triangular oscillator as a grain.",
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 phasor = (
     $frequency = 440, 
     $duration = 50 -> (
@@ -1817,9 +1855,9 @@ waveshape = (
 
 $addref(
     @name "waveshape",
-    @description "Audio process command for applying wave-shaping to a buffer. See #process.",
+    @description "Audio process command for scrubbing through a buffer. See #process.",
     @arguments (
-        $addarg(@name "phase", @default 0 1, @type "int/float", @description "phase envelope between 0 and 1, either as an envelope or a grain.")
+        $addarg(@name "phase", @default 0 1, @type "int/float", @description "buffer phase envelope between 0 and 1, either as an envelope or a grain.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
     ),
     @output $addout(@description "waveshape command" @type "llll")
