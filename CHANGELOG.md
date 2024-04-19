@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add clear UI component in `gs.utils.searchbar`.
 - Add processors: `dcfilter`, `waveshape` (using `lookup~`), with docs.
 - Add generators: `saw` and `tri`, with docs.
 - Add `gs.getcontroller~`.
@@ -15,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Set cold inlet in `gs.getcontroller~`.
 - Change name of `waveshape` (proxy for `wave~`) to `scrub`, to accomodate for `waveshape` (proxy for `lookup~`).
 
 ### Fixed

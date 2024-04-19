@@ -148,6 +148,7 @@
 , 			{
 				"box" : 				{
 					"comment" : "",
+					"cool" : 1,
 					"id" : "obj-1",
 					"index" : 1,
 					"maxclass" : "inlet",
