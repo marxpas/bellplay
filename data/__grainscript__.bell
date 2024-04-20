@@ -1817,7 +1817,7 @@ expand = (
 
 $addref(
     @name "expand",
-    @description "Expands a grain to its maximum duration, such that it uses the full length of its reference buffer.",
+    @description "Modifies offset and duration of a grain, such that it uses the full length of its reference buffer.",
     @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to expand.")
