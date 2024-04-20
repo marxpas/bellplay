@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 106.0, 76.0, 138.0 ],
+		"rect" : [ 59.0, 106.0, 172.0, 112.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,11 +40,23 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 70.0, 8.0, 89.0, 23.0 ],
+					"text" : "ears.in @out m"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 80.0, 60.0, 22.0 ],
+					"patching_rect" : [ 8.0, 80.0, 60.0, 23.0 ],
 					"text" : "ears.out~"
 				}
 
@@ -56,7 +68,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 8.0, 43.0, 53.0, 23.0 ],
+					"patching_rect" : [ 8.0, 43.0, 81.0, 23.0 ],
 					"text" : "phasor~"
 				}
 
@@ -68,7 +80,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 8.0, 8.0, 52.0, 22.0 ],
+					"patching_rect" : [ 8.0, 8.0, 52.0, 23.0 ],
 					"text" : "ears.in~"
 				}
 
@@ -88,17 +100,14 @@
 				}
 
 			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "ears.in~.mxo",
-				"type" : "iLaX"
-			}
 , 			{
-				"name" : "ears.out~.mxo",
-				"type" : "iLaX"
+				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
 			}
  ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "subtlelight",
 				"default" : 				{

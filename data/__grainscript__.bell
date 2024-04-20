@@ -2413,6 +2413,74 @@ $addref(
 
 ## ------------------------------------------------------------
 
+panning = (
+    $position,
+    $numchannels = 2,
+    $panmode = 0,
+    $panlaw = 1,
+    $rangetype = 1,
+    $range = 0. 1.,
+    $compensate = 1,
+    $spread = 0,    
+    $envtimeunit = 2 -> (
+        $file = $position.getkey("file");
+        if $file != null then (
+            $position = $file
+        ) else if length($position) > 1 || depth($position) > 1 then (
+            $position = [ bpf($position) ]
+        );
+        [
+            [ "fx" "panning" ]
+            [ "params"
+                [ "position" $position ]
+                [ "numchannels" $numchannels ]
+                [ "panlaw" $panlaw ]
+                [ "panmode" $panmode ]
+                [ "rangetype" $rangetype ]
+                [ "range" $range ]
+                [ "compensate" $compensate ]
+                [ "envtimeunit" $envtimeunit ]
+                [ "spread" $spread ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "panning",
+    @description "Audio process command for applying 1-D panning to a buffer. See #process.",
+    @arguments (
+        $addarg(@name "position" @type "int/float/list/llll", @description "panning position, as either a single number, envelope, or grain.")
+        $addarg(@name "numchannels", @default 2, @type "int", @description "number of output channels.")
+        $addarg(@name "panmode", @type "int", @default 0, @description "panning mode." @options 
+            $addopt(@value 0, @description "linear")
+            $addopt(@value 1, @description "circular")
+        )
+        $addarg(@name "panlaw", @default 1, @type "int", @description "panning law." @options 
+            $addopt(@value 0 @description "nearest neighbor")
+            $addopt(@value 1 @description "cosine")
+        )
+        $addarg(@name "rangetype", @default 1, @type "int", @description "panning range type." @options
+            $addopt(@value 0 @description "custom")
+            $addopt(@value 1 @description "0 to 1")
+            $addopt(@value 2 @description "-1 to 1")
+            $addopt(@value 3 @description "loudspeaker number — 0-based")
+            $addopt(@value 4 @description "loudspeaker number — 1-based")
+        )
+        $addarg(@name "range", @default 0 1, @type "list", @description "panning range, as a <min> <max> value pair. Ignored unless @rangetype is 0")
+        $addarg(@name "compensate", @default 1, @type "int", @description "Reduce gain for multichannel files by a factor of the number of channels." @options
+            GS_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
+        $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope." @options
+            GS_REF_TIMEUNIT_OPTIONS
+        )
+    ),
+    @output $addout(@description "normalize command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 normalize = (
     $level = 1,
     $mix = 1,

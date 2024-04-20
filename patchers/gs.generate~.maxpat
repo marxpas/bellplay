@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 316.0, 126.0, 654.0, 462.0 ],
+		"rect" : [ 504.0, 234.0, 654.0, 462.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -55,7 +55,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 307.0, 130.0 ],
+						"rect" : [ 59.0, 106.0, 284.0, 141.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -90,7 +90,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 81.0, 14.0, 58.0, 23.0 ],
+									"patching_rect" : [ 58.0, 14.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -102,7 +102,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 7.0, 59.0, 267.0, 23.0 ],
+									"patching_rect" : [ 7.0, 62.0, 267.0, 23.0 ],
 									"text" : "ears.process~ gs.process.tri~ @naming dynamic"
 								}
 
@@ -113,7 +113,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 97.0, 63.0, 23.0 ],
+									"patching_rect" : [ 7.0, 106.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -213,7 +213,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 307.0, 130.0 ],
+						"rect" : [ 59.0, 106.0, 302.0, 126.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -260,7 +260,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 7.0, 59.0, 276.0, 23.0 ],
+									"patching_rect" : [ 7.0, 52.0, 276.0, 23.0 ],
 									"text" : "ears.process~ gs.process.saw~ @naming dynamic"
 								}
 
@@ -271,7 +271,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 97.0, 63.0, 23.0 ],
+									"patching_rect" : [ 7.0, 90.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -371,7 +371,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 306.0, 115.0 ],
+						"rect" : [ 59.0, 106.0, 312.0, 194.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -401,12 +401,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "float" ],
+									"patching_rect" : [ 4.0, 51.0, 292.0, 23.0 ],
+									"text" : "t l 0."
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 75.0, 9.0, 58.0, 23.0 ],
+									"patching_rect" : [ 52.0, 80.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -415,10 +427,10 @@
 								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 4.0, 47.0, 292.0, 23.0 ],
+									"patching_rect" : [ 4.0, 120.0, 292.0, 23.0 ],
 									"text" : "ears.process~ gs.process.phasor~ @naming dynamic"
 								}
 
@@ -429,7 +441,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 4.0, 85.0, 63.0, 23.0 ],
+									"patching_rect" : [ 4.0, 158.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -449,6 +461,20 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-2", 1 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-2", 0 ]
 								}
@@ -463,7 +489,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -687,7 +713,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 307.0, 130.0 ],
+						"rect" : [ 59.0, 106.0, 308.0, 212.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -717,12 +743,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "float" ],
+									"patching_rect" : [ 7.0, 56.0, 282.0, 23.0 ],
+									"text" : "t l 0."
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 81.0, 14.0, 58.0, 23.0 ],
+									"patching_rect" : [ 39.0, 94.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -731,10 +769,10 @@
 								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 7.0, 59.0, 282.0, 23.0 ],
+									"patching_rect" : [ 7.0, 135.0, 282.0, 23.0 ],
 									"text" : "ears.process~ gs.process.cycle~ @naming dynamic"
 								}
 
@@ -745,7 +783,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 97.0, 63.0, 23.0 ],
+									"patching_rect" : [ 7.0, 174.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -765,6 +803,20 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-2", 1 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-2", 0 ]
 								}
@@ -779,7 +831,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1484,6 +1536,10 @@
 			}
 , 			{
 				"name" : "ears.envelope~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.in.mxo",
 				"type" : "iLaX"
 			}
 , 			{
