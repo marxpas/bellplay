@@ -459,8 +459,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 165.0, 212.0, 55.0, 23.0 ],
-					"text" : "qlim 150"
+					"patching_rect" : [ 165.0, 212.0, 48.0, 23.0 ],
+					"text" : "qlim 25"
 				}
 
 			}
