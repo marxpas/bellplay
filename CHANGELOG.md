@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add per-channel-style multichannel support for `groove` `lookup` and `wave`.
 - Set scheduler in overdrive and audio interrupt by default.
 - Add clear UI component in `gs.utils.searchbar`.
 - Add processors: `panning`, `dcfilter`, `waveshape` (using `lookup~`), with docs.
