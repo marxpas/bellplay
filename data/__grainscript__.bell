@@ -1225,7 +1225,8 @@ gs_makegrain = (
 GS_OSC_GEN_FUNC = (
     $name,
     $frequency = 440,
-    $duration = 50 -> (
+    $duration = 50,
+    $params = null -> (
         $file = $frequency.getkey("file");
         if $name == "noise" then (
             $frequency = rand(40, 1500)
@@ -1247,6 +1248,7 @@ GS_OSC_GEN_FUNC = (
                     ) else (
                         [ $file ]
                     )
+                    $params
                 ]
             ]
         );
@@ -1328,6 +1330,25 @@ tri = (
 $addref(
     @name "tri",
     @description "Generates a bipolar, anti-aliased triangular oscillator as a grain.",
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+triangle = (
+    $frequency = 440, 
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("triangle", @frequency phasor($frequency, @duration $duration), @duration $duration)
+    )
+);
+
+$addref(
+    @name "triangle",
+    @description "Generates a triangular/ramp oscillator as a grain.",
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1782,7 +1803,8 @@ $addref(
 ## ------------------------------------------------------------
 
 freqshift = (
-    $shift -> (
+    $shift,
+    $negative = 0 -> (
         if $shift == null then printerror("you must provide a value for @shift in freqshift().");
         $file = $shift.getkey("file");
         if $file != null then (
@@ -1793,6 +1815,7 @@ freqshift = (
         [
             [ "fx" "freqshift" ]
             [ "params"
+                [ "negative" float($negative != 0) ]
                 [ "shift" $shift ]
             ]
         ]

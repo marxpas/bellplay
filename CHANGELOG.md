@@ -12,12 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Set scheduler in overdrive and audio interrupt by default.
 - Add clear UI component in `gs.utils.searchbar`.
 - Add processors: `panning`, `dcfilter`, `waveshape` (using `lookup~`), with docs.
-- Add generators: `saw` and `tri`, with docs.
+- Add generators: `triangle`, `saw` and `tri`, with docs.
 - Add `gs.getcontroller~`.
 - Add `freqshift` and `retune` functions, with docs.
 
 ### Changed
 
+- Include @negative arg in `freqshift`.
 - Use mc in/outlets in `freqshift` and `retune` processors.
 - Include phase resetting in cycle and phasor.
 - Set cold inlet in `gs.getcontroller~`.
