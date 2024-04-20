@@ -1827,6 +1827,9 @@ $addref(
     @description "Audio process command for applying frequency shifting to a buffer. See #process.",
     @arguments (
         $addarg(@name "shift", @type "int/float/list/llll", @description "frequency shift in Hertz, as either a single number, an envelope or grain.")
+        $addarg(@name "negative", @type "int", @description "Include negative sideband  in output." @options
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "freqshift command" @type "llll")
 );
