@@ -1618,8 +1618,8 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 91.0, 159.0, 510.0 ],
 					"preventedit" : 1,
-					"rowvpad" : 6.0,
-					"textdecayfactor" : 0.98,
+					"rowvpad" : 5.0,
+					"textdecayfactor" : 0.95,
 					"versionnumber" : 80300
 				}
 
