@@ -1265,7 +1265,8 @@ GS_OSC_GEN_FUNC = (
     $duration = 50,
     $params = null -> (
         $file = $frequency.getkey("file");
-        if $name == "noise" then (
+        $isnoise = $name == "noise";
+        if $isnoise == 1 then (
             $frequency = rand(40, 1500)
         ) else if $file == null then (
             $file = envelope($frequency, @duration $duration).getkey("file");
@@ -1277,21 +1278,21 @@ GS_OSC_GEN_FUNC = (
         );
         msg("generate", 
             [
-                [ "fx" $name]
+                [ "fx" $name ]
                 [ "params" 
-                    if $name == "noise" then (
+                    $params
+                    if $isnoise == 1 then (
                         [ "tail" $duration ] 
                         [ "bang" ]
                     ) else (
                         [ $file ]
                     )
-                    $params
                 ]
             ]
         );
         $pitch = f2mc($frequency);
         gs_makegrain(GS_TMP_BUFF, 
-            @pitchsalience $name != "noise" 
+            @pitchsalience $isnoise == 0 && $frequency > 30
             @loudness 1.0, 
             @pitch $pitch 
             @duration $duration
@@ -1320,10 +1321,30 @@ $addref(
 
 ## ------------------------------------------------------------
 
+randosc = (
+    $frequency = 440;
+    $duration = 50 -> (
+        GS_OSC_GEN_FUNC("rand", @frequency $frequency @duration $duration)
+    )
+);
+
+$addref(
+    @name "randosc",
+    @description "Generates a random oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
+    @arguments (
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 cycle = (
     $frequency = 440, 
-    $duration = 50 -> (
-        GS_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration)
+    $duration = 50,
+    $phase = 0. -> (
+        GS_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
     )
 );
 
@@ -1382,8 +1403,10 @@ $addref(
 
 triangle = (
     $frequency = 440, 
-    $duration = 50 -> (
-        GS_OSC_GEN_FUNC("triangle", @frequency phasor($frequency, @duration $duration), @duration $duration)
+    $duration = 50,
+    $phase = 0,
+    $offset = 0.5 -> (
+        GS_OSC_GEN_FUNC("triangle", @frequency phasor($frequency, @duration $duration @phase $phase), @duration $duration @params [ "phase" float($offset) ])
     )
 );
 
@@ -1402,8 +1425,9 @@ $addref(
 
 phasor = (
     $frequency = 440, 
-    $duration = 50 -> (
-        GS_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration)
+    $duration = 50,
+    $phase = 0. -> (
+        GS_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
     )
 );
 

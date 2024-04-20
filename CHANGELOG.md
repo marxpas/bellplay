@@ -8,11 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Include `phase` argument in `phasor`, `cycle`, and `triangle`.
+- Add generators: `randosc`, `triangle`, `saw` and `tri`, with docs.
 - Add per-channel-style multichannel support for `groove` `lookup` and `wave`.
 - Set scheduler in overdrive and audio interrupt by default.
 - Add clear UI component in `gs.utils.searchbar`.
 - Add processors: `panning`, `dcfilter`, `waveshape` (using `lookup~`), with docs.
-- Add generators: `triangle`, `saw` and `tri`, with docs.
 - Add `gs.getcontroller~`.
 - Add `freqshift` and `retune` functions, with docs.
 

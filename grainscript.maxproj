@@ -2,7 +2,7 @@
 	"name" : "grainscript",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3796473803,
+	"modificationdate" : 3796496203,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -152,6 +152,11 @@
 			}
 ,
 			"gs.process.triangle~.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"gs.process.rand~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
