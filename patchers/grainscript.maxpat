@@ -41,6 +41,56 @@
 		"title" : "grainscript~ | audio granulation in bell",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 679.0, 943.0, 68.0, 23.0 ],
+					"text" : "loadmess 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "int" ],
+					"patching_rect" : [ 679.0, 979.0, 104.0, 23.0 ],
+					"style" : "subtlelight",
+					"text" : "adstatus takeover"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 565.0, 943.0, 68.0, 23.0 ],
+					"text" : "loadmess 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "int" ],
+					"patching_rect" : [ 565.0, 979.0, 108.0, 23.0 ],
+					"style" : "subtlelight",
+					"text" : "adstatus overdrive"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"autofit" : 1,
 					"forceaspect" : 1,
 					"id" : "obj-37",
@@ -62,7 +112,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 14.0, 490.0, 52.0 ],
+					"patching_rect" : [ 10.0, 14.0, 491.0, 52.0 ],
 					"saved_object_attributes" : 					{
 						"allwindowsactive" : 0,
 						"appicon_mac" : "logo.icns",
@@ -256,7 +306,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.0, 7.0, 839.0, 18.0 ],
-					"text" : "v0.0.1-beta",
+					"text" : "v0.0.6-beta",
 					"textjustification" : 1
 				}
 
@@ -382,7 +432,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "Loopback pass-through", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "Virtual 8.1", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -792,6 +842,13 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-116", 1 ],
 					"source" : [ "obj-115", 1 ]
 				}
@@ -822,6 +879,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-155", 0 ],
 					"source" : [ "obj-138", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-14", 0 ]
 				}
 
 			}
@@ -1109,10 +1173,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.group.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "bach.gt.mxo",
 				"type" : "iLaX"
 			}
@@ -1171,6 +1231,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.playkeys.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.portal.mxo",
 				"type" : "iLaX"
 			}
@@ -1192,6 +1256,13 @@
 , 			{
 				"name" : "bach.rev.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.rminus.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "bach.roll.mxo",
@@ -1243,6 +1314,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.channel~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.clip~.mxo",
 				"type" : "iLaX"
 			}
@@ -1251,11 +1326,31 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.dcfilter~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.div~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.dynamics~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.envelope~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.essentia~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.fade~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.format~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1267,11 +1362,27 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.in.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.info~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.minus~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.mixdown~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mix~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1299,7 +1410,15 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.out~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.overdrive~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.pan~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1308,6 +1427,14 @@
 			}
 , 			{
 				"name" : "ears.paulstretch~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.plus~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.process~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1347,7 +1474,15 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.split~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.timesquash~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.times~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1357,6 +1492,21 @@
 , 			{
 				"name" : "ears.waveset.shuffle~.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.window~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.write~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "gs.analysis.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "gs.corpus.maxpat",
@@ -1387,7 +1537,91 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "gs.generate~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.getcontroller~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.cycle~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.freqshift~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.groove~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.lookup~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "gs.process.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.noise~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.phasor~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.retune~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.saw~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.tri~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.wave~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -1415,13 +1649,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.adjustpath.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "gs.utils.debugmode.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
@@ -1430,6 +1657,13 @@
 			}
 , 			{
 				"name" : "gs.utils.errorcatch.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.utils.getbuffer.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
