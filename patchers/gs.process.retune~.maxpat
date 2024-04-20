@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 106.0, 353.0, 145.0 ],
+		"rect" : [ 59.0, 106.0, 262.0, 115.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,8 +44,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4.0, 84.0, 60.0, 23.0 ],
-					"text" : "ears.out~"
+					"patching_rect" : [ 4.0, 84.0, 79.0, 23.0 ],
+					"text" : "ears.mc.out~"
 				}
 
 			}
@@ -56,7 +56,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 6.0, 144.0, 23.0 ],
+					"patching_rect" : [ 91.0, 6.0, 144.0, 23.0 ],
 					"text" : "ears.in @out m @direct 1"
 				}
 
@@ -66,9 +66,9 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
-					"numoutlets" : 5,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 4.0, 47.0, 152.0, 23.0 ],
+					"numoutlets" : 6,
+					"outlettype" : [ "multichannelsignal", "multichannelsignal", "multichannelsignal", "multichannelsignal", "", "" ],
+					"patching_rect" : [ 4.0, 47.0, 171.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"notebase" : 0,
 						"notelist" : [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100 ],
@@ -77,7 +77,7 @@
 						"use_16bit" : [ 0 ]
 					}
 ,
-					"text" : "retune~ @enablednotes all"
+					"text" : "mc.retune~ @enablednotes all"
 				}
 
 			}
@@ -87,9 +87,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 4.0, 6.0, 52.0, 23.0 ],
-					"text" : "ears.in~"
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 4.0, 6.0, 71.0, 23.0 ],
+					"text" : "ears.mc.in~"
 				}
 
 			}
@@ -121,11 +121,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "ears.in~.mxo",
+				"name" : "ears.mc.in~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "ears.out~.mxo",
+				"name" : "ears.mc.out~.mxo",
 				"type" : "iLaX"
 			}
  ],

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Use mc in/outlets in `freqshift` and `retune` processors.
 - Include phase resetting in cycle and phasor.
 - Set cold inlet in `gs.getcontroller~`.
 - Change name of `waveshape` (proxy for `wave~`) to `scrub`, to accomodate for `waveshape` (proxy for `lookup~`).

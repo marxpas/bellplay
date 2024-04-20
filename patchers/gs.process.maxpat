@@ -213,7 +213,6 @@
 					}
 ,
 					"patching_rect" : [ 10.0, 1017.0, 68.0, 23.0 ],
-					"presentation_linecount" : 2,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -8897,6 +8896,14 @@
 			}
 , 			{
 				"name" : "ears.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mc.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mc.out~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
