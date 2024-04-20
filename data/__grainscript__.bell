@@ -1,14 +1,17 @@
 GS_VERSION = "v0.0.6-beta";
 GS_GRAINS = null;
-GS_REF = null;
+GS_REF_LABEL_UTILS = "utilities";
+GS_REF_LABEL_PROCESS = "audio processing";
+GS_REF_LABEL_GEN = "audio generation";
+GS_REF = (for $i in GS_REF_LABEL_UTILS GS_REF_LABEL_PROCESS GS_REF_LABEL_GEN collect [ $i ]);
 GS_REF_TIMEUNIT_OPTIONS = null;
 GS_REF_AUDIO_DOMAIN_OPTIONS = null;
 
 ## ------------------------------------------------------------
 
 $addref = (
-    $name, $description, $arguments, $output -> (
-        GS_REF _= [
+    $name, $description, $arguments, $output, $category = GS_REF_LABEL_UTILS -> (
+        GS_REF.$category _= [
             $name
             [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
@@ -85,6 +88,7 @@ tosymbol = (
 $addref(
     @name "tosymbol",
     @description "Casts input value as a symbol.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x",  @type "anything",@description "value to cast")
     ),
@@ -187,6 +191,7 @@ pcdiff = (
 $addref(
     @name "pcdiff",
     @description "Signed pitch class difference.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "a",  @type "int/float/list",@description "pitch classes.")
         $addarg(@name "b", @type "int/float/list",@description "pitch classes.")
@@ -213,6 +218,7 @@ setcorpus = (
 $addref(
     @name "setcorpus",
     @description "Loads an audio corpus, given an absolute path to a .llll file. See #query function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
     )
@@ -237,6 +243,7 @@ samplelist = (
 $addref(
     @name "samplelist",
     @description "Samples an interpolated value from a numeric list given a normalized index.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "list", @description "list to sample from.")
         $addarg(@name "i", @type "list", @description "normalized sampling index.")
@@ -260,6 +267,7 @@ query = (
 $addref(
     @name "query",
     @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'grains' as the table name. For instance: 'SELECT * FROM grains'. See #setcorpus.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "query", @type "symbol", @default "'SELECT * FROM grains'", @description "sqlite3 query.")
     ),
@@ -279,6 +287,7 @@ getkey = (
 $addref(
     @name "getkey",
     @description "Returns value associated with a grain's key.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain.")
         $addarg(@name "key", @type "symbol", @description "name of grain key.")
@@ -301,6 +310,7 @@ setkey = (
 $addref(
     @name "setkey",
     @description "Modifies the key of a grain.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to modify.")
         $addarg(@name "key", @type "symbol", @description "name of grain key.")
@@ -323,6 +333,7 @@ mapkey = (
 $addref(
     @name "mapkey",
     @description "Modifies the key of a grain via a lambda function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to modify.")
         $addarg(@name "key", @type "symbol", @description "name of grain key.")
@@ -359,6 +370,7 @@ bpf = (
 $addref(
     @name "bpf",
     @description "Formats an numeric list into a breakpoint function, in the form of [<x> <y> <slope>] tuples. By default, <x> is normalized to the 0-1 range. To prevent this, set @xfunc to null.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
         $addarg(@name "xfunc", @default "<normalization function>", @type "function/null", @description "optional lambda function for x axis")
@@ -376,6 +388,7 @@ x2dx = ($x -> for $a in left($x, -1), $b in right($x, 1) collect $b - $a);
 $addref(
     @name "x2dx",
     @description "Given a numeric list, outputs the difference between adjacent elements. Inverse of #dx2x.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "list", @description "list for compute differences for.")
     ),
@@ -389,6 +402,7 @@ dx2x = ($dx, $st = 0 -> $st for $x in $dx collect $st += $x);
 $addref(
     @name "dx2x",
     @description "Outputs a numeric list where each element is the result of the cumulative sum of the input list, given a starting value. Inverse of #x2dx.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "dx", @type "list", @description "list of differences/deltas.")
         $addarg(@name "st", @default 0 @type "int/float", @description "starting value")
@@ -411,6 +425,7 @@ revbpf = (
 $addref(
     @name "revbpf",
     @description "Reverses a breakpoint function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "bpf", @type "llll", @description "breakpoint function to reverse")
     ),
@@ -428,6 +443,7 @@ scale = (
 $addref(
     @name "scale",
     @description "Scales an input value or list from a given range to another.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "int/float/list", @description "value to scale.")
         $addarg(@name "inmin", @type "int/float", @default 0, @description "input minimum value.")
@@ -456,6 +472,7 @@ rand = (
 $addref(
     @name "rand",
     @description "Random floating point number generator.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "a", @type "int/float", @description "max. value if @b is null, else min. value.")
         $addarg(@name "b", @type "int/float", @description "min. value.")
@@ -489,6 +506,7 @@ choose = (
 $addref(
     @name "choose",
     @description "Choose randomly one or more elements from a list, with optional probability weights.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "choices", @type "list", @description "list to choose from.")
         $addarg(@name "n", @default 1, @type "int", @description "number of random choices.")
@@ -506,6 +524,7 @@ c2r = (
 $addref(
     @name "c2r",
     @description "Cents to ratio conversion.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "cents", @type "list/int/float", @description "cents to convert.")
     ),
@@ -521,6 +540,7 @@ r2c = (
 $addref(
     @name "r2c",
     @description "Ratio to cents conversion.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
     ),
@@ -538,6 +558,7 @@ sortgrains = (
 $addref(
     @name "sortgrains",
     @description "Sorts grains by a given key (grain_id, file_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grains", @type "llll", @description "grains to sort.")
         $addarg(@name "key", @type "symbol", @description "grain key to sort by.")
@@ -579,6 +600,7 @@ pitchdiff = (
 $addref(
     @name "pitchdiff",
     @description "Given a list of target midicents and/or pitch classes, returns the signed difference between a pitch in midicents and the nearest midicent/pitch class target.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "pitch", @type "int/float", @description "reference pitch in midicents.")
         $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
@@ -604,6 +626,7 @@ detuning = (
 $addref(
     @name "detuning",
     @description "Given a list of target midicents and/or pitch classes, returns the difference between a grains' original pitch and the nearest midicent/pitch class target. See #transcribe function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "reference grain.")
         $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
@@ -667,6 +690,7 @@ transcribe = (
 $addref(
     @name "transcribe",
     @description "Adds input grain to the rendering sequence. See #setcorpus, #query, and #render functions.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to add to rendering sequence.")
         $addarg(@name "onset", @type "int/float", @default 0, @description "grain onset in milliseconds.")
@@ -767,6 +791,7 @@ wavesynth = (
 $addref(
     @name "wavesynth",
     @description "Generates a grain through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
         $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial. Each value can be a single number or envelope.")
@@ -815,6 +840,7 @@ render = (
 $addref(
     @name "render",
     @description "Triggers audio rendering of all transcribed grains via #transcribe. Note that it's possible to apply post-rendering processing by passing audio processing commands (e.g., #reverse, #freeverb, #clip, etc.) to the @process arguments, but these audio modifications won't be accurately reflected in the score transcription. See #process function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
         $addarg(@name "panmode", @type "int", @default 0, @description "panning mode." @options 
@@ -874,6 +900,7 @@ export = (
 $addref(
     @name "export",
     @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. For .wav files, mono stem files can be separately exported. See #render function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "output file path.")
         $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for .wav files." @options
@@ -907,6 +934,7 @@ importmidi = (
 $addref(
     @name "importmidi",
     @description "Imports a midi file, as a list of events, each with the following keys: 'pitch' , 'velocity', 'onset', 'voice', 'channel', and 'duration'",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input midi file path.")
     ),
@@ -920,6 +948,7 @@ hanning = ($N = 16 -> ($N -= 1; sin((pi * (0...$N)) / $N) ** 2.));
 $addref(
     @name "hanning",
     @description "Generates a hanning window as a numeric list.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "N", @type "int", @default 16, @description "window resolution.")
     ),
@@ -964,6 +993,7 @@ interpolate = (
 $addref(
     @name "interpolate",
     @description "Curve interpolation between two points.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "int/float/list", @description "interpolation point")
         $addarg(@name "a", @type "list", @description "xy coordinates for point A")
@@ -1007,6 +1037,7 @@ samplebpf = (
 $addref(
     @name "samplebpf",
     @description "Samples an interpolated value from a breakpoint function, given a list of normalized indices. See #bpf function.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "bpf", @type "llll", @description "breakpoint function")
         $addarg(@name "pts", @type "int/float/list", @description "sampling point/s")
@@ -1040,6 +1071,7 @@ process = (
 $addref(
     @name "process",
     @description "Applies a sequence of DSP operations to the input grain, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. See @process argument in #render.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
@@ -1077,6 +1109,7 @@ fade = (
 $addref(
     @name "fade",
     @description "Audio process command for applying fadein/fadeout to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "fadein", @default 5, @type "int/float", @description "fade-in duration.")
         $addarg(@name "fadeout", @default 5, @type "int/float", @description "fade-out duration.")
@@ -1118,6 +1151,7 @@ crop = (
 $addref(
     @name "crop",
     @description "Audio process command for cropping a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "start", @type "int/float", @description "start time.")
         $addarg(@name "end", @type "int/float", @description "end time.")
@@ -1136,6 +1170,7 @@ reverse = ( -> [ [ "fx" "reverse" ] ]);
 $addref(
     @name "reverse",
     @description "Audio process command for reversing a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @output $addout(@description "reverse command" @type "llll")
 );
 
@@ -1146,6 +1181,7 @@ dcfilter = ( -> [ [ "fx" "dcfilter" ] ]);
 $addref(
     @name "dcfilter",
     @description "Audio process command for removing DC offset from a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @output $addout(@description "dcfilter command" @type "llll")
 );
 
@@ -1175,6 +1211,7 @@ freeverb = (
 $addref(
     @name "freeverb",
     @description "Audio process command for applying reverb to a buffer. See #process function.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
         $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
@@ -1274,6 +1311,7 @@ noise = (
 $addref(
     @name "noise",
     @description "Generates white noise as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
     ),
@@ -1292,6 +1330,7 @@ cycle = (
 $addref(
     @name "cycle",
     @description "Generates a sinusoidal oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1311,6 +1350,7 @@ saw = (
 $addref(
     @name "saw",
     @description "Generates a bipolar, anti-aliased sawtooth oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1330,6 +1370,7 @@ tri = (
 $addref(
     @name "tri",
     @description "Generates a bipolar, anti-aliased triangular oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1349,6 +1390,7 @@ triangle = (
 $addref(
     @name "triangle",
     @description "Generates a triangular/ramp oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1368,6 +1410,7 @@ phasor = (
 $addref(
     @name "phasor",
     @description "Generates a unipolar ramp oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
@@ -1399,6 +1442,7 @@ envelope = (
 $addref(
     @name "envelope",
     @description "Generates an audio envelope as a grain, given a single number or a breakpoint function.",
+    @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "envelope", @default 0, @type "int/float/llll", @description "envelope, as either a single number or a breakpoint function.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration, in milliseconds")
@@ -1431,6 +1475,7 @@ paulstretch = (
 $addref(
     @name "paulstretch",
     @description "Audio process command for applying time-stretching to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options (
@@ -1471,6 +1516,7 @@ paulfreeze = (
 $addref(
     @name "paulfreeze",
     @description "Audio process command for freezing a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "freezing duration.")
         $addarg(@name "onset", @default 0, @type "int/float/llll", @description "freezing duration.")
@@ -1502,6 +1548,7 @@ overdrive = (
 $addref(
     @name "overdrive",
     @description "Audio process command for applying soft-clip distortion to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "factor", @type "int/float/llll", @description "amplitude distortion factor, either as single number or envelope.")
     ),
@@ -1530,6 +1577,7 @@ window = (
 $addref(
     @name "window",
     @description "Audio process command for applying a windowing function to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "wintype", @default "hann", @type "symbol", @description "window type, as a symbol" @options
             GS_REF_WINDOW_OPTIONS
@@ -1567,6 +1615,7 @@ biquad = (
 $addref(
     @name "biquad",
     @description "Audio process command for applying biquad filtering to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "type", @type "int", @description "filter type." @options
             $addopt(@value 0 @description "lowpass")
@@ -1603,6 +1652,7 @@ clip = (
 $addref(
     @name "clip",
     @description "Audio process command for applying hard-clip distortion to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "factor", @type "int/float/llll", @description "distortion amplitude threshold, either as single number or envelope.")
     ),
@@ -1653,6 +1703,7 @@ rubberband = (
 $addref(
     @name "rubberband",
     @description "Audio process command for applying rubberband pitch-shifting/time-stretching to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "pitchshift", @default 0, @type "int/float/llll", @description "pitch shifting amount, as single number or envelope.")
@@ -1732,6 +1783,7 @@ soundtouch = (
 $addref(
     @name "soundtouch",
     @description "Audio process command for applying soundtouch pitch-shifting/time-stretching to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as a single number.")
         $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number.")
@@ -1766,6 +1818,7 @@ expand = (
 $addref(
     @name "expand",
     @description "Expands a grain to its maximum duration, such that it uses the full length of its reference buffer.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to expand.")
     )
@@ -1793,6 +1846,7 @@ groove = (
 $addref(
     @name "groove",
     @description "Audio processing command for applying variable-rate sample playback to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "rate", @type "int/float/list/llll", @description "playback rate, as either a single number, envelope, or control grain.")
         $addarg(@name "duration", @type "int/float", @description "duration in milliseconds. Ignored if @rate is a grain.")
@@ -1825,6 +1879,7 @@ freqshift = (
 $addref(
     @name "freqshift",
     @description "Audio process command for applying frequency shifting to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "shift", @type "int/float/list/llll", @description "frequency shift in Hertz, as either a single number, an envelope or grain.")
         $addarg(@name "negative", @type "int", @description "Include negative sideband  in output." @options
@@ -1865,6 +1920,7 @@ retune = (
 $addref(
     @name "retune",
     @description "Audio process command for applying autotune-like pitch retuning to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "pitchgrid", @default 0, @type "int/float/list", @description "pitch grid to retune to, as a list of pitch classes.")
     ),
@@ -1892,6 +1948,7 @@ waveshape = (
 $addref(
     @name "waveshape",
     @description "Audio process command for waveshaping a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "phase", @default -1 1, @type "int/float", @description "buffer phase envelope between -1 and 1, either as an envelope or a grain.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
@@ -1920,6 +1977,7 @@ scrub = (
 $addref(
     @name "scrub",
     @description "Audio process command for scrubbing through a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "phase", @default 0 1, @type "int/float", @description "buffer phase envelope between 0 and 1, either as an envelope or a grain.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a grain.")
@@ -1945,6 +2003,7 @@ repeat = (
 $addref(
     @name "repeat",
     @description "Audio process command for repeating a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 2, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options
@@ -1994,6 +2053,7 @@ mix = (
 $addref(
     @name "mix",
     @description "Audio process command for mixing multiple buffers. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "grains", @type "list/llll", @description "list of grains to mix.")
         $addarg(@name "gains", @default "null" @type "list/llll/null", @description "gain values for each grain to mix, as either a single number or envelope.")
@@ -2101,6 +2161,7 @@ plus = (
 $addref(
     @name "plus",
     @description "Audio process command for performing addition on a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to add to buffer, either as a single number, envelope, or grain.")
         GS_BUFFER_ARITHMETIC_ARGS
@@ -2130,6 +2191,7 @@ minus = (
 $addref(
     @name "minus",
     @description "Audio process command for performing subtraction on a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to subtract from buffer, either as a single number, envelope, or grain.")
         GS_BUFFER_ARITHMETIC_ARGS
@@ -2159,6 +2221,7 @@ multiply = (
 $addref(
     @name "multiply",
     @description "Audio process command for performing multiplication on a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to multiply buffer by, either as a single number, envelope, or grain.")
         GS_BUFFER_ARITHMETIC_ARGS
@@ -2188,6 +2251,7 @@ divide = (
 $addref(
     @name "divide",
     @description "Audio process command for performing division on a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to divide buffer by, either as a single number, envelope, or grain.")
         GS_BUFFER_ARITHMETIC_ARGS
@@ -2215,6 +2279,7 @@ wavesetrepeat = (
 $addref(
     @name "wavesetrepeat",
     @description "Audio process command for applying waveset repetition to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "times",  @default 2, @type "int", @description "number of repetitions.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
@@ -2243,6 +2308,7 @@ wavesetshuffle = (
 $addref(
     @name "wavesetshuffle",
     @description "Audio process command for applying waveset shuffling to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "maxdist", @default 1, @type "int", @description "maximum shuffling distance.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
@@ -2271,6 +2337,7 @@ onepole = (
 $addref(
     @name "onepole",
     @description "Audio process command for applying single-pole lowpass or highpass filtering to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "cutoff", @default 1, @type "int/float", @description "cutoff frequency.")
         $addarg(@name "highpass", @default 0, @type "int", @description "highpass filter mode." @options
@@ -2338,6 +2405,7 @@ timesquash = (
 $addref(
     @name "timesquash",
     @description "Audio process command for applying timesquash time compression to a buffer. This removes time from a sample by shifting portions of the spectrogram while preserving the relevant content. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration."
@@ -2418,6 +2486,7 @@ resample = (
 $addref(
     @name "resample",
     @description "Audio process command for applying stretching/pitch shifting a buffer via resampling. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options 
@@ -2475,6 +2544,7 @@ panning = (
 $addref(
     @name "panning",
     @description "Audio process command for applying 1-D panning to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "position" @type "int/float/list/llll", @description "panning position, as either a single number, envelope, or grain.")
         $addarg(@name "numchannels", @default 2, @type "int", @description "number of output channels.")
@@ -2527,6 +2597,7 @@ normalize = (
 $addref(
     @name "normalize",
     @description "Audio process command for normalizing the amplitude of a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "level", @default 1, @type "int/float", @description "reference level.")
         $addarg(@name "mix", @default 1, @type "int", @description "dry/wet mix, between 0 and 1.")
@@ -2570,6 +2641,7 @@ gain = (
 $addref(
     @name "gain",
     @description "Audio process command for modifying a buffer's gain. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
@@ -2619,6 +2691,7 @@ dynamics = (
 $addref(
     @name "dynamics",
     @description "Audio process command for applying simple compression to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "attack", @default 10, @type "int/float", @description "attack time.")
         $addarg(@name "release", @default 50, @type "int/float", @description "release time.")
@@ -2677,6 +2750,7 @@ resynth = (
 $addref(
     @name "resynth",
     @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "func", @type "function", @description "pitch/frequency lambda function, with signature $oldpartials -> $newpartials.")
         $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func." @options 
@@ -2716,6 +2790,7 @@ buildtree = (
 $addref(
     @name "buildtree",
     @description "Builds a k-dimensional tree on a set of grains, given one or more grain features. This tree can be queried via the #searchtree function. Note that there can only be one tree at a time.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "grains", @type "llll", @description "list of grains.")
         $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "features to build tree on.")
@@ -2734,6 +2809,7 @@ searchtree = (
 $addref(
     @name "searchtree",
     @description "k-nearest neighbor search on the current k-dimensional tree. The search input can be either a single grain or, more directly, the values associated with the features the tree was based on. See #buildtree.",
+    @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "target", @type "llll", @description "target grain or feature value to find nearest neighbor for.")
     ),
