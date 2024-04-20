@@ -424,7 +424,7 @@ revbpf = (
 
 $addref(
     @name "revbpf",
-    @description "Reverses a breakpoint function.",
+    @description "Reverses a breakpoint function. See #bpf.",
     @category GS_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "bpf", @type "llll", @description "breakpoint function to reverse")
@@ -1071,7 +1071,7 @@ process = (
 $addref(
     @name "process",
     @description "Applies a sequence of DSP operations to the input grain, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. See @process argument in #render.",
-    @category GS_REF_LABEL_UTILS,
+    @category GS_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
