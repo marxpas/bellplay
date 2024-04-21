@@ -1361,6 +1361,34 @@ $addref(
 
 ## ------------------------------------------------------------
 
+rect = (
+    $frequency = 440, 
+    $duration = 50,
+    $duty = 0.5 -> (
+        $file = $duty.getkey("file");
+        if $file == null then (
+            $duty = envelope($duty, @duration $duration).getkey("file")
+        ) else (
+            $duty = $file
+        );
+        GS_OSC_GEN_FUNC("rect", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
+    )
+);
+
+$addref(
+    @name "duty",
+    @description "Generates a bipolar, anti-aliased rectangular (pulse) oscillator as a grain.",
+    @category GS_REF_LABEL_GEN,
+    @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+        $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or grain.")
+    ),
+    @output $addout(@description "synthesized grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 saw = (
     $frequency = 440, 
     $duration = 50 -> (
@@ -1383,8 +1411,15 @@ $addref(
 
 tri = (
     $frequency = 440, 
-    $duration = 50 -> (
-        GS_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration)
+    $duration = 50,
+    $duty = 0.5 -> (
+        $file = $duty.getkey("file");
+        if $file == null then (
+            $duty = envelope($duty, @duration $duration).getkey("file")
+        ) else (
+            $duty = $file
+        );
+        GS_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
 );
 
@@ -1395,6 +1430,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or grain.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "grain duration")
+        $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or grain.")
     ),
     @output $addout(@description "synthesized grain" @type "llll")
 );

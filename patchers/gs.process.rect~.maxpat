@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 106.0, 226.0, 122.0 ],
+		"rect" : [ 595.0, 121.0, 165.0, 148.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 97.0, 8.0, 62.0, 23.0 ],
+					"patching_rect" : [ 71.0, 8.0, 62.0, 23.0 ],
 					"text" : "ears.in~ 2"
 				}
 
@@ -56,7 +56,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 88.0, 60.0, 23.0 ],
+					"patching_rect" : [ 8.0, 88.0, 60.0, 22.0 ],
 					"text" : "ears.out~"
 				}
 
@@ -68,8 +68,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 8.0, 47.0, 197.0, 23.0 ],
-					"text" : "tri~"
+					"patching_rect" : [ 8.0, 47.0, 145.0, 23.0 ],
+					"text" : "rect~"
 				}
 
 			}
@@ -80,7 +80,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 8.0, 8.0, 52.0, 23.0 ],
+					"patching_rect" : [ 8.0, 8.0, 52.0, 22.0 ],
 					"text" : "ears.in~"
 				}
 
@@ -108,6 +108,16 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "ears.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.out~.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "subtlelight",
 				"default" : 				{
