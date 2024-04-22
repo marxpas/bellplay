@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- `importaudio` function with docs. Pending tests.
+- `GS_SR` global to store sampling rate.
 - `pong` processor.
 - `rect` function, with docs.
 

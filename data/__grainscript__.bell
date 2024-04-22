@@ -911,6 +911,54 @@ $addref(
 
 ## ------------------------------------------------------------
 
+getbufferinfo = (
+    $buffer -> (
+        msg("bufferinfo", $buffer);
+        GS_TMP_BUFFINFO
+    )
+);
+
+## ------------------------------------------------------------
+
+importaudio = (
+    $path -> (
+        GS_TMP_BUFF = null;
+        if $path == null then printerror("You must provide a value for @path in importmidi()");
+        $pathinfo = getpathinfo($path);
+        $ext = $pathinfo."extension";
+        $path = $pathinfo."path";
+        $filepath = $path + $ext;
+        if $ext == ".wav" || $ext == ".aif" then (
+            msg("import", [
+                "audio"
+                $filepath
+            ])
+        ) else (
+            printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
+        );
+        $buffinfo = getbufferinfo(GS_TMP_BUFF);
+        gs_makegrain(
+            @file GS_TMP_BUFF
+            @sr $buffinfo."sr"
+            @numchannels $buffinfo."numchannels"
+            @duration $buffinfo."duration"
+            @pitch 4800
+        )
+    )
+);
+
+$addref(
+    @name "importaudio",
+    @description "Imports an audio file as a grain",
+    @category GS_REF_LABEL_GEN,
+    @arguments (
+        $addarg(@name "path", @type "symbol", @description "input audio file path.")
+    ),
+    @output $addout(@description "grain" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 importmidi = (
     $path -> (
         GS_TMP_ROLL_OUTPUT = null;
@@ -1232,6 +1280,8 @@ $addref(
 gs_makegrain = (
     $file,
     $duration,  
+    $numchannels = 1,
+    $sr = GS_SR,
     $offset = 0,
     $file_id = -1,
     $mfcc = 0. :* 13,
@@ -1243,6 +1293,8 @@ gs_makegrain = (
         [
             [ "file" $file ]
             [ "offset" $offset ]
+            [ "sr" $sr ]
+            [ "numchannels" $numchannels ]
             [ "duration" $duration ]
             [ "file_end" $duration ]
             [ "file_id" $file_id ]
@@ -1291,11 +1343,14 @@ GS_OSC_GEN_FUNC = (
             ]
         );
         $pitch = f2mc($frequency);
-        gs_makegrain(GS_TMP_BUFF, 
+        gs_makegrain(
+            @file GS_TMP_BUFF, 
+            @numchannels 1,
+            @sr GS_SR
+            @duration $duration
             @pitchsalience $isnoise == 0 && $frequency > 30
             @loudness 1.0, 
             @pitch $pitch 
-            @duration $duration
             @centroid $frequency
         )
     )
@@ -1495,7 +1550,12 @@ envelope = (
                 ]
             ]
         );
-        gs_makegrain(GS_TMP_BUFF, @duration $duration)
+        gs_makegrain(
+            @file GS_TMP_BUFF
+            @sr GS_SR
+            @numchannels 1
+            @duration $duration
+        )
     )
 );
 
