@@ -60,7 +60,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2606.750000000000455, 571.0, 79.0, 23.0 ],
+					"patching_rect" : [ 2606.5, 608.0, 79.0, 23.0 ],
 					"text" : "gs.generate~"
 				}
 
@@ -2642,8 +2642,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2493.5, 571.0, 108.0, 23.0 ],
-					"text" : "r #0wavesynth"
+					"patching_rect" : [ 2493.5, 571.0, 97.0, 23.0 ],
+					"text" : "r #0resetnaming"
 				}
 
 			}
@@ -2665,8 +2665,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 752.0, 489.0, 108.0, 23.0 ],
-					"text" : "s #0wavesynth"
+					"patching_rect" : [ 752.0, 488.5, 97.0, 23.0 ],
+					"text" : "s #0resetnaming"
 				}
 
 			}
@@ -6964,7 +6964,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-109", 0 ],
+					"order" : 0,
+					"source" : [ "obj-95", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-85", 0 ],
+					"order" : 1,
 					"source" : [ "obj-95", 0 ]
 				}
 
@@ -7245,6 +7254,14 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.mc.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mc.out~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.minus~.mxo",
 				"type" : "iLaX"
 			}
@@ -7286,6 +7303,14 @@
 			}
 , 			{
 				"name" : "ears.overdrive~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.pack~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.pan~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -7404,6 +7429,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "gs.getcontroller~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "gs.process.cycle~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
@@ -7411,7 +7443,21 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "gs.process.freqshift~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "gs.process.groove~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.lookup~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -7433,6 +7479,55 @@
 			}
 , 			{
 				"name" : "gs.process.phasor~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.pong~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.rand~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.rect~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.retune~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.saw~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.triangle~.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gs.process.tri~.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
