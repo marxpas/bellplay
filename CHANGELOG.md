@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Support for @duty argument in `tri` function.
+- Use `getbufferinfo` in `gs.analysis`, and include `sr` and `numchannels` in `gs.corpus`.
   
 ### Fixed
 
