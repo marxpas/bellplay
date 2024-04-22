@@ -1951,6 +1951,43 @@ $addref(
 
 ## ------------------------------------------------------------
 
+pong = (
+    $low = -1,
+    $high = 1,
+    $mode = 0 -> (
+        $low = $low.getkey("file") ||| [ bpf($low) ];
+        $high = $high.getkey("file") ||| [ bpf($high) ];
+        [
+            [ "fx" "pong" ]
+            [ "params"
+                [ "pong"
+                    [ "mode" $mode ]
+                ]
+                [ "low" $low ]
+                [ "high" $high ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "pong",
+    @description "Audio process command for applying range limiting to a buffer. See #process.",
+    @category GS_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "low", @default -1, @type "int/float/llll", @description "low limit value, as either a single number, envelope, or grain.")
+        $addarg(@name "high", @default 1, @type "int/float/llll", @description "high limit value, as either a single number, envelope, or grain.")
+        $addarg(@name "mode", @default 0, @type "int", @description "range limiting mode." @options
+            $addopt(@value 0 @description "fold")
+            $addopt(@value 1 @description "wrap")
+            $addopt(@value 2 @description "clip")
+        )
+    ),
+    @output $addout(@description "pong command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 retune = (
     $pitchgrid = 0 -> (
         if $pitchgrid == null then printerror("you must provide a value for @pitchgrid in retune().");

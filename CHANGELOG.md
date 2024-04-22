@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- `pong` processor.
 - `rect` function, with docs.
 
 ### Changed
@@ -15,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Support for @duty argument in `tri` function.
   
 ### Fixed
+
+- Fix stale buffer bug in `gs.getcontroller~`.
 
 ### Removed
 
