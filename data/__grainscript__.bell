@@ -65,6 +65,15 @@ getpathinfo = (
 
 ## ------------------------------------------------------------
 
+getbufferinfo = (
+    $buffer -> (
+        msg("bufferinfo", $buffer);
+        GS_TMP_BUFFINFO
+    )
+);
+
+## ------------------------------------------------------------
+
 printerror = (
     $text, $stop = 1 -> (
         msg("console",
@@ -906,15 +915,6 @@ $addref(
         $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for .wav files." @options
             GS_REF_SWITCH_OPTIONS
         )
-    )
-);
-
-## ------------------------------------------------------------
-
-getbufferinfo = (
-    $buffer -> (
-        msg("bufferinfo", $buffer);
-        GS_TMP_BUFFINFO
     )
 );
 
