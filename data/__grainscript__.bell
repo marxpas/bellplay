@@ -557,6 +557,22 @@ $addref(
 
 ## ------------------------------------------------------------
 
+r2pc = (
+    $r -> fmod(r2c($r) * .01, 12)
+);
+
+$addref(
+    @name "r2pc",
+    @description "Ratio to pitch class conversion.",
+    @category GS_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
+    ),
+    @output $addout(@description "list of pitch classes", @type "list/int/float")
+);
+
+## ------------------------------------------------------------
+
 r2c = (
     $r -> log2($r) * 1200
 );
