@@ -2735,17 +2735,17 @@ $addref(
 ## ------------------------------------------------------------
 
 normalize = (
-    $level = 1,
+    $level = -6,
     $mix = 1,
     $rms = 0,
     $ampunit = 1 -> (
         [
             [ "fx" "normalize" ]
             [ "params"
+                [ "ampunit" $ampunit ]
+                [ "rms" $rms ]
                 [ "level" $level ]
                 [ "mix" $mix ]
-                [ "rms" $rms ]
-                [ "ampunit" $ampunit ]
             ]
         ]
     )
@@ -2756,7 +2756,7 @@ $addref(
     @description "Audio process command for normalizing the amplitude of a buffer. See #process.",
     @category GS_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "level", @default 1, @type "int/float", @description "reference level.")
+        $addarg(@name "level", @default -6, @type "int/float", @description "reference level.")
         $addarg(@name "mix", @default 1, @type "int", @description "dry/wet mix, between 0 and 1.")
         $addarg(@name "rms", @default 0, @type "int", @description "use root mean square." @options
             GS_REF_SWITCH_OPTIONS
