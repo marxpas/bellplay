@@ -62,7 +62,7 @@
 					"patching_rect" : [ 46.5, 548.0, 200.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 326.0, 554.0, 155.0, 23.0 ],
-					"text" : "audio granulation in bell"
+					"text" : "algorithmic audio in bell"
 				}
 
 			}
@@ -89,9 +89,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.5, 509.0, 61.0, 35.0 ],
+					"patching_rect" : [ 43.5, 509.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 337.0, 517.0, 61.0, 35.0 ],
+					"presentation_rect" : [ 337.0, 517.0, 72.0, 35.0 ],
 					"text" : "grain"
 				}
 

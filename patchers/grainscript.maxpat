@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | audio granulation in bell",
+		"title" : "grainscript~ | algorithmic audio in bell",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-41",
@@ -486,7 +486,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -721,7 +721,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 416.0, 740.0, 247.0, 23.0 ],
-					"text" : "title \"grainscript~ | audio granulation in bell\""
+					"text" : "title \"grainscript~ | algorithmic audio in bell\""
 				}
 
 			}
@@ -750,7 +750,7 @@
 					"patching_rect" : [ 41.0, 195.0, 200.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 198.0, 13.0, 155.0, 23.0 ],
-					"text" : "audio granulation in bell"
+					"text" : "algorithmic audio in bell"
 				}
 
 			}
@@ -834,9 +834,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 156.0, 61.0, 35.0 ],
+					"patching_rect" : [ 38.0, 156.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 59.0, 7.0, 61.0, 35.0 ],
+					"presentation_rect" : [ 59.0, 7.0, 72.0, 35.0 ],
 					"text" : "grain"
 				}
 

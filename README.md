@@ -4,14 +4,14 @@
 
 **grainscript~** is a simple application for offline, corpus-based audio granulation. In **grainscript~**, the general workflow is comprised of two main stages: _corpus creation_, and _audio generation_ via `.bell` scripts. 
 
-First, users create a database (i.e., a _corpus_) of grains from a folder of audio samples, where each grain is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, and more. Then, users can manipulate these grains via `.bell` scripts, and generate sequences that can be rendered and exported as either `.wav`, `.mid`, or `.llll` (native) files. 
+First, users create a database (i.e., a _corpus_) of buffers from a folder of audio samples, where each buffer is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, and more. Then, users can manipulate these buffers via `.bell` scripts, and generate sequences that can be rendered and exported as either `.wav`, `.mid`, or `.llll` (native) files. 
 
 These scripts are written in the bach evaluation language for lllls, or `bell` for short. The typical structure of a script is as follows:
 
 1) *Load* a corpus.
-2) *Retrieve* grains from the corpus using `SQLite` queries.
-3) *Manipulate* grains and add them to the rendering queue.
-4) *Render* all aded grains into an audio buffer.
+2) *Retrieve* buffers from the corpus using `SQLite` queries.
+3) *Manipulate* buffers and add them to the rendering queue.
+4) *Render* all added buffers into an audio buffer.
 5) *Export* the rendered sequence as audio, midi, or native .llll format.
 
 Here’s a very basic example of a `bell` script:
@@ -20,11 +20,11 @@ Here’s a very basic example of a `bell` script:
 ## step 1: load corpus
 setcorpus("/path/to/corpus.llll");
 
-## step 2: retrieve all grains
-$grains = query("SELECT * FROM grains");
+## step 2: retrieve all buffers
+$buffers = query("SELECT * FROM buffers");
 
-## step 3: add all grains to rendering sequence, with random onset between 0 and 2000 ms
-for $grain in $grains do transcribe($grain, @onset rand(2000));
+## step 3: add all buffers to rendering sequence, with random onset between 0 and 2000 ms
+for $buffer in $buffers do transcribe($buffer, @onset rand(2000));
 
 ## step 4: trigger audio rendering
 render();

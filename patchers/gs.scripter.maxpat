@@ -2739,7 +2739,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "GS_GRAINS = $x1 ",
+									"code" : "GS_QUERY_BUFFERS = $x1 ",
 									"id" : "obj-164",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -2752,7 +2752,7 @@
 									}
 ,
 									"style" : "subtlelight",
-									"text" : "bach.eval GS_GRAINS = $x1"
+									"text" : "bach.eval GS_QUERY_BUFFERS = $x1"
 								}
 
 							}
@@ -3115,7 +3115,7 @@
 										"tags" : ""
 									}
 ,
-									"text" : "p grain2feature+normalization"
+									"text" : "p buffer2feature+normalization"
 								}
 
 							}
@@ -3678,7 +3678,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "$grains = $x2; $keys = $x1; for $grain in $grains collect [ for $key in $keys collect $grain.getkey($key) ] ",
+									"code" : "$buffers = $x2; $keys = $x1; for $buffer in $buffers collect [ for $key in $keys collect $buffer.getkey($key) ] ",
 									"id" : "obj-118",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -3690,7 +3690,7 @@
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.eval $grains = $x2\\; $keys = $x1\\; for $grain in $grains collect [ for $key in $keys collect $grain.getkey($key) ]"
+									"text" : "bach.eval $buffers = $x2\\; $keys = $x1\\; for $buffer in $buffers collect [ for $key in $keys collect $buffer.getkey($key) ]"
 								}
 
 							}
@@ -3718,7 +3718,7 @@
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.keys query features grains"
+									"text" : "bach.keys query features buffers"
 								}
 
 							}
@@ -4693,7 +4693,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 3.0, 647.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "Load a .bell script to generate a granular audio file and roll sequence, and export it as in .wav or .llll format."
+					"text" : "Load a .bell script to generate an audio file and roll sequence, and export it as in .wav or .llll format."
 				}
 
 			}

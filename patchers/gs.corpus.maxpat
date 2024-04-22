@@ -88,13 +88,14 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-149",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 10.0, 58.0, 960.0, 23.0 ],
 									"style" : "subtlelight",
-									"text" : "erase, addtable grains [file s] [file_id i] [pitch f] [pitchclass f] [pitchsalience f] [loudness f] [zerox f] [duration f] [centroid f] [offset f] [file_end f] [mfcc l] [ sr i ] [ numchannels i ]"
+									"text" : "erase, addtable buffers [file s] [file_id i] [pitch f] [pitchclass f] [pitchsalience f] [loudness f] [zerox f] [duration f] [centroid f] [offset f] [file_end f] [mfcc l] [ sr i ] [ numchannels i ]"
 								}
 
 							}
@@ -172,6 +173,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -692,7 +694,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
-					"patching_rect" : [ 301.0, 743.0, 108.0, 23.0 ],
+					"patching_rect" : [ 308.0, 743.0, 100.0, 23.0 ],
 					"style" : "subtlelight",
 					"text" : "t 0 b"
 				}
@@ -760,7 +762,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 5.0, 781.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "Load a folder containing .wav files to build a new granular corpus. Use the corpus scatterplot to explore, save, and/or load granular corpora. "
+					"text" : "Load a folder containing .wav files to build a new audio corpus. Use the corpus scatterplot to explore, save, and/or load corpora. "
 				}
 
 			}
@@ -913,7 +915,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 13.0, 55.0, 760.0, 22.0 ],
-									"text" : "bang, database #0corpus, table grains, xfield none, yfield none, xlabel none, ylabel none, colorfield none, sizefield none, contentfield none"
+									"text" : "bang, database #0corpus, table buffers, xfield none, yfield none, xlabel none, ylabel none, colorfield none, sizefield none, contentfield none"
 								}
 
 							}
@@ -993,9 +995,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1280.0, 931.0, 179.0, 23.0 ],
+					"patching_rect" : [ 1280.0, 931.0, 185.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "erase, addtable grains [y f] [x f]"
+					"text" : "erase, addtable buffers [y f] [x f]"
 				}
 
 			}
@@ -1131,7 +1133,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 5.0, 49.0, 1049.0, 23.0 ],
-									"text" : "bang, database #0corpus, table grains, contentfield file offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numgrains, where null"
+									"text" : "bang, database #0corpus, table buffers, contentfield file offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numbuffers, where null"
 								}
 
 							}
@@ -1597,7 +1599,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 364.0, 392.0, 273.0, 18.0 ],
 					"style" : "subtlelight",
-					"text" : "0 grains",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
@@ -1625,7 +1626,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1580.0, 3497.0, 114.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "sprintf %i grains"
+					"text" : "sprintf %i buffers"
 				}
 
 			}
@@ -1990,13 +1991,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 1580.0, 3461.0, 167.0, 23.0 ],
+					"patching_rect" : [ 1580.0, 3461.0, 171.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.keys numgrains @out m"
+					"text" : "bach.keys numbuffers @out m"
 				}
 
 			}
@@ -2204,10 +2205,10 @@
 					"patching_rect" : [ 1259.0, 2958.0, 500.0, 481.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 301.0, 53.0, 335.0, 335.0 ],
-					"query" : "SELECT * FROM grains",
+					"query" : "SELECT * FROM buffers",
 					"showaxeslabels" : 1,
 					"showborder" : 1,
-					"table" : "grains",
+					"table" : "buffers",
 					"versionnumber" : 30100,
 					"vzoom" : 4.582899643602607,
 					"where" : [ "null" ],
@@ -2238,7 +2239,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1027.0, 1015.0, 188.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "bach.prepend addentry grains"
+					"text" : "bach.prepend addentry buffers"
 				}
 
 			}

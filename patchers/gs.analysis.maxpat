@@ -901,7 +901,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 84.0, 80.0, 115.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "grain duration (ms)"
+					"text" : "buffer duration (ms)"
 				}
 
 			}

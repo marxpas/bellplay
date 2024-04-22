@@ -181,7 +181,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 15,
 					"presentation_rect" : [ 10.5, 319.0, 783.0, 224.0 ],
-					"text" : "\n## step 1: load corpus\nsetcorpus(\"/path/to/corpus.llll\");\n\n## step 2: retrieve all grains\n$grains = query(\"SELECT * FROM grains\");\n\n## step 3: add all grains to rendering sequence, with random onset between 0 and 2000 ms\nfor $grain in $grains do transcribe($grain, @onset rand(2000));\n\n## step 4: trigger audio rendering\nrender();\n\n## step 5: export to audio\nexport(\"./out.wav\")\n",
+					"text" : "\n## step 1: load corpus\nsetcorpus(\"/path/to/corpus.llll\");\n\n## step 2: retrieve all buffers\n$buffers = query(\"SELECT * FROM buffers\");\n\n## step 3: add all buffers to rendering sequence, with random onset between 0 and 2000 ms\nfor $buffer in $buffers do transcribe($buffer, @onset rand(2000));\n\n## step 4: trigger audio rendering\nrender();\n\n## step 5: export to audio\nexport(\"./out.wav\")\n",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
 
@@ -202,7 +202,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 16,
 					"presentation_rect" : [ 8.0, 42.0, 795.0, 275.0 ],
-					"text" : "grainscript is a simple application for offline, corpus-based audio granulation. In grainscript, the general workflow is comprised of two main stages: corpus creation, and audio generation via .bell scripts. \n\nFirst, users create a database (i.e., a corpus) of grains from a folder of audio samples, where each grain is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, etc. Then, users can manipulate these grains via .bell scripts, and generate granular sequences that can be rendered and exported as .wav, .mid, or .llll files. \n\nThese scripts are written in the bach evaluation language for lllls, or bell for short. The typical structure of a script is as follows: \n\n       1) Load a corpus. \n       2) Retrieve grains from the corpus using #sqlite3 queries.\n        3) Manipulate grains and add them to the rendering queue.\n        4) Render all aded grains into an audio buffer .\n       5) Export the rendered sequence as audio, midi, or native .llll format.\n\nHere’s a very basic example of a bell script:"
+					"text" : "grainscript~ is a simple application for offline algorithmic audio in the bell programming language. In grainscript~, the general workflow is comprised of three main stages: buffer generation, buffer transcription, and audio rendering, all done via .bell scripts. \n\nUsers may also create a database (i.e., a corpus) of buffers from a folder of audio samples, where each buffer is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, etc. Then, users can manipulate these buffers via .bell scripts, and generate audio sequences that can be rendered and exported as .wav, .mid, or .llll files. \n\nThese scripts are written in the bach evaluation language for lllls, or bell for short. The typical structure of a script is as follows: \n\n       1) Load a corpus. \n       2) Retrieve buffers from the corpus using #sqlite3 queries.\n        3) Manipulate buffers and add them to the rendering queue.\n        4) Render all aded buffers into an audio buffer .\n       5) Export the rendered sequence as audio, midi, or native .llll format.\n\nHere’s a very basic example of a bell script:"
 				}
 
 			}
