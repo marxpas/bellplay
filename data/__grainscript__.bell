@@ -966,10 +966,13 @@ importaudio = (
 
 $addref(
     @name "importaudio",
-    @description "Imports an audio file as a grain",
+    @description "Imports an audio file as a grain.",
     @category GS_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input audio file path.")
+        $addarg(@name "analyze", @default 0 @type "int", @description "analyze audio file." @options
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "grain" @type "llll")
 );
