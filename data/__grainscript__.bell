@@ -1,11 +1,17 @@
 GS_VERSION = "v0.0.7-beta";
 GS_GRAINS = null;
+GS_TREE_NORM = null;
 GS_REF_LABEL_UTILS = "utilities";
 GS_REF_LABEL_PROCESS = "audio processing";
 GS_REF_LABEL_GEN = "audio generation";
 GS_REF = (for $i in GS_REF_LABEL_UTILS GS_REF_LABEL_PROCESS GS_REF_LABEL_GEN collect [ $i ]);
 GS_REF_TIMEUNIT_OPTIONS = null;
 GS_REF_AUDIO_DOMAIN_OPTIONS = null;
+
+GS_TMP_BUFF = null;
+GS_TMP_BUFFINFO = null;
+GS_TMP_FEATURES = null;
+GS_TMP_ROLL_OUTPUT = null;
 
 ## ------------------------------------------------------------
 
@@ -69,6 +75,15 @@ getbufferinfo = (
     $buffer -> (
         msg("bufferinfo", $buffer);
         GS_TMP_BUFFINFO
+    )
+);
+
+## ------------------------------------------------------------
+
+getfeatures = (
+    $buffer -> (
+        msg("features", $buffer);
+        GS_TMP_FEATURES
     )
 );
 
@@ -713,16 +728,15 @@ $addref(
 
 wavesynth = (
     $frequency = 440,
-    $amplitude = .5,
+    $amplitude = 0.5,
     $duration = 50,
     $waveform = 0,
     $normalize = 0,
     $iterationmode = 1,
-    $analyze = 0,
-    $sr = 48000 -> (
+    $analyze = 0 -> (
         $pitch = null;
         $loudness = null;
-        $fullduration = null;
+        $maxduration = null;
         $notes = for $fq in $frequency, $a in $amplitude, $d in $duration with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
             ## reset bpf for each note
             $bpf = null;
@@ -759,41 +773,29 @@ wavesynth = (
             if $analyze != 1 then (
                 $pitch _= $mc;
                 $loudness _= $a;
-                $fullduration _= $d
+                $maxduration _= $d
             );
 
             ## format note
             [ $mc $d $a $bpf [ "slots" $gain ]]
         );
         msg("wavesynth", 
-            ## if analysis is skipped, construct features manually
-            (if $analyze != 1 then (
-                    $pitch = $pitch ||| 1;
-                    $loudness = $loudness ||| 1;
-                    $fullduration = $fullduration ||| 1;
-                    [ 'features' 
-                        [ "pitch" minimum($pitch) ]
-                        [ "loudness" maximum($loudness) ]
-                        [ "duration" maximum($fullduration) ]
-                        [ "pitchclass" fmod($pitch * .01, 12.)]
-                        [ "file_id" null ]
-                        [ "mfcc" null ]
-                        [ "pitchsalience" 1 ]
-                        [ "zerox" 0 ]
-                        [ "centroid" reduce(mc2f($pitch) * $loudness, #+) / reduce($loudness, #+) ]
-                        [ "offset" 0 ]
-                        [ "file_end" maximum($duration) ]
-                    ]
-                )
-            )
             [ "synth" 
                 [ "normalize" $normalize ]
                 [ "waveform" $waveform + 1 ]
-                [ "sr" $sr ]
+                [ "sr" GS_SR ]
             ]
             [ 'roll' 'addchord' [ 0 $notes ] ] 
-        );
-        [ GS_TMP_GRAIN ]
+        );        
+        gs_makegrain(
+            @file GS_TMP_BUFF
+            @pitch minimum($pitch ||| 1)
+            @loudness minimum($loudness ||| 1)
+            @duration maximum($maxduration ||| 1)
+            @centroid reduce(mc2f($pitch) * $loudness, #+) / reduce($loudness, #+)
+            @analyze $analyze
+            @info $analyze
+        )
     )
 );
 
@@ -921,7 +923,8 @@ $addref(
 ## ------------------------------------------------------------
 
 importaudio = (
-    $path -> (
+    $path, 
+    $analyze = 0 -> (
         GS_TMP_BUFF = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
         $pathinfo = getpathinfo($path);
@@ -936,13 +939,11 @@ importaudio = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        $buffinfo = getbufferinfo(GS_TMP_BUFF);
         gs_makegrain(
             @file GS_TMP_BUFF
-            @sr $buffinfo."sr"
-            @numchannels $buffinfo."numchannels"
-            @duration $buffinfo."duration"
-            @pitch 4800
+            @pitch 6000
+            @info 1
+            @analyze $analyze
         )
     )
 );
@@ -1096,7 +1097,10 @@ $addref(
 ## ------------------------------------------------------------
 
 process = (
-    $grain, $commands, $prefade = null -> (
+    $grain, 
+    $commands, 
+    $prefade = 0, 
+    $analyze = 0 -> (
         if $grain == null then (
             printerror("attempt to pass null value as @grain in process()")
         ) else if $commands == null then (
@@ -1112,7 +1116,17 @@ process = (
                 $commands 
             ]
         );
-        [ GS_TMP_GRAIN ]
+        gs_makegrain(
+            @file GS_TMP_BUFF
+            @pitch $grain.getkey("pitch")
+            @pitchsalience $grain.getkey("pitchsalience")
+            @loudness $grain.getkey("loudness")
+            @zerox $grain.getkey("zerox")
+            @centroid $grain.getkey("centroid")
+            @mfcc $grain.getkey("mfcc")
+            @info 1
+            @analyze $analyze
+        )   
     )
 );
 
@@ -1123,7 +1137,10 @@ $addref(
     @arguments (
         $addarg(@name "grain", @type "llll", @description "grain to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
-        $addarg(@name "prefade", @default "null" @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
+        $addarg(@name "prefade", @default 0 @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
+        $addarg(@name "analyze", @default 0 @type "int", @description "post-processing feature analysis." @options
+            GS_REF_SWITCH_OPTIONS
+        )
     ),
     @output $addout(@description "processed grain" @type "llll")
 );
@@ -1279,7 +1296,7 @@ $addref(
 
 gs_makegrain = (
     $file,
-    $duration,  
+    $duration = 50,  
     $numchannels = 1,
     $sr = GS_SR,
     $offset = 0,
@@ -1289,22 +1306,34 @@ gs_makegrain = (
     $pitchsalience = 0,
     $centroid = 0,
     $loudness = 0,
-    $zerox = 0 -> (
-        [
+    $zerox = 0,
+    $analyze = 0,
+    $info = 0 -> (
+        if $file == null then printerror("null buffer encountered");
+        $grain = (
             [ "file" $file ]
-            [ "offset" $offset ]
             [ "sr" $sr ]
             [ "numchannels" $numchannels ]
             [ "duration" $duration ]
-            [ "file_end" $duration ]
+            [ "offset" $offset ]
             [ "file_id" $file_id ]
             [ "mfcc" $mfcc ]
-            [ "pitch" $pitch ]
-            [ "pitchclass" fmod($pitch / 100.0, 12) ]
-            [ "pitchsalience" $pitchsalience ]
             [ "centroid" $centroid ]
             [ "loudness" $loudness ]
             [ "zerox" $zerox ]
+            [ "pitchsalience" $pitchsalience ]
+            [ "pitch" $pitch ]
+        );
+        $features = if $analyze then getfeatures($file);
+        $info = if $info then getbufferinfo($file);
+        for $x in $info $features do (
+            $key = $x:(1 1);
+            $key &&& ($grain.$key = $x.$key)
+        );
+        [
+            $grain 
+            [ "pitchclass" fmod($grain."pitch" / 100.0, 12) ] 
+            [ "file_end" $grain."duration" ]
         ]
     )
 );
@@ -1344,8 +1373,8 @@ GS_OSC_GEN_FUNC = (
         );
         $pitch = f2mc($frequency);
         gs_makegrain(
-            @file GS_TMP_BUFF, 
-            @numchannels 1,
+            @file GS_TMP_BUFF
+            @numchannels 1
             @sr GS_SR
             @duration $duration
             @pitchsalience $isnoise == 0 && $frequency > 30
