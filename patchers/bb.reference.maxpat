@@ -95,7 +95,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 64.0, 404.0, 113.0, 23.0 ],
-					"text" : "gs.utils.debugmode"
+					"text" : "bb.utils.debugmode"
 				}
 
 			}
@@ -216,7 +216,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 210.0, 283.0, 107.0, 23.0 ],
-					"text" : "sprintf gs.docs.%s"
+					"text" : "sprintf bb.docs.%s"
 				}
 
 			}
@@ -290,7 +290,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "gs.docs.about.maxpat",
+					"name" : "bb.docs.about.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -435,15 +435,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gs.docs.about.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.docs.about.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

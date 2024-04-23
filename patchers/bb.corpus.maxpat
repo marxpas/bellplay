@@ -420,7 +420,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1027.0, 973.0, 66.0, 23.0 ],
-					"text" : "gs.analysis"
+					"text" : "bb.analysis"
 				}
 
 			}
@@ -493,7 +493,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 28.0, 171.0, 113.0, 23.0 ],
-					"text" : "gs.utils.debugmode"
+					"text" : "bb.utils.debugmode"
 				}
 
 			}
@@ -1391,7 +1391,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "gs.filemenu.maxpat",
+					"name" : "bb.filemenu.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -1917,7 +1917,7 @@
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 1266.0, 3888.0, 148.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "poly~ gs.sampler.poly~ 64"
+					"text" : "poly~ bb.sampler.poly~ 64"
 				}
 
 			}
@@ -3357,36 +3357,36 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gs.analysis.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.analysis.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.features.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.features.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.filemenu.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.filemenu.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.sampler.poly~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.sampler.poly~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

@@ -281,7 +281,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 3,
 					"presentation_rect" : [ 8.0, 124.358826144953312, 790.0, 57.0 ],
-					"text" : "babell~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/grainscript "
+					"text" : "babell~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/babell "
 				}
 
 			}
@@ -405,21 +405,21 @@
 			}
 , 			{
 				"name" : "ccm_logo.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gpl_logo.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "logo.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

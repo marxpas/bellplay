@@ -798,7 +798,7 @@
 			}
 , 			{
 				"name" : "search.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

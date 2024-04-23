@@ -1,5 +1,5 @@
 {
-	"name" : "grainscript",
+	"name" : "babell",
 	"version" : 1,
 	"creationdate" : 3792408071,
 	"modificationdate" : 3796633330,
@@ -10,163 +10,163 @@
 	"autolocalize" : 1,
 	"contents" : 	{
 		"patchers" : 		{
-			"grainscript.maxpat" : 			{
+			"babell.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
 			}
 ,
-			"gs.corpus.maxpat" : 			{
+			"bb.corpus.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.features.maxpat" : 			{
+			"bb.features.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.filemenu.maxpat" : 			{
+			"bb.filemenu.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.sampler.poly~.maxpat" : 			{
+			"bb.sampler.poly~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.utils.debugmode.maxpat" : 			{
+			"bb.utils.debugmode.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.docs.about.maxpat" : 			{
+			"bb.docs.about.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.maxpat" : 			{
+			"bb.process.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.reference.maxpat" : 			{
+			"bb.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.scripter.maxpat" : 			{
+			"bb.scripter.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.utils.errorcatch.maxpat" : 			{
+			"bb.utils.errorcatch.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.wavesynth.maxpat" : 			{
+			"bb.wavesynth.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.docs.reference.maxpat" : 			{
+			"bb.docs.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.utils.getbuffer.maxpat" : 			{
+			"bb.utils.getbuffer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.utils.searchbar.maxpat" : 			{
+			"bb.utils.searchbar.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.docs.credits.maxpat" : 			{
+			"bb.docs.credits.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.analysis.maxpat" : 			{
+			"bb.analysis.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.generate~.maxpat" : 			{
+			"bb.generate~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.noise~.maxpat" : 			{
+			"bb.process.noise~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.phasor~.maxpat" : 			{
+			"bb.process.phasor~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.groove~.maxpat" : 			{
+			"bb.process.groove~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.wave~.maxpat" : 			{
+			"bb.process.wave~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.freqshift~.maxpat" : 			{
+			"bb.process.freqshift~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.getcontroller~.maxpat" : 			{
+			"bb.getcontroller~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.retune~.maxpat" : 			{
+			"bb.process.retune~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.saw~.maxpat" : 			{
+			"bb.process.saw~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.tri~.maxpat" : 			{
+			"bb.process.tri~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.lookup~.maxpat" : 			{
+			"bb.process.lookup~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.triangle~.maxpat" : 			{
+			"bb.process.triangle~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.rand~.maxpat" : 			{
+			"bb.process.rand~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.rect~.maxpat" : 			{
+			"bb.process.rect~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"gs.process.pong~.maxpat" : 			{
+			"bb.process.pong~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -183,7 +183,7 @@
 				"kind" : "audiofile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -193,7 +193,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -203,7 +203,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -213,7 +213,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -222,7 +222,7 @@
 		}
 ,
 		"data" : 		{
-			"__grainscript__.bell" : 			{
+			"__babell__.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
@@ -234,7 +234,7 @@
 				"kind" : "file",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -244,7 +244,7 @@
 				"kind" : "file",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/grainscript/media",
+					"bootpath" : "~/Documents/babell/media",
 					"projectrelativepath" : "./media"
 				}
 

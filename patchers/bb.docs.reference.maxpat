@@ -389,7 +389,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "gs.utils.searchbar.maxpat",
+					"name" : "bb.utils.searchbar.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"offset" : [ 0.0, 0.0 ],
@@ -1644,7 +1644,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GS_REF ",
+					"code" : "BB_REF ",
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1656,7 +1656,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval GS_REF"
+					"text" : "bach.eval BB_REF"
 				}
 
 			}
@@ -2485,15 +2485,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gs.utils.searchbar.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.searchbar.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "search.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

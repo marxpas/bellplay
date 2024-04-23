@@ -65,7 +65,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GS_SR = $x1 ",
+					"code" : "BB_SR = $x1 ",
 					"id" : "obj-35",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -77,7 +77,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval GS_SR = $x1"
+					"text" : "bach.eval BB_SR = $x1"
 				}
 
 			}
@@ -206,7 +206,7 @@
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.eval @auto 1 @watch 1 @embed 0 @file __grainscript__.bell"
+					"text" : "bach.eval @auto 1 @watch 1 @embed 0 @file __babell__.bell"
 				}
 
 			}
@@ -241,7 +241,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 942.0, 286.0, 76.0, 23.0 ],
-					"text" : "gs.reference"
+					"text" : "bb.reference"
 				}
 
 			}
@@ -379,7 +379,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GS_VERSION ",
+					"code" : "BB_VERSION ",
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -391,7 +391,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval GS_VERSION @out m"
+					"text" : "bach.eval BB_VERSION @out m"
 				}
 
 			}
@@ -532,7 +532,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 17.0, 397.0, 113.0, 23.0 ],
-					"text" : "gs.utils.debugmode"
+					"text" : "bb.utils.debugmode"
 				}
 
 			}
@@ -788,7 +788,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "gs.scripter.maxpat",
+					"name" : "bb.scripter.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -1606,218 +1606,218 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gs.analysis.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.analysis.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.corpus.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.corpus.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.docs.reference.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.docs.reference.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.features.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.features.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.filemenu.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.filemenu.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.generate~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.generate~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.getcontroller~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.getcontroller~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.cycle~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.cycle~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.freqshift~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.freqshift~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.groove~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.groove~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.lookup~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.lookup~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.noise~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.noise~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.phasor~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.phasor~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.pong~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.pong~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.rand~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.rand~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.rect~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.rect~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.retune~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.retune~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.saw~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.saw~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.triangle~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.triangle~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.tri~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.tri~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.wave~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.wave~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.reference.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.reference.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.sampler.poly~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.sampler.poly~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.scripter.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.scripter.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.errorcatch.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.errorcatch.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.getbuffer.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.getbuffer.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.searchbar.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.searchbar.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.wavesynth.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.wavesynth.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "logo.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1
@@ -1828,7 +1828,7 @@
 			}
 , 			{
 				"name" : "search.png",
-				"bootpath" : "~/Documents/grainscript/media",
+				"bootpath" : "~/Documents/babell/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

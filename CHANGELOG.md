@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- MAJOR CHANGE: change app name to `babell`: buffer-based algorithmic audio in bell. This includes renaming all files and code naming, such as GS to BB.
 - MAJOR REFACTORING: feature analysis is now optional in `process()` and `importsound()` and `wavesynth`, via `gs_makegrain`.
 - Support for @duty argument in `tri` function.
 - Use `getbufferinfo` in `gs.analysis`, and include `sr` and `numchannels` in `gs.corpus`.

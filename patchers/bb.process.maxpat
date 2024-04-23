@@ -107,7 +107,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 274.0, 186.0, 186.0, 23.0 ],
-									"text" : "gs.getcontroller~"
+									"text" : "bb.getcontroller~"
 								}
 
 							}
@@ -131,7 +131,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 143.0, 186.0, 102.0, 23.0 ],
-									"text" : "gs.getcontroller~"
+									"text" : "bb.getcontroller~"
 								}
 
 							}
@@ -194,7 +194,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 11.0, 225.0, 413.5, 23.0 ],
-									"text" : "ears.process~ gs.process.pong~ @naming dynamic"
+									"text" : "ears.process~ bb.process.pong~ @naming dynamic"
 								}
 
 							}
@@ -714,7 +714,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 204.0, 323.0, 291.0, 23.0 ],
-									"text" : "ears.process~ gs.process.lookup~ @naming dynamic"
+									"text" : "ears.process~ bb.process.lookup~ @naming dynamic"
 								}
 
 							}
@@ -1134,7 +1134,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 11.0, 144.0, 290.0, 23.0 ],
-									"text" : "ears.process~ gs.process.retune~ @naming dynamic"
+									"text" : "ears.process~ bb.process.retune~ @naming dynamic"
 								}
 
 							}
@@ -1290,7 +1290,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 152.0, 142.0, 102.0, 23.0 ],
-									"text" : "gs.getcontroller~"
+									"text" : "bb.getcontroller~"
 								}
 
 							}
@@ -1353,7 +1353,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 11.0, 181.0, 301.0, 23.0 ],
-									"text" : "ears.process~ gs.process.freqshift~ @naming dynamic"
+									"text" : "ears.process~ bb.process.freqshift~ @naming dynamic"
 								}
 
 							}
@@ -1657,7 +1657,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 181.0, 274.0, 282.0, 23.0 ],
-									"text" : "ears.process~ gs.process.wave~ @naming dynamic"
+									"text" : "ears.process~ bb.process.wave~ @naming dynamic"
 								}
 
 							}
@@ -2010,7 +2010,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 167.0, 274.0, 292.0, 23.0 ],
-									"text" : "ears.process~ gs.process.groove~ @naming dynamic"
+									"text" : "ears.process~ bb.process.groove~ @naming dynamic"
 								}
 
 							}
@@ -3147,7 +3147,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 287.0, 127.0, 102.0, 23.0 ],
-									"text" : "gs.utils.getbuffer"
+									"text" : "bb.utils.getbuffer"
 								}
 
 							}
@@ -3454,7 +3454,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 328.0, 94.0, 102.0, 23.0 ],
-									"text" : "gs.utils.getbuffer"
+									"text" : "bb.utils.getbuffer"
 								}
 
 							}
@@ -6499,7 +6499,7 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "GS_RESYNTH_FUNC($x1, $x2, $x3) ",
+													"code" : "BB_RESYNTH_FUNC($x1, $x2, $x3) ",
 													"id" : "obj-2",
 													"maxclass" : "newobj",
 													"numinlets" : 3,
@@ -6511,7 +6511,7 @@
 														"versionnumber" : 80300
 													}
 ,
-													"text" : "bach.eval GS_RESYNTH_FUNC($x1\\, $x2\\, $x3)"
+													"text" : "bach.eval BB_RESYNTH_FUNC($x1\\, $x2\\, $x3)"
 												}
 
 											}
@@ -6958,7 +6958,7 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "GS_RESYNTH_FUNC($x1, $x2, $x3, $x4) ",
+													"code" : "BB_RESYNTH_FUNC($x1, $x2, $x3, $x4) ",
 													"id" : "obj-2",
 													"maxclass" : "newobj",
 													"numinlets" : 4,
@@ -6970,7 +6970,7 @@
 														"versionnumber" : 80300
 													}
 ,
-													"text" : "bach.eval GS_RESYNTH_FUNC($x1\\, $x2\\, $x3\\, $x4)"
+													"text" : "bach.eval BB_RESYNTH_FUNC($x1\\, $x2\\, $x3\\, $x4)"
 												}
 
 											}
@@ -8675,7 +8675,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 155.333333333333343, 104.0, 102.0, 23.0 ],
-					"text" : "gs.utils.getbuffer"
+					"text" : "bb.utils.getbuffer"
 				}
 
 			}
@@ -8737,7 +8737,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GS_TMP_BUFF ",
+					"code" : "BB_TMP_BUFF ",
 					"id" : "obj-101",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -8749,7 +8749,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval GS_TMP_BUFF @out m"
+					"text" : "bach.eval BB_TMP_BUFF @out m"
 				}
 
 			}
@@ -8767,7 +8767,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "$x1 &&& (GS_TMP_BUFF = $x1) ",
+					"code" : "$x1 &&& (BB_TMP_BUFF = $x1) ",
 					"id" : "obj-91",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -8779,7 +8779,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval $x1 &&& (GS_TMP_BUFF = $x1)"
+					"text" : "bach.eval $x1 &&& (BB_TMP_BUFF = $x1)"
 				}
 
 			}
@@ -8798,7 +8798,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "GS_TMP_BUFF ",
+					"code" : "BB_TMP_BUFF ",
 					"id" : "obj-46",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -8810,7 +8810,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval GS_TMP_BUFF"
+					"text" : "bach.eval BB_TMP_BUFF"
 				}
 
 			}
@@ -9530,57 +9530,57 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gs.getcontroller~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.getcontroller~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.freqshift~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.freqshift~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.groove~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.groove~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.lookup~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.lookup~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.pong~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.pong~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.retune~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.retune~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.process.wave~.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.process.wave~.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.utils.getbuffer.maxpat",
-				"bootpath" : "~/Documents/grainscript/patchers",
+				"name" : "bb.utils.getbuffer.maxpat",
+				"bootpath" : "~/Documents/babell/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

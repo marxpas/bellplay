@@ -3,4 +3,4 @@
 **/Icon?
 !.gitignore
 **/*.bell
-!__grainscript__.bell
+!__babell__.bell
