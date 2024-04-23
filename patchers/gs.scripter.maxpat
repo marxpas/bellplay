@@ -2512,7 +2512,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.print grainscript~"
+					"text" : "bach.print babell~"
 				}
 
 			}

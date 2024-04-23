@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | corpus lab",
+		"title" : "babell~ | corpus lab",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-46",
@@ -432,7 +432,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 76.0, 209.0, 228.0, 23.0 ],
-					"text" : "loadmess title \"grainscript~ | corpus lab\""
+					"text" : "loadmess title \"babell~ | corpus lab\""
 				}
 
 			}

@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | about",
+		"title" : "babell~ | about",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-6",
@@ -180,7 +180,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 11.0, 283.0, 181.0, 23.0 ],
-					"text" : "sprintf symout grainscript~ | %s"
+					"text" : "sprintf symout babell~ | %s"
 				}
 
 			}

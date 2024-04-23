@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | bell reference",
+		"title" : "babell~ | bell reference",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-55",
@@ -1420,7 +1420,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 42.0, 793.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "In addition to the native functions in bell, the following functions are included in grainscript. Click on the menu to learn more about each of them."
+					"text" : "In addition to the native functions in bell, the following functions are included in babell~. Click on the menu to learn more about each of them."
 				}
 
 			}
@@ -1432,7 +1432,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 343.0, 336.0, 193.0, 23.0 ],
-					"text" : "title \"grainscript~ | bell reference\""
+					"text" : "title \"babell~ | bell reference\""
 				}
 
 			}

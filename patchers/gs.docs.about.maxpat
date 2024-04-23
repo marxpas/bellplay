@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | about",
+		"title" : "babell~ | about",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-12",
@@ -47,7 +47,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 96.0, 53.0, 151.0, 23.0 ],
-					"text" : "title \"grainscript~ | about\""
+					"text" : "title \"babell~ | about\""
 				}
 
 			}
@@ -112,7 +112,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 641.0, 464.0, 87.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 714.5, 322.0, 87.0, 18.0 ],
+					"presentation_rect" : [ 717.0, 290.0, 87.0, 18.0 ],
 					"text" : "myscript.bell",
 					"textcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ]
 				}
@@ -139,18 +139,18 @@
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-9",
-					"linecount" : 3,
+					"linecount" : 11,
 					"linkend" : [ "null" ],
 					"linkstart" : [ "https:" ],
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4.0, 839.0, 697.0, 57.0 ],
+					"patching_rect" : [ 4.0, 839.0, 697.0, 191.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 3,
-					"presentation_rect" : [ 5.5, 547.0, 807.0, 57.0 ],
-					"text" : "To learn more about bell, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
+					"presentation_linecount" : 10,
+					"presentation_rect" : [ 7.5, 430.0, 795.0, 175.0 ],
+					"text" : "\nWith a wide variety of bell functions, babell~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis.\n\nTo start learning babell~, please refer to its reference documentation, where all available bell functions are listed. \n\nAdditionally, to learn more about bell, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
 				}
 
 			}
@@ -173,15 +173,15 @@
 					"fontname" : "Courier New Bold",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
-					"linecount" : 15,
+					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 14.0, 613.0, 692.0, 224.0 ],
+					"patching_rect" : [ 14.0, 613.0, 692.0, 142.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 15,
-					"presentation_rect" : [ 10.5, 319.0, 783.0, 224.0 ],
-					"text" : "\n## step 1: load corpus\nsetcorpus(\"/path/to/corpus.llll\");\n\n## step 2: retrieve all buffers\n$buffers = query(\"SELECT * FROM buffers\");\n\n## step 3: add all buffers to rendering sequence, with random onset between 0 and 2000 ms\nfor $buffer in $buffers do transcribe($buffer, @onset rand(2000));\n\n## step 4: trigger audio rendering\nrender();\n\n## step 5: export to audio\nexport(\"./out.wav\")\n",
+					"presentation_linecount" : 9,
+					"presentation_rect" : [ 10.0, 286.0, 783.0, 142.0 ],
+					"text" : "\n## step 1: generate a buffer through synthesis\n$buff = cycle(@frequency 440 @duration 1000);\n\n## step 2: transcribe buffer\n$buff.transcribe();\n\n## step 3: trigger audio rendering\nrender();\n",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
 
@@ -193,16 +193,16 @@
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-3",
-					"linecount" : 18,
+					"linecount" : 13,
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5.0, 153.0, 721.0, 309.0 ],
+					"patching_rect" : [ 5.0, 153.0, 767.0, 242.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 16,
-					"presentation_rect" : [ 8.0, 42.0, 795.0, 275.0 ],
-					"text" : "grainscript~ is a simple application for offline algorithmic audio in the bell programming language. In grainscript~, the general workflow is comprised of three main stages: buffer generation, buffer transcription, and audio rendering, all done via .bell scripts. \n\nUsers may also create a database (i.e., a corpus) of buffers from a folder of audio samples, where each buffer is analyzed in terms of psycho-acoustically relevant features, such as pitch, loudness, pitch class, spectral centroid, etc. Then, users can manipulate these buffers via .bell scripts, and generate audio sequences that can be rendered and exported as .wav, .mid, or .llll files. \n\nThese scripts are written in the bach evaluation language for lllls, or bell for short. The typical structure of a script is as follows: \n\n       1) Load a corpus. \n       2) Retrieve buffers from the corpus using #sqlite3 queries.\n        3) Manipulate buffers and add them to the rendering queue.\n        4) Render all aded buffers into an audio buffer .\n       5) Export the rendered sequence as audio, midi, or native .llll format.\n\nHere’s a very basic example of a bell script:"
+					"presentation_linecount" : 13,
+					"presentation_rect" : [ 8.0, 42.0, 795.0, 242.0 ],
+					"text" : "babell~ (buffer-based algorithmic audio in bell) is a flexible application and framework for offline algorithmic audio in the bell\nprogramming language. Central to babell~ is the concept of the buffer — a structured data representation of an audio file. Buffers can be dynamically generated, processed, and manipulated using bell scripts. Each buffer encapsulates relevant audio information such as channel count, sampling rate, and duration, alongside analysis-based features like pitch, loudness, spectral centroid, and more.\n\nThe general workflow of a bell script in babell~ is the following:\n\n      1. Generation: buffers are created and processed using synthesis or sampling techniques.\n      2. Transcription: buffers are queued for rendering and symbolically represented in staff notation.\n      3. Rendering: All transcribed buffers are compiled and rendered into a final audio file.\n\nHere’s an introductory example of a bell script in babell~, which generates 1 second of a sinusoidal wave at 440 Hz:\n"
 				}
 
 			}
@@ -218,7 +218,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 4.0, 613.0, 723.0, 224.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 319.0, 796.0, 224.0 ],
+					"presentation_rect" : [ 7.0, 286.0, 796.0, 142.0 ],
 					"proportion" : 0.5,
 					"rounded" : 10
 				}

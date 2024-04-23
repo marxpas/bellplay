@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | analysis settings",
+		"title" : "babell~ | analysis settings",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-59",
@@ -497,7 +497,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 57.0, 153.0, 159.0, 37.0 ],
-					"text" : "loadmess title \"grainscript~ | analysis settings\""
+					"text" : "loadmess title \"babell~ | analysis settings\""
 				}
 
 			}

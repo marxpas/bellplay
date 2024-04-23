@@ -56,13 +56,14 @@
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
 					"id" : "obj-6",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 46.5, 548.0, 200.0, 23.0 ],
+					"patching_rect" : [ 46.5, 548.0, 200.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 326.0, 554.0, 155.0, 23.0 ],
-					"text" : "algorithmic audio in bell"
+					"presentation_rect" : [ 287.0, 554.0, 233.0, 23.0 ],
+					"text" : "buffer-based algorithmic audio in bell"
 				}
 
 			}
@@ -76,8 +77,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 103.5, 509.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 389.0, 517.0, 85.0, 35.0 ],
-					"text" : "script~"
+					"presentation_rect" : [ 390.0, 517.0, 61.0, 35.0 ],
+					"text" : "bell~"
 				}
 
 			}
@@ -91,8 +92,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 43.5, 509.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 337.0, 517.0, 72.0, 35.0 ],
-					"text" : "grain"
+					"presentation_rect" : [ 364.0, 517.0, 34.0, 35.0 ],
+					"text" : "ba"
 				}
 
 			}
@@ -234,7 +235,7 @@
 					"patching_rect" : [ 505.0, 121.0, 604.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 299.358826144953298, 790.0, 23.0 ],
-					"text" : "grainscript~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). "
+					"text" : "babell~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). "
 				}
 
 			}
@@ -280,7 +281,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 3,
 					"presentation_rect" : [ 8.0, 124.358826144953312, 790.0, 57.0 ],
-					"text" : "grainscript~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/grainscript "
+					"text" : "babell~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/grainscript "
 				}
 
 			}
@@ -425,6 +426,10 @@
 			}
  ],
 		"autosave" : 0,
+		"boxgroups" : [ 			{
+				"boxes" : [ "obj-145", "obj-52", "obj-5" ]
+			}
+ ],
 		"styles" : [ 			{
 				"name" : "subtlelight",
 				"default" : 				{

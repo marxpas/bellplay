@@ -469,7 +469,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 317.0, 551.0, 143.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "print grainscript~ @level 3"
+					"text" : "print babell~ @level 3"
 				}
 
 			}

@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "grainscript~ | algorithmic audio in bell",
+		"title" : "babell~ | buffer-based algorithmic audio in bell",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-41",
@@ -404,7 +404,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 27.0, 156.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 193.0, 7.0, 5.0, 35.0 ]
+					"presentation_rect" : [ 149.0, 7.0, 5.0, 35.0 ]
 				}
 
 			}
@@ -486,7 +486,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -721,7 +721,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 416.0, 740.0, 247.0, 23.0 ],
-					"text" : "title \"grainscript~ | algorithmic audio in bell\""
+					"text" : "title \"babell~ | buffer-based algorithmic audio in bell\""
 				}
 
 			}
@@ -744,13 +744,14 @@
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
 					"id" : "obj-1",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 41.0, 195.0, 200.0, 23.0 ],
+					"patching_rect" : [ 41.0, 195.0, 200.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 198.0, 13.0, 155.0, 23.0 ],
-					"text" : "algorithmic audio in bell"
+					"presentation_rect" : [ 154.0, 13.0, 233.0, 23.0 ],
+					"text" : "buffer-based algorithmic audio in bell"
 				}
 
 			}
@@ -821,8 +822,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 98.0, 156.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 111.0, 7.0, 85.0, 35.0 ],
-					"text" : "script~"
+					"presentation_rect" : [ 85.0, 7.0, 61.0, 35.0 ],
+					"text" : "bell~"
 				}
 
 			}
@@ -836,8 +837,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 38.0, 156.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 59.0, 7.0, 72.0, 35.0 ],
-					"text" : "grain"
+					"presentation_rect" : [ 59.0, 7.0, 34.0, 35.0 ],
+					"text" : "ba"
 				}
 
 			}
@@ -1211,6 +1212,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.deferlow.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.div.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1242,6 +1247,10 @@
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.find.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.flat.mxo",
@@ -1341,6 +1350,14 @@
 			}
 , 			{
 				"name" : "bach.roll.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.slice.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.sort.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1603,7 +1620,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gs.docs.about.maxpat",
+				"name" : "gs.docs.reference.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -1785,6 +1802,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "gs.utils.searchbar.maxpat",
+				"bootpath" : "~/Documents/grainscript/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "gs.wavesynth.maxpat",
 				"bootpath" : "~/Documents/grainscript/patchers",
 				"patcherrelativepath" : ".",
@@ -1801,6 +1825,13 @@
 , 			{
 				"name" : "ml.kdtree.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "search.png",
+				"bootpath" : "~/Documents/grainscript/media",
+				"patcherrelativepath" : "../media",
+				"type" : "PNG",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
