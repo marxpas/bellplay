@@ -2224,6 +2224,38 @@ $addref(
 
 ## ------------------------------------------------------------
 
+scaling = (
+    $inmin = 0,
+    $inmax = 1,
+    $outmin = 0,
+    $outmax = 1 -> (
+        [
+            [ "fx" "scale" ]
+            [ "params"
+                [ "inmin" $inmin ]
+                [ "inmax" $inmax ]
+                [ "outmin" $outmin ]
+                [ "outmax" $outmax ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "scaling",
+    @description "Audio process command for applying amplitude scaling to a buffer. See #process.",
+    @category BB_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "inmin", @default 0, @type "int/float", @description "input minimum value.")
+        $addarg(@name "inmax", @default 1, @type "int/float", @description "input maximum value.")
+        $addarg(@name "outmin", @default 0, @type "int/float", @description "output minimum value.")
+        $addarg(@name "outmax", @default 1, @type "int/float", @description "output maximum value.")
+    ),
+    @output $addout(@description "scaling command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 mix = (
     $buffers = null,
     $gains = null,

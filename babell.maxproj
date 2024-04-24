@@ -2,7 +2,7 @@
 	"name" : "babell",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3796633330,
+	"modificationdate" : 3796816257,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -167,6 +167,16 @@
 			}
 ,
 			"bb.process.pong~.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"bb.process.cycle~.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"bb.process.scale~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

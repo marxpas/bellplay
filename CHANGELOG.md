@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New processor: `gs.process.scale~` as `scaling`, with docs.
 - `r2pc` with docs.
 - `getbufferinfo` without docs.
 - `importaudio` function with docs. Pending tests.
