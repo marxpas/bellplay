@@ -864,7 +864,7 @@ render = (
         ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1));
         ($reset == 1 && msg("roll", "clear"));
-        bb_makebuffer(@source BB_RENDER_BUFF @info 1 @analyze $analyze)
+        bb_makebuffer(@source BB_RENDER_BUFF @info 1 @analyze $analyze @pitch 6000)
     )
 );
 
