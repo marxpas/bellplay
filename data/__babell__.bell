@@ -1446,7 +1446,7 @@ $addref(
 cycle = (
     $frequency = 440, 
     $duration = 50,
-    $phase = 0. -> (
+    $phase = 0.25 -> (
         BB_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
     )
 );
@@ -1458,6 +1458,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "phase", @default "0.5", @type "int/float", @description "initial phase, in the 0–1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -1556,6 +1557,8 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "phase", @default 0, @type "int/float", @description "initial phase, in the 0-1 range.")
+        $addarg(@name "offset", @default "0.5", @type "int/float", @description "peak position offset, in the 0-1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -1577,6 +1580,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "phase", @default 0, @type "int/float", @description "initial phase, in the 0-1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
