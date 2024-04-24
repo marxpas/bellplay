@@ -99,7 +99,7 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"code" : "$info = getbufferinfo($x1); for $x in $info collect (if $x.'duration' != null then $x:(1 1) = 'file_end'; $x) ",
+									"code" : "$info = getbufferinfo($x1); for $x in $info collect (if $x.'duration' != null then $x:(1 1) = 'source_end'; $x) ",
 									"id" : "obj-38",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -111,7 +111,7 @@
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.eval $info = getbufferinfo($x1)\\; for $x in $info collect (if $x.'duration' != null then $x:(1 1) = 'file_end'\\; $x)"
+									"text" : "bach.eval $info = getbufferinfo($x1)\\; for $x in $info collect (if $x.'duration' != null then $x:(1 1) = 'source_end'\\; $x)"
 								}
 
 							}
@@ -1093,7 +1093,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 312.0, 1804.0, 64.0, 23.0 ],
-					"text" : "r #0file_id"
+					"text" : "r #0source_id"
 				}
 
 			}
@@ -1104,7 +1104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 333.0, 422.0, 65.0, 23.0 ],
-					"text" : "s #0file_id"
+					"text" : "s #0source_id"
 				}
 
 			}
@@ -1116,7 +1116,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 406.0, 1804.0, 47.0, 23.0 ],
-					"text" : "r #0file"
+					"text" : "r #0source"
 				}
 
 			}
@@ -1127,7 +1127,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 714.0, 738.0, 48.0, 23.0 ],
-					"text" : "s #0file"
+					"text" : "s #0source"
 				}
 
 			}
@@ -1281,7 +1281,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.pack duration offset file_id file"
+					"text" : "bach.pack duration offset source_id source"
 				}
 
 			}

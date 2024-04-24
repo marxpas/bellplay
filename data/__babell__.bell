@@ -597,7 +597,7 @@ sortbuffers = (
 
 $addref(
     @name "sortbuffers",
-    @description "Sorts buffers by a given key (buffer_id, file_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
+    @description "Sorts buffers by a given key (buffer_id, source_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
     @category BB_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffers", @type "llll", @description "buffers to sort.")
@@ -722,7 +722,7 @@ transcribe = (
         $size = [ 4 scale(log2(min(16384, max(1, $dur))), 0, 14, 25, 150) ];
 
         ## format note and add to roll
-        $note = [ $mc $dur $vel ["slots" [ 7 $buffer."file" ] [ 10 $buffer."offset" ] $pan $rate $gain $color $notehead $size ]];
+        $note = [ $mc $dur $vel ["slots" [ 7 $buffer."source" ] [ 10 $buffer."offset" ] $pan $rate $gain $color $notehead $size ]];
         msg("roll", "addchord" [ $onset $note ])
     )
 );
@@ -804,7 +804,7 @@ wavesynth = (
             [ 'roll' 'addchord' [ 0 $notes ] ] 
         );        
         bb_makebuffer(
-            @file BB_TMP_BUFF
+            @source BB_TMP_BUFF
             @pitch minimum($pitch ||| 1)
             @loudness minimum($loudness ||| 1)
             @duration maximum($maxduration ||| 1)
@@ -956,7 +956,7 @@ importaudio = (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
         bb_makebuffer(
-            @file BB_TMP_BUFF
+            @source BB_TMP_BUFF
             @pitch 6000
             @info 1
             @analyze $analyze
@@ -1128,7 +1128,7 @@ process = (
         $offset = $buffer.getkey("offset");
         msg(
             "process",
-            [ "source" $buffer.getkey("file") ]
+            [ "source" $buffer.getkey("source") ]
             [ "process" 
                 crop(@start $offset, @end $offset + $buffer.getkey("duration"))
                 ($prefade &&& $prefade > 0 &&& fade(@fadein $prefade, @fadeout $prefade))
@@ -1136,7 +1136,7 @@ process = (
             ]
         );
         bb_makebuffer(
-            @file BB_TMP_BUFF
+            @source BB_TMP_BUFF
             @pitch $buffer.getkey("pitch")
             @pitchsalience $buffer.getkey("pitchsalience")
             @loudness $buffer.getkey("loudness")
@@ -1314,12 +1314,12 @@ $addref(
 ## ------------------------------------------------------------
 
 bb_makebuffer = (
-    $file,
+    $source,
     $duration = 50,  
     $numchannels = 1,
     $sr = BB_SR,
     $offset = 0,
-    $file_id = -1,
+    $source_id = -1,
     $mfcc = 0. :* 13,
     $pitch = 0,
     $pitchsalience = 0,
@@ -1328,14 +1328,14 @@ bb_makebuffer = (
     $zerox = 0,
     $analyze = 0,
     $info = 0 -> (
-        if $file == null then printerror("null buffer encountered");
+        if $source == null then printerror("null buffer encountered");
         $buffer = (
-            [ "file" $file ]
+            [ "source" $source ]
             [ "sr" $sr ]
             [ "numchannels" $numchannels ]
             [ "duration" $duration ]
             [ "offset" $offset ]
-            [ "file_id" $file_id ]
+            [ "source_id" $source_id ]
             [ "mfcc" $mfcc ]
             [ "centroid" $centroid ]
             [ "loudness" $loudness ]
@@ -1343,8 +1343,8 @@ bb_makebuffer = (
             [ "pitchsalience" $pitchsalience ]
             [ "pitch" $pitch ]
         );
-        $features = if $analyze then getfeatures($file);
-        $info = if $info then getbufferinfo($file);
+        $features = if $analyze then getfeatures($source);
+        $info = if $info then getbufferinfo($source);
         for $x in $info $features do (
             $key = $x:(1 1);
             $key &&& ($buffer.$key = $x.$key)
@@ -1352,7 +1352,7 @@ bb_makebuffer = (
         [
             $buffer 
             [ "pitchclass" fmod($buffer."pitch" / 100.0, 12) ] 
-            [ "file_end" $buffer."duration" ]
+            [ "source_end" $buffer."duration" ]
         ]
     )
 );
@@ -1364,12 +1364,12 @@ BB_OSC_GEN_FUNC = (
     $frequency = 440,
     $duration = 50,
     $params = null -> (
-        $file = $frequency.getkey("file");
+        $source = $frequency.getkey("source");
         $isnoise = $name == "noise";
         if $isnoise == 1 then (
             $frequency = rand(40, 1500)
-        ) else if $file == null then (
-            $file = envelope($frequency, @duration $duration).getkey("file");
+        ) else if $source == null then (
+            $source = envelope($frequency, @duration $duration).getkey("source");
             if depth($frequency) > 1 || length($frequency) > 1 then (
                 $frequency = trans(bpf($frequency))::(2 1)
             )
@@ -1385,14 +1385,14 @@ BB_OSC_GEN_FUNC = (
                         [ "tail" $duration ] 
                         [ "bang" ]
                     ) else (
-                        [ $file ]
+                        [ $source ]
                     )
                 ]
             ]
         );
         $pitch = f2mc($frequency);
         bb_makebuffer(
-            @file BB_TMP_BUFF
+            @source BB_TMP_BUFF
             @numchannels 1
             @sr BB_SR
             @duration $duration
@@ -1468,11 +1468,11 @@ rect = (
     $frequency = 440, 
     $duration = 50,
     $duty = 0.5 -> (
-        $file = $duty.getkey("file");
-        if $file == null then (
-            $duty = envelope($duty, @duration $duration).getkey("file")
+        $source = $duty.getkey("source");
+        if $source == null then (
+            $duty = envelope($duty, @duration $duration).getkey("source")
         ) else (
-            $duty = $file
+            $duty = $source
         );
         BB_OSC_GEN_FUNC("rect", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
@@ -1516,11 +1516,11 @@ tri = (
     $frequency = 440, 
     $duration = 50,
     $duty = 0.5 -> (
-        $file = $duty.getkey("file");
-        if $file == null then (
-            $duty = envelope($duty, @duration $duration).getkey("file")
+        $source = $duty.getkey("source");
+        if $source == null then (
+            $duty = envelope($duty, @duration $duration).getkey("source")
         ) else (
-            $duty = $file
+            $duty = $source
         );
         BB_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
@@ -1599,7 +1599,7 @@ envelope = (
             ]
         );
         bb_makebuffer(
-            @file BB_TMP_BUFF
+            @source BB_TMP_BUFF
             @sr BB_SR
             @numchannels 1
             @duration $duration
@@ -1978,8 +1978,8 @@ $addref(
 
 expand = (
     $buffer -> (
-        if $buffer.getkey("file") == null then printerror("invalid value for @buffer in expand()");
-        $buffer.setkey("offset", 0).setkey("duration", $buffer.getkey("file_end"))
+        if $buffer.getkey("source") == null then printerror("invalid value for @buffer in expand()");
+        $buffer.setkey("offset", 0).setkey("duration", $buffer.getkey("source_end"))
     )
 );
 
@@ -1998,14 +1998,14 @@ $addref(
 groove = (
     $rate = 1,
     $duration = 1000 -> (
-        $file = $rate.getkey("file");
-        if $file == null then (
-            $file = envelope($rate, @duration $duration).getkey("file")
+        $source = $rate.getkey("source");
+        if $source == null then (
+            $source = envelope($rate, @duration $duration).getkey("source")
         );
         [
             [ "fx" "groove" ]
             [ "params"
-                [ "rate" $file ]
+                [ "rate" $source ]
             ]
         ]
     )
@@ -2028,9 +2028,9 @@ freqshift = (
     $shift,
     $negative = 0 -> (
         if $shift == null then printerror("you must provide a value for @shift in freqshift().");
-        $file = $shift.getkey("file");
-        if $file != null then (
-            $shift = $file
+        $source = $shift.getkey("source");
+        if $source != null then (
+            $shift = $source
         ) else (
             $shift = [ bpf($shift) ]
         );
@@ -2063,8 +2063,8 @@ pong = (
     $low = -1,
     $high = 1,
     $mode = 0 -> (
-        $low = $low.getkey("file") ||| [ bpf($low) ];
-        $high = $high.getkey("file") ||| [ bpf($high) ];
+        $low = $low.getkey("source") ||| [ bpf($low) ];
+        $high = $high.getkey("source") ||| [ bpf($high) ];
         [
             [ "fx" "pong" ]
             [ "params"
@@ -2137,14 +2137,14 @@ $addref(
 waveshape = (
     $phase = 0 1,
     $duration = 1000 -> (
-        $file = $phase.getkey("file");
-        if $file == null then (
-            $file = envelope($phase, @duration $duration).getkey("file")
+        $source = $phase.getkey("source");
+        if $source == null then (
+            $source = envelope($phase, @duration $duration).getkey("source")
         );
         [
             [ "fx" "waveshape" ]
             [ "params"
-                [ "phase" $file ]
+                [ "phase" $source ]
             ]
         ]
     )
@@ -2166,14 +2166,14 @@ $addref(
 scrub = (
     $phase = 0 1,
     $duration = 1000 -> (
-        $file = $phase.getkey("file");
-        if $file == null then (
-            $file = envelope($phase, @duration $duration).getkey("file")
+        $source = $phase.getkey("source");
+        if $source == null then (
+            $source = envelope($phase, @duration $duration).getkey("source")
         );
         [
             [ "fx" "scrub" ]
             [ "params"
-                [ "phase" $file ]
+                [ "phase" $source ]
             ]
         ]
     )
@@ -2238,7 +2238,7 @@ mix = (
         [
             [ "fx" "mix" ]
             [ "params"
-                [ "buffers" for $g in $buffers collect $g.getkey("file") ]
+                [ "buffers" for $g in $buffers collect $g.getkey("source") ]
                 [ "gains" right(1 $gains, -$numbuffers) ]
                 [ "offsets" right(0 $offsets, -$numbuffers) ]
                 [ "resamplingfiltersize" $resamplingfiltersize ]
@@ -2308,10 +2308,10 @@ BB_BUFFER_ARITHMETIC_FUNC = (
         $depth = depth($operand);
         $length = length($operand);
         if $depth > 1 || $length > 1 then (
-            $file = $operand.getkey("file");
+            $source = $operand.getkey("source");
             ## if buffer, assign file to @operand
-            if $file != null then (
-                $operand = $file
+            if $source != null then (
+                $operand = $source
             ) else (
                 ## if envelope, clean format and wrap if envelope
                 $operand = [ bpf($operand) ]
@@ -2723,9 +2723,9 @@ panning = (
     $compensate = 1,
     $spread = 0,    
     $envtimeunit = 2 -> (
-        $file = $position.getkey("file");
-        if $file != null then (
-            $position = $file
+        $source = $position.getkey("source");
+        if $source != null then (
+            $position = $source
         ) else if length($position) > 1 || depth($position) > 1 then (
             $position = [ bpf($position) ]
         );

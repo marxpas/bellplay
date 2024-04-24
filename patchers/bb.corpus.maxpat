@@ -95,7 +95,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 10.0, 58.0, 960.0, 23.0 ],
 									"style" : "subtlelight",
-									"text" : "erase, addtable buffers [file s] [file_id i] [pitch f] [pitchclass f] [pitchsalience f] [loudness f] [zerox f] [duration f] [centroid f] [offset f] [file_end f] [mfcc l] [ sr i ] [ numchannels i ]"
+									"text" : "erase, addtable buffers [source s] [source_id i] [pitch f] [pitchclass f] [pitchsalience f] [loudness f] [zerox f] [duration f] [centroid f] [offset f] [source_end f] [mfcc l] [ sr i ] [ numchannels i ]"
 								}
 
 							}
@@ -1133,7 +1133,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 5.0, 49.0, 1049.0, 23.0 ],
-									"text" : "bang, database #0corpus, table buffers, contentfield file offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numbuffers, where null"
+									"text" : "bang, database #0corpus, table buffers, contentfield source offset duration, xfield loudness, xlabel loudness, yfield pitch, ylabel pitch, colorfield pitchclass, sizefield duration, numbuffers, where null"
 								}
 
 							}
@@ -2070,7 +2070,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-84",
-					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "file_id" ],
+					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "source_id" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2088,7 +2088,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-82",
-					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "file_id" ],
+					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "source_id" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2106,7 +2106,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-60",
-					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "file_id" ],
+					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "source_id" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2124,7 +2124,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-10",
-					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "file_id" ],
+					"items" : [ "pitch", ",", "pitchclass", ",", "pitchsalience", ",", "loudness", ",", "duration", ",", "centroid", ",", "offset", ",", "zerox", ",", "source_id" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2151,7 +2151,7 @@
 					}
 ,
 					"style" : "subtlelight",
-					"text" : "bach.keys offset duration file @out mmm"
+					"text" : "bach.keys offset duration source @out mmm"
 				}
 
 			}
