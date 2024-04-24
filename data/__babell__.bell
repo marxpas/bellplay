@@ -846,6 +846,8 @@ render = (
    $play = 0, 
    $spread = 0,
    $fade = 5,
+   $analyze = 0,
+   $reset = 0,
    $process = null -> (
         if $numchannels < 1 then printerror("number of channels must be greater than 0");
         msg("sampler", 
@@ -860,13 +862,15 @@ render = (
         msg("roll", "getlength");
         msg("roll", "dump");
         ($process &&& msg("sampler", [ "process" $process ] ));
-        ($play == 1 && msg("playtoggle", 1))
+        ($play == 1 && msg("playtoggle", 1));
+        ($reset == 1 && msg("roll", "clear"));
+        bb_makebuffer(@source BB_RENDER_BUFF @info 1 @analyze $analyze)
     )
 );
 
 $addref(
     @name "render",
-    @description "Triggers audio rendering of all transcribed buffers via #transcribe. Note that it's possible to apply post-rendering processing by passing audio processing commands (e.g., #reverse, #freeverb, #clip, etc.) to the @process arguments, but these audio modifications won't be accurately reflected in the score transcription. See #process function.",
+    @description "Triggers audio rendering of all transcribed buffers via #transcribe, and returns the rendered buffer. Note that it's possible to apply post-rendering processing by passing audio processing commands (e.g., #reverse, #freeverb, #clip, etc.) to the @process arguments, but these audio modifications won't be accurately reflected in the score transcription. See #process function.",
     @category BB_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
@@ -883,8 +887,15 @@ $addref(
         )
         $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "fade", @type "int/float", @default 5, @description "fade in/out applied to every buffer, in milliseconds")
+        $addarg(@name "analyze", @type "int", @description "analyze rendered output." @options 
+            BB_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "reset", @type "int", @description "remove all previously transcribed buffers after rendering." @options
+            BB_REF_SWITCH_OPTIONS
+        )
         $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
+    @output $addout(@description "rendered buffer" @type "llll")
 );
 
 ## ------------------------------------------------------------

@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- MAJOR CHANGE: Return rendered buffer in `render`, to allow for arbitrary transcribe/render life-cycles.
 - Add missing @phase args in `cycle`, `triangle` and `phasor` docs.
 - MAJOR VOCAB CHANGE: Use `source`/`source_id` instead of `file`/`file_id`.
 - MAJOR CHANGE: change app name to `babell`: buffer-based algorithmic audio in bell. This includes renaming all files and code naming, such as GS to BB.
