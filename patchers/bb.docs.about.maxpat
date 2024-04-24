@@ -112,7 +112,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 641.0, 464.0, 87.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 712.0, 290.0, 87.0, 18.0 ],
+					"presentation_rect" : [ 712.0, 305.0, 87.0, 18.0 ],
 					"text" : "myscript.bell",
 					"textcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ]
 				}
@@ -139,18 +139,18 @@
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-9",
-					"linecount" : 11,
+					"linecount" : 10,
 					"linkend" : [ "null" ],
 					"linkstart" : [ "https:" ],
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4.0, 839.0, 697.0, 191.0 ],
+					"patching_rect" : [ 4.0, 839.0, 697.0, 175.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 10,
-					"presentation_rect" : [ 7.5, 430.0, 796.0, 175.0 ],
-					"text" : "\nWith a wide variety of bell functions, babell~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis.\n\nTo start learning babell~, please refer to its reference documentation, where all available bell functions are listed. \n\nAdditionally, to learn more about bell, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
+					"presentation_linecount" : 9,
+					"presentation_rect" : [ 8.0, 445.0, 796.0, 158.0 ],
+					"text" : "\nWith a wide variety of bell functions, babell~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis. To start learning babell~, please refer to its reference documentation, where all available bell functions are listed. \n\nAdditionally, to learn more about the bell programming language, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
 				}
 
 			}
@@ -180,7 +180,7 @@
 					"patching_rect" : [ 14.0, 613.0, 692.0, 142.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 9,
-					"presentation_rect" : [ 10.0, 286.0, 783.0, 142.0 ],
+					"presentation_rect" : [ 10.0, 301.0, 783.0, 142.0 ],
 					"text" : "\n## step 1: generate a buffer through synthesis\n$buff = cycle(@frequency 440 @duration 1000);\n\n## step 2: transcribe buffer\n$buff.transcribe();\n\n## step 3: trigger audio rendering\nrender();\n",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
@@ -198,11 +198,11 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5.0, 153.0, 767.0, 242.0 ],
+					"patching_rect" : [ 5.0, 153.0, 813.0, 242.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 13,
-					"presentation_rect" : [ 8.0, 42.0, 795.0, 242.0 ],
-					"text" : "babell~ (buffer-based algorithmic audio in bell) is a flexible application and framework for offline algorithmic audio in the bell\nprogramming language. Central to babell~ is the concept of the buffer — a structured data representation of an audio file. Buffers can be dynamically generated, processed, and manipulated using bell scripts. Each buffer encapsulates relevant audio information such as channel count, sampling rate, and duration, alongside analysis-based features like pitch, loudness, spectral centroid, and more.\n\nThe general workflow of a bell script in babell~ is the following:\n\n      1. Generation: buffers are created and processed using synthesis or sampling techniques.\n      2. Transcription: buffers are queued for rendering and symbolically represented in staff notation.\n      3. Rendering: All transcribed buffers are compiled and rendered into a final audio file.\n\nHere’s an introductory example of a bell script in babell~, which generates 1 second of a sinusoidal wave at 440 Hz:\n"
+					"presentation_linecount" : 14,
+					"presentation_rect" : [ 8.0, 42.0, 795.0, 259.0 ],
+					"text" : "babell~ (buffer-based algorithmic audio in bell) is a flexible application and framework for offline algorithmic audio in the bell\nprogramming language. Central to babell~ is the concept of the buffer — a structured data representation of an audio file. Buffers can be dynamically generated, processed, and manipulated using bell scripts. Each buffer encapsulates relevant audio information such as channel count, sampling rate, and duration, alongside analysis-based features like pitch, loudness, spectral centroid, and more.\n\nThe general workflow of a bell script in babell~ is the following:\n\n      1. Generation: buffers are created and processed using synthesis or sampling techniques.\n      2. Transcription: buffers are queued for rendering, each symbolically represented as a note in staff notation.\n      3. Rendering: All transcribed buffers are compiled and rendered into a single audio buffer. This buffer can then be used for \n           subsequent iterations of this workflow to refine the final output as needed. \n\nHere’s an introductory example of a bell script in babell~, which generates 1 second of a sinusoidal wave at 440 Hz:\n"
 				}
 
 			}
@@ -218,7 +218,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 4.0, 613.0, 723.0, 224.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 7.0, 286.0, 796.0, 142.0 ],
+					"presentation_rect" : [ 7.0, 301.0, 796.0, 142.0 ],
 					"proportion" : 0.5,
 					"rounded" : 10
 				}
