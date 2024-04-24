@@ -112,7 +112,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 641.0, 464.0, 87.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 717.0, 290.0, 87.0, 18.0 ],
+					"presentation_rect" : [ 712.0, 290.0, 87.0, 18.0 ],
 					"text" : "myscript.bell",
 					"textcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ]
 				}
@@ -149,7 +149,7 @@
 					"patching_rect" : [ 4.0, 839.0, 697.0, 191.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 10,
-					"presentation_rect" : [ 7.5, 430.0, 795.0, 175.0 ],
+					"presentation_rect" : [ 7.5, 430.0, 796.0, 175.0 ],
 					"text" : "\nWith a wide variety of bell functions, babell~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis.\n\nTo start learning babell~, please refer to its reference documentation, where all available bell functions are listed. \n\nAdditionally, to learn more about bell, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
 				}
 
