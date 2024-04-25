@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 277.0, 565.0, 978.0, 450.0 ],
+		"rect" : [ 282.0, 566.0, 978.0, 450.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -5519,7 +5519,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 130.0, 345.0, 1199.0, 167.0 ],
+						"rect" : [ 447.0, 689.0, 1199.0, 167.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5550,13 +5550,13 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-148",
-									"linecount" : 3,
+									"linecount" : 4,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 54.0, 1172.0, 52.0 ],
-									"text" : "clear, preventedit notes slotinfo markers, zoom 115, vzoom 115, showvscrollbar 1, voicespacing 1, [slotinfo [ 1 [name envelope ] [ width 100 ] [ key e ] ] [ 4 [ name \"notehead size\" ] [ type floatlist ] [ default 50 ] [ range 25 300 ] ] [ 6 [ name \"note color\" ] [ key c ] ] [ 7 [ name \"buffer source\" ] [ key s ] ] [ 10 [ name \"buffer offset \" ] [ key o ] ] [11 [name \"playback rate\" ] [key r] [type float] [range 0.0001 16.]] [23 [name \"notehead type\" ] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23, linknotesizetoslot 4"
+									"patching_rect" : [ 8.0, 54.0, 1185.0, 66.0 ],
+									"text" : "clear, preventedit notes slotinfo voices breakpoints markers, zoom 115, vzoom 115, showvscrollbar 1, voicespacing 1, [slotinfo [ 1 [name envelope ] [ width 100 ] [ key e ] ] [ 4 [ name \"notehead size\" ] [ type floatlist ] [ default 50 ] [ range 25 300 ] ] [ 6 [ name \"note color\" ] [ key c ] ] [ 7 [ name \"buffer source\" ] [ key s ] ] [ 10 [ name \"buffer offset \" ] [ key o ] ] [11 [name \"playback rate\" ] [key r] [type float] [range 0.0001 16.]] [23 [name \"notehead type\" ] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23, linknotesizetoslot 4"
 								}
 
 							}
@@ -5581,7 +5581,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 124.0, 30.0, 30.0 ]
+									"patching_rect" : [ 8.0, 132.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -5727,7 +5727,7 @@
 					"pitcheditrange" : [ "null" ],
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 95.0, 754.0, 266.0 ],
-					"preventedit" : [ "notes", "slotinfo", "markers" ],
+					"preventedit" : [ "notes", "slotinfo", "voices", "breakpoints", "markers" ],
 					"ruler" : 1,
 					"rulercolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"showborder" : 0,
