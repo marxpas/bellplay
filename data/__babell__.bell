@@ -1757,7 +1757,7 @@ $addref(
 
 paulfreeze = (
     $duration = 1,
-    $onset = 0,
+    $position = 0,
     $timeunit = 2,
     $spectral = 1,
     $framesize = 8192 -> (
@@ -1765,7 +1765,7 @@ paulfreeze = (
             [ "fx" "paulfreeze" ]
             [ "params" 
                 [ "duration" $duration ||| 1000 ]
-                [ "onset" (if length($onset) > 1 then [$onset] else $onset) ||| 0 ]
+                [ "onset" left(flat($position) 0, 2) ]
                 [ "timeunit" $timeunit ]
                 [ "spectral" $spectral ]
                 [ "framesize" $framesize ]
@@ -1780,8 +1780,8 @@ $addref(
     @category BB_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "freezing duration.")
-        $addarg(@name "onset", @default 0, @type "int/float/llll", @description "freezing duration.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration.", @options 
+        $addarg(@name "position", @default 0, @type "int/float/list", @description "freezing position, as <time> or <time> <jitter>. To jitter through full buffer, use 'all'.")
+        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit.", @options 
             BB_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 

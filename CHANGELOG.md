@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Make correction in `paulfreeze` docs.
 - Fix order of `normalize` and set default @level to -6.
 - Fix memory leak in `gs.generate`, by resetting naming.
 - Fix stale buffer bug in `gs.getcontroller~`.
