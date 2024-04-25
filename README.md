@@ -1,6 +1,6 @@
 <img src="media/logo.png" alt="bellplay logo" width="125"/>
 
-# **bellplay~** _offline audio granulation_
+# **bellplay~** _algorithmic audio in bell_
 
 ### Description
 
