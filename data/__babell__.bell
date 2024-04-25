@@ -1514,7 +1514,7 @@ $addref(
 ## ------------------------------------------------------------
 
 randosc = (
-    $frequency = 440;
+    $frequency = 440,
     $duration = 50 -> (
         BB_OSC_GEN_FUNC("rand", @frequency $frequency @duration $duration)
     )
@@ -1756,9 +1756,9 @@ $addref(
 ## ------------------------------------------------------------
 
 paulfreeze = (
-    $duration = 1,
+    $duration = 1000,
     $position = 0,
-    $timeunit = 2,
+    $timeunit = 0,
     $spectral = 1,
     $framesize = 8192 -> (
         [
@@ -1779,7 +1779,7 @@ $addref(
     @description "Audio process command for freezing a buffer. See #process.",
     @category BB_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "duration", @default 1, @type "int/float", @description "freezing duration.")
+        $addarg(@name "duration", @default 1000, @type "int/float", @description "freezing duration, based on @timeunit.")
         $addarg(@name "position", @default 0, @type "int/float/list", @description "freezing position, as <time> or <time> <jitter>. To jitter through full buffer, use 'all'.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit.", @options 
             BB_REF_TIMEUNIT_OPTIONS
