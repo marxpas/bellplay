@@ -924,14 +924,14 @@ scoreconfig = (
             [ "midichannels" $midichannels ]
             [ "voicenames" $voicenames ]
             [ "tonedivision" left($tonedivision, 1) ]
-            [ "showdurations" $showdurations ]
         );
         $changes = for $param in $config collect (
             $key = $param::1;
             if BB_SCORE_CONFIG.$key != $param.$key then $param
         );
         BB_SCORE_CONFIG = $config;
-        msg("roll", $changes)
+        msg("roll", $changes);
+        msg("roll", "showdurations" $showdurations )
     )
 );
 
