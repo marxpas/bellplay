@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Make app window width smaller.
 - Use dynamic naming in `GS_RENDER_BUFF` to prevent stale buffer bug.
 - Update `about` text to reflect multiple `render` iteration feature.
 - MAJOR CHANGE: Return rendered buffer in `render`, to allow for arbitrary transcribe/render life-cycles.
