@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+  
+### Fixed
+
+### Removed
+
+## [v0.1.0-beta] - 2024-04-25
+
+### Added
+
 - Prevent editing of breakpoints and voices in roll.
 - Support score configuration and voice assignment through `scoreconfig` and @voice argument in `transcribe`.
 - New processor: `gs.process.scale~` as `scaling`, with docs.
