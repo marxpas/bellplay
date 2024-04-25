@@ -60,10 +60,11 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 46.5, 548.0, 200.0, 40.0 ],
+					"patching_rect" : [ 46.5, 548.0, 150.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 287.0, 554.0, 233.0, 23.0 ],
-					"text" : "algorithmic audio in bell"
+					"presentation_rect" : [ 8.0, 554.0, 790.0, 23.0 ],
+					"text" : "algorithmic audio in bell",
+					"textjustification" : 1
 				}
 
 			}
@@ -77,8 +78,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 103.5, 509.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 390.0, 517.0, 61.0, 35.0 ],
-					"text" : "bell~"
+					"presentation_rect" : [ 390.0, 517.0, 67.0, 35.0 ],
+					"text" : "play~"
 				}
 
 			}
@@ -92,8 +93,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 43.5, 509.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 364.0, 517.0, 34.0, 35.0 ],
-					"text" : "ba"
+					"presentation_rect" : [ 354.0, 517.0, 45.0, 35.0 ],
+					"text" : "bell"
 				}
 
 			}
@@ -280,7 +281,7 @@
 					"patching_rect" : [ 10.0, 121.0, 438.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 8.0, 124.358826144953312, 790.0, 57.0 ],
+					"presentation_rect" : [ 8.0, 124.358826144953312, 793.0, 57.0 ],
 					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/bellplay "
 				}
 
