@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "babell~ | bell reference",
+		"title" : "bellplay~ | bell reference",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-55",
@@ -389,7 +389,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "bb.utils.searchbar.maxpat",
+					"name" : "bp.utils.searchbar.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"offset" : [ 0.0, 0.0 ],
@@ -1420,7 +1420,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 42.0, 793.0, 21.0 ],
 					"style" : "subtlelight",
-					"text" : "In addition to the native functions in bell, the following functions are included in babell~. Click on the menu to learn more about each of them."
+					"text" : "In addition to the native functions in bell, the following functions are included in bellplay~. Click on the menu to learn more about each of them."
 				}
 
 			}
@@ -1432,7 +1432,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 343.0, 336.0, 193.0, 23.0 ],
-					"text" : "title \"babell~ | bell reference\""
+					"text" : "title \"bellplay~ | bell reference\""
 				}
 
 			}
@@ -1644,7 +1644,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "BB_REF ",
+					"code" : "BP_REF ",
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1656,7 +1656,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval BB_REF"
+					"text" : "bach.eval BP_REF"
 				}
 
 			}
@@ -2485,15 +2485,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bb.utils.searchbar.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.utils.searchbar.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "search.png",
-				"bootpath" : "~/Documents/babell/media",
+				"bootpath" : "~/Documents/bellplay/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

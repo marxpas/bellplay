@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "babell~ | analysis settings",
+		"title" : "bellplay~ | analysis settings",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-59",
@@ -497,7 +497,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 57.0, 153.0, 159.0, 37.0 ],
-					"text" : "loadmess title \"babell~ | analysis settings\""
+					"text" : "loadmess title \"bellplay~ | analysis settings\""
 				}
 
 			}
@@ -545,7 +545,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 27.0, 102.0, 113.0, 23.0 ],
-					"text" : "bb.utils.debugmode"
+					"text" : "bp.utils.debugmode"
 				}
 
 			}
@@ -582,7 +582,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 29.5, 1846.0, 68.0, 23.0 ],
-					"text" : "bb.features"
+					"text" : "bp.features"
 				}
 
 			}
@@ -2551,15 +2551,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bb.features.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.features.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

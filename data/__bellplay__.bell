@@ -1,23 +1,23 @@
-BB_VERSION = "v0.0.7-beta";
-BB_QUERY_BUFFERS = null;
-BB_TREE_NORM = null;
-BB_REF_LABEL_UTILS = "utilities";
-BB_REF_LABEL_PROCESS = "audio processing";
-BB_REF_LABEL_GEN = "audio generation";
-BB_REF = (for $i in BB_REF_LABEL_UTILS BB_REF_LABEL_PROCESS BB_REF_LABEL_GEN collect [ $i ]);
-BB_REF_TIMEUNIT_OPTIONS = null;
-BB_REF_AUDIO_DOMAIN_OPTIONS = null;
+BP_VERSION = "v0.0.7-beta";
+BP_QUERY_BUFFERS = null;
+BP_TREE_NORM = null;
+BP_REF_LABEL_UTILS = "utilities";
+BP_REF_LABEL_PROCESS = "audio processing";
+BP_REF_LABEL_GEN = "audio generation";
+BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN collect [ $i ]);
+BP_REF_TIMEUNIT_OPTIONS = null;
+BP_REF_AUDIO_DOMAIN_OPTIONS = null;
 
-BB_TMP_BUFF = null;
-BB_TMP_BUFFINFO = null;
-BB_TMP_FEATURES = null;
-BB_TMP_ROLL_OUTPUT = null;
+BP_TMP_BUFF = null;
+BP_TMP_BUFFINFO = null;
+BP_TMP_FEATURES = null;
+BP_TMP_ROLL_OUTPUT = null;
 
 ## ------------------------------------------------------------
 
 $addref = (
-    $name, $description, $arguments, $output, $category = BB_REF_LABEL_UTILS -> (
-        BB_REF.$category _= [
+    $name, $description, $arguments, $output, $category = BP_REF_LABEL_UTILS -> (
+        BP_REF.$category _= [
             $name
             [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
@@ -64,8 +64,8 @@ msg = (
 getpathinfo = (
     $x -> (
         msg("pathinfo", $x);
-        if BB_PATH_INFO == null then printerror("invalid path:" $x);
-        BB_PATH_INFO
+        if BP_PATH_INFO == null then printerror("invalid path:" $x);
+        BP_PATH_INFO
     )
 );
 
@@ -74,7 +74,7 @@ getpathinfo = (
 getbufferinfo = (
     $buffer -> (
         msg("bufferinfo", $buffer);
-        BB_TMP_BUFFINFO
+        BP_TMP_BUFFINFO
     )
 );
 
@@ -83,7 +83,7 @@ getbufferinfo = (
 getfeatures = (
     $buffer -> (
         msg("features", $buffer);
-        BB_TMP_FEATURES
+        BP_TMP_FEATURES
     )
 );
 
@@ -105,14 +105,14 @@ printerror = (
 tosymbol = (
     $x -> (
         msg("sym", $x);
-        BB_SYMBOL
+        BP_SYMBOL
     )
 );
 
 $addref(
     @name "tosymbol",
     @description "Casts input value as a symbol.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x",  @type "anything",@description "value to cast")
     ),
@@ -121,7 +121,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BB_REF_TIMEUNIT_OPTIONS = (
+BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 0, @description "milliseconds")
     $addopt(@value 1, @description "samples")
     $addopt(@value 2, @description "duration" "ratio")
@@ -129,30 +129,30 @@ BB_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 4, @description "samples" "difference")
 );
 
-BB_REF_AUDIO_DOMAIN_OPTIONS = (
+BP_REF_AUDIO_DOMAIN_OPTIONS = (
     $addopt(@value 0, @description "frequency domain")
     $addopt(@value 1, @description "time domain")
 );
 
-BB_REF_PITCH_FORMAT_OPTIONS = (
+BP_REF_PITCH_FORMAT_OPTIONS = (
     $addopt(@value 0 @description "cents")
     $addopt(@value 1 @description "MIDI" )
     $addopt(@value 2 @description "Hertz")
     $addopt(@value 3 @description "frequency ratio")
 );
 
-BB_REF_SWITCH_OPTIONS = (
+BP_REF_SWITCH_OPTIONS = (
     $addopt(@value 0 @description "off")
     $addopt(@value 1 @description "on" )
 );
 
-BB_REF_NORMALIZE_OPTIONS = (
+BP_REF_NORMALIZE_OPTIONS = (
     $addopt(@value 0 @description "never")
     $addopt(@value 1 @description "always")
     $addopt(@value 2 @description "overload protection only" )
 );
 
-BB_REF_WINDOW_OPTIONS = (
+BP_REF_WINDOW_OPTIONS = (
     $addopt(@value "rectangular")
     $addopt(@value "triangular")
     $addopt(@value "sine")
@@ -167,19 +167,19 @@ BB_REF_WINDOW_OPTIONS = (
     $addopt(@value "sqrthamming")
 );
 
-BB_REF_AMPUNIT_OPTIONS = (
+BP_REF_AMPUNIT_OPTIONS = (
     $addopt(@value 0, @description "linear")
     $addopt(@value 1, @description "decibels")
 );
 
-BB_REF_CURVE_OPTIONS = (
+BP_REF_CURVE_OPTIONS = (
     $addopt(@value 0, @description "linear")
     $addopt(@value 1, @description "sine")
     $addopt(@value 2, @description "curve")
     $addopt(@value 3, @description "s-curve")
 );
 
-BB_REF_RESAMPLINGMODE_OPTIONS = (
+BP_REF_RESAMPLINGMODE_OPTIONS = (
     $addopt(@value "sinc")
     $addopt(@value "nearest neighbor")
     $addopt(@value "sample and hold")
@@ -188,7 +188,7 @@ BB_REF_RESAMPLINGMODE_OPTIONS = (
     $addopt(@value "cubic")
 );
 
-BB_REF_RESAMPLINGPOLICY_OPTIONS = (
+BP_REF_RESAMPLINGPOLICY_OPTIONS = (
     $addopt(@value 0 @description "don't")
     $addopt(@value 1 @description "to lowest")
     $addopt(@value 2 @description "to highest")
@@ -215,7 +215,7 @@ pcdiff = (
 $addref(
     @name "pcdiff",
     @description "Signed pitch class difference.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "a",  @type "int/float/list",@description "pitch classes.")
         $addarg(@name "b", @type "int/float/list",@description "pitch classes.")
@@ -234,7 +234,7 @@ setcorpus = (
         $path = $pathinfo."path";
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
-        BB_QUERY_BUFFERS = null;
+        BP_QUERY_BUFFERS = null;
         msg("db", "read" $path + $extension)
     )
 );
@@ -242,7 +242,7 @@ setcorpus = (
 $addref(
     @name "setcorpus",
     @description "Loads an audio corpus, given an absolute path to a .llll file. See #query function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
     )
@@ -267,7 +267,7 @@ samplelist = (
 $addref(
     @name "samplelist",
     @description "Samples an interpolated value from a numeric list given a normalized index.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "list", @description "list to sample from.")
         $addarg(@name "i", @type "list", @description "normalized sampling index.")
@@ -283,15 +283,15 @@ query = (
             printerror("you must provide a value for @x in query()")
         );
         msg("db", "query" $x);
-        (if BB_QUERY_BUFFERS == null then printerror("query did not yield any results:" tosymbol($x)));
-        BB_QUERY_BUFFERS
+        (if BP_QUERY_BUFFERS == null then printerror("query did not yield any results:" tosymbol($x)));
+        BP_QUERY_BUFFERS
     )
 );
 
 $addref(
     @name "query",
     @description "Executes an sqlite3 query on the current audio corpus, and returns the results. Every query should use 'buffers' as the table name. For instance: 'SELECT * FROM buffers'. See #setcorpus.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "query", @type "symbol", @default "'SELECT * FROM buffers'", @description "sqlite3 query.")
     ),
@@ -311,7 +311,7 @@ getkey = (
 $addref(
     @name "getkey",
     @description "Returns value associated with a buffer's key.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer.")
         $addarg(@name "key", @type "symbol", @description "name of buffer key.")
@@ -334,7 +334,7 @@ setkey = (
 $addref(
     @name "setkey",
     @description "Modifies the key of a buffer.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
         $addarg(@name "key", @type "symbol", @description "name of buffer key.")
@@ -357,7 +357,7 @@ mapkey = (
 $addref(
     @name "mapkey",
     @description "Modifies the key of a buffer via a lambda function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
         $addarg(@name "key", @type "symbol", @description "name of buffer key.")
@@ -394,7 +394,7 @@ bpf = (
 $addref(
     @name "bpf",
     @description "Formats an numeric list into a breakpoint function, in the form of [<x> <y> <slope>] tuples. By default, <x> is normalized to the 0-1 range. To prevent this, set @xfunc to null.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
         $addarg(@name "xfunc", @default "<normalization function>", @type "function/null", @description "optional lambda function for x axis")
@@ -412,7 +412,7 @@ x2dx = ($x -> for $a in left($x, -1), $b in right($x, 1) collect $b - $a);
 $addref(
     @name "x2dx",
     @description "Given a numeric list, outputs the difference between adjacent elements. Inverse of #dx2x.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "list", @description "list for compute differences for.")
     ),
@@ -426,7 +426,7 @@ dx2x = ($dx, $st = 0 -> $st for $x in $dx collect $st += $x);
 $addref(
     @name "dx2x",
     @description "Outputs a numeric list where each element is the result of the cumulative sum of the input list, given a starting value. Inverse of #x2dx.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "dx", @type "list", @description "list of differences/deltas.")
         $addarg(@name "st", @default 0 @type "int/float", @description "starting value")
@@ -449,7 +449,7 @@ revbpf = (
 $addref(
     @name "revbpf",
     @description "Reverses a breakpoint function. See #bpf.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "bpf", @type "llll", @description "breakpoint function to reverse")
     ),
@@ -467,7 +467,7 @@ scale = (
 $addref(
     @name "scale",
     @description "Scales an input value or list from a given range to another.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "int/float/list", @description "value to scale.")
         $addarg(@name "inmin", @type "int/float", @default 0, @description "input minimum value.")
@@ -496,7 +496,7 @@ rand = (
 $addref(
     @name "rand",
     @description "Random floating point number generator.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "a", @type "int/float", @description "max. value if @b is null, else min. value.")
         $addarg(@name "b", @type "int/float", @description "min. value.")
@@ -530,7 +530,7 @@ choose = (
 $addref(
     @name "choose",
     @description "Choose randomly one or more elements from a list, with optional probability weights.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "choices", @type "list", @description "list to choose from.")
         $addarg(@name "n", @default 1, @type "int", @description "number of random choices.")
@@ -548,7 +548,7 @@ c2r = (
 $addref(
     @name "c2r",
     @description "Cents to ratio conversion.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "cents", @type "list/int/float", @description "cents to convert.")
     ),
@@ -564,7 +564,7 @@ r2pc = (
 $addref(
     @name "r2pc",
     @description "Ratio to pitch class conversion.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
     ),
@@ -580,7 +580,7 @@ r2c = (
 $addref(
     @name "r2c",
     @description "Ratio to cents conversion.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
     ),
@@ -598,7 +598,7 @@ sortbuffers = (
 $addref(
     @name "sortbuffers",
     @description "Sorts buffers by a given key (buffer_id, source_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffers", @type "llll", @description "buffers to sort.")
         $addarg(@name "key", @type "symbol", @description "buffer key to sort by.")
@@ -640,7 +640,7 @@ pitchdiff = (
 $addref(
     @name "pitchdiff",
     @description "Given a list of target midicents and/or pitch classes, returns the signed difference between a pitch in midicents and the nearest midicent/pitch class target.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "pitch", @type "int/float", @description "reference pitch in midicents.")
         $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
@@ -666,7 +666,7 @@ detuning = (
 $addref(
     @name "detuning",
     @description "Given a list of target midicents and/or pitch classes, returns the difference between a buffers' original pitch and the nearest midicent/pitch class target. See #transcribe function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "reference buffer.")
         $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
@@ -678,7 +678,7 @@ $addref(
 
 transcribe = (
     $buffer, $onset = 0, $pan = null, $gain = null, $detune = null, $voice = 1 -> (
-        if $voice > BB_SCORE_CONFIG."numvoices" then printerror("@voice value in transcribe() exceeds the number of voices. Use scoreconfig() to change the number of voices.");
+        if $voice > BP_SCORE_CONFIG."numvoices" then printerror("@voice value in transcribe() exceeds the number of voices. Use scoreconfig() to change the number of voices.");
         if $buffer == null then (
             printerror("attempt to pass a null value as @buffer in transcribe()")
         );
@@ -731,7 +731,7 @@ transcribe = (
 $addref(
     @name "transcribe",
     @description "Adds input buffer to the rendering sequence. See #setcorpus, #query, and #render functions.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to add to rendering sequence.")
         $addarg(@name "onset", @type "int/float", @default 0, @description "buffer onset in milliseconds.")
@@ -801,12 +801,12 @@ wavesynth = (
             [ "synth" 
                 [ "normalize" $normalize ]
                 [ "waveform" $waveform + 1 ]
-                [ "sr" BB_SR ]
+                [ "sr" BP_SR ]
             ]
             [ 'roll' 'addchord' [ 0 $notes ] ] 
         );        
-        bb_makebuffer(
-            @source BB_TMP_BUFF
+        bp_makebuffer(
+            @source BP_TMP_BUFF
             @pitch minimum($pitch ||| 1)
             @loudness minimum($loudness ||| 1)
             @duration maximum($maxduration ||| 1)
@@ -820,7 +820,7 @@ wavesynth = (
 $addref(
     @name "wavesynth",
     @description "Generates a buffer through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
         $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial. Each value can be a single number or envelope.")
@@ -832,7 +832,7 @@ $addref(
             $addopt(@value 3, @description "sawtooth")
         )
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.", @options 
-            BB_REF_NORMALIZE_OPTIONS
+            BP_REF_NORMALIZE_OPTIONS
         )
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
@@ -866,14 +866,14 @@ render = (
         ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1));
         ($reset == 1 && msg("roll", "clear"));
-        bb_makebuffer(@source BB_RENDER_BUFF @info 1 @analyze $analyze @pitch 6000)
+        bp_makebuffer(@source BP_RENDER_BUFF @info 1 @analyze $analyze @pitch 6000)
     )
 );
 
 $addref(
     @name "render",
     @description "Triggers audio rendering of all transcribed buffers via #transcribe, and returns the rendered buffer. Note that it's possible to apply post-rendering processing by passing audio processing commands (e.g., #reverse, #freeverb, #clip, etc.) to the @process arguments, but these audio modifications won't be accurately reflected in the score transcription. See #process function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
         $addarg(@name "panmode", @type "int", @default 0, @description "panning mode." @options 
@@ -882,18 +882,18 @@ $addref(
         )
         $addarg(@name "sr", @type "int", @default 48000, @description "sampling rate.")
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization." @options 
-            BB_REF_NORMALIZE_OPTIONS
+            BP_REF_NORMALIZE_OPTIONS
         )
         $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.", @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "fade", @type "int/float", @default 5, @description "fade in/out applied to every buffer, in milliseconds")
         $addarg(@name "analyze", @type "int", @description "analyze rendered output." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "reset", @type "int", @description "remove all previously transcribed buffers after rendering." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
@@ -902,7 +902,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BB_SCORE_CONFIG = null;
+BP_SCORE_CONFIG = null;
 
 scoreconfig = (
     $voicenames = "output",
@@ -927,9 +927,9 @@ scoreconfig = (
         );
         $changes = for $param in $config collect (
             $key = $param::1;
-            if BB_SCORE_CONFIG.$key != $param.$key then $param
+            if BP_SCORE_CONFIG.$key != $param.$key then $param
         );
-        BB_SCORE_CONFIG = $config;
+        BP_SCORE_CONFIG = $config;
         msg("roll", $changes);
         msg("roll", "showdurations" $showdurations )
     )
@@ -938,7 +938,7 @@ scoreconfig = (
 $addref(
     @name "scoreconfig",
     @description "Configures the score appearance, such as the clefs, voice names, tone division, etc. See #transcribe.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "voicenames", @default "'output'" @type "list/symbol", @description "voice names.")
         $addarg(@name "clefs", @default "'FFGG'" @type "list/symbol", @description "clef type for each voice, as a symbol." @options
@@ -971,7 +971,7 @@ $addref(
             $addopt(@value 8 @description "eighth tones")
         )
         $addarg(@name "showdurations", @default 0 @type "int", @description "show note durations as lines" @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "midichannels", @default 1 @type "int/list", @description "midichannel for each voice")
     )
@@ -1017,11 +1017,11 @@ export = (
 $addref(
     @name "export",
     @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. For .wav files, mono stem files can be separately exported. See #render function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "output file path.")
         $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for .wav files." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     )
 );
@@ -1031,7 +1031,7 @@ $addref(
 importaudio = (
     $path, 
     $analyze = 0 -> (
-        BB_TMP_BUFF = null;
+        BP_TMP_BUFF = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
         $pathinfo = getpathinfo($path);
         $ext = $pathinfo."extension";
@@ -1045,8 +1045,8 @@ importaudio = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        bb_makebuffer(
-            @source BB_TMP_BUFF
+        bp_makebuffer(
+            @source BP_TMP_BUFF
             @pitch 6000
             @info 1
             @analyze $analyze
@@ -1057,11 +1057,11 @@ importaudio = (
 $addref(
     @name "importaudio",
     @description "Imports an audio file as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input audio file path.")
         $addarg(@name "analyze", @default 0 @type "int", @description "analyze audio file." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "buffer" @type "llll")
@@ -1071,7 +1071,7 @@ $addref(
 
 importmidi = (
     $path -> (
-        BB_TMP_ROLL_OUTPUT = null;
+        BP_TMP_ROLL_OUTPUT = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
         $pathinfo = getpathinfo($path);
         $ext = $pathinfo."extension";
@@ -1085,14 +1085,14 @@ importmidi = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        BB_TMP_ROLL_OUTPUT
+        BP_TMP_ROLL_OUTPUT
     )
 );
 
 $addref(
     @name "importmidi",
     @description "Imports a midi file, as a list of events, each with the following keys: 'pitch' , 'velocity', 'onset', 'voice', 'channel', and 'duration'",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input midi file path.")
     ),
@@ -1106,7 +1106,7 @@ hanning = ($N = 16 -> ($N -= 1; sin((pi * (0...$N)) / $N) ** 2.));
 $addref(
     @name "hanning",
     @description "Generates a hanning window as a numeric list.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "N", @type "int", @default 16, @description "window resolution.")
     ),
@@ -1151,7 +1151,7 @@ interpolate = (
 $addref(
     @name "interpolate",
     @description "Curve interpolation between two points.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x", @type "int/float/list", @description "interpolation point")
         $addarg(@name "a", @type "list", @description "xy coordinates for point A")
@@ -1195,7 +1195,7 @@ samplebpf = (
 $addref(
     @name "samplebpf",
     @description "Samples an interpolated value from a breakpoint function, given a list of normalized indices. See #bpf function.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "bpf", @type "llll", @description "breakpoint function")
         $addarg(@name "pts", @type "int/float/list", @description "sampling point/s")
@@ -1224,8 +1224,8 @@ process = (
                 $commands 
             ]
         );
-        bb_makebuffer(
-            @source BB_TMP_BUFF
+        bp_makebuffer(
+            @source BP_TMP_BUFF
             @pitch $buffer.getkey("pitch")
             @pitchsalience $buffer.getkey("pitchsalience")
             @loudness $buffer.getkey("loudness")
@@ -1241,13 +1241,13 @@ process = (
 $addref(
     @name "process",
     @description "Applies a sequence of DSP operations to the input buffer, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. See @process argument in #render.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
         $addarg(@name "prefade", @default 0 @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
         $addarg(@name "analyze", @default 0 @type "int", @description "post-processing feature analysis." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "processed buffer" @type "llll")
@@ -1282,20 +1282,20 @@ fade = (
 $addref(
     @name "fade",
     @description "Audio process command for applying fadein/fadeout to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "fadein", @default 5, @type "int/float", @description "fade-in duration.")
         $addarg(@name "fadeout", @default 5, @type "int/float", @description "fade-out duration.")
         $addarg(@name "fadeintype", @default 0, @type "int", @description "fade-in type.", @options 
-            BB_REF_CURVE_OPTIONS
+            BP_REF_CURVE_OPTIONS
         )
         $addarg(@name "fadeouttype",@default 0, @type "int", @description "fade-out type.", @options 
-            BB_REF_CURVE_OPTIONS
+            BP_REF_CURVE_OPTIONS
         )
         $addarg(@name "fadeincurve", @default "-0.25", @type "int/float", @description "fade-in curve amount, between -1 and 1.")
         $addarg(@name "fadeoutcurve", @default "0.25", @type "int/float", @description "fade-out curve amount, between -1 and 1.")
         $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "fade command" @type "llll")
@@ -1324,12 +1324,12 @@ crop = (
 $addref(
     @name "crop",
     @description "Audio process command for cropping a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "start", @type "int/float", @description "start time.")
         $addarg(@name "end", @type "int/float", @description "end time.")
         $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "processed buffer" @type "llll")
@@ -1343,7 +1343,7 @@ reverse = ( -> [ [ "fx" "reverse" ] ]);
 $addref(
     @name "reverse",
     @description "Audio process command for reversing a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @output $addout(@description "reverse command" @type "llll")
 );
 
@@ -1354,7 +1354,7 @@ dcfilter = ( -> [ [ "fx" "dcfilter" ] ]);
 $addref(
     @name "dcfilter",
     @description "Audio process command for removing DC offset from a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @output $addout(@description "dcfilter command" @type "llll")
 );
 
@@ -1384,7 +1384,7 @@ freeverb = (
 $addref(
     @name "freeverb",
     @description "Audio process command for applying reverb to a buffer. See #process function.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
         $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
@@ -1402,11 +1402,11 @@ $addref(
 
 ## ------------------------------------------------------------
 
-bb_makebuffer = (
+bp_makebuffer = (
     $source,
     $duration = 50,  
     $numchannels = 1,
-    $sr = BB_SR,
+    $sr = BP_SR,
     $offset = 0,
     $source_id = -1,
     $mfcc = 0. :* 13,
@@ -1448,7 +1448,7 @@ bb_makebuffer = (
 
 ## ------------------------------------------------------------
 
-BB_OSC_GEN_FUNC = (
+BP_OSC_GEN_FUNC = (
     $name,
     $frequency = 440,
     $duration = 50,
@@ -1480,10 +1480,10 @@ BB_OSC_GEN_FUNC = (
             ]
         );
         $pitch = f2mc($frequency);
-        bb_makebuffer(
-            @source BB_TMP_BUFF
+        bp_makebuffer(
+            @source BP_TMP_BUFF
             @numchannels 1
-            @sr BB_SR
+            @sr BP_SR
             @duration $duration
             @pitchsalience $isnoise == 0 && $frequency > 30
             @loudness 1.0, 
@@ -1497,14 +1497,14 @@ BB_OSC_GEN_FUNC = (
 
 noise = (
     $duration = 50 -> (
-        BB_OSC_GEN_FUNC("noise", @duration $duration)
+        BP_OSC_GEN_FUNC("noise", @duration $duration)
     )
 );
 
 $addref(
     @name "noise",
     @description "Generates white noise as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
     ),
@@ -1516,14 +1516,14 @@ $addref(
 randosc = (
     $frequency = 440,
     $duration = 50 -> (
-        BB_OSC_GEN_FUNC("rand", @frequency $frequency @duration $duration)
+        BP_OSC_GEN_FUNC("rand", @frequency $frequency @duration $duration)
     )
 );
 
 $addref(
     @name "randosc",
     @description "Generates a random oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
     ),
@@ -1536,14 +1536,14 @@ cycle = (
     $frequency = 440, 
     $duration = 50,
     $phase = 0.25 -> (
-        BB_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
+        BP_OSC_GEN_FUNC("cycle", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
     )
 );
 
 $addref(
     @name "cycle",
     @description "Generates a sinusoidal oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1564,14 +1564,14 @@ rect = (
         ) else (
             $duty = $source
         );
-        BB_OSC_GEN_FUNC("rect", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
+        BP_OSC_GEN_FUNC("rect", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
 );
 
 $addref(
     @name "duty",
     @description "Generates a bipolar, anti-aliased rectangular (pulse) oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1585,14 +1585,14 @@ $addref(
 saw = (
     $frequency = 440, 
     $duration = 50 -> (
-        BB_OSC_GEN_FUNC("saw", @frequency $frequency, @duration $duration)
+        BP_OSC_GEN_FUNC("saw", @frequency $frequency, @duration $duration)
     )
 );
 
 $addref(
     @name "saw",
     @description "Generates a bipolar, anti-aliased sawtooth oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1612,14 +1612,14 @@ tri = (
         ) else (
             $duty = $source
         );
-        BB_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
+        BP_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
 );
 
 $addref(
     @name "tri",
     @description "Generates a bipolar, anti-aliased triangular oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1635,14 +1635,14 @@ triangle = (
     $duration = 50,
     $phase = 0,
     $offset = 0.5 -> (
-        BB_OSC_GEN_FUNC("triangle", @frequency phasor($frequency, @duration $duration @phase $phase), @duration $duration @params [ "phase" float($offset) ])
+        BP_OSC_GEN_FUNC("triangle", @frequency phasor($frequency, @duration $duration @phase $phase), @duration $duration @params [ "phase" float($offset) ])
     )
 );
 
 $addref(
     @name "triangle",
     @description "Generates a triangular/ramp oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1658,14 +1658,14 @@ phasor = (
     $frequency = 440, 
     $duration = 50,
     $phase = 0. -> (
-        BB_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
+        BP_OSC_GEN_FUNC("phasor", @frequency $frequency, @duration $duration, @params [ "phase" float($phase) ])
     )
 );
 
 $addref(
     @name "phasor",
     @description "Generates a unipolar ramp oscillator as a buffer.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
@@ -1691,9 +1691,9 @@ envelope = (
                 ]
             ]
         );
-        bb_makebuffer(
-            @source BB_TMP_BUFF
-            @sr BB_SR
+        bp_makebuffer(
+            @source BP_TMP_BUFF
+            @sr BP_SR
             @numchannels 1
             @duration $duration
         )
@@ -1703,7 +1703,7 @@ envelope = (
 $addref(
     @name "envelope",
     @description "Generates an audio envelope as a buffer, given a single number or a breakpoint function.",
-    @category BB_REF_LABEL_GEN,
+    @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "envelope", @default 0, @type "int/float/llll", @description "envelope, as either a single number or a breakpoint function.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration, in milliseconds")
@@ -1736,17 +1736,17 @@ paulstretch = (
 $addref(
     @name "paulstretch",
     @description "Audio process command for applying time-stretching to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options (
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         ))
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope." @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 
-            BB_REF_AUDIO_DOMAIN_OPTIONS
+            BP_REF_AUDIO_DOMAIN_OPTIONS
         )
         $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
     ),
@@ -1777,15 +1777,15 @@ paulfreeze = (
 $addref(
     @name "paulfreeze",
     @description "Audio process command for freezing a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1000, @type "int/float", @description "freezing duration, based on @timeunit.")
         $addarg(@name "position", @default 0, @type "int/float/list", @description "freezing position, as <time> or <time> <jitter>. To jitter through full buffer, use 'all'.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit.", @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 
-            BB_REF_AUDIO_DOMAIN_OPTIONS
+            BP_REF_AUDIO_DOMAIN_OPTIONS
         )
         $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
     ),
@@ -1809,7 +1809,7 @@ overdrive = (
 $addref(
     @name "overdrive",
     @description "Audio process command for applying soft-clip distortion to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "factor", @type "int/float/llll", @description "amplitude distortion factor, either as single number or envelope.")
     ),
@@ -1838,17 +1838,17 @@ window = (
 $addref(
     @name "window",
     @description "Audio process command for applying a windowing function to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "wintype", @default "hann", @type "symbol", @description "window type, as a symbol" @options
-            BB_REF_WINDOW_OPTIONS
+            BP_REF_WINDOW_OPTIONS
         )
         $addarg(@name "winnormalized", @default 0, @type "int", @description "normalize window samples to sum up to 1 and multiply by a factor of 2." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "zeropadding", @default 0, @type "int", @description "number of samples for zero padding.")
         $addarg(@name "zerophase", @default 0, @type "int", @description "zero phase windowing" @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "window command" @type "llll")
@@ -1876,7 +1876,7 @@ biquad = (
 $addref(
     @name "biquad",
     @description "Audio process command for applying biquad filtering to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "type", @type "int", @description "filter type." @options
             $addopt(@value 0 @description "lowpass")
@@ -1913,7 +1913,7 @@ clip = (
 $addref(
     @name "clip",
     @description "Audio process command for applying hard-clip distortion to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "factor", @type "int/float/llll", @description "distortion amplitude threshold, either as single number or envelope.")
     ),
@@ -1964,18 +1964,18 @@ rubberband = (
 $addref(
     @name "rubberband",
     @description "Audio process command for applying rubberband pitch-shifting/time-stretching to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float/llll", @description "stretching amount, as single number or envelope.")
         $addarg(@name "pitchshift", @default 0, @type "int/float/llll", @description "pitch shifting amount, as single number or envelope.")
         $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift." @options
-            BB_REF_PITCH_FORMAT_OPTIONS
+            BP_REF_PITCH_FORMAT_OPTIONS
         )
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @stretching envelope." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "blocksize", @default 1024, @type "int", @description "size for granular processes, such as envelopes, in samples.")
         $addarg(@name "fftwin", @default 1, @type "int", @description "FFT window type." @options
@@ -1993,10 +1993,10 @@ $addref(
             $addopt(@value 2 @description "high consistency") 
         )
         $addarg(@name "formants", @default 0, @type "int", @description "formant processing." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "smoothing", @default 0, @type "int", @description "time-domain smoothing." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "stretchmode", @default 0, @type "int", @description "stretch mode." @options 
             $addopt(@value 0 @description "elastic") 
@@ -2044,24 +2044,24 @@ soundtouch = (
 $addref(
     @name "soundtouch",
     @description "Audio process command for applying soundtouch pitch-shifting/time-stretching to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "stretching", @default 1, @type "int/float", @description "stretching amount, as a single number.")
         $addarg(@name "pitchshift", @default 0, @type "int/float", @description "pitch shifting amount, as single number.")
         $addarg(@name "pitchunit", @default 0, @type "int", @description "unit for @pitchshift." @options
-            BB_REF_PITCH_FORMAT_OPTIONS
+            BP_REF_PITCH_FORMAT_OPTIONS
         )
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @stretching." @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "antialias", @default 0, @type "int", @description "anti-aliasing filter." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "quick", @default 0, @type "int", @description "quick processing. " @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "speech", @default 0, @type "int", @description "tune algorithm for speech. " @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "soundtouch command" @type "llll")
@@ -2079,7 +2079,7 @@ expand = (
 $addref(
     @name "expand",
     @description "Modifies offset and duration of a buffer, such that it uses the full length of its reference buffer.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to expand.")
     )
@@ -2107,7 +2107,7 @@ groove = (
 $addref(
     @name "groove",
     @description "Audio processing command for applying variable-rate sample playback to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "rate", @type "int/float/list/llll", @description "playback rate, as either a single number, envelope, or control buffer.")
         $addarg(@name "duration", @type "int/float", @description "duration in milliseconds. Ignored if @rate is a buffer.")
@@ -2140,11 +2140,11 @@ freqshift = (
 $addref(
     @name "freqshift",
     @description "Audio process command for applying frequency shifting to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "shift", @type "int/float/list/llll", @description "frequency shift in Hertz, as either a single number, an envelope or buffer.")
         $addarg(@name "negative", @type "int", @description "Include negative sideband  in output." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "freqshift command" @type "llll")
@@ -2174,7 +2174,7 @@ pong = (
 $addref(
     @name "pong",
     @description "Audio process command for applying range limiting to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "low", @default -1, @type "int/float/llll", @description "low limit value, as either a single number, envelope, or buffer.")
         $addarg(@name "high", @default 1, @type "int/float/llll", @description "high limit value, as either a single number, envelope, or buffer.")
@@ -2218,7 +2218,7 @@ retune = (
 $addref(
     @name "retune",
     @description "Audio process command for applying autotune-like pitch retuning to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "pitchgrid", @default 0, @type "int/float/list", @description "pitch grid to retune to, as a list of pitch classes.")
     ),
@@ -2246,7 +2246,7 @@ waveshape = (
 $addref(
     @name "waveshape",
     @description "Audio process command for waveshaping a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "phase", @default -1 1, @type "int/float", @description "buffer phase envelope between -1 and 1, either as an envelope or a buffer.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a buffer.")
@@ -2275,7 +2275,7 @@ scrub = (
 $addref(
     @name "scrub",
     @description "Audio process command for scrubbing through a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "phase", @default 0 1, @type "int/float", @description "buffer phase envelope between 0 and 1, either as an envelope or a buffer.")
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration in milliseconds. Ignored if @phase is a buffer.")
@@ -2301,11 +2301,11 @@ repeat = (
 $addref(
     @name "repeat",
     @description "Audio process command for repeating a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 2, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "repeat command" @type "llll")
@@ -2333,7 +2333,7 @@ scaling = (
 $addref(
     @name "scaling",
     @description "Audio process command for applying amplitude scaling to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "inmin", @default 0, @type "int/float", @description "input minimum value.")
         $addarg(@name "inmax", @default 1, @type "int/float", @description "input maximum value.")
@@ -2383,35 +2383,35 @@ mix = (
 $addref(
     @name "mix",
     @description "Audio process command for mixing multiple buffers. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "buffers", @type "list/llll", @description "list of buffers to mix.")
         $addarg(@name "gains", @default "null" @type "list/llll/null", @description "gain values for each buffer to mix, as either a single number or envelope.")
         $addarg(@name "offsets", @default "null", @type "list/null", @description "time offset values for each buffer to mix.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
         $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
-            BB_REF_RESAMPLINGMODE_OPTIONS
+            BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
-            BB_REF_RESAMPLINGPOLICY_OPTIONS
+            BP_REF_RESAMPLINGPOLICY_OPTIONS
         )
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
         $addarg(@name "envampunit", @default 0, @type "int", @description "envelope amplitude unit." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
         $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "envelope time unit." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "interp", @default 0, @type "int", @description "band-limited interpolation via resampling for non-integer offsets." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "normalize", @default 0, @type "int", @description "normalization." @options 
-            BB_REF_NORMALIZE_OPTIONS
+            BP_REF_NORMALIZE_OPTIONS
         )
     ),
     @output $addout(@description "mix command" @type "llll")
@@ -2419,7 +2419,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BB_BUFFER_ARITHMETIC_FUNC = (
+BP_BUFFER_ARITHMETIC_FUNC = (
     $name,
     $operand,
     $resamplingfiltersize = 11,
@@ -2456,16 +2456,16 @@ BB_BUFFER_ARITHMETIC_FUNC = (
     )
 );
 
-BB_BUFFER_ARITHMETIC_ARGS = (
+BP_BUFFER_ARITHMETIC_ARGS = (
     $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
     $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
-        BB_REF_RESAMPLINGMODE_OPTIONS
+        BP_REF_RESAMPLINGMODE_OPTIONS
     )
     $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
-        BB_REF_RESAMPLINGPOLICY_OPTIONS
+        BP_REF_RESAMPLINGPOLICY_OPTIONS
     )
     $addarg(@name "envtimeunit", @default 2, @type "int", @description "envelope time unit." @options
-        BB_REF_TIMEUNIT_OPTIONS
+        BP_REF_TIMEUNIT_OPTIONS
     )
 );
 
@@ -2477,7 +2477,7 @@ plus = (
     $resamplingmode = "sinc",
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
-        BB_BUFFER_ARITHMETIC_FUNC(
+        BP_BUFFER_ARITHMETIC_FUNC(
             @name "plus"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
@@ -2491,10 +2491,10 @@ plus = (
 $addref(
     @name "plus",
     @description "Audio process command for performing addition on a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to add to buffer, either as a single number, envelope, or buffer.")
-        BB_BUFFER_ARITHMETIC_ARGS
+        BP_BUFFER_ARITHMETIC_ARGS
     ),
     @output $addout(@description "plus command" @type "llll")
 );
@@ -2507,7 +2507,7 @@ minus = (
     $resamplingmode = "sinc",
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
-        BB_BUFFER_ARITHMETIC_FUNC(
+        BP_BUFFER_ARITHMETIC_FUNC(
             @name "minus"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
@@ -2521,10 +2521,10 @@ minus = (
 $addref(
     @name "minus",
     @description "Audio process command for performing subtraction on a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to subtract from buffer, either as a single number, envelope, or buffer.")
-        BB_BUFFER_ARITHMETIC_ARGS
+        BP_BUFFER_ARITHMETIC_ARGS
     ),
     @output $addout(@description "minus command" @type "llll")
 );
@@ -2537,7 +2537,7 @@ multiply = (
     $resamplingmode = "sinc",
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
-        BB_BUFFER_ARITHMETIC_FUNC(
+        BP_BUFFER_ARITHMETIC_FUNC(
             @name "times"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
@@ -2551,10 +2551,10 @@ multiply = (
 $addref(
     @name "multiply",
     @description "Audio process command for performing multiplication on a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to multiply buffer by, either as a single number, envelope, or buffer.")
-        BB_BUFFER_ARITHMETIC_ARGS
+        BP_BUFFER_ARITHMETIC_ARGS
     ),
     @output $addout(@description "multiply command" @type "llll")
 );
@@ -2567,7 +2567,7 @@ divide = (
     $resamplingmode = "sinc",
     $resamplingpolicy = 3,
     $envtimeunit = 2 -> (
-        BB_BUFFER_ARITHMETIC_FUNC(
+        BP_BUFFER_ARITHMETIC_FUNC(
             @name "div"
             @operand $operand
             @resamplingfiltersize $resamplingfiltersize
@@ -2581,10 +2581,10 @@ divide = (
 $addref(
     @name "divide",
     @description "Audio process command for performing division on a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "operand", @type "int/float/llll", @description "value to divide buffer by, either as a single number, envelope, or buffer.")
-        BB_BUFFER_ARITHMETIC_ARGS
+        BP_BUFFER_ARITHMETIC_ARGS
     ),
     @output $addout(@description "divide command" @type "llll")
 );
@@ -2609,12 +2609,12 @@ wavesetrepeat = (
 $addref(
     @name "wavesetrepeat",
     @description "Audio process command for applying waveset repetition to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "times",  @default 2, @type "int", @description "number of repetitions.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
         $addarg(@name "normalize", @default 0, @type "int", @description "waveset normalization." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "waveset repeat command" @type "llll")
@@ -2638,7 +2638,7 @@ wavesetshuffle = (
 $addref(
     @name "wavesetshuffle",
     @description "Audio process command for applying waveset shuffling to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "maxdist", @default 1, @type "int", @description "maximum shuffling distance.")
         $addarg(@name "span", @default 1, @type "int", @description "number of negative-to-positive zero crossing regions that form a waveset.")
@@ -2667,11 +2667,11 @@ onepole = (
 $addref(
     @name "onepole",
     @description "Audio process command for applying single-pole lowpass or highpass filtering to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "cutoff", @default 1, @type "int/float", @description "cutoff frequency.")
         $addarg(@name "highpass", @default 0, @type "int", @description "highpass filter mode." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
     ),
     @output $addout(@description "onepole command" @type "llll")
@@ -2735,15 +2735,15 @@ timesquash = (
 $addref(
     @name "timesquash",
     @description "Audio process command for applying timesquash time compression to a buffer. This removes time from a sample by shifting portions of the spectrogram while preserving the relevant content. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration."
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "timeblock", @default 4096, @type "int", @description "duration of each time block to be removed.")
         $addarg(@name "mode", @default 1, @type "int", @description "working mode." @options 
-            BB_REF_AUDIO_DOMAIN_OPTIONS
+            BP_REF_AUDIO_DOMAIN_OPTIONS
         )
         $addarg(@name "xfade", @default 4096, @type "int/float", @description "duration of the crossfade, in samples.")
         $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
@@ -2757,10 +2757,10 @@ $addref(
         $addarg(@name "glbleed", @default 4, @type "int", @description "number of frames of invalidation for the Griffin-Lim algorithm, when @phasehandling is 2.")
         $addarg(@name "glnumiter", @default 10, @type "int", @description "number of Griffin-Lim iterations, when @phasehandling is 2.")
         $addarg(@name "glrandomize", @default 0, @type "int", @description "randomize the phases of the regions subject to the Griffin-Lim algorithm, when @phasehandling is 2." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "glrect", @default 1, @type "int", @description "invalidate whole rectangular regions whose phases are recomputed via the Griffin-Lim algorithm, when @phasehandling is 2." @options 
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "batchsize", @default 1, @type "int", @description "number of seams processed in batch.")
         $addarg(@name "batchinterrupt", @default 0, @type "int", @description "interrupt batch when crossing.")
@@ -2771,7 +2771,7 @@ $addref(
         )
         $addarg(@name "forwardenergy", @default "1.", @type "int/float", @description "amount of forward energy contribution.")
         $addarg(@name "forwardenergyembed", @default 1, @type "int", @description "embed forward energy in cumulative matrix." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "forwardenergytype", @default 1, @type "int", @description "forward energy type." @options
             $addopt(@value 0, @description "gradient L1 norm")
@@ -2785,7 +2785,7 @@ $addref(
             $addopt(@value 2, @description "Griffin-Lim")
         )
         $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
-        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type." @options BB_REF_WINDOW_OPTIONS)
+        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type." @options BP_REF_WINDOW_OPTIONS)
     ),
     @output $addout(@description "timesquash command" @type "llll")
 );
@@ -2816,20 +2816,20 @@ resample = (
 $addref(
     @name "resample",
     @description "Audio process command for applying stretching/pitch shifting a buffer via resampling. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "duration", @default 1, @type "int/float", @description "target duration, based on @timeunit.")
         $addarg(@name "timeunit", @default 2, @type "int", @description "time unit for @duration." @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "changesr", @default 0, @type "int", @description "change sampling rate." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis." @options 
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
-            BB_REF_RESAMPLINGMODE_OPTIONS
+            BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
     ),
@@ -2874,7 +2874,7 @@ panning = (
 $addref(
     @name "panning",
     @description "Audio process command for applying 1-D panning to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "position" @type "int/float/list/llll", @description "panning position, as either a single number, envelope, or buffer.")
         $addarg(@name "numchannels", @default 2, @type "int", @description "number of output channels.")
@@ -2895,11 +2895,11 @@ $addref(
         )
         $addarg(@name "range", @default 0 1, @type "list", @description "panning range, as a <min> <max> value pair. Ignored unless @rangetype is 0")
         $addarg(@name "compensate", @default 1, @type "int", @description "Reduce gain for multichannel files by a factor of the number of channels." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "normalize command" @type "llll")
@@ -2927,15 +2927,15 @@ normalize = (
 $addref(
     @name "normalize",
     @description "Audio process command for normalizing the amplitude of a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "level", @default -6, @type "int/float", @description "reference level.")
         $addarg(@name "mix", @default 1, @type "int", @description "dry/wet mix, between 0 and 1.")
         $addarg(@name "rms", @default 0, @type "int", @description "use root mean square." @options
-            BB_REF_SWITCH_OPTIONS
+            BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit for @level." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
     ),
     @output $addout(@description "normalize command" @type "llll")
@@ -2971,21 +2971,21 @@ gain = (
 $addref(
     @name "gain",
     @description "Audio process command for modifying a buffer's gain. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
         $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
-            BB_REF_RESAMPLINGMODE_OPTIONS
+            BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
         $addarg(@name "envampunit", @default 0, @type "int", @description "amplitude unit for @gain envelope." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "gain command" @type "llll")
@@ -3021,7 +3021,7 @@ dynamics = (
 $addref(
     @name "dynamics",
     @description "Audio process command for applying simple compression to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "attack", @default 10, @type "int/float", @description "attack time.")
         $addarg(@name "release", @default 50, @type "int/float", @description "release time.")
@@ -3030,10 +3030,10 @@ $addref(
         $addarg(@name "ratio", @default "1.5", @type "int/float", @description "compression ratio.")
         $addarg(@name "thresh", @default -20, @type "int/float", @description "amplitude threshold.")
         $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit." @options
-            BB_REF_AMPUNIT_OPTIONS
+            BP_REF_AMPUNIT_OPTIONS
         )
         $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
-            BB_REF_TIMEUNIT_OPTIONS
+            BP_REF_TIMEUNIT_OPTIONS
         )
     ),
     @output $addout(@description "dynamics command" @type "llll")
@@ -3057,7 +3057,7 @@ resynth = (
         if $func == null then (
             printerror("you must provide a lambda function to the @func argument in resynth()")
         );
-        BB_RESYNTH_FUNC = $func ||| ($x, $y, $z, $w -> [$x] [$y] [$z] [$w]);
+        BP_RESYNTH_FUNC = $func ||| ($x, $y, $z, $w -> [$x] [$y] [$z] [$w]);
         [
             [ "fx" "resynth" ]
             [ "params"
@@ -3080,7 +3080,7 @@ resynth = (
 $addref(
     @name "resynth",
     @description "Audio process command for applying partial tracking analysis/resynthesis to a buffer. See #process.",
-    @category BB_REF_LABEL_PROCESS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "func", @type "function", @description "pitch/frequency lambda function, with signature $oldpartials -> $newpartials.")
         $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func." @options 
@@ -3120,7 +3120,7 @@ buildtree = (
 $addref(
     @name "buildtree",
     @description "Builds a k-dimensional tree on a set of buffers, given one or more buffer features. This tree can be queried via the #searchtree function. Note that there can only be one tree at a time.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffers", @type "llll", @description "list of buffers.")
         $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "features to build tree on.")
@@ -3132,14 +3132,14 @@ $addref(
 searchtree = (
     $target -> (
         msg("kdtree", [ "query" $target]);
-        BB_TREE_RESULT
+        BP_TREE_RESULT
     )
 );
 
 $addref(
     @name "searchtree",
     @description "k-nearest neighbor search on the current k-dimensional tree. The search input can be either a single buffer or, more directly, the values associated with the features the tree was based on. See #buildtree.",
-    @category BB_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "target", @type "llll", @description "target buffer or feature value to find nearest neighbor for.")
     ),

@@ -119,7 +119,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 7.0, 134.0, 277.0, 23.0 ],
-									"text" : "ears.process~ bb.process.rect~ @naming dynamic"
+									"text" : "ears.process~ bp.process.rect~ @naming dynamic"
 								}
 
 							}
@@ -291,7 +291,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 4.0, 86.0, 280.0, 23.0 ],
-									"text" : "ears.process~ bb.process.rand~ @naming dynamic"
+									"text" : "ears.process~ bp.process.rand~ @naming dynamic"
 								}
 
 							}
@@ -465,7 +465,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 4.0, 120.0, 296.0, 23.0 ],
-									"text" : "ears.process~ bb.process.triangle~ @naming dynamic"
+									"text" : "ears.process~ bp.process.triangle~ @naming dynamic"
 								}
 
 							}
@@ -653,7 +653,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 7.0, 143.0, 267.0, 23.0 ],
-									"text" : "ears.process~ bb.process.tri~ @naming dynamic"
+									"text" : "ears.process~ bp.process.tri~ @naming dynamic"
 								}
 
 							}
@@ -825,7 +825,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 7.0, 52.0, 276.0, 23.0 ],
-									"text" : "ears.process~ bb.process.saw~ @naming dynamic"
+									"text" : "ears.process~ bp.process.saw~ @naming dynamic"
 								}
 
 							}
@@ -999,7 +999,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 4.0, 120.0, 292.0, 23.0 ],
-									"text" : "ears.process~ bb.process.phasor~ @naming dynamic"
+									"text" : "ears.process~ bp.process.phasor~ @naming dynamic"
 								}
 
 							}
@@ -1171,7 +1171,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 4.0, 47.0, 283.0, 23.0 ],
-									"text" : "ears.process~ bb.process.noise~ @naming dynamic"
+									"text" : "ears.process~ bp.process.noise~ @naming dynamic"
 								}
 
 							}
@@ -1345,7 +1345,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 7.0, 135.0, 282.0, 23.0 ],
-									"text" : "ears.process~ bb.process.cycle~ @naming dynamic"
+									"text" : "ears.process~ bp.process.cycle~ @naming dynamic"
 								}
 
 							}
@@ -1957,7 +1957,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "BB_TMP_BUFF = $x1 ",
+					"code" : "BP_TMP_BUFF = $x1 ",
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1969,7 +1969,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval BB_TMP_BUFF = $x1"
+					"text" : "bach.eval BP_TMP_BUFF = $x1"
 				}
 
 			}
@@ -2127,57 +2127,57 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bb.process.cycle~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.cycle~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.noise~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.noise~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.phasor~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.phasor~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.rand~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.rand~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.rect~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.rect~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.saw~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.saw~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.triangle~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.triangle~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.process.tri~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.process.tri~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

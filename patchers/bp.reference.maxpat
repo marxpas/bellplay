@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "babell~ | about",
+		"title" : "bellplay~ | about",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-6",
@@ -95,7 +95,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 64.0, 404.0, 113.0, 23.0 ],
-					"text" : "bb.utils.debugmode"
+					"text" : "bp.utils.debugmode"
 				}
 
 			}
@@ -180,7 +180,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 11.0, 283.0, 181.0, 23.0 ],
-					"text" : "sprintf symout babell~ | %s"
+					"text" : "sprintf symout bellplay~ | %s"
 				}
 
 			}
@@ -216,7 +216,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 210.0, 283.0, 107.0, 23.0 ],
-					"text" : "sprintf bb.docs.%s"
+					"text" : "sprintf bp.docs.%s"
 				}
 
 			}
@@ -290,7 +290,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "bb.docs.about.maxpat",
+					"name" : "bp.docs.about.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -435,15 +435,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bb.docs.about.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.docs.about.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

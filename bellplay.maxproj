@@ -1,5 +1,5 @@
 {
-	"name" : "babell",
+	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
 	"modificationdate" : 3796816257,
@@ -10,173 +10,173 @@
 	"autolocalize" : 1,
 	"contents" : 	{
 		"patchers" : 		{
-			"babell.maxpat" : 			{
+			"bellplay.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
 			}
 ,
-			"bb.corpus.maxpat" : 			{
+			"bp.corpus.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.features.maxpat" : 			{
+			"bp.features.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.filemenu.maxpat" : 			{
+			"bp.filemenu.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.sampler.poly~.maxpat" : 			{
+			"bp.sampler.poly~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.utils.debugmode.maxpat" : 			{
+			"bp.utils.debugmode.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.docs.about.maxpat" : 			{
+			"bp.docs.about.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.maxpat" : 			{
+			"bp.process.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.reference.maxpat" : 			{
+			"bp.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.scripter.maxpat" : 			{
+			"bp.scripter.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.utils.errorcatch.maxpat" : 			{
+			"bp.utils.errorcatch.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.wavesynth.maxpat" : 			{
+			"bp.wavesynth.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.docs.reference.maxpat" : 			{
+			"bp.docs.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.utils.getbuffer.maxpat" : 			{
+			"bp.utils.getbuffer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.utils.searchbar.maxpat" : 			{
+			"bp.utils.searchbar.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.docs.credits.maxpat" : 			{
+			"bp.docs.credits.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.analysis.maxpat" : 			{
+			"bp.analysis.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.generate~.maxpat" : 			{
+			"bp.generate~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.noise~.maxpat" : 			{
+			"bp.process.noise~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.phasor~.maxpat" : 			{
+			"bp.process.phasor~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.groove~.maxpat" : 			{
+			"bp.process.groove~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.wave~.maxpat" : 			{
+			"bp.process.wave~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.freqshift~.maxpat" : 			{
+			"bp.process.freqshift~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.getcontroller~.maxpat" : 			{
+			"bp.getcontroller~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.retune~.maxpat" : 			{
+			"bp.process.retune~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.saw~.maxpat" : 			{
+			"bp.process.saw~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.tri~.maxpat" : 			{
+			"bp.process.tri~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.lookup~.maxpat" : 			{
+			"bp.process.lookup~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.triangle~.maxpat" : 			{
+			"bp.process.triangle~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.rand~.maxpat" : 			{
+			"bp.process.rand~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.rect~.maxpat" : 			{
+			"bp.process.rect~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.pong~.maxpat" : 			{
+			"bp.process.pong~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.cycle~.maxpat" : 			{
+			"bp.process.cycle~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"bb.process.scale~.maxpat" : 			{
+			"bp.process.scale~.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -193,7 +193,7 @@
 				"kind" : "audiofile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -203,7 +203,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -213,7 +213,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -223,7 +223,7 @@
 				"kind" : "imagefile",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -232,7 +232,7 @@
 		}
 ,
 		"data" : 		{
-			"__babell__.bell" : 			{
+			"__bellplay__.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
@@ -244,7 +244,7 @@
 				"kind" : "file",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 
@@ -254,7 +254,7 @@
 				"kind" : "file",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/babell/media",
+					"bootpath" : "~/Documents/bellplay/media",
 					"projectrelativepath" : "./media"
 				}
 

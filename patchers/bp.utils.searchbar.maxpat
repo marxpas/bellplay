@@ -798,7 +798,7 @@
 			}
 , 			{
 				"name" : "search.png",
-				"bootpath" : "~/Documents/babell/media",
+				"bootpath" : "~/Documents/bellplay/media",
 				"patcherrelativepath" : "../media",
 				"type" : "PNG",
 				"implicit" : 1

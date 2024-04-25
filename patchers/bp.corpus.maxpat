@@ -38,7 +38,7 @@
 		"style" : "subtlelight",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
-		"title" : "babell~ | corpus lab",
+		"title" : "bellplay~ | corpus lab",
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-46",
@@ -420,7 +420,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1027.0, 973.0, 66.0, 23.0 ],
-					"text" : "bb.analysis"
+					"text" : "bp.analysis"
 				}
 
 			}
@@ -432,7 +432,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 76.0, 209.0, 228.0, 23.0 ],
-					"text" : "loadmess title \"babell~ | corpus lab\""
+					"text" : "loadmess title \"bellplay~ | corpus lab\""
 				}
 
 			}
@@ -493,7 +493,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 28.0, 171.0, 113.0, 23.0 ],
-					"text" : "bb.utils.debugmode"
+					"text" : "bp.utils.debugmode"
 				}
 
 			}
@@ -1391,7 +1391,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "bb.filemenu.maxpat",
+					"name" : "bp.filemenu.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -1917,7 +1917,7 @@
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 1266.0, 3888.0, 148.0, 23.0 ],
 					"style" : "subtlelight",
-					"text" : "poly~ bb.sampler.poly~ 64"
+					"text" : "poly~ bp.sampler.poly~ 64"
 				}
 
 			}
@@ -3357,36 +3357,36 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bb.analysis.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.analysis.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.features.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.features.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.filemenu.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.filemenu.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.sampler.poly~.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.sampler.poly~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bb.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/babell/patchers",
+				"name" : "bp.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
