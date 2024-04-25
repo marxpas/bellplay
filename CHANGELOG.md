@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Support score configuration and voice assignment through `scoreconfig` and @voice argument in `transcribe`.
 - New processor: `gs.process.scale~` as `scaling`, with docs.
 - `r2pc` with docs.
 - `getbufferinfo` without docs.

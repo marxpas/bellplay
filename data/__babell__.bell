@@ -677,7 +677,8 @@ $addref(
 ## ------------------------------------------------------------
 
 transcribe = (
-    $buffer, $onset = 0, $pan = null, $gain = null, $detune = null -> (
+    $buffer, $onset = 0, $pan = null, $gain = null, $detune = null, $voice = 1 -> (
+        if $voice > BB_SCORE_CONFIG."numvoices" then printerror("@voice value in transcribe() exceeds the number of voices. Use scoreconfig() to change the number of voices.");
         if $buffer == null then (
             printerror("attempt to pass a null value as @buffer in transcribe()")
         );
@@ -723,7 +724,7 @@ transcribe = (
 
         ## format note and add to roll
         $note = [ $mc $dur $vel ["slots" [ 7 $buffer."source" ] [ 10 $buffer."offset" ] $pan $rate $gain $color $notehead $size ]];
-        msg("roll", "addchord" [ $onset $note ])
+        msg("roll", "addchord" ($voice ||| 1) [ $onset $note ])
     )
 );
 
@@ -737,6 +738,7 @@ $addref(
         $addarg(@name "pan", @type "int/float/list/llll", @default "null" @description "normalized panning value or envelope.")
         $addarg(@name "gain", @type "int/float/llll", @default "null" @description "gain value or envelope.")
         $addarg(@name "detune", @type "int/float", @default "null" @description "detuning amount in cents.")
+        $addarg(@name "voice", @type "int", @default 1 @description "voice assignment in score. See scoreconfig() function.")
     )
 );
 
@@ -896,6 +898,83 @@ $addref(
         $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
     )
     @output $addout(@description "rendered buffer" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+BB_SCORE_CONFIG = null;
+
+scoreconfig = (
+    $voicenames = "output",
+    $clefs = "FFGG",
+    $tonedivision = 8,
+    $showdurations = 0,
+    $midichannels = 1 -> (
+        $config = for $clef in $clefs, $channel in $midicannels, $name in $voicenames with @iterationmode 1 collect (
+            [ ($clef ||| "G") ($channel ||| 1) ($name ||| "output") ]
+        );
+        $numvoices = length($config);
+        $config = trans($config);
+        $clefs = $config::1;
+        $midichannels = $config::2;
+        $voicenames = $config::3;
+        $config = (
+            [ "numvoices" $numvoices ]
+            [ "clefs" $clefs ]
+            [ "midichannels" $midichannels ]
+            [ "voicenames" $voicenames ]
+            [ "tonedivision" left($tonedivision, 1) ]
+            [ "showdurations" $showdurations ]
+        );
+        $changes = for $param in $config collect (
+            $key = $param::1;
+            if BB_SCORE_CONFIG.$key != $param.$key then $param
+        );
+        BB_SCORE_CONFIG = $config;
+        msg("roll", $changes)
+    )
+);
+
+$addref(
+    @name "scoreconfig",
+    @description "Configures the score appearance, such as the clefs, voice names, tone division, etc. See #transcribe.",
+    @category BB_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "voicenames", @default "'output'" @type "list/symbol", @description "voice names.")
+        $addarg(@name "clefs", @default "'FFGG'" @type "list/symbol", @description "clef type for each voice, as a symbol." @options
+            $addopt(@value "G" @description "treble clef")
+            $addopt(@value "F" @description "bass clef")
+            $addopt(@value "FG" @description "grand staff")
+            $addopt(@value "FFGG" @description "full staff")
+            $addopt(@value "FGG" @description "bass + treble clef")
+            $addopt(@value "FFG" @description "double bass + treble clef")
+            $addopt(@value "FF" @description "double bass clef")
+            $addopt(@value "GG" @description "double treble clef")
+            $addopt(@value "G8va" @description "8va treble clef")
+            $addopt(@value "G8vb" @description "8vb treble clef")
+            $addopt(@value "G15ma" @description "15ma treble clef")
+            $addopt(@value "G15mb" @description "15mb treble clef")
+            $addopt(@value "F8va" @description "8va bass clef")
+            $addopt(@value "F8vb" @description "8vb bass clef")
+            $addopt(@value "F15ma" @description "15ma bass clef")
+            $addopt(@value "F15mb" @description "15mb bass clef")
+            $addopt(@value "Tenor" @description "Tenor clef")
+            $addopt(@value "Barytone" @description "Baritone clef")
+            $addopt(@value "Alto" @description "Alto clef")
+            $addopt(@value "Mezzo" @description "Mezzo clef")
+            $addopt(@value "Soprano" @description "Soprano clef")
+            $addopt(@value "Percussion" @description "Percussion clef")
+        )
+        $addarg(@name "tonedivision", @default 8 @type "int", @description "symbolic tone division." @options
+            $addopt(@value 2 @description "semitones")
+            $addopt(@value 4 @description "quarter tones")
+            $addopt(@value 8 @description "eighth tones")
+        )
+        $addarg(@name "showdurations", @default 0 @type "int", @description "show note durations as lines" @options
+            BB_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "midichannels", @default 1 @type "int/list", @description "midichannel for each voice")
+    )
 );
 
 ## ------------------------------------------------------------
@@ -1137,8 +1216,7 @@ process = (
             printerror("you must provide audio processing commands in process()")
         );
         $offset = $buffer.getkey("offset");
-        msg(
-            "process",
+        msg("process",
             [ "source" $buffer.getkey("source") ]
             [ "process" 
                 crop(@start $offset, @end $offset + $buffer.getkey("duration"))
