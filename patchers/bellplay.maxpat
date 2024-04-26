@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"title" : "bellplay~ | algorithmic audio in bell",
@@ -113,7 +113,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 679.0, 979.0, 104.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "adstatus takeover"
 				}
 
@@ -138,7 +138,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 565.0, 979.0, 108.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "adstatus overdrive"
 				}
 
@@ -205,7 +205,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.eval @auto 1 @watch 1 @embed 0 @file __bellplay__.bell"
 				}
 
@@ -417,7 +417,7 @@
 					"patching_rect" : [ 627.0, 792.0, 40.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 617.40000057220459, 8.0, 53.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "driver",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -432,7 +432,7 @@
 					"patching_rect" : [ 483.0, 841.0, 43.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 617.40000057220459, 33.0, 56.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "device",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -446,7 +446,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 694.0, 816.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -464,7 +464,7 @@
 					"patching_rect" : [ 421.0, 816.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 617.40000057220459, 7.0, 189.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -477,7 +477,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 460.0, 894.0, 89.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "adstatus driver"
 				}
 
@@ -495,7 +495,7 @@
 					"patching_rect" : [ 567.0, 816.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 617.40000057220459, 32.0, 189.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -508,7 +508,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 694.0, 894.0, 102.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "adstatus option 1"
 				}
 
@@ -1837,7 +1837,7 @@
 				"multi" : 0
 			}
 , 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -1862,7 +1862,7 @@
 				"multi" : 0
 			}
 , 			{
-				"name" : "subtlelight-1",
+				"name" : "bellplay-gui-1",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

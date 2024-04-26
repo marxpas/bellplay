@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
@@ -133,7 +133,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 145.5, 880.0, 157.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "combine dir file @triggers 1"
 				}
 
@@ -173,7 +173,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.mapelem @out nm"
 				}
 
@@ -186,7 +186,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 608.5, 1030.0, 157.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "combine dir file @triggers 1"
 				}
 
@@ -199,7 +199,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 614.0, 500.0, 44.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l l"
 				}
 
@@ -212,7 +212,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "int", "null" ],
 					"patching_rect" : [ 317.0, 439.0, 316.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t b 0 null"
 				}
 
@@ -226,7 +226,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 480.5, 1026.5, 30.0, 30.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -238,7 +238,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 109.0, 439.0, 68.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess 0"
 				}
 
@@ -251,7 +251,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 213.0, 500.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "active $1"
 				}
 
@@ -264,7 +264,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 632.0, 206.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -277,7 +277,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 728.0, 168.0, 75.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess \" \""
 				}
 
@@ -290,7 +290,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 7.0, 590.0, 170.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "setcheck none, getcheckitems"
 				}
 
@@ -307,7 +307,7 @@
 					"patching_rect" : [ 7.0, 553.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 365.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "uncheck all"
 				}
 
@@ -324,7 +324,7 @@
 					"patching_rect" : [ 213.0, 553.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 365.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "check all"
 				}
 
@@ -337,7 +337,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 579.0, 829.0, 87.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "getcheckitems"
 				}
 
@@ -354,7 +354,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.keys checkitems"
 				}
 
@@ -367,7 +367,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 185.0, 590.0, 156.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "setcheck all, getcheckitems"
 				}
 
@@ -380,7 +380,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "" ],
 					"patching_rect" : [ 186.0, 439.0, 73.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l 1 l"
 				}
 
@@ -393,7 +393,7 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "bang", "", "", "" ],
 					"patching_rect" : [ 186.0, 126.0, 688.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t b l l l"
 				}
 
@@ -407,7 +407,7 @@
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 149.0, 27.0, 24.0, 24.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -419,7 +419,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 186.0, 92.0, 38.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "zl reg"
 				}
 
@@ -432,7 +432,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 452.0, 168.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -468,7 +468,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 317.0, 551.0, 143.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "print bellplay~ @level 3"
 				}
 
@@ -481,7 +481,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 317.0, 500.0, 238.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "no .wav audio files were found in this folder"
 				}
 
@@ -494,7 +494,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 186.0, 389.0, 151.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.filternull"
 				}
 
@@ -511,7 +511,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.collect"
 				}
 
@@ -524,7 +524,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 409.0, 303.0, 80.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "route append"
 				}
 
@@ -537,7 +537,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 452.0, 206.0, 75.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "types WAVE"
 				}
 
@@ -550,7 +550,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 409.0, 264.0, 40.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "folder"
 				}
 
@@ -833,7 +833,7 @@
 						"tags" : ""
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "p crop-symbol"
 				}
 
@@ -848,7 +848,7 @@
 					"patching_rect" : [ 632.0, 244.0, 143.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 5.0, 145.0, 18.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "Macin...ing dataset/sources/"
 				}
 
@@ -864,7 +864,7 @@
 					"patching_rect" : [ 186.0, 27.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 3.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "load folder"
 				}
 
@@ -877,7 +877,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"patching_rect" : [ 186.0, 58.0, 91.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "opendialog fold"
 				}
 
@@ -892,7 +892,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 3.0, 292.0, 22.0 ],
 					"rounded" : 0,
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -1311,7 +1311,7 @@
 				"multi" : 0
 			}
 , 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

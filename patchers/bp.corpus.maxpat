@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"title" : "bellplay~ | corpus lab",
@@ -82,7 +82,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -94,7 +94,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 10.0, 58.0, 960.0, 23.0 ],
-									"style" : "subtlelight",
+									"style" : "bellplay-gui",
 									"text" : "erase, addtable buffers [source s] [source_id i] [pitch f] [pitchclass f] [pitchsalience f] [loudness f] [zerox f] [duration f] [centroid f] [offset f] [source_end f] [mfcc l] [ sr i ] [ numchannels i ]"
 								}
 
@@ -141,7 +141,7 @@
 							}
  ],
 						"styles" : [ 							{
-								"name" : "subtlelight",
+								"name" : "bellplay-gui",
 								"default" : 								{
 									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -175,7 +175,7 @@
 						"digest" : "",
 						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"tags" : ""
 					}
 ,
@@ -304,7 +304,7 @@
 					"patching_rect" : [ 461.0, 322.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 414.0, 147.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "play selection",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"texton" : "stop",
@@ -407,7 +407,7 @@
 					"patching_rect" : [ 1070.0, 849.5, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 153.0, 414.0, 144.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "analysis settings"
 				}
 
@@ -518,7 +518,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1259.0, 2556.0, 96.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0features"
 				}
 
@@ -530,7 +530,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 868.000000000000227, 870.0, 96.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0features"
 				}
 
@@ -631,7 +631,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 817.0, 2398.0, 78.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0filter"
 				}
 
@@ -644,7 +644,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 718.0, 870.0, 30.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "set"
 				}
 
@@ -656,7 +656,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 718.0, 910.0, 78.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0filter"
 				}
 
@@ -669,7 +669,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"patching_rect" : [ 1027.0, 796.0, 244.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l b"
 				}
 
@@ -682,7 +682,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
 					"patching_rect" : [ 418.0, 743.0, 628.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t b l"
 				}
 
@@ -695,7 +695,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"patching_rect" : [ 308.0, 743.0, 100.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t 0 b"
 				}
 
@@ -708,7 +708,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1266.0, 3492.0, 83.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "set 1, active 0"
 				}
 
@@ -721,7 +721,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1142.0, 3450.0, 118.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0hoverbutton"
 				}
 
@@ -733,7 +733,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 446.0, 965.0, 119.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0hoverbutton"
 				}
 
@@ -746,7 +746,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 418.0, 914.0, 47.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l l"
 				}
 
@@ -761,7 +761,7 @@
 					"patching_rect" : [ 627.0, 16.0, 630.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 5.0, 781.0, 18.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "Load a folder containing .wav files to build a new audio corpus. Use the corpus scatterplot to explore, save, and/or load corpora. "
 				}
 
@@ -774,7 +774,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 10.0, 829.0, 73.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "route active"
 				}
 
@@ -787,7 +787,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 10.0, 550.0, 198.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l l"
 				}
 
@@ -800,7 +800,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
 					"patching_rect" : [ 10.0, 867.0, 31.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "!- 1."
 				}
 
@@ -813,7 +813,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 911.0, 120.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bgfillcolor 1. 1. 1. $1"
 				}
 
@@ -831,7 +831,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 301.0, 54.0, 335.5, 333.5 ],
 					"proportion" : 0.5,
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -843,7 +843,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
 					"patching_rect" : [ 904.0, 2403.0, 30.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t b l"
 				}
 
@@ -856,7 +856,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1733.0, 2747.0, 55.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "deferlow"
 				}
 
@@ -970,7 +970,7 @@
 						"tags" : ""
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "p dummy-format"
 				}
 
@@ -983,7 +983,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1280.0, 890.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -996,7 +996,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1280.0, 931.0, 185.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "erase, addtable buffers [y f] [x f]"
 				}
 
@@ -1009,7 +1009,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1733.0, 2715.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -1022,7 +1022,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1579.0, 2688.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1035,7 +1035,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1459.0, 2688.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1048,7 +1048,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1338.0, 2688.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1061,7 +1061,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1218.0, 2688.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1074,7 +1074,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1193.0, 2556.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -1209,7 +1209,7 @@
 						"tags" : ""
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "p format-plot"
 				}
 
@@ -1222,7 +1222,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 448.0, 833.0, 68.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess 0"
 				}
 
@@ -1235,7 +1235,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 513.0, 111.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0savebutton"
 				}
 
@@ -1248,7 +1248,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 418.0, 870.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "active $1"
 				}
 
@@ -1260,7 +1260,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 418.0, 995.0, 112.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0savebutton"
 				}
 
@@ -1274,7 +1274,7 @@
 					"patching_rect" : [ 627.0, 58.0, 137.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 301.0, 29.0, 335.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "CORPUS SCATTERPLOT",
 					"textcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
 					"textjustification" : 1
@@ -1291,7 +1291,7 @@
 					"patching_rect" : [ 627.0, 38.0, 97.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 273.0, 146.0, 18.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "scatterplot features",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -1305,7 +1305,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 602.0, 513.0, 43.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l 1"
 				}
 
@@ -1318,7 +1318,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 694.0, 478.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -1331,7 +1331,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 666.0, 513.0, 30.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "0"
 				}
 
@@ -1344,7 +1344,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 418.0, 589.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "active $1"
 				}
 
@@ -1357,7 +1357,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 602.0, 478.0, 83.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.filternull"
 				}
 
@@ -1375,7 +1375,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.reg"
 				}
 
@@ -1415,7 +1415,7 @@
 					"patching_rect" : [ 418.0, 637.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 6.0, 438.0, 292.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "build corpus"
 				}
 
@@ -1429,7 +1429,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1266.0, 3928.0, 30.0, 30.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -1441,7 +1441,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1266.0, 3450.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
 
@@ -1459,7 +1459,7 @@
 					"patching_rect" : [ 1266.0, 3534.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 390.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "hover playback OFF",
 					"texton" : "hover playback ON"
 				}
@@ -1473,7 +1473,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1266.0, 3572.0, 172.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "gate 1 1"
 				}
 
@@ -1485,7 +1485,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1327.0, 849.0, 95.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "reset dada.base"
 				}
 
@@ -1498,7 +1498,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1710.0, 3532.0, 55.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "deferlow"
 				}
 
@@ -1511,7 +1511,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 189.0, 634.0, 36.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "write"
 				}
 
@@ -1528,7 +1528,7 @@
 					"patching_rect" : [ 189.0, 600.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 77.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "save corpus"
 				}
 
@@ -1541,7 +1541,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 79.0, 634.0, 33.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "read"
 				}
 
@@ -1557,7 +1557,7 @@
 					"patching_rect" : [ 79.0, 600.0, 100.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 53.0, 145.0, 22.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "load corpus"
 				}
 
@@ -1570,7 +1570,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1571.0, 3755.0, 79.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess set"
 				}
 
@@ -1583,7 +1583,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1710.0, 3497.0, 79.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess set"
 				}
 
@@ -1598,7 +1598,7 @@
 					"patching_rect" : [ 1580.0, 3567.0, 72.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 364.0, 392.0, 273.0, 18.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
@@ -1612,7 +1612,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1580.0, 3532.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1625,7 +1625,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1580.0, 3497.0, 114.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "sprintf %i buffers"
 				}
 
@@ -1639,7 +1639,7 @@
 					"patching_rect" : [ 1580.0, 2734.0, 31.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 640.0, 341.0, 29.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "size",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -1654,7 +1654,7 @@
 					"patching_rect" : [ 1459.0, 2734.0, 38.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 640.0, 366.0, 36.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "color",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -1669,7 +1669,7 @@
 					"patching_rect" : [ 1338.0, 2734.0, 40.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 640.0, 316.0, 38.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "y axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -1684,7 +1684,7 @@
 					"patching_rect" : [ 1218.0, 2734.0, 40.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 640.0, 291.0, 77.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "x axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
@@ -1701,7 +1701,7 @@
 					"patching_rect" : [ 1007.0, 2418.0, 107.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 300.0, 442.0, 484.0, 18.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "scatterplot filter",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
 				}
@@ -1715,7 +1715,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 904.0, 2607.0, 30.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "null"
 				}
 
@@ -1728,7 +1728,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 904.0, 2571.0, 176.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "routepass bang"
 				}
 
@@ -1741,7 +1741,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 904.0, 2368.0, 77.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "loadmess set"
 				}
 
@@ -1754,7 +1754,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1061.0, 2688.0, 57.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "tosymbol"
 				}
 
@@ -1767,7 +1767,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 727.0, 2778.0, 89.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend where"
 				}
 
@@ -1780,7 +1780,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 904.0, 2503.0, 62.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "route text"
 				}
 
@@ -1799,7 +1799,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 300.0, 414.0, 484.0, 30.0 ],
 					"rounded" : 0.0,
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -1813,7 +1813,7 @@
 					"patching_rect" : [ 1491.0, 3806.0, 158.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 301.0, 392.0, 336.0, 18.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -1825,7 +1825,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1491.0, 3755.0, 72.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend set"
 				}
 
@@ -1838,7 +1838,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
 					"patching_rect" : [ 1491.0, 3716.0, 58.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "strippath"
 				}
 
@@ -1851,7 +1851,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1425.0, 3662.0, 85.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l l"
 				}
 
@@ -1864,7 +1864,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1404.0, 3840.0, 59.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "target $1"
 				}
 
@@ -1877,7 +1877,7 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "", "", "int" ],
 					"patching_rect" : [ 1404.0, 3803.0, 77.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "counter 1 32"
 				}
 
@@ -1890,7 +1890,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"patching_rect" : [ 1266.0, 3755.0, 157.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l b"
 				}
 
@@ -1903,7 +1903,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1266.0, 3716.0, 178.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "pack f f s"
 				}
 
@@ -1916,7 +1916,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 1266.0, 3888.0, 148.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "poly~ bp.sampler.poly~ 64"
 				}
 
@@ -1929,7 +1929,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1379.0, 2778.0, 110.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "yfield $1, ylabel $1"
 				}
 
@@ -1942,7 +1942,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1259.0, 2778.0, 109.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "xfield $1, xlabel $1"
 				}
 
@@ -1954,7 +1954,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1252.0, 973.0, 66.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0db"
 				}
 
@@ -1967,7 +1967,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 245.0, 634.0, 65.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0db"
 				}
 
@@ -1979,7 +1979,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 568.0, 910.0, 73.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0plot"
 				}
 
@@ -1996,7 +1996,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.keys numbuffers @out m"
 				}
 
@@ -2009,7 +2009,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"patching_rect" : [ 189.0, 703.0, 138.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "dada.base #0corpus"
 				}
 
@@ -2022,7 +2022,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 1218.0, 2644.0, 501.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "routepass 3 0 1 4"
 				}
 
@@ -2035,7 +2035,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "int" ],
 					"patching_rect" : [ 1193.0, 2600.0, 44.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "uzi 5 0"
 				}
 
@@ -2048,7 +2048,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1620.0, 2778.0, 100.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend sizefield"
 				}
 
@@ -2061,7 +2061,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1499.0, 2778.0, 107.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "prepend colorfield"
 				}
 
@@ -2079,7 +2079,7 @@
 					"patching_rect" : [ 1579.0, 2731.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 340.0, 145.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -2097,7 +2097,7 @@
 					"patching_rect" : [ 1459.0, 2731.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 365.0, 145.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -2115,7 +2115,7 @@
 					"patching_rect" : [ 1338.0, 2731.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 315.0, 145.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -2133,7 +2133,7 @@
 					"patching_rect" : [ 1218.0, 2731.0, 100.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 639.0, 290.0, 145.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
 
@@ -2150,7 +2150,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.keys offset duration source @out mmm"
 				}
 
@@ -2167,7 +2167,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.keys hover"
 				}
 
@@ -2180,7 +2180,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1192.0, 2778.0, 73.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "r #0plot"
 				}
 
@@ -2225,7 +2225,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1027.0, 1056.0, 66.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "s #0db"
 				}
 
@@ -2238,7 +2238,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1027.0, 1015.0, 188.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.prepend addentry buffers"
 				}
 
@@ -2251,7 +2251,7 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "bang", "bang", "bang" ],
 					"patching_rect" : [ 418.0, 796.0, 469.000000000000114, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t 1 b b b"
 				}
 
@@ -3418,7 +3418,7 @@
 				"multi" : 0
 			}
 , 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

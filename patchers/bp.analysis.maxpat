@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"title" : "bellplay~ | analysis settings",
@@ -94,7 +94,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -157,7 +157,7 @@
 							}
  ],
 						"styles" : [ 							{
-								"name" : "subtlelight",
+								"name" : "bellplay-gui",
 								"default" : 								{
 									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -190,7 +190,7 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"tags" : ""
 					}
 ,
@@ -241,7 +241,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -270,7 +270,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 216.0, 90.0, 228.5, 23.0 ],
-									"style" : "subtlelight",
+									"style" : "bellplay-gui",
 									"text" : "ears.info~ min max"
 								}
 
@@ -376,7 +376,7 @@
 							}
  ],
 						"styles" : [ 							{
-								"name" : "subtlelight",
+								"name" : "bellplay-gui",
 								"default" : 								{
 									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -410,7 +410,7 @@
 						"digest" : "",
 						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"tags" : ""
 					}
 ,
@@ -850,7 +850,7 @@
 					"patching_rect" : [ 926.0, 584.0, 64.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 17.0, 79.0, 65.0, 23.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -869,7 +869,7 @@
 					"patching_rect" : [ 1102.0, 623.0, 64.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 17.0, 104.0, 65.0, 23.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -887,7 +887,7 @@
 					"patching_rect" : [ 627.0, 1475.0, 64.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 222.0, 79.0, 65.0, 23.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -900,7 +900,7 @@
 					"patching_rect" : [ 812.0, 585.0, 112.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 84.0, 80.0, 115.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "buffer duration (ms)"
 				}
 
@@ -914,7 +914,7 @@
 					"patching_rect" : [ 1022.0, 561.0, 84.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 84.0, 105.0, 115.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "overlap factor"
 				}
 
@@ -928,7 +928,7 @@
 					"patching_rect" : [ 531.0, 1476.0, 94.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 289.0, 80.0, 115.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "decay threshold"
 				}
 
@@ -942,7 +942,7 @@
 					"patching_rect" : [ 722.0, 811.0, 111.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 289.0, 105.0, 115.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "transient threshold"
 				}
 
@@ -961,7 +961,7 @@
 					"patching_rect" : [ 653.0, 810.0, 64.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 222.0, 104.0, 65.0, 23.0 ],
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -2573,7 +2573,7 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

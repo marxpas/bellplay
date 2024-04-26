@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
@@ -125,7 +125,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -199,7 +199,7 @@
 							}
  ],
 						"styles" : [ 							{
-								"name" : "subtlelight",
+								"name" : "bellplay-gui",
 								"default" : 								{
 									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -233,7 +233,7 @@
 						"digest" : "",
 						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"tags" : ""
 					}
 ,
@@ -415,7 +415,7 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

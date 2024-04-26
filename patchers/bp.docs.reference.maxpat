@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight",
+		"style" : "bellplay-gui",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"title" : "bellplay~ | bell reference",
@@ -141,7 +141,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
@@ -308,7 +308,7 @@
 							}
  ],
 						"styles" : [ 							{
-								"name" : "subtlelight",
+								"name" : "bellplay-gui",
 								"default" : 								{
 									"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -342,7 +342,7 @@
 						"digest" : "",
 						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
-						"style" : "subtlelight",
+						"style" : "bellplay-gui",
 						"tags" : ""
 					}
 ,
@@ -1169,7 +1169,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 763.0, 115.0, 38.0, 18.0 ],
 					"rounded" : 12,
-					"style" : "subtlelight"
+					"style" : "bellplay-gui"
 				}
 
 			}
@@ -1419,7 +1419,7 @@
 					"patching_rect" : [ 14.0, 4.0, 1179.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 42.0, 793.0, 21.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "In addition to the native functions in bell, the following functions are included in bellplay~. Click on the menu to learn more about each of them."
 				}
 
@@ -2507,7 +2507,7 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],

@@ -35,7 +35,7 @@
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
-		"style" : "subtlelight-1",
+		"style" : "bellplay-gui-1",
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
@@ -111,7 +111,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 6.0, 226.0, 108.600000000000009, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "t l l"
 				}
 
@@ -128,7 +128,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "bach.pack pitch pitchclass pitchsalience centroid loudness zerox mfcc"
 				}
 
@@ -141,7 +141,7 @@
 					"numoutlets" : 7,
 					"outlettype" : [ "", "", "", "", "", "", "" ],
 					"patching_rect" : [ 6.0, 94.0, 736.0, 23.0 ],
-					"style" : "subtlelight",
+					"style" : "bellplay-gui",
 					"text" : "ears.essentia~ pitchmelodia spectralcentroid larm zerocrossingrate [mfcc @numberBands 13] @hopsize 1024 @framesize 2048"
 				}
 
@@ -319,7 +319,7 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtlelight",
+				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
@@ -344,7 +344,7 @@
 				"multi" : 0
 			}
 , 			{
-				"name" : "subtlelight-1",
+				"name" : "bellplay-gui-1",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
