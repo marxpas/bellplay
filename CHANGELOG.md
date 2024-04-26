@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add optional pitch class argument in `r2pc`.
 - Add support for envelope and buffer input in `biquad`
 
 ### Changed
@@ -17,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Fix def vs docs arg name discrepancy in ratio-related functions.
 - Fix outdated/displaced logo/name in `bp.docs.credits`
 - Fix inconsistency between args code vs doc name in `clip`.
 
