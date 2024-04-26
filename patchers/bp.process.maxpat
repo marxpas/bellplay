@@ -6389,6 +6389,7 @@
 						"style" : "subtlelight",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-27",
@@ -6435,6 +6436,7 @@
 										"style" : "subtlelight",
 										"subpatcher_template" : "",
 										"assistshowspatchername" : 0,
+										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-11",
@@ -6442,26 +6444,8 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 70.0, 245.0, 58.0, 23.0 ],
+													"patching_rect" : [ 71.0, 198.0, 58.0, 23.0 ],
 													"text" : "r #0reset"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"code" : "$x1 * abs(sgn($x2)) ",
-													"id" : "obj-9",
-													"maxclass" : "newobj",
-													"numinlets" : 2,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 470.0, 203.0, 170.0, 23.0 ],
-													"saved_object_attributes" : 													{
-														"embed" : 1,
-														"versionnumber" : 80300
-													}
-,
-													"text" : "bach.eval $x1 * abs(sgn($x2))"
 												}
 
 											}
@@ -6479,24 +6463,6 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "$x1 * abs(sgn($x2)) ",
-													"id" : "obj-7",
-													"maxclass" : "newobj",
-													"numinlets" : 2,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 239.0, 203.0, 170.0, 23.0 ],
-													"saved_object_attributes" : 													{
-														"embed" : 1,
-														"versionnumber" : 80300
-													}
-,
-													"text" : "bach.eval $x1 * abs(sgn($x2))"
-												}
-
-											}
-, 											{
-												"box" : 												{
 													"id" : "obj-8",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
@@ -6504,24 +6470,6 @@
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 239.0, 87.5, 170.0, 23.0 ],
 													"text" : "t l l"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"code" : "$x1 * abs(sgn($x2)) ",
-													"id" : "obj-6",
-													"maxclass" : "newobj",
-													"numinlets" : 2,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 8.0, 203.0, 170.0, 23.0 ],
-													"saved_object_attributes" : 													{
-														"embed" : 1,
-														"versionnumber" : 80300
-													}
-,
-													"text" : "bach.eval $x1 * abs(sgn($x2))"
 												}
 
 											}
@@ -6578,7 +6526,7 @@
 													"numinlets" : 3,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 8.0, 287.0, 481.0, 23.0 ],
+													"patching_rect" : [ 9.0, 240.0, 481.0, 23.0 ],
 													"text" : "ears.model.sine.synthesis~ @naming dynamic"
 												}
 
@@ -6617,7 +6565,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 35.0, 238.0, 30.0, 30.0 ]
+													"patching_rect" : [ 36.0, 191.0, 30.0, 30.0 ]
 												}
 
 											}
@@ -6629,29 +6577,29 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 8.0, 330.0, 30.0, 30.0 ]
+													"patching_rect" : [ 9.0, 283.0, 30.0, 30.0 ]
 												}
 
 											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
-													"destination" : [ "obj-6", 0 ],
-													"source" : [ "obj-1", 0 ]
+													"destination" : [ "obj-5", 2 ],
+													"source" : [ "obj-1", 2 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-7", 0 ],
+													"destination" : [ "obj-5", 1 ],
 													"source" : [ "obj-1", 1 ]
 												}
 
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-9", 0 ],
-													"source" : [ "obj-1", 2 ]
+													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-1", 0 ]
 												}
 
 											}
@@ -6659,13 +6607,6 @@
 												"patchline" : 												{
 													"destination" : [ "obj-2", 2 ],
 													"source" : [ "obj-10", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-9", 1 ],
-													"source" : [ "obj-10", 1 ]
 												}
 
 											}
@@ -6727,13 +6668,6 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-6", 1 ],
-													"source" : [ "obj-4", 1 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-26", 0 ],
 													"source" : [ "obj-5", 0 ]
 												}
@@ -6741,36 +6675,8 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-5", 0 ],
-													"source" : [ "obj-6", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-5", 1 ],
-													"source" : [ "obj-7", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-2", 1 ],
 													"source" : [ "obj-8", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-7", 1 ],
-													"source" : [ "obj-8", 1 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-5", 2 ],
-													"source" : [ "obj-9", 0 ]
 												}
 
 											}
@@ -9379,10 +9285,6 @@
 			}
 , 			{
 				"name" : "bach.portal.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{

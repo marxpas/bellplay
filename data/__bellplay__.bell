@@ -1918,7 +1918,7 @@ $addref(
     @description "Audio process command for applying hard-clip distortion to a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "factor", @type "int/float/llll", @description "distortion amplitude threshold, either as single number or envelope.")
+        $addarg(@name "threshold", @type "int/float/llll", @description "distortion amplitude threshold, either as single number or envelope.")
     ),
     @output $addout(@description "clip command" @type "llll")
 );

@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - Fix outdated/displaced logo/name in `bp.docs.credits`
+- Fix inconsistency between args code vs doc name in `clip`.
 
 ### Removed
 
