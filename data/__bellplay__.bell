@@ -1231,7 +1231,8 @@ process = (
     $analyze = 0 -> (
         if $buffer == null then (
             printerror("attempt to pass null value as @buffer in process()")
-        ) else if $commands == null then (
+        );
+        if $commands == null then (
             printerror("you must provide audio processing commands in process()")
         );
         $offset = $buffer.getkey("offset");
