@@ -1857,15 +1857,18 @@ $addref(
 ## ------------------------------------------------------------
 
 biquad = (
-    $freq = 2000,
-    $type = 0,
+    $frequency = 2000,
+    $type = 2,
     $gain = 1,
-    $q = 80 -> (
+    $q = 100 -> (
+        $frequency = $frequency.getkey("source") ||| [ bpf($frequency) ];
+        $gain = $gain.getkey("source") ||| [ bpf($gain) ];
+        $q = $q.getkey("source") ||| [ bpf($q) ];
         [
             [ "fx" "biquad" ]
             [ "params" 
                 [ "type" $type + 1 ]
-                [ "freq" $freq ]
+                [ "frequency" $frequency ]
                 [ "gain" $gain ]
                 [ "q" $q ]
             ]
