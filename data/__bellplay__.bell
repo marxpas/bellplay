@@ -1216,10 +1216,12 @@ process = (
             printerror("you must provide audio processing commands in process()")
         );
         $offset = $buffer.getkey("offset");
+        $duration = $buffer.getkey("duration");
+        $crop = $offset != 0 || $duration != $buffer.getkey("source_end");
         msg("process",
             [ "source" $buffer.getkey("source") ]
             [ "process" 
-                crop(@start $offset, @end $offset + $buffer.getkey("duration"))
+                (if $crop then crop(@start $offset, @end $offset + $duration))
                 ($prefade &&& $prefade > 0 &&& fade(@fadein $prefade, @fadeout $prefade))
                 $commands 
             ]
