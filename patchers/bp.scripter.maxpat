@@ -1462,7 +1462,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "int", "int" ],
-									"patching_rect" : [ 771.5, 555.0, 45.0, 23.0 ],
+									"patching_rect" : [ 757.0, 555.0, 60.0, 23.0 ],
 									"text" : "t i i"
 								}
 
@@ -1486,7 +1486,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 771.5, 511.0, 31.0, 23.0 ],
+									"patching_rect" : [ 757.0, 511.0, 31.0, 23.0 ],
 									"text" : "thru"
 								}
 
@@ -1550,7 +1550,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 771.5, 456.0, 30.0, 23.0 ],
+									"patching_rect" : [ 757.0, 456.0, 30.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "1"
 								}
@@ -1576,9 +1576,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 722.0, 408.0, 118.0, 23.0 ],
+									"patching_rect" : [ 722.0, 408.0, 89.0, 23.0 ],
 									"style" : "bellplay-gui",
-									"text" : "regexp ^(\\\\.|~\\\\/).*"
+									"text" : "regexp ^(\\\\.).*"
 								}
 
 							}
