@@ -5,7 +5,7 @@
 )#
 
 ## we generate buffer, in this case a sinusoidal oscillator.
-$osc = cycle()
+$osc = cycle();
 ## then we transcribe the buffer for rendering
 $osc.transcribe();
 ## finally, we render transcribed buffer
