@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3796938164,
+	"modificationdate" : 3797091988,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -232,6 +232,21 @@
 					"projectrelativepath" : "./media"
 				}
 
+			}
+,
+			"badinerie.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"poem.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"drums.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
 			}
 
 		}

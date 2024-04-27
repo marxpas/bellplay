@@ -1,0 +1,36 @@
+#( 
+    --------------------------------
+    AUTOMATION
+    --------------------------------
+)#
+$dur = 3000;
+
+## equi-distant
+$fq = 220 440 330 220;
+cycle(
+    @frequency $fq
+    @duration $dur
+).transcribe();
+
+## xy pairs
+$fq = [0 220] [1 440] [3 220];
+tri(
+    @frequency $fq
+    @duration $dur
+).transcribe(@onset $dur);
+
+## xy-slope tuples (linear)
+$fq = [0 220 0] [1 440 0] [3 220 0];
+rect(
+    @frequency $fq 
+    @duration $dur
+).transcribe(@onset $dur * 3);
+
+## xy-slope tuples (curve)
+$fq = [0 220 0] [1 440 0.25] [3 220 -0.25];
+saw(
+    @frequency $fq
+    @duration $dur
+).transcribe(@onset $dur * 2);
+
+render(@play 1 @process normalize(-12))

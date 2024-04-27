@@ -1,0 +1,11 @@
+#( 
+    --------------------------------
+    VARIABLES
+    --------------------------------
+    In bellplay, variable declarations should be local (i.e., $myvar vs myvar) to prevent namespacing issues.
+    Only use global declarations when absolutely necessary, and make sure your variable name does not already exist.
+)#
+$first = cycle(440, 1000);
+$second = cycle(@frequency 220, 500);
+$first.transcribe();
+$second.transcribe(@onset 1000)

@@ -102,6 +102,26 @@ printerror = (
 
 ## ------------------------------------------------------------
 
+BP_MEDIA_FILES = (
+    "badinerie.wav"
+    "drums.wav"
+    "poem.wav"
+);
+
+getmediafile = (
+    $file -> (
+        $exists = 0;
+        for $f in BP_MEDIA_FILES as $exists == 0 do (
+            if $file == $f then $exists = 1
+        );
+        if $exists == 0 then printerror($file "is not a built-in media file. These are the available options:" BP_MEDIA_FILES);
+        msg("localpath", "media/" + $file);
+        BP_TMP_PATH
+    )
+);
+
+## ------------------------------------------------------------
+
 tosymbol = (
     $x -> (
         msg("sym", $x);
@@ -1051,7 +1071,7 @@ importaudio = (
     $path, 
     $analyze = 0 -> (
         BP_TMP_BUFF = null;
-        if $path == null then printerror("You must provide a value for @path in importmidi()");
+        if $path == null then printerror("You must provide a value for @path in importaudio()");
         $pathinfo = getpathinfo($path);
         $ext = $pathinfo."extension";
         $path = $pathinfo."path";

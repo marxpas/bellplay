@@ -1,0 +1,20 @@
+#( 
+    --------------------------------
+    AUDIO CONTROL
+    --------------------------------
+)#
+$dur = 3000;
+$carfq = 220;
+$harmratio = 1.333;
+$modindex = 0 5 0;
+$modfq = $carfq * $harmratio;
+
+$mod = cycle($modfq @duration $dur).process(
+    multiply($modfq * $modindex)
+    plus($carfq)
+);
+
+$car = cycle($mod @duration $dur);
+
+$car.transcribe(@gain .125);
+render(@play 1)

@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add sketchy version of tutorial files.
+- Add `getmediafile` to retrieve built-in media for tutorials. 
 - Auto-center window when saving main patcher
 - Add optional pitch class argument in `r2pc`.
 - Add support for envelope and buffer input in `biquad`

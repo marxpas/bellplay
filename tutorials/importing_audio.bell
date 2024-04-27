@@ -1,0 +1,18 @@
+#( 
+    --------------------------------
+    IMPORTING AUDIO
+    --------------------------------
+)#
+
+## get the absolute file path of one of the built-in audio files in bellplay~
+$path = getmediafile("poem.wav"); 
+
+## uncomment the line below to use a file path of your choosing
+## $path = "/path/to/my/file.wav";
+
+## use file path to import audio file as a buffer
+$buff = importaudio($path);
+
+## transcribe buffer and render
+$buff.transcribe();
+render()

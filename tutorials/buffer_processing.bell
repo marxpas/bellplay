@@ -1,0 +1,20 @@
+#( 
+    --------------------------------
+    BUFFER PROCESSING
+    --------------------------------
+)#
+$path = getmediafile('poem.wav');
+$buff = importaudio($path);
+
+## apply processing to buffer. Notice that we re-assign the variable.
+$buff = $buff.process(
+    ## reverse buffer
+    reverse()
+    ## apply basic reverb
+    freeverb(@tail 1000)
+    ## reverse again
+    reverse()
+);
+## transcribe and render
+$buff.transcribe(@gain .125);
+render()
