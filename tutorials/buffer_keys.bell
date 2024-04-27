@@ -1,0 +1,22 @@
+#( 
+    --------------------------------
+    BUFFER KEYS
+    --------------------------------
+)#
+$path = getmediapath("badinerie.wav");
+$buff = importaudio($path);
+
+$buffdur = $buff.getkey("duration");
+print("buffer duration:" $buffdur);
+
+$buffchans = $buff.getkey("numchannels");
+print("buffer channel count:" $buffchans);
+
+$buff = $buff.setkey("duration", 1000);
+$buff.transcribe();
+
+$buff = $buff.setkey("offset", 1000);
+$buff.transcribe(@onset 1500);
+
+render()
+

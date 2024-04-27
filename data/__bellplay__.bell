@@ -106,9 +106,10 @@ BP_MEDIA_FILES = (
     "badinerie.wav"
     "drums.wav"
     "poem.wav"
+    "singing.wav"
 );
 
-getmediafile = (
+getmediapath = (
     $file -> (
         $exists = 0;
         for $f in BP_MEDIA_FILES as $exists == 0 do (
@@ -117,6 +118,19 @@ getmediafile = (
         if $exists == 0 then printerror($file "is not a built-in media file. These are the available options:" BP_MEDIA_FILES);
         msg("localpath", "media/" + $file);
         BP_TMP_PATH
+    )
+);
+
+analyze = (
+    $buffer -> (
+        $source = $buffer.getkey("source");
+        if $source == null then printerror($buffer "is not a valid buffer");
+        $source = $buffer.process(fade(1, 1)).getkey("source");
+        bp_makebuffer(
+            @source $source
+            @analyze 1
+            @info 1
+        )
     )
 );
 

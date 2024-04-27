@@ -1,0 +1,22 @@
+$path = getmediapath("singing.wav");
+$buffer = importaudio($path);
+$buffer = $buffer.setkey("duration", 100);
+
+$offset = 0;
+$maxduration = $buffer.getkey("source_end");
+$dur = 100;
+$buffer = $buffer.setkey("duration", $dur);
+
+while $offset < $maxduration - $dur do (
+    $grain = $buffer.setkey("offset", $offset);
+    $grain = $grain.analyze();
+    $detune = $grain.detuning(0 3 6 9);
+    $grain.transcribe(
+        @onset $offset
+        @detune $detune
+        @gain hanning()
+    );
+    $offset += $dur * 0.33
+);
+
+render(@play 1)

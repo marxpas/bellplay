@@ -5,7 +5,7 @@
 )#
 
 ## get the absolute file path of one of the built-in audio files in bellplay~
-$path = getmediafile("poem.wav"); 
+$path = getmediapath("poem.wav"); 
 
 ## uncomment the line below to use a file path of your choosing
 ## $path = "/path/to/my/file.wav";

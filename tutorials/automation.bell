@@ -3,34 +3,34 @@
     AUTOMATION
     --------------------------------
 )#
-$dur = 3000;
+$dur = 2000;
 
-## equi-distant
+## equi-distant format
 $fq = 220 440 330 220;
 cycle(
     @frequency $fq
     @duration $dur
 ).transcribe();
 
-## xy pairs
+## wrapped xy-pair format
 $fq = [0 220] [1 440] [3 220];
 tri(
     @frequency $fq
     @duration $dur
 ).transcribe(@onset $dur);
 
-## xy-slope tuples (linear)
+## wrapped xy-slope tuples (linear)
 $fq = [0 220 0] [1 440 0] [3 220 0];
 rect(
     @frequency $fq 
     @duration $dur
-).transcribe(@onset $dur * 3);
+).transcribe(@onset $dur * 2);
 
-## xy-slope tuples (curve)
-$fq = [0 220 0] [1 440 0.25] [3 220 -0.25];
+## wrapped xy-slope tuples (with curves)
+$fq = [0 220 0] [1 440 0.5] [3 220 -0.5];
 saw(
     @frequency $fq
     @duration $dur
-).transcribe(@onset $dur * 2);
+).transcribe(@onset $dur * 3);
 
 render(@play 1 @process normalize(-12))

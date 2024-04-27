@@ -3,7 +3,7 @@
     BUFFER PROCESSING
     --------------------------------
 )#
-$path = getmediafile('poem.wav');
+$path = getmediapath('poem.wav');
 $buff = importaudio($path);
 
 ## apply processing to buffer. Notice that we re-assign the variable.

@@ -2,10 +2,11 @@
     --------------------------------
     VARIABLES
     --------------------------------
-    In bellplay, variable declarations should be local (i.e., $myvar vs myvar) to prevent namespacing issues.
-    Only use global declarations when absolutely necessary, and make sure your variable name does not already exist.
+    In bellplay, variable declarations should be local (i.e., $<varname> instead <varname>) to prevent namespacing collisions.
+    Only use global declarations when absolutely necessary, and make sure your variable name does not already exist in bellplay~.
+    If you accidentally use a global variable that already exists in bellplay~, simply restart the application to restore the values.
 )#
-$first = cycle(440, 1000);
-$second = cycle(@frequency 220, 500);
-$first.transcribe();
-$second.transcribe(@onset 1000)
+$cycle = cycle(440, 1000);
+$rect = rect(@frequency 220, 500);
+$cycle.transcribe();
+$rect.transcribe(@onset 1000)
