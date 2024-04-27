@@ -1,0 +1,20 @@
+#( 
+    --------------------------------
+    RENDERING
+    --------------------------------
+
+    The rendering stage allows us to define important aspects about the final output.
+
+)#
+noise(@duration 2000).transcribe(
+    @pan 0 1
+    @gain [0 0 0] [1 1 .5]
+);
+render(
+    @play 1
+    @numchannels 2
+    @sr 44100
+)
+#( 
+    Export the rendered audio and check the format: channel count, sampling rate, etc.
+)#

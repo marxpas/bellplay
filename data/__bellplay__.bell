@@ -139,7 +139,7 @@ addmarker = (
     $onset,
     $names = null -> (
         if $onset == null then printerror("You must provide a value for @onset in addmarker()");
-        msg("roll", "addmarker" $onset ($names &&& [ $names ]))
+        msg("roll", "addmarker" $onset ($names &&& [ $names ]) ||| [])
     )
 );
 
