@@ -1886,10 +1886,25 @@ biquad = (
         $frequency = $frequency.getkey("source") ||| [ bpf($frequency) ];
         $gain = $gain.getkey("source") ||| [ bpf($gain) ];
         $q = $q.getkey("source") ||| [ bpf($q) ];
+        if contains($type) == 16 then (
+            $type = (
+                [ "lowpass" 0 ]
+                [ "highpass" 1 ]
+                [ "bandpass" 2 ]
+                [ "bandstop" 3 ]
+                [ "peaknotch" 4 ]
+                [ "lowshelf" 5 ]
+                [ "highshelf" 6 ]
+                [ "resonant" 7 ]
+                [ "allpass" 8 ]
+            ).$type
+        );
+        if $type == null then printerror("invalid value for @type in biquad().");
+        print($type);
         [
             [ "fx" "biquad" ]
             [ "params" 
-                [ "type" $type + 1 ]
+                [ "type" "edit_mode" $type + 1 ]
                 [ "frequency" $frequency ]
                 [ "gain" $gain ]
                 [ "q" $q ]
@@ -1903,7 +1918,7 @@ $addref(
     @description "Audio process command for applying biquad filtering to a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "type", @type "int", @description "filter type." @options
+        $addarg(@name "type", @type "int/symbol", @description "filter type, as a symbol or integer." @options
             $addopt(@value 0 @description "lowpass")
             $addopt(@value 1 @description "highpass")
             $addopt(@value 2 @description "bandpass")

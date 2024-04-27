@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Fix @type not working bug in `biquad()`.
 - Fix missing grain count text in `bp.corpus`
 - Fix def vs docs arg name discrepancy in ratio-related functions.
 - Fix outdated/displaced logo/name in `bp.docs.credits`

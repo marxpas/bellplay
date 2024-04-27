@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-77",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 2406.5, 364.0, 42.0, 23.0 ],
+					"text" : "*~ 0.5"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-125",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -4347,7 +4359,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2508.5, 378.0, 112.0, 23.0 ],
+					"patching_rect" : [ 2535.0, 421.0, 112.0, 23.0 ],
 					"text" : "send~ #0chan2"
 				}
 
@@ -4358,7 +4370,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2406.5, 378.0, 112.0, 23.0 ],
+					"patching_rect" : [ 2406.5, 421.0, 112.0, 23.0 ],
 					"text" : "send~ #0chan1"
 				}
 
@@ -5550,7 +5562,7 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-148",
-									"linecount" : 4,
+									"linecount" : 3,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
@@ -6025,16 +6037,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-160", 0 ],
-					"order" : 0,
-					"source" : [ "obj-151", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-162", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-77", 0 ],
 					"source" : [ "obj-151", 0 ]
 				}
 
@@ -6839,6 +6842,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-160", 0 ],
+					"order" : 0,
+					"source" : [ "obj-77", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-162", 0 ],
+					"order" : 1,
+					"source" : [ "obj-77", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-100", 0 ],
 					"source" : [ "obj-78", 1 ]
 				}
@@ -7239,6 +7258,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "bp.process.biquad~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bp.process.cycle~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
@@ -7394,10 +7420,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "ears.biquad~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "ears.channel~.mxo",
 				"type" : "iLaX"
 			}
@@ -7530,6 +7552,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.processinfo~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.process~.mxo",
 				"type" : "iLaX"
 			}
@@ -7610,24 +7636,6 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtle",
-				"default" : 				{
-					"bgfillcolor" : 					{
-						"color" : [ 0.2, 0.2, 0.2, 1 ],
-						"color1" : [ 0.301961, 0.301961, 0.301961, 1 ],
-						"color2" : [ 0.2, 0.2, 0.2, 1 ],
-						"type" : "gradient"
-					}
-,
-					"color" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
-					"fontname" : [ "Ableton Sans Medium" ],
-					"locked_bgcolor" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ]
-				}
-,
-				"parentstyle" : "",
-				"multi" : 0
-			}
-, 			{
 				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
@@ -7647,6 +7655,24 @@
 					"fontname" : [ "Ableton Sans Medium" ],
 					"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "subtle",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"color" : [ 0.2, 0.2, 0.2, 1 ],
+						"color1" : [ 0.301961, 0.301961, 0.301961, 1 ],
+						"color2" : [ 0.2, 0.2, 0.2, 1 ],
+						"type" : "gradient"
+					}
+,
+					"color" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
+					"fontname" : [ "Ableton Sans Medium" ],
+					"locked_bgcolor" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
