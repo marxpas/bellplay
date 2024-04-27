@@ -585,7 +585,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
-        $addarg(@name "pc", @type "int/float", @description "pitch class of fundamental")
+        $addarg(@name "pc", @default 0 @type "int/float", @description "pitch class of fundamental")
     ),
     @output $addout(@description "list of pitch classes", @type "list/int/float")
 );
