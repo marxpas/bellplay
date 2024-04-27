@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add draft of `addmarker`, pending docs.
 - Add unoptimized version of `analyze()` for ad hoc analysis. Pending docs.
 - Add sketchy version of tutorial files.
 - Add `getmediapath` to retrieve built-in media for tutorials. 

@@ -11,6 +11,7 @@ cycle(
     @frequency $fq
     @duration $dur
 ).transcribe();
+addmarker(0, "sinusoidal");
 
 ## wrapped xy-pair format
 $fq = [0 220] [1 440] [3 220];
@@ -18,6 +19,7 @@ tri(
     @frequency $fq
     @duration $dur
 ).transcribe(@onset $dur);
+addmarker($dur, "triangular");
 
 ## wrapped xy-slope tuples (linear)
 $fq = [0 220 0] [1 440 0] [3 220 0];
@@ -25,6 +27,7 @@ rect(
     @frequency $fq 
     @duration $dur
 ).transcribe(@onset $dur * 2);
+addmarker($dur * 2, "square");
 
 ## wrapped xy-slope tuples (with curves)
 $fq = [0 220 0] [1 440 0.5] [3 220 -0.5];
@@ -32,5 +35,6 @@ saw(
     @frequency $fq
     @duration $dur
 ).transcribe(@onset $dur * 3);
+addmarker($dur * 3, "sawtooth — has curved envelope");
 
 render(@play 1 @process normalize(-12))
