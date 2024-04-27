@@ -531,7 +531,7 @@
 					"patching_rect" : [ 130.0, 83.0, 57.0, 57.0 ],
 					"pic" : "logo.png",
 					"presentation" : 1,
-					"presentation_rect" : [ 7.0, 9.0, 50.0, 50.0 ]
+					"presentation_rect" : [ 8.149999856948853, 8.0, 50.0, 50.0 ]
 				}
 
 			}
@@ -735,7 +735,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.299999713897705, 44.0, 797.700000286102295, 18.0 ],
+					"presentation_rect" : [ 8.149999856948853, 7.0, 797.700000286102295, 18.0 ],
 					"text" : "v0.1.0-beta",
 					"textjustification" : 1
 				}
@@ -780,7 +780,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 27.0, 156.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 165.0, 7.0, 5.0, 35.0 ]
+					"presentation_rect" : [ 166.149999856948853, 6.0, 5.0, 35.0 ]
 				}
 
 			}
@@ -1072,7 +1072,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 443.0, 95.0, 224.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 59.0, 41.0, 221.0, 21.0 ],
+					"presentation_rect" : [ 60.149999856948853, 40.0, 221.0, 21.0 ],
 					"text" : "© 2024 | https://felipe-tovar-henao.com"
 				}
 
@@ -1126,7 +1126,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 41.0, 195.0, 150.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 170.0, 13.0, 233.0, 23.0 ],
+					"presentation_rect" : [ 171.149999856948853, 12.0, 233.0, 23.0 ],
 					"text" : "algorithmic audio in bell"
 				}
 
@@ -1198,7 +1198,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 98.0, 156.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 96.0, 7.0, 67.0, 35.0 ],
+					"presentation_rect" : [ 97.149999856948853, 6.0, 67.0, 35.0 ],
 					"text" : "play~"
 				}
 
@@ -1213,7 +1213,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 38.0, 156.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 59.0, 7.0, 45.0, 35.0 ],
+					"presentation_rect" : [ 60.149999856948853, 6.0, 45.0, 35.0 ],
 					"text" : "bell"
 				}
 
