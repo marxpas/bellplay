@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Auto-center window when saving main patcher
 - Add optional pitch class argument in `r2pc`.
 - Add support for envelope and buffer input in `biquad`
 
