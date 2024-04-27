@@ -102,7 +102,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
-									"patching_rect" : [ 140.0, 90.0, 115.0, 22.0 ],
+									"patching_rect" : [ 140.0, 90.0, 115.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -118,7 +118,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "" ],
-									"patching_rect" : [ 9.0, 54.0, 150.0, 22.0 ],
+									"patching_rect" : [ 9.0, 54.0, 150.0, 23.0 ],
 									"text" : "t b l"
 								}
 
@@ -130,7 +130,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "int" ],
-									"patching_rect" : [ 60.0, 200.0, 151.0, 22.0 ],
+									"patching_rect" : [ 60.0, 200.0, 151.0, 23.0 ],
 									"text" : "conformpath max absolute"
 								}
 
@@ -143,7 +143,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 60.0, 233.0, 181.0, 22.0 ],
+									"patching_rect" : [ 60.0, 233.0, 181.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1,
 										"versionnumber" : 80300
@@ -160,7 +160,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 60.0, 167.0, 99.0, 22.0 ],
+									"patching_rect" : [ 60.0, 167.0, 99.0, 23.0 ],
 									"text" : "combine root file"
 								}
 
@@ -172,7 +172,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 9.0, 90.0, 33.0, 22.0 ],
+									"patching_rect" : [ 9.0, 90.0, 33.0, 23.0 ],
 									"text" : "path"
 								}
 
@@ -184,7 +184,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 9.0, 124.0, 70.0, 22.0 ],
+									"patching_rect" : [ 9.0, 124.0, 70.0, 23.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 									"text" : "thispatcher"
 								}
@@ -301,6 +301,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -1241,7 +1242,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 509.0, 1339.0, 492.0 ],
+						"rect" : [ 59.0, 509.0, 938.0, 492.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1461,7 +1462,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "int", "int" ],
-									"patching_rect" : [ 756.0, 555.0, 45.0, 23.0 ],
+									"patching_rect" : [ 771.5, 555.0, 45.0, 23.0 ],
 									"text" : "t i i"
 								}
 
@@ -1473,7 +1474,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 693.0, 627.0, 108.0, 23.0 ],
+									"patching_rect" : [ 693.0, 627.0, 123.5, 23.0 ],
 									"text" : "zl reg"
 								}
 
@@ -1485,7 +1486,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 756.0, 511.0, 31.0, 23.0 ],
+									"patching_rect" : [ 771.5, 511.0, 31.0, 23.0 ],
 									"text" : "thru"
 								}
 
@@ -1549,7 +1550,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 756.0, 456.0, 30.0, 23.0 ],
+									"patching_rect" : [ 771.5, 456.0, 30.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "1"
 								}
@@ -1575,9 +1576,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 722.0, 408.0, 87.0, 23.0 ],
+									"patching_rect" : [ 722.0, 408.0, 118.0, 23.0 ],
 									"style" : "bellplay-gui",
-									"text" : "regexp ^\\\\..*"
+									"text" : "regexp ^(\\\\.|~\\\\/).*"
 								}
 
 							}

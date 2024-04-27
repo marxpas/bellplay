@@ -3,7 +3,7 @@
     BUFFER PROCESSING
     --------------------------------
 )#
-$path = getmediapath('poem.wav');
+$path = getmediapath('drums.wav');
 $buff = importaudio($path);
 
 ## apply processing to buffer. Notice that we re-assign the variable.
@@ -11,10 +11,10 @@ $buff = $buff.process(
     ## reverse buffer
     reverse()
     ## apply basic reverb
-    freeverb(@tail 1000)
+    freeverb(@tail 500)
     ## reverse again
     reverse()
 );
 ## transcribe and render
 $buff.transcribe(@gain .125);
-render()
+render(@play 1)
