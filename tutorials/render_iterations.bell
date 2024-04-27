@@ -1,6 +1,12 @@
+#( 
+    --------------------------------
+    MULTIPLE RENDERING
+    --------------------------------
+)#
+
 ## generate granular sequence
 for $n in 0...80 do (
-    $fq = rand(20, 4000);
+    $fq = rand(20, 2000);
     $onset = $n * 60;
     $gain = rand(0.125);
     $grain = saw($fq @duration 100);
@@ -16,7 +22,7 @@ $buff = render(@reset 1);
 
 ## create a comb-like delay by closely-spaced copies of the rendered buffer 
 for $n in 0...50 do (
-    $onset = $n + $n * 5;
+    $onset = $n + $n * 7.333;
     $gain = scale($n, 0, 50, 1, 0) ** 1.5;
     $buff.transcribe(
         @onset $onset
@@ -32,4 +38,4 @@ $buff.transcribe(@pan 0.1);
 $buff.process(reverse()).transcribe(@pan .9);
 
 ## render one last time
-render(@play 1 @process freeverb(@roomsize .7 @wet [0 0 0] [1 .8 .5]))
+render(@play 1 @process freeverb(@roomsize .85 @wet [0 0 0] [1 .8 .5]))
