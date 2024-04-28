@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add tags in tutorials.
 - Add working version of `bp.docs.tutorials` interface, with autoload and file autocreation into `Documents`.
 - Add draft of `addmarker`, pending docs.
 - Add unoptimized version of `analyze()` for ad hoc analysis. Pending docs.
