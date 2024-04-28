@@ -740,7 +740,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 5,
 					"presentation_rect" : [ 6.0, 211.0, 794.0, 91.0 ],
-					"text" : "\nIt is highly recommended that you use an external code editor when writing bell code, preferrably #VisualStudioCode or #Atom. If you use Visual Studio Code, make sure to install the #bell-syntax extension, which provides syntax highlighting in bell. If you use Atom, you can click #here to install the syntax highlighting package for you. Lastly, as you follow the tutorials, make sure to also check the reference documentation to further understand what each of the functions you encounter do."
+					"text" : "\nIt is highly recommended that you use an external code editor when writing bell code, preferrably #VisualStudioCode or #Atom. If you use #VisualStudioCode, make sure to install the #bell-syntax extension, which provides syntax highlighting in bell. If you use #Atom, you can click #here to install the syntax highlighting package for you. Lastly, as you follow the tutorials, make sure to also check the reference documentation to further understand what each of the functions you encounter do. Happy coding!"
 				}
 
 			}
