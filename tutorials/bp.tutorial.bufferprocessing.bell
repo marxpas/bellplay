@@ -4,18 +4,28 @@
     --------------------------------
 )#
 
+## get the absolute file path of one of the built-in audio files in bellplay~
 $path = getmediapath('drums.wav');
+
+## uncomment the line below to use a file path of your choosing
+## $path = "/path/to/my/file.wav";
+
+## use file path to import audio file as a buffer
 $buff = importaudio($path);
 
-## apply processing to buffer. Notice that we re-assign the variable.
+## apply processing to buffer. Notice that we need re-assign the variable — operations in bell are not destructive/do not happen in-place.
 $buff = $buff.process(
+
     ## reverse buffer
     reverse()
-    ## apply basic reverb
+
+    ## apply reverb
     freeverb(@tail 500)
+
     ## reverse again
     reverse()
 );
+
 ## transcribe and render
 $buff.transcribe(@gain .125);
 render(@play 1)

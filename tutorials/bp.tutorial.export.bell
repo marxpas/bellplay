@@ -4,8 +4,10 @@
     --------------------------------
 )#
 
+## generate a 1-second buffer of white noise and transcribe
 noise(@duration 1000).transcribe(@pan 0 1);
 
+## trigger rendering
 render();
 
 ## this assumes you have a folder named Documents in your home directory
@@ -14,7 +16,9 @@ $midipath = '~/Documents/myfile.mid';
 
 ## export rendered buffer
 export($audiopath);
+
 ## export each buffer channel individually
 export($audiopath @stems 1);
+
 ## export transcription as MIDI
 export($midipath)
