@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797160496,
+	"modificationdate" : 3797165009,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -268,6 +268,11 @@
 				}
 
 			}
+,
+			"singing.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
 
 		}
 ,
@@ -317,37 +322,37 @@
 				"local" : 1
 			}
 ,
-			"bp.tutorial.buffer_processing.bell" : 			{
-				"kind" : "textfile",
-				"local" : 1
-			}
-,
-			"bp.tutorial.buffer_keys.bell" : 			{
-				"kind" : "textfile",
-				"local" : 1
-			}
-,
 			"bp.tutorial.automation.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"bp.tutorial.audio_control.bell" : 			{
+			"bp.tutorial.audiocontrol.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"bp.tutorial.workflow_basic.bell" : 			{
+			"bp.tutorial.basicworkflow.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"bp.tutorial.render_iterations.bell" : 			{
+			"bp.tutorial.bufferprocessing.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"bp.tutorial.importing_audio.bell" : 			{
+			"bp.tutorial.bufferkeys.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.multirendering.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.importingaudio.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
