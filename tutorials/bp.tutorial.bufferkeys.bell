@@ -26,15 +26,15 @@ print("buffer duration:" $buffdur);
 $buffchans = $buff.getkey("numchannels");
 print("buffer channel count:" $buffchans);
 
-## change buffer duration
+## change buffer duration and transcribe
 $buff = $buff.setkey("duration", 1000);
 $buff.transcribe();
 
-## change buffer offset (i.e., where to start reading the buffer from)
+## change buffer offset (i.e., where to start reading the buffer from) and transcribe
 $buff = $buff.setkey("offset", 1000);
 $buff.transcribe(@onset 1500);
 
-## change buffer pitch in midicents
+## change buffer pitch in midicents and transcribe
 #( 
     NOTE: this only changes the notated pitch. 
     To change the actual pitch, we would need to use @detune argument in transcribe(), or apply processing via the process() function. 
