@@ -47,7 +47,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 104.75, 185.0, 54.0, 23.0 ],
-					"presentation_linecount" : 2,
 					"text" : "tutorials"
 				}
 
@@ -241,7 +240,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 210.0, 404.0, 696.0, 23.0 ],
-					"text" : "script delete belldocs, script newdefault belldocs 2 500 bpatcher @presentation 1 @presentation_rect 0 24 800 600 @name $1,"
+					"text" : "script delete belldocs, script newdefault belldocs 2 500 bpatcher @presentation 1 @presentation_rect 0 24 805 600 @name $1,"
 				}
 
 			}
@@ -299,7 +298,7 @@
 					"clickthrough" : 0,
 					"enablehscroll" : 0,
 					"enablevscroll" : 0,
-					"id" : "obj-2",
+					"id" : "obj-25",
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
@@ -309,7 +308,7 @@
 					"offset" : [ 0.0, 0.0 ],
 					"patching_rect" : [ 2.0, 500.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 24.0, 800.0, 600.0 ],
+					"presentation_rect" : [ 0.0, 24.0, 805.0, 600.0 ],
 					"varname" : "belldocs",
 					"viewvisibility" : 1
 				}
