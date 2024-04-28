@@ -3,6 +3,6 @@
 **/Icon?
 !.gitignore
 **/*.bell
-**/*.wav
+# **/*.wav
 !tutorials/*
 !__bellplay__.bell
