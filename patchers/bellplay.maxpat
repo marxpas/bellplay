@@ -756,7 +756,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.149999856948853, 7.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.0-beta",
+					"text" : "v0.1.1-beta",
 					"textjustification" : 1
 				}
 
