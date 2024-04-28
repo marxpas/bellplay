@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797110878,
+	"modificationdate" : 3797160496,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -282,67 +282,72 @@
 				"local" : 1
 			}
 ,
-			"transcription.bell" : 			{
+			"bp.tutorial.scoreconfig.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"export.bell" : 			{
+			"bp.tutorial.features.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"variables.bell" : 			{
+			"bp.tutorial.rendering.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"features.bell" : 			{
+			"bp.tutorial.variables.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"buffer_processing.bell" : 			{
+			"bp.tutorial.transcription.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"rendering.bell" : 			{
+			"bp.tutorial.markers.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"markers.bell" : 			{
+			"bp.tutorial.export.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"automation.bell" : 			{
+			"bp.tutorial.buffer_processing.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"workflow_basic.bell" : 			{
+			"bp.tutorial.buffer_keys.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"render_iterations.bell" : 			{
+			"bp.tutorial.automation.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"buffer_keys.bell" : 			{
+			"bp.tutorial.audio_control.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"importing_audio.bell" : 			{
+			"bp.tutorial.workflow_basic.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
 ,
-			"audio_control.bell" : 			{
+			"bp.tutorial.render_iterations.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.importing_audio.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}

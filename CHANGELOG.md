@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change tutorial file names.
 - Change style name from `sublelight` to `bellplay-gui`.
 - Modify `resynth` to not multiply function output, which would allow for temporal modificatinos.
 - Add optimization in `process`, to avoid cropping full files.

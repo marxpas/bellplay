@@ -20,7 +20,7 @@ $addtutorial = (
 
 $addtutorial(
     @name "basic workflow"
-    @file "workflow_basic"
+    @file "basicworkflow"
     @description "The general workflow in bellplay~ consists of three steps: buffer generation, buffer transcription, and buffer rendering. This tutorial shows the most basic version of this, by generating, transcribing, and rendering a sinusoidal waveform."
     @tags "synthesis" "cycle"
 );
@@ -34,7 +34,7 @@ $addtutorial(
 
 $addtutorial(
     @name "importing audio from your scripts"
-    @file "importing_audio"
+    @file "importingaudio"
     @description "This tutorial demonstrates how to import existing audio files into a script, as buffers."
     @tags "sampling" "importaudio"
 );
@@ -55,7 +55,7 @@ $addtutorial(
 
 $addtutorial(
     @name "buffer keys setters and getters"
-    @file "buffer_keys"
+    @file "bufferkeys"
     @description "Sometimes it's useful to access or modify the properties of a buffer, which in bellplay~ are refered to as keys. For instance, the buffer's duration, channel count, or perhaps more crucially, analysis-based features like pitch, loudness, zero-crossing rate, etc. This tutorial briefly shows how to access and modify buffer keys, via the setter and getter functions #setkey and #getkey."
     @tags "sampling" "keys" "getkey" "setkey"
 );
@@ -76,7 +76,7 @@ $addtutorial(
 
 $addtutorial(
     @name "processing buffers"
-    @file "buffer_processing"
+    @file "bufferprocessing"
     @description "One of the core features of bellplay~ is the ability to dynamically and flexibly apply chains of DSP algorithms to our buffers. This tutorial shows a very basic example of this by applying reverse delay to an audio file."
     @tags "sampling" "importaudio" "process" "reverse" "freeverb" "reverse"
 );
@@ -90,7 +90,7 @@ $addtutorial(
 
 $addtutorial(
     @name "buffer-based parameter control"
-    @file "audio_control"
+    @file "audiocontrol"
     @description "While in many cases specifying parameters as single values or envelopes can provide enough control in many cases, certain situations require even more complex approaches. This tutorial shows how to use buffers to control audio parameters when generating and processing other buffers."
     @tags "synthesis" "cycle" "multiply" "plus" "FM+synthesis"
 );
@@ -104,7 +104,7 @@ $addtutorial(
 
 $addtutorial(
     @name "multi-rendering"
-    @file "render_iterations"
+    @file "multirendering"
     @description "This tutorial demonstrates a very simple but consequential feature in bellplay~ — namely, the ablity to reuse rendered buffers multiple times to further refine and sculpt the final output into complex and intricate sounds."
     @tags "synthesis" "rand" "saw" "hanning" "scale" "reverse" "freeverb" "normalize"
 );

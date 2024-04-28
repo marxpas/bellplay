@@ -1615,6 +1615,13 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.change.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.collect.mxo",
 				"type" : "iLaX"
 			}
@@ -1756,6 +1763,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.sort.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.stdev.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1803,7 +1814,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.docs.about.maxpat",
+				"name" : "bp.docs.tutorials.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
