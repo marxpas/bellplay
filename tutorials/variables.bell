@@ -2,7 +2,7 @@
     --------------------------------
     VARIABLES
     --------------------------------
-    In bellplay, variable declarations should be local (i.e., $<varname> instead <varname>) to prevent namespacing collisions.
+    In bellplay~, variable declarations should be local (i.e., $<varname> instead <varname>) to prevent namespacing collisions.
     Only use global declarations when absolutely necessary, and make sure your variable name does not already exist in bellplay~.
     If you accidentally use a global variable that already exists in bellplay~, simply restart the application to restore the values.
 )#

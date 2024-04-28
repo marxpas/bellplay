@@ -41,12 +41,25 @@
 		"title" : "bellplay~ | about",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 104.75, 185.0, 54.0, 23.0 ],
+					"presentation_linecount" : 2,
+					"text" : "tutorials"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 295.0, 185.0, 46.0, 23.0 ],
+					"patching_rect" : [ 292.25, 185.0, 46.0, 23.0 ],
 					"text" : "credits"
 				}
 
@@ -94,7 +107,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 404.0, 113.0, 23.0 ],
+					"patching_rect" : [ 64.0, 404.0, 114.0, 23.0 ],
 					"text" : "bp.utils.debugmode"
 				}
 
@@ -143,7 +156,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 185.0, 60.0, 23.0 ],
+					"patching_rect" : [ 198.5, 185.0, 60.0, 23.0 ],
 					"text" : "reference"
 				}
 
@@ -164,11 +177,11 @@
 				"box" : 				{
 					"id" : "obj-35",
 					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 4,
-					"outlettype" : [ "bang", "bang", "bang", "" ],
-					"patching_rect" : [ 11.0, 132.0, 445.0, 23.0 ],
-					"text" : "sel 0 1 2"
+					"numinlets" : 5,
+					"numoutlets" : 5,
+					"outlettype" : [ "bang", "bang", "bang", "bang", "" ],
+					"patching_rect" : [ 11.0, 132.0, 394.0, 23.0 ],
+					"text" : "sel 0 1 2 3"
 				}
 
 			}
@@ -215,7 +228,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 210.0, 283.0, 107.0, 23.0 ],
+					"patching_rect" : [ 210.0, 283.0, 108.0, 23.0 ],
 					"text" : "sprintf bp.docs.%s"
 				}
 
@@ -275,7 +288,7 @@
 					"spacing_x" : 1.0,
 					"spacing_y" : 0.0,
 					"tabcolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
-					"tabs" : [ "ABOUT", "BELL REFERENCE", "CREDITS" ]
+					"tabs" : [ "ABOUT", "TUTORIALS", "BELL REFERENCE", "CREDITS" ]
 				}
 
 			}
@@ -286,7 +299,7 @@
 					"clickthrough" : 0,
 					"enablehscroll" : 0,
 					"enablevscroll" : 0,
-					"id" : "obj-39",
+					"id" : "obj-2",
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
@@ -355,14 +368,21 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
-					"source" : [ "obj-35", 1 ]
+					"source" : [ "obj-35", 2 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-35", 2 ]
+					"source" : [ "obj-35", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-35", 1 ]
 				}
 
 			}
@@ -426,6 +446,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}

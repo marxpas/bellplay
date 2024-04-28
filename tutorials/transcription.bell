@@ -2,15 +2,13 @@
     --------------------------------
     TRANSCRIPTION
     --------------------------------
-    In bellplay, variable declarations should be local (i.e., $<varname> instead <varname>) to prevent namespacing collisions.
-    Only use global declarations when absolutely necessary, and make sure your variable name does not already exist in bellplay~.
-    If you accidentally use a global variable that already exists in bellplay~, simply restart the application to restore the values.
 )#
 $buff = tri();
 
 $numnotes = 25;
 $N = $numnotes - 1;
 $totaldur = 1500;
+
 for $i in 0...$N do (
     $progress = $i / ($numnotes - 1);
     $onset = $progress * $totaldur;

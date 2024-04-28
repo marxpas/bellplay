@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797091988,
+	"modificationdate" : 3797110878,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -185,6 +185,11 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"bp.docs.tutorials.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
@@ -236,23 +241,108 @@
 ,
 			"badinerie.wav" : 			{
 				"kind" : "audiofile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 ,
 			"poem.wav" : 			{
 				"kind" : "audiofile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 ,
 			"drums.wav" : 			{
 				"kind" : "audiofile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}
 ,
 		"data" : 		{
 			"__bellplay__.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorials.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"transcription.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"export.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"variables.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"features.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"buffer_processing.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"rendering.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"markers.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"automation.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"workflow_basic.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"render_iterations.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"buffer_keys.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"importing_audio.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"audio_control.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}

@@ -1,0 +1,99 @@
+BP_DOCS_TUTORIALS = null;
+
+$addtutorial = (
+    $name,
+    $description,
+    $file,
+    $tags -> (
+        $file = $file + ".bell";
+        BP_DOCS_TUTORIALS _= (
+            [ $file
+                [ "name" $name ]
+                [ "description" $description ]
+                [ "file" $file ]
+                [ "tags" $tags ]
+                [ "id" length(BP_DOCS_TUTORIALS) ]
+            ]
+        )
+    )
+);
+
+$addtutorial(
+    @name "basic workflow"
+    @file "workflow_basic"
+    @description "This tutorial encapsulates the basic workflow for algorithmic audio in bellplay~, by generating a sinusoidal oscillator."
+);
+
+$addtutorial(
+    @name "variables"
+    @file "variables"
+    @description "This tutorial explains best practices when declaring variables in bellplay~ scripts. In short, we should always use local variables to prevent namespacing collisions."
+);
+
+$addtutorial(
+    @name "importing audio"
+    @file "importing_audio"
+    @description "This tutorial shows how to import existing audio files into a script."
+);
+
+$addtutorial(
+    @name "transcription"
+    @file "transcription"
+    @description "This tutorial shows some of the basic features we can control through the transcribe() function. For more information, make sure to read the reference documentation."
+);
+
+$addtutorial(
+    @name "rendering"
+    @file "rendering"
+    @description "This tutorial shows some of the basic features we can control through the render() function. For more information, make sure to read the reference documentation."
+);
+
+$addtutorial(
+    @name "buffer keys"
+    @file "buffer_keys"
+    @description "This tutorial shows how to access and modify buffer keys."
+);
+
+$addtutorial(
+    @name "markers"
+    @file "markers"
+    @description "This tutorial shows how to add markers in a transcription, which can be useful for debugging your code."
+);
+
+$addtutorial(
+    @name "automation"
+    @file "automation"
+    @description "This tutorial shows the different syntaxes for creating envelopes in bellplay~."
+);
+
+$addtutorial(
+    @name "processing buffers"
+    @file "buffer_processing"
+    @description "This tutorial shows how to apply DSP algorithms to buffers, via the process function."
+);
+
+$addtutorial(
+    @name "export"
+    @file "export"
+    @description "This tutorial shows how to export your bellscript~ output, and the available formats, including audio, midi, and native .llll format."
+);
+
+$addtutorial(
+    @name "audio control"
+    @file "audio_control"
+    @description "This tutorial shows how to use buffers to control audio parameters when generating and processing buffers."
+);
+
+$addtutorial(
+    @name "audio features"
+    @file "features"
+    @description "This tutorial explains how to use buffer features for audio processing. In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection. WARNING: this might take a while to process."
+);
+
+$addtutorial(
+    @name "render iterations"
+    @file "render_iterations"
+    @description "This tutorial demonstrates a very simple but consequential feature in bellplay~ — namely, the ablity to reuse rendered buffers multiple times to further refine and sculpt the final output into complex and intricate sounds."
+);
+
+BP_DOCS_TUTORIALS
