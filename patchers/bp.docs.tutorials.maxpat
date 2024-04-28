@@ -1518,7 +1518,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 412.5, 2104.0, 309.0, 23.0 ],
-					"text" : "sprintf symout ~/Documents/bellscript tutorial - %s.bell"
+					"text" : "sprintf symout ~/Documents/bellplay tutorial - %s.bell"
 				}
 
 			}
