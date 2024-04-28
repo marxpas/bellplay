@@ -4,38 +4,62 @@
     --------------------------------
 )#
 
+## duration value for all buffers
 $dur = 2000;
 
-## equi-distant format
+## frequency envelope, in equi-distant linear syntax
 $fq = 220 440 330 220;
+
+## generate and transcribe sinusoidal oscillator buffer
 cycle(
     @frequency $fq
     @duration $dur
 ).transcribe();
-addmarker(0, "sinusoidal");
 
-## wrapped xy-pair format
+## add marker to match start of sinusoidal oscillator
+addmarker(@onset 0 @names "sinusoidal");
+
+## ----------------------------------------------
+
+## frequency envelope, in wrapped xy-pair syntax
 $fq = [0 220] [1 440] [3 220];
+
+## generate and transcribe triangular wave oscillator buffer
 tri(
     @frequency $fq
     @duration $dur
 ).transcribe(@onset $dur);
-addmarker($dur, "triangular");
+
+## another marker matching start of triangular wave oscillator
+addmarker(@onset $dur @names "triangular");
+
+## ----------------------------------------------
 
 ## wrapped xy-slope tuples (linear)
 $fq = [0 220 0] [1 440 0] [3 220 0];
+
+## generate and transcribe square wave oscillator buffer
 rect(
     @frequency $fq 
     @duration $dur
 ).transcribe(@onset $dur * 2);
+
+## third marker matching start of square wave oscillator
 addmarker($dur * 2, "square");
+
+## ----------------------------------------------
 
 ## wrapped xy-slope tuples (with curves)
 $fq = [0 220 0] [1 440 0.5] [3 220 -0.5];
+
+## generate and transcribe sawtooth wave oscillator buffer
 saw(
     @frequency $fq
     @duration $dur
 ).transcribe(@onset $dur * 3);
+
+## last marker matching start of sawtooth wave oscillator
 addmarker($dur * 3, "sawtooth — has curved envelope");
 
+## render everything and apply postrendering normalization to be -12 dB
 render(@play 1 @process normalize(-12))
