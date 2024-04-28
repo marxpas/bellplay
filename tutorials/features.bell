@@ -25,4 +25,4 @@ while $offset < $maxduration - $dur do (
     $offset += $dur * 0.33
 );
 
-render(@play 1)
+render(@play 1 @process normalize(-6))

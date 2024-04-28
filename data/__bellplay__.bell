@@ -109,6 +109,55 @@ BP_MEDIA_FILES = (
     "singing.wav"
 );
 
+
+## ------------------------------------------------------------
+
+bp_makebuffer = (
+    $source,
+    $duration = 50,  
+    $numchannels = 1,
+    $sr = BP_SR,
+    $offset = 0,
+    $source_id = -1,
+    $mfcc = 0. :* 13,
+    $pitch = 0,
+    $pitchsalience = 0,
+    $centroid = 0,
+    $loudness = 0,
+    $zerox = 0,
+    $analyze = 0,
+    $info = 0 -> (
+        if $source == null then printerror("null buffer encountered");
+        $buffer = (
+            [ "source" $source ]
+            [ "sr" $sr ]
+            [ "numchannels" $numchannels ]
+            [ "duration" $duration ]
+            [ "offset" $offset ]
+            [ "source_id" $source_id ]
+            [ "mfcc" $mfcc ]
+            [ "centroid" $centroid ]
+            [ "loudness" $loudness ]
+            [ "zerox" $zerox ]
+            [ "pitchsalience" $pitchsalience ]
+            [ "pitch" $pitch ]
+        );
+        $features = if $analyze then getfeatures($source);
+        $info = if $info then getbufferinfo($source);
+        for $x in $info $features do (
+            $key = $x:(1 1);
+            $key &&& ($buffer.$key = $x.$key)
+        );
+        [
+            $buffer 
+            [ "pitchclass" fmod($buffer."pitch" / 100.0, 12) ] 
+            [ "source_end" $buffer."duration" ]
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
 getmediapath = (
     $file -> (
         $exists = 0;
@@ -120,6 +169,8 @@ getmediapath = (
         BP_TMP_PATH
     )
 );
+
+## ------------------------------------------------------------
 
 analyze = (
     $buffer -> (
@@ -134,6 +185,7 @@ analyze = (
     )
 );
 
+## ------------------------------------------------------------
 
 addmarker = (
     $onset,
@@ -163,6 +215,8 @@ $addref(
 );
 
 ## ------------------------------------------------------------
+
+BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy")::1 collect $addopt(@value $x::(1 1)));
 
 BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 0, @description "milliseconds")
@@ -357,7 +411,9 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key.")
+        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+            BP_REF_BUFFER_KEYS_OPTIONS
+        )
     ),
     @output $addout(@description "value associated with key", @type "anything")
 );
@@ -380,7 +436,9 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key.")
+        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+            BP_REF_BUFFER_KEYS_OPTIONS
+        )
         $addarg(@name "val", @type "anything", @description "new value for buffer key.")
     ),
     @output $addout(@description "modified buffer", @type "llll")
@@ -403,7 +461,9 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key.")
+        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+            BP_REF_BUFFER_KEYS_OPTIONS
+        )
         $addarg(@name "func", @type "lambda function", @description "lambda function with signature $currentvalue -> $newvalue.")
     ),
     @output $addout(@description "modified buffer", @type "llll")
@@ -727,7 +787,7 @@ detuning = (
 
 $addref(
     @name "detuning",
-    @description "Given a list of target midicents and/or pitch classes, returns the difference between a buffers' original pitch and the nearest midicent/pitch class target. See #transcribe function.",
+    @description "Given a list of target midicents and/or pitch classes, returns the difference between a buffers' original pitch and the nearest midicent/pitch class target. See #transcribe, and #scoreconfig functions.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "reference buffer.")
@@ -1463,52 +1523,6 @@ $addref(
         $addarg(@name "wet", @default "0.16", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
     @output $addout(@description "freeverb command" @type "llll")
-);
-
-## ------------------------------------------------------------
-
-bp_makebuffer = (
-    $source,
-    $duration = 50,  
-    $numchannels = 1,
-    $sr = BP_SR,
-    $offset = 0,
-    $source_id = -1,
-    $mfcc = 0. :* 13,
-    $pitch = 0,
-    $pitchsalience = 0,
-    $centroid = 0,
-    $loudness = 0,
-    $zerox = 0,
-    $analyze = 0,
-    $info = 0 -> (
-        if $source == null then printerror("null buffer encountered");
-        $buffer = (
-            [ "source" $source ]
-            [ "sr" $sr ]
-            [ "numchannels" $numchannels ]
-            [ "duration" $duration ]
-            [ "offset" $offset ]
-            [ "source_id" $source_id ]
-            [ "mfcc" $mfcc ]
-            [ "centroid" $centroid ]
-            [ "loudness" $loudness ]
-            [ "zerox" $zerox ]
-            [ "pitchsalience" $pitchsalience ]
-            [ "pitch" $pitch ]
-        );
-        $features = if $analyze then getfeatures($source);
-        $info = if $info then getbufferinfo($source);
-        for $x in $info $features do (
-            $key = $x:(1 1);
-            $key &&& ($buffer.$key = $x.$key)
-        );
-        [
-            $buffer 
-            [ "pitchclass" fmod($buffer."pitch" / 100.0, 12) ] 
-            [ "source_end" $buffer."duration" ]
-        ]
-    )
 );
 
 ## ------------------------------------------------------------
