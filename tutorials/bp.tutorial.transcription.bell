@@ -4,18 +4,34 @@
     --------------------------------
 )#
 
+## generate a triangle wave oscillator as a buffer
 $buff = tri();
 
+## number of notes (buffers)
 $numnotes = 25;
 $N = $numnotes - 1;
+
+## total output duration
 $totaldur = 1500;
 
+## iterate for each note
 for $i in 0...$N do (
+    ## compute normalize value of temporal position within output (i.e., 0 = start, 1 = end) 
     $progress = $i / ($numnotes - 1);
+
+    ## make onsets equally spaced within the total duration
     $onset = $progress * $totaldur;
+
+    ## panning goes from 0 (left) to 1 (right) with each iteration
     $pan = $progress;
+
+    ## make gain exponentially softer
     $gain = (1 - $progress) ** 2;
+
+    ## detuning amount from 0 to 1200 (octave) with each iteration
     $detune = 1200 * $progress;
+    
+    ## transcribe the same buffer, with different values for onset, gain, detuning amount, and panning.
     $buff.transcribe(
         @onset $onset 
         @gain $gain 
@@ -24,4 +40,5 @@ for $i in 0...$N do (
     )
 );
 
+## render transcribed buffers
 render(@play 1)
