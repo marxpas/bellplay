@@ -1,23 +1,48 @@
 #( 
     --------------------------------
     BUFFER KEYS
+
+    NOTE: changes to buffer keys via setkey or mapkey do not actually modify the underlaying audio data.
+    Instead, it's information that functions like transcribe() or process() use to determine how to treat the buffer.
+    In other words, they are "lazy" modifications, because it delays modifications until needed — this is particularly the case with the 'duration' and 'offset' buffer keys.
+    As such, these setter-based modifications are not destructive or irreversible, and only take effect once the buffer goes through transcription or processing.
     --------------------------------
 )#
 
+## get path for built-in media file
 $path = getmediapath("badinerie.wav");
+
+## uncomment the line below to use an audio file path of your choosing
+## $path = "/path/to/your/file.wav"
+
+## import audio file as buffer
 $buff = importaudio($path);
 
+## get and print buffer duration
 $buffdur = $buff.getkey("duration");
 print("buffer duration:" $buffdur);
 
+## get and print buffer channel count
 $buffchans = $buff.getkey("numchannels");
 print("buffer channel count:" $buffchans);
 
+## change buffer duration
 $buff = $buff.setkey("duration", 1000);
 $buff.transcribe();
 
+## change buffer offset (i.e., where to start reading the buffer from)
 $buff = $buff.setkey("offset", 1000);
 $buff.transcribe(@onset 1500);
 
+## change buffer pitch in midicents
+#( 
+    NOTE: this only changes the notated pitch. 
+    To change the actual pitch, we would need to use @detune argument in transcribe(), or apply processing via the process() function. 
+    Please refer to the documentation to learn more.
+)#
+$buff = $buff.setkey("pitch", 7200);
+$buff.transcribe(@onset 3000);
+
+## render modified buffer
 render()
 
