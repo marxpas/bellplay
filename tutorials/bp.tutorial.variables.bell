@@ -7,9 +7,17 @@
     If you accidentally use a global variable that already exists in bellplay~, simply restart the application to restore the values.
 )#
 
+## generate 1-second buffer of white noise.
+## since $noise is a local variable, it does not override the global definition of the noise function.
 $noise = noise(1000);
+
+## generate 750ms buffer of sawtooth wave at 220 Hz
+## similarly, since the $saw is a local variable, it does not cause any namespacing issues.
 $saw = saw(@frequency 220 @duration 750);
+
+## transcribe noise and sawtooth buffers spaced 1 second apart
 $noise.transcribe(@gain .1);
 $saw.transcribe(@onset 1000 @gain .1);
 
+## render transcribed buffers
 render()
