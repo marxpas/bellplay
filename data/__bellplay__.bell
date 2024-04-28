@@ -158,45 +158,6 @@ bp_makebuffer = (
 
 ## ------------------------------------------------------------
 
-getmediapath = (
-    $file -> (
-        $exists = 0;
-        for $f in BP_MEDIA_FILES as $exists == 0 do (
-            if $file == $f then $exists = 1
-        );
-        if $exists == 0 then printerror($file "is not a built-in media file. These are the available options:" BP_MEDIA_FILES);
-        msg("localpath", "media/" + $file);
-        BP_TMP_PATH
-    )
-);
-
-## ------------------------------------------------------------
-
-analyze = (
-    $buffer -> (
-        $source = $buffer.getkey("source");
-        if $source == null then printerror($buffer "is not a valid buffer");
-        $source = $buffer.process(fade(1, 1)).getkey("source");
-        bp_makebuffer(
-            @source $source
-            @analyze 1
-            @info 1
-        )
-    )
-);
-
-## ------------------------------------------------------------
-
-addmarker = (
-    $onset,
-    $names = null -> (
-        if $onset == null then printerror("You must provide a value for @onset in addmarker()");
-        msg("roll", "addmarker" $onset ($names &&& [ $names ]) ||| [])
-    )
-);
-
-## ------------------------------------------------------------
-
 tosymbol = (
     $x -> (
         msg("sym", $x);
@@ -291,6 +252,77 @@ BP_REF_RESAMPLINGPOLICY_OPTIONS = (
     $addopt(@value 2 @description "to highest")
     $addopt(@value 3 @description "to most common")
     $addopt(@value 4 @description "to max. current")
+);
+
+## ------------------------------------------------------------
+
+getmediapath = (
+    $file -> (
+        $exists = 0;
+        for $f in BP_MEDIA_FILES as $exists == 0 do (
+            if $file == $f then $exists = 1
+        );
+        if $exists == 0 then printerror($file "is not a built-in media file. These are the available options:" BP_MEDIA_FILES);
+        msg("localpath", "media/" + $file);
+        BP_TMP_PATH
+    )
+);
+
+$addref(
+    @name "getmediapath"
+    @description "Returns the absolute path for one of the built-in media files in bellplay~."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "file" @type "symbol",@description "file name" @options
+            for $x in sort(BP_MEDIA_FILES) collect $addopt(@value $x)
+        )
+    ),
+    @output $addout(@description "absolute path to media file", @type "symbol")
+);
+
+## ------------------------------------------------------------
+
+analyze = (
+    $buffer -> (
+        $source = $buffer.getkey("source");
+        if $source == null then printerror($buffer "is not a valid buffer");
+        $source = $buffer.process(fade(1, 1)).getkey("source");
+        bp_makebuffer(
+            @source $source
+            @analyze 1
+            @info 1
+        )
+    )
+);
+
+$addref(
+    @name "analyze"
+    @description "Performs an audio feature analysis on a buffer and returns a new buffer with updated keys, based on that analysis."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "buffer" @type "llll",@description "buffer to analyze.")
+    )
+    @output $addout(@description "analyzed buffer", @type "llll")
+);
+
+## ------------------------------------------------------------
+
+addmarker = (
+    $onset,
+    $names = null -> (
+        if $onset == null then printerror("You must provide a value for @onset in addmarker()");
+        msg("roll", "addmarker" $onset ($names &&& [ $names ]) ||| [])
+    )
+);
+
+$addref(
+    @name "addmarker"
+    @description "Inserts a marker into the transcription score, given an onset time and, optionally, a list of names associated with that marker, as a list."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "onset" @type "int/float",@description "marker onset position.")
+        $addarg(@name "names" @default "null" @type "symbol/list/null" @description "optional list of marker names, each as a symbol")
+    )
 );
 
 ## ------------------------------------------------------------
