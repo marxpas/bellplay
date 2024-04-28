@@ -6,6 +6,7 @@
     Only use global declarations when absolutely necessary, and make sure your variable name does not already exist in bellplay~.
     If you accidentally use a global variable that already exists in bellplay~, simply restart the application to restore the values.
 )#
+
 $noise = noise(1000);
 $saw = saw(@frequency 220 @duration 750);
 $noise.transcribe(@gain .1);

@@ -3,6 +3,7 @@
     EXPORTING
     --------------------------------
 )#
+
 noise(@duration 1000).transcribe(@pan 0 1);
 
 render();

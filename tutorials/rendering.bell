@@ -6,6 +6,7 @@
     The rendering stage allows us to define important aspects about the final output.
 
 )#
+
 noise(@duration 2000).transcribe(
     @pan 0 1
     @gain [0 0 0] [1 1 .5]

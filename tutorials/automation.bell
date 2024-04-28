@@ -3,6 +3,7 @@
     AUTOMATION
     --------------------------------
 )#
+
 $dur = 2000;
 
 ## equi-distant format

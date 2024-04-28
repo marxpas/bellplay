@@ -6,6 +6,7 @@
     Sometimes it's useful to include markers in the transcription.
     For instance, to label things, or simply to debug something in our code.
 )#
+
 $harmonics = (1...16) * 110;
 $envelope = [0 0 0] [1 .125 0.25] [10 0 -.25];
 

@@ -3,6 +3,7 @@
     BUFFER KEYS
     --------------------------------
 )#
+
 $path = getmediapath("badinerie.wav");
 $buff = importaudio($path);
 
