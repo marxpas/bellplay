@@ -4,7 +4,7 @@
     --------------------------------
 )#
 
-## let's generate buffer, in this case a sinusoidal oscillator.
+## first, let's generate buffer, in this case a sinusoidal oscillator.
 $osc = cycle();
 
 ## then we transcribe the buffer for rendering
