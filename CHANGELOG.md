@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change color of code box in `bp.docs.about` page.
 - Remove wav files from gitignore to include media assets.
 - Change tutorial file names.
 - Change style name from `sublelight` to `bellplay-gui`.
