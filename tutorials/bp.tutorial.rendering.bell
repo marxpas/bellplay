@@ -7,13 +7,24 @@
 
 )#
 
+## generate 2-second buffer with white noise and transcribe
 noise(@duration 2000).transcribe(
     @pan 0 1
     @gain [0 0 0] [1 1 .5]
 );
+
+## render buffer and specify output channels, sampling rate, fade-in/out duration applied to every transcribed buffer
 render(
+    
+    ## auto play after rendering
     @play 1
+
+    ## number of output channels
     @numchannels 2
+
+    ## sampling rate
     @sr 48000
+
+    ## fade in/out duration
     @fade 0
 )
