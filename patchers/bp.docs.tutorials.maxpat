@@ -41,6 +41,18 @@
 		"title" : "bellplay~ | tutorials",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-106",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 157.0, 2341.0, 77.0, 23.0 ],
+					"text" : "wclose, open"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-104",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -529,9 +541,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "open" ],
-					"patching_rect" : [ 70.0, 2380.0, 48.0, 23.0 ],
-					"text" : "t l open"
+					"outlettype" : [ "", "bang" ],
+					"patching_rect" : [ 70.0, 2380.0, 29.5, 23.0 ],
+					"text" : "t l b"
 				}
 
 			}
@@ -1829,6 +1841,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-106", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-102", 0 ],
 					"source" : [ "obj-107", 0 ]
 				}
@@ -2564,7 +2583,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
+					"destination" : [ "obj-106", 0 ],
 					"source" : [ "obj-96", 1 ]
 				}
 

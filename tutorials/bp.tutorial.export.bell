@@ -8,7 +8,7 @@
 noise(@duration 1000).transcribe(@pan 0 1);
 
 ## trigger rendering
-render();
+render(@play 1);
 
 ## this assumes you have a folder named Documents in your home directory
 $audiopath = '~/Documents/myfile.wav';
