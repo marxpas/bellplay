@@ -1,0 +1,44 @@
+#( 
+    --------------------------------
+    SCORE FORMATTING AND APPEARANCE
+    --------------------------------
+)#
+
+scoreconfig(
+    @voicenames "sine" "triangle" "sawtooth"
+    @clefs "G" "Alto" "F"
+    @tonedivision 4
+    @showdurations 1
+);
+
+## first voice
+cycle(
+    @frequency 500 
+    @duration 4000
+).transcribe(
+    @voice 1
+    @pan 0
+);
+
+## second voice
+tri(
+    @frequency 300 
+    @duration 3000
+).transcribe(
+    @onset 1000
+    @voice 2
+    @pan .5
+);
+
+## third voice
+saw(
+    @frequency 200 
+    @duration 2000
+).transcribe(
+    @onset 2000   
+    @voice 3
+    @pan 1
+);
+
+## render
+render(@play 1 @process normalize(-6))

@@ -109,4 +109,11 @@ $addtutorial(
     @tags "synthesis" "rand" "saw" "hanning" "scale" "reverse" "freeverb" "normalize"
 );
 
+$addtutorial(
+    @name "appearance and score formatting"
+    @file "scoreconfig"
+    @description "This tutorial shows how to modify the default appearance of the score transcription."
+    @tags "synthesis" "cycle" "saw" "tri" "scoreconfig"
+);
+
 BP_DOCS_TUTORIALS

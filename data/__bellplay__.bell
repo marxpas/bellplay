@@ -985,7 +985,6 @@ scoreconfig = (
             [ "clefs" $clefs ]
             [ "midichannels" $midichannels ]
             [ "voicenames" $voicenames ]
-            [ "tonedivision" left($tonedivision, 1) ]
         );
         $changes = for $param in $config collect (
             $key = $param::1;
@@ -993,7 +992,8 @@ scoreconfig = (
         );
         BP_SCORE_CONFIG = $config;
         msg("roll", $changes);
-        msg("roll", "showdurations" $showdurations )
+        msg("roll", "showdurations" $showdurations);
+        msg("roll", "tonedivision" left($tonedivision, 1))
     )
 );
 
