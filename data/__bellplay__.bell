@@ -684,7 +684,7 @@ r2pc = (
     $ratios,
     $pc = 0 -> (
         $ref = c2r($pc * 100);
-        r2c(reduceoct($ratios * $ref)) / 100.
+        r2c(octreduce($ratios * $ref)) / 100.
     )
 );
 

@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix `r2pc` bug by correcting mispelling of `octreduce` function.
 - Fix major standalone bug in `importaudio` by using `buffer~` as intermediary to read dependencies.
 - Fix bpatcher cropping in `bp.reference`.
 
