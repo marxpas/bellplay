@@ -23,7 +23,7 @@ $buff = cycle(@frequency 440 @duration 1000);
 $buff.transcribe();
 
 ## step 3: trigger audio rendering
-render();
+render()
 ```
 
 With a wide variety of bell functions, **bellplay~** offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis. To start learning **bellplay~**, please refer to its reference documentation, where all available bell functions are listed. 
