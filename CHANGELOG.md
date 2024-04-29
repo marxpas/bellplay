@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change tutorial comments for `$path` tutorials.
 - Reorganize folder and change approach to tutorials/media usage to prevent search path issues in standalone.
 
 ### Fixed
@@ -17,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Fix bpatcher cropping in `bp.reference`.
 
 ### Removed
-
+- Remove `getmediafile` function.
 
 ## [v0.1.1-beta] - 2024-04-28
 

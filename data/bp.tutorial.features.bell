@@ -4,7 +4,7 @@
     --------------------------------
 )#
 
-## get path for built-in media file
+## path to built-in audio file
 $path = "singing.wav";
 
 ## uncomment the line below to use an audio file path of your choosing

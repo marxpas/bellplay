@@ -256,32 +256,6 @@ BP_REF_RESAMPLINGPOLICY_OPTIONS = (
 
 ## ------------------------------------------------------------
 
-getmediapath = (
-    $file -> (
-        $exists = 0;
-        for $f in BP_MEDIA_FILES as $exists == 0 do (
-            if $file == $f then $exists = 1
-        );
-        if $exists == 0 then printerror($file "is not a built-in media file. These are the available options:" BP_MEDIA_FILES);
-        msg("localpath", "media/" + $file);
-        BP_TMP_PATH
-    )
-);
-
-$addref(
-    @name "getmediapath"
-    @description "Returns the absolute path for one of the built-in media files in bellplay~."
-    @category BP_REF_LABEL_UTILS
-    @arguments (
-        $addarg(@name "file" @type "symbol",@description "file name" @options
-            for $x in sort(BP_MEDIA_FILES) collect $addopt(@value $x)
-        )
-    ),
-    @output $addout(@description "absolute path to media file", @type "symbol")
-);
-
-## ------------------------------------------------------------
-
 analyze = (
     $buffer -> (
         $source = $buffer.getkey("source");
