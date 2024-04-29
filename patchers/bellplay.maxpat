@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 435.0, 307.0, 811.0, 437.0 ],
+		"rect" : [ 235.0, 291.0, 811.0, 437.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1615,6 +1615,13 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.change.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.collect.mxo",
 				"type" : "iLaX"
 			}
@@ -1803,7 +1810,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.docs.about.maxpat",
+				"name" : "bp.docs.tutorials.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
