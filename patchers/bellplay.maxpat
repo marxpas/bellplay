@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 291.0, 811.0, 437.0 ],
+		"rect" : [ 435.0, 307.0, 811.0, 437.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1026,13 +1026,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 272.0, 236.0, 23.0 ],
+					"patching_rect" : [ 17.0, 271.0, 464.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"allwindowsactive" : 0,
 						"appicon_mac" : "",
 						"appicon_win" : "",
 						"audiosupport" : 1,
-						"bundleidentifier" : "com.mycompany.myprogram",
+						"bundleidentifier" : "com.felipe-tovar-henao",
 						"cantclosetoplevelpatchers" : 1,
 						"cefsupport" : 0,
 						"copysupport" : 1,
@@ -1048,7 +1048,7 @@
 						"usesearchpath" : 0
 					}
 ,
-					"text" : "standalone @cefsupport 0 @gensupport 0"
+					"text" : "standalone @cefsupport 0 @gensupport 0 @bundleidentifier com.felipe-tovar-henao"
 				}
 
 			}
@@ -1615,18 +1615,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.change.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bach.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.contains.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.deferlow.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1661,6 +1658,10 @@
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.find.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.flat.mxo",
@@ -1763,6 +1764,14 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.slice.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.sort.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.stdev.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1810,7 +1819,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.docs.tutorials.maxpat",
+				"name" : "bp.docs.reference.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2000,6 +2009,13 @@
 			}
 , 			{
 				"name" : "bp.utils.getbuffer.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.utils.searchbar.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2234,6 +2250,13 @@
 , 			{
 				"name" : "ml.kdtree.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "search.png",
+				"bootpath" : "~/Documents/bellplay/media",
+				"patcherrelativepath" : "../media",
+				"type" : "PNG",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",

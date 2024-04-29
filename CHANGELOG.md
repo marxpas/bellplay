@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add bundle ID to standalone.
 - Fix `set` keyword bug in `bp.utils.searchbar`.
 - Add tags in tutorials.
 - Add working version of `bp.docs.tutorials` interface, with autoload and file autocreation into `Documents`.
