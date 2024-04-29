@@ -1311,24 +1311,6 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"code" : "if reduce(for $x in BP_MEDIA_FILES collect $x1 == $x, #||) then $x1 else printerror($x1 'is not a valid path.') ",
-									"id" : "obj-3",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 589.0, 717.0, 642.0, 23.0 ],
-									"saved_object_attributes" : 									{
-										"embed" : 1,
-										"versionnumber" : 80300
-									}
-,
-									"text" : "bach.eval if reduce(for $x in BP_MEDIA_FILES collect $x1 == $x\\, #||) then $x1 else printerror($x1 'is not a valid path.')"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -1743,7 +1725,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-150", 1 ],
 									"source" : [ "obj-138", 2 ]
 								}
 
@@ -1876,13 +1858,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-150", 1 ],
-									"source" : [ "obj-3", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-135", 0 ],
 									"source" : [ "obj-6", 0 ]
 								}
@@ -2007,6 +1982,7 @@
 						"style" : "bellplay-gui",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-15",
