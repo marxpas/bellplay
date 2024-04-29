@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Include check for media file (`BP_MEDIA_FILES`) paths in `getpathinfo` subpatch.
 - Add option to change tutorial output folder.
 
 ### Changed
