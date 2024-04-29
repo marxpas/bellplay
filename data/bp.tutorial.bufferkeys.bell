@@ -10,7 +10,7 @@
 )#
 
 ## get path for built-in media file
-$path = getmediapath("badinerie.wav");
+$path = "badinerie.wav";
 
 ## uncomment the line below to use an audio file path of your choosing
 ## $path = "/path/to/your/file.wav"

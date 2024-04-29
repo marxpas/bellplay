@@ -5,7 +5,7 @@
 )#
 
 ## get path for built-in media file
-$path = getmediapath("singing.wav");
+$path = "singing.wav";
 
 ## uncomment the line below to use an audio file path of your choosing
 ## $path = "/path/to/your/file.wav"

@@ -7,7 +7,7 @@ $addtutorial = (
     $tags -> (
         $file = $file + ".bell";
         BP_DOCS_TUTORIALS _= (
-            [ $file
+            [
                 [ "name" $name ]
                 [ "description" $description ]
                 [ "file" $file ]

@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Reorganize folder and change approach to tutorials/media usage to prevent search path issues in standalone.
+
 ### Fixed
 
 - Fix bpatcher cropping in `bp.reference`.
