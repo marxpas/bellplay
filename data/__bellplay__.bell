@@ -1012,18 +1012,18 @@ $addref(
         $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization." @options 
             BP_REF_NORMALIZE_OPTIONS
         )
-        $addarg(@name "play", @type "int", @default 0, @description "autoplay rendered buffer.", @options
+        $addarg(@name "play" @default 0 @type "int" @description "autoplay rendered buffer.", @options
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
-        $addarg(@name "fade", @type "int/float", @default 5, @description "fade in/out applied to every buffer, in milliseconds")
-        $addarg(@name "analyze", @type "int", @description "analyze rendered output." @options 
+        $addarg(@name "spread" @default 0 @type "int/float" @description "multichannel panning spread, between 0 and 1.")
+        $addarg(@name "fade" @default 5 @type "int/float" @description "fade in/out applied to every buffer, in milliseconds")
+        $addarg(@name "analyze" @default 0 @type "int", @description "analyze rendered output." @options 
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "reset", @type "int", @description "remove all previously transcribed buffers after rendering." @options
+        $addarg(@name "reset", @default 0 @type "int", @description "remove all previously transcribed buffers after rendering." @options
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "process", @type "llll", @description "optional post-rendering audio processing commands.")
+        $addarg(@name "process" @default "null" @type "list/llll/null", @description "optional post-rendering audio processing commands.")
     )
     @output $addout(@description "rendered buffer" @type "llll")
 );
@@ -2212,8 +2212,8 @@ $addref(
     @description "Audio processing command for applying variable-rate sample playback to a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "rate", @type "int/float/list/llll", @description "playback rate, as either a single number, envelope, or control buffer.")
-        $addarg(@name "duration", @type "int/float", @description "duration in milliseconds. Ignored if @rate is a buffer.")
+        $addarg(@name "rate" @default 1 @type "int/float/list/llll", @description "playback rate, as either a single number, envelope, or control buffer.")
+        $addarg(@name "duration" @default 1000 @type "int/float", @description "duration in milliseconds. Ignored if @rate is a buffer.")
     )
     @output $addout(@description "groove command" @type "llll")
 );
@@ -3226,7 +3226,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffers", @type "llll", @description "list of buffers.")
-        $addarg(@name "keys", @default "mfcc", @type "list/sym", @description "features to build tree on.")
+        $addarg(@name "keys", @default "'mfcc'", @type "list/sym", @description "features to build tree on.")
     )
 );
 
