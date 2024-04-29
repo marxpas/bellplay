@@ -1605,7 +1605,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 3,
 					"presentation_rect" : [ 8.0, 42.0, 794.0, 74.0 ],
-					"text" : "These tutorials will help you familiarize with the most basic concepts and features in bellplay~. Although they assume some prior experience with the bell programming language, they are also incremental enough for beginners to start learning aspects of the language itself. Every time you open a tutorial, two things will happen:\n"
+					"text" : "These tutorials will help you get familiarized with the most basic concepts and features in bellplay~. Although they assume some prior experience with the bell programming language, they are also incremental enough for beginners to start learning aspects of the language itself. Every time you open a tutorial, two things will happen:\n"
 				}
 
 			}
