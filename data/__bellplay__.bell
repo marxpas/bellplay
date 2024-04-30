@@ -1610,6 +1610,7 @@ $addref(
     @description "Generates a random oscillator as a buffer.",
     @category BP_REF_LABEL_GEN,
     @arguments (
+        $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
