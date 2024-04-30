@@ -1654,7 +1654,7 @@ rect = (
 );
 
 $addref(
-    @name "duty",
+    @name "rect",
     @description "Generates a bipolar, anti-aliased rectangular (pulse) oscillator as a buffer.",
     @category BP_REF_LABEL_GEN,
     @arguments (
