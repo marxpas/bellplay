@@ -1867,7 +1867,7 @@ $addref(
     @arguments (
         $addarg(@name "duration", @default 1000, @type "int/float", @description "freezing duration, based on @timeunit.")
         $addarg(@name "position", @default 0, @type "int/float/list", @description "freezing position, as <time> or <time> <jitter>. To jitter through full buffer, use 'all'.")
-        $addarg(@name "timeunit", @default 2, @type "int", @description "time unit.", @options 
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit.", @options 
             BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "spectral", @default 1, @type "int", @description "stretching mode." @options 
