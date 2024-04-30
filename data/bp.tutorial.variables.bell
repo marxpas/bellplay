@@ -19,12 +19,12 @@
 
 ## generate a buffer with the global function "saw" and store it in the local variable "$saw"
 $saw = saw(@frequency 220 @duration 1000);
-$saw.transcribe();
+$saw.transcribe(@gain .15);
 
 ## generate a second buffer with the global function "saw" and override the previous value of the "$saw" variable
 ## note that since the '$saw' variable is local (prefixed with $), it does not override the global 'saw' function.
-$saw = saw(@frequency 440 @duration 500);
-$saw.transcribe();
+$saw = saw(@frequency 330 @duration 1000);
+$saw.transcribe(@gain .15);
 
 ## render transcribed buffers
 render()
