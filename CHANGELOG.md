@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 ### Changed
+
 - Change `variables` tutorials.
 
 ### Fixed
@@ -16,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Fix misnaming of `rect` function in docs. Previously documented as `duty`. 
 
 ### Removed
+
+- Remove duplicate `standalone` object.
 
 ## [v0.1.2-beta] - 2024-04-29
 

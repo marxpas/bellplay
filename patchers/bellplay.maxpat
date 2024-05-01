@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 435.0, 307.0, 811.0, 437.0 ],
+		"rect" : [ 435.0, 294.0, 811.0, 437.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -558,17 +558,16 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-5",
-					"linecount" : 3,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 14.0, 491.0, 52.0 ],
+					"patching_rect" : [ 10.0, 20.0, 1328.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"allwindowsactive" : 0,
 						"appicon_mac" : "logo.icns",
-						"appicon_win" : "loco.ico",
+						"appicon_win" : "logo.ico",
 						"audiosupport" : 1,
-						"bundleidentifier" : "com.felipe-tovar-henao",
+						"bundleidentifier" : "com.felipetovarhenao.bellplay",
 						"cantclosetoplevelpatchers" : 0,
 						"cefsupport" : 0,
 						"copysupport" : 1,
@@ -584,7 +583,7 @@
 						"usesearchpath" : 1
 					}
 ,
-					"text" : "standalone @cefsupport 0 @cantclosetoplevelpatchers 0 @overdrive 1 @bundleidentifier com.felipe-tovar-henao @appicon_mac logo.icns @appicon_win loco.ico @gensupport 0 @statusvisible 0 @searchformissingfiles 1 @usesearchpath 1"
+					"text" : "standalone @cefsupport 0 @cantclosetoplevelpatchers 0 @overdrive 1 @bundleidentifier com.felipetovarhenao.bellplay @appicon_mac logo.icns @appicon_win logo.ico @gensupport 0 @statusvisible 0 @searchformissingfiles 1 @usesearchpath 1"
 				}
 
 			}
@@ -756,7 +755,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.149999856948853, 7.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.1-beta",
+					"text" : "v0.1.2-beta",
 					"textjustification" : 1
 				}
 
@@ -1017,38 +1016,6 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 586.0, 125.0, 52.0 ],
 					"text" : ";\rmax clearmaxwindow;\rmax maxwindow"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-19",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 17.0, 271.0, 464.0, 23.0 ],
-					"saved_object_attributes" : 					{
-						"allwindowsactive" : 0,
-						"appicon_mac" : "",
-						"appicon_win" : "",
-						"audiosupport" : 1,
-						"bundleidentifier" : "com.felipe-tovar-henao",
-						"cantclosetoplevelpatchers" : 1,
-						"cefsupport" : 0,
-						"copysupport" : 1,
-						"database" : 0,
-						"extensions" : 1,
-						"gensupport" : 0,
-						"midisupport" : 1,
-						"noloadbangdefeating" : 0,
-						"overdrive" : 0,
-						"preffilename" : "",
-						"searchformissingfiles" : 1,
-						"statusvisible" : 1,
-						"usesearchpath" : 0
-					}
-,
-					"text" : "standalone @cefsupport 0 @gensupport 0 @bundleidentifier com.felipe-tovar-henao"
 				}
 
 			}
@@ -1623,10 +1590,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.deferlow.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "bach.div.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1658,10 +1621,6 @@
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "bach.find.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.flat.mxo",
@@ -1764,14 +1723,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.slice.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bach.sort.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "bach.stdev.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1819,7 +1770,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.docs.reference.maxpat",
+				"name" : "bp.docs.about.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2009,13 +1960,6 @@
 			}
 , 			{
 				"name" : "bp.utils.getbuffer.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bp.utils.searchbar.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2250,13 +2194,6 @@
 , 			{
 				"name" : "ml.kdtree.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "search.png",
-				"bootpath" : "~/Documents/bellplay/media",
-				"patcherrelativepath" : "../media",
-				"type" : "PNG",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
