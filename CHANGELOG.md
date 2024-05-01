@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Switch to regex-based approach to filter out dangerous keywords (int/float/list/get) in `bp.searchbar`. 
 - Change `variables` tutorials.
 
 ### Fixed
