@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add importing MIDI tutorial.
+- Add `satie.mid` media file.
 - Add total buffer duration display in GUI waveform.
 
 ### Changed

@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797165009,
+	"modificationdate" : 3797449315,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -271,7 +271,12 @@
 ,
 			"singing.wav" : 			{
 				"kind" : "audiofile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}
@@ -356,6 +361,11 @@
 				"kind" : "textfile",
 				"local" : 1
 			}
+,
+			"bp.tutorial.importingmidi.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
 
 		}
 ,
@@ -372,6 +382,16 @@
 ,
 			"logo.ico" : 			{
 				"kind" : "file",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
+			}
+,
+			"satie.mid" : 			{
+				"kind" : "midifile",
 				"local" : 1,
 				"singleton" : 				{
 					"bootpath" : "~/Documents/bellplay/media",

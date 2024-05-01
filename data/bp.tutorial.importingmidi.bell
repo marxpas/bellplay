@@ -1,0 +1,65 @@
+#( 
+    --------------------------------
+    IMPORTING MIDI 
+    --------------------------------
+    bellplay~ supports importing MIDI files (.mid or .midi) into our scripts, each described as a list of events.
+    Similar to bellplay~ buffers, each MIDI event consists of a set of keys with relevant information about each event.
+    This includes the event's pitch (midicents), duration, onset, velocity, voice number, and MIDI channel.
+
+    The code belows imports a MIDI file to render it as audio using a sinusoidal oscillators.
+)#
+
+## import MIDI file as a list of events
+$events = importmidi("satie.mid");
+
+## set maximum number of midi events (or comment out the line below this one to process midi file)
+$maxevents = 100;
+
+## get first n events, based on $maxevents
+$events = left($events, $maxevents);
+
+## iterate through MIDI events and create a buffer for each
+for $event in $events do (
+    ## retrieve pitch, duration, onset, and velocity information of current event
+    $pitch = $event.getkey("pitch");
+    $dur = $event.getkey("duration");
+    $onset = $event.getkey("onset");
+
+    ## we divide by 127 to normalize velocity and use as linear gain
+    $gain = $event.getkey("velocity") / 127.;
+
+    ## convert pitch (in midicents) to frequency
+    $freq = mc2f($pitch);
+
+    ## build sharp attack envelope based on event velocity and duration
+    $env = [0 0 0] [1 $gain -.5] [$dur / 100. 0 0];
+
+    ## generate sinusoidal oscillator based on event and transcribe
+    cycle(
+        @frequency $freq
+        @duration $dur
+    ).transcribe(
+        @onset $onset
+        @gain $env
+
+        ## random panning envelope
+        @pan rand() rand()
+    )
+);
+
+## trigger rendering
+render(
+    @play 1 
+
+    ## apply post-render processing
+    @process (
+        ## apply reverse reverb
+        reverse() 
+        freeverb(@roomsize .9 @wet .1 @tail 0) 
+        reverse()
+
+        ## normalize and apply 10 ms fade in
+        normalize(-12) 
+        fade(10)
+    )
+)
