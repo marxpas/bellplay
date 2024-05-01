@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 435.0, 294.0, 811.0, 437.0 ],
+		"rect" : [ 435.0, 307.0, 811.0, 437.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -561,14 +561,14 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 20.0, 1328.0, 23.0 ],
+					"patching_rect" : [ 10.0, 20.0, 901.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"allwindowsactive" : 0,
-						"appicon_mac" : "logo.icns",
-						"appicon_win" : "logo.ico",
+						"appicon_mac" : "Macintosh HD:/Users/felipe-tovar-henao/Documents/bellplay/media/logo.icns",
+						"appicon_win" : "Macintosh HD:/Users/felipe-tovar-henao/Documents/bellplay/media/logo.ico",
 						"audiosupport" : 1,
 						"bundleidentifier" : "com.felipetovarhenao.bellplay",
-						"cantclosetoplevelpatchers" : 0,
+						"cantclosetoplevelpatchers" : 1,
 						"cefsupport" : 0,
 						"copysupport" : 1,
 						"database" : 0,
@@ -583,7 +583,7 @@
 						"usesearchpath" : 1
 					}
 ,
-					"text" : "standalone @cefsupport 0 @cantclosetoplevelpatchers 0 @overdrive 1 @bundleidentifier com.felipetovarhenao.bellplay @appicon_mac logo.icns @appicon_win logo.ico @gensupport 0 @statusvisible 0 @searchformissingfiles 1 @usesearchpath 1"
+					"text" : "standalone @cefsupport 0 @overdrive 1 @bundleidentifier com.felipetovarhenao.bellplay @gensupport 0 @statusvisible 0 @searchformissingfiles 1 @usesearchpath 1"
 				}
 
 			}
