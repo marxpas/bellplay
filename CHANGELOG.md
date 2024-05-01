@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add total buffer duration display in GUI waveform.
+
 ### Changed
 
 - Switch to regex-based approach to filter out dangerous keywords (int/float/list/get) in `bp.searchbar`. 
