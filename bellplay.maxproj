@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797449315,
+	"modificationdate" : 3797529530,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -398,6 +398,11 @@
 					"projectrelativepath" : "./media"
 				}
 
+			}
+,
+			"bach.mid" : 			{
+				"kind" : "midifile",
+				"local" : 1
 			}
 
 		}
