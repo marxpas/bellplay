@@ -6355,6 +6355,7 @@
 					"allowdrag" : 0,
 					"buffername" : "u435019399",
 					"fontname" : "Ableton Sans Light",
+					"gridcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 0.49 ],
 					"id" : "obj-25",
 					"ignoreclick" : 1,
 					"maxclass" : "waveform~",
@@ -6366,7 +6367,8 @@
 					"presentation_rect" : [ 295.0, 23.0, 463.0, 53.0 ],
 					"selectioncolor" : [ 0.964705882352941, 0.964705882352941, 0.964705882352941, 0.0 ],
 					"style" : "bellplay-gui",
-					"vticks" : 0
+					"vticks" : 0,
+					"waveformcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ]
 				}
 
 			}
