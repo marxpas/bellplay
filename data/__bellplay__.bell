@@ -281,6 +281,24 @@ $addref(
 
 ## ------------------------------------------------------------
 
+getonsets = (
+    $buffer,
+    $threshold = 0.1,
+    $delay = 5 -> (
+        $source = $buffer.getkey("source");
+        if $source == null then printerror($buffer "is not a valid buffer");
+        $source = $buffer.process(plus(0)).getkey("source");
+        msg("onsets", 
+            [ "threshold" $threshold ]
+            [ "delay" $delay ]
+            [ "source" $source ]
+        );
+        BP_BUFF_ONSETS
+    )
+);
+
+## ------------------------------------------------------------
+
 addmarker = (
     $onset,
     $names = null -> (
