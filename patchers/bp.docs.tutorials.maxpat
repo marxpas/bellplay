@@ -550,7 +550,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 192.0, 58.0, 23.0 ],
+					"patching_rect" : [ 29.0, 188.0, 58.0, 23.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1358,8 +1358,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 455.0, 42.0, 23.0 ],
-					"text" : "del 50"
+					"patching_rect" : [ 29.0, 455.0, 56.0, 23.0 ],
+					"text" : "del 1000"
 				}
 
 			}
@@ -2000,7 +2000,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 83.0, 147.0, 23.0 ],
+					"patching_rect" : [ 29.0, 53.0, 147.0, 23.0 ],
 					"text" : "title \"bellplay~ | tutorials\""
 				}
 
@@ -2012,7 +2012,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 46.0, 58.0, 23.0 ],
+					"patching_rect" : [ 29.0, 16.0, 58.0, 23.0 ],
 					"text" : "loadbang"
 				}
 
@@ -2024,7 +2024,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 29.0, 123.0, 70.0, 23.0 ],
+					"patching_rect" : [ 29.0, 93.0, 70.0, 23.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}

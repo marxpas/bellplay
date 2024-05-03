@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3797529530,
+	"modificationdate" : 3797596086,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -47,11 +47,6 @@
 			}
 ,
 			"bp.process.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"bp.reference.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -187,6 +182,16 @@
 			}
 ,
 			"bp.docs.tutorials.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"bp.docs.window.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"bp.docs.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -402,7 +407,12 @@
 ,
 			"bach.mid" : 			{
 				"kind" : "midifile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}

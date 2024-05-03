@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 239.0, 275.0, 790.0, 467.0 ],
+		"rect" : [ 125.0, 143.0, 790.0, 467.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -821,7 +821,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-29",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -1406,6 +1406,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-188",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -1448,6 +1449,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-208",
 					"maxclass" : "textbutton",
 					"mode" : 1,
@@ -1517,6 +1519,7 @@
 			}
 , 			{
 				"box" : 				{
+					"active" : 0,
 					"id" : "obj-147",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -1597,6 +1600,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 364.0, 392.0, 273.0, 18.0 ],
 					"style" : "bellplay-gui",
+					"text" : "0 buffers",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"textjustification" : 2
 				}
@@ -2212,7 +2216,7 @@
 					"where" : [ "null" ],
 					"xlabel" : "none",
 					"ylabel" : "none",
-					"zoom" : 31156.453982132537931
+					"zoom" : 1000.0
 				}
 
 			}

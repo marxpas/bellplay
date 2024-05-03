@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 435.0, 307.0, 811.0, 437.0 ],
+		"rect" : [ 43.0, 77.0, 811.0, 437.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 730.0, 483.0 ],
+						"rect" : [ 561.0, 304.0, 730.0, 483.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -177,19 +177,19 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "$offset = ($x2 - $x1) / 2.; $offset $offset + $x1 ",
+									"code" : "$offset = ($x2 - $x1) * (.05 .125); $offset $offset + $x1 ",
 									"id" : "obj-57",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 10.0, 269.0, 360.0, 23.0 ],
+									"patching_rect" : [ 10.0, 269.0, 404.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1,
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.eval $offset = ($x2 - $x1) / 2.\\; $offset $offset + $x1 @out m"
+									"text" : "bach.eval $offset = ($x2 - $x1) * (.05 .125)\\; $offset $offset + $x1 @out m"
 								}
 
 							}
@@ -200,7 +200,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 351.0, 230.0, 40.0, 23.0 ],
+									"patching_rect" : [ 395.0, 231.0, 40.0, 23.0 ],
 									"text" : "$3 $4"
 								}
 
@@ -212,7 +212,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "bang", "" ],
-									"patching_rect" : [ 10.0, 159.0, 701.0, 23.0 ],
+									"patching_rect" : [ 10.0, 159.0, 789.0, 23.0 ],
 									"text" : "t l b l"
 								}
 
@@ -248,7 +248,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "list", "list" ],
-									"patching_rect" : [ 351.0, 195.0, 66.0, 23.0 ],
+									"patching_rect" : [ 395.0, 196.0, 66.0, 23.0 ],
 									"text" : "screensize"
 								}
 
@@ -635,8 +635,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 942.0, 286.0, 77.0, 23.0 ],
-					"text" : "bp.reference"
+					"patching_rect" : [ 942.0, 286.0, 50.0, 23.0 ],
+					"text" : "bp.docs"
 				}
 
 			}
@@ -1770,13 +1770,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.docs.about.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bp.features.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
@@ -1918,13 +1911,6 @@
 			}
 , 			{
 				"name" : "bp.process.wave~.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bp.reference.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
