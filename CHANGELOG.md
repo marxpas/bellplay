@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change primary color from green to blue.
 - DOCS CHANGES: Use offset window approach to have persistent state when switching between tabs — this sacrifices auto-click upon load, since click only applies when window is visible. Change name of `bp.reference` to `bp.docs`.
 - Change naming pattern of tutorial sandboxing, now matches menu name.
 - Include 'type' key in path info.

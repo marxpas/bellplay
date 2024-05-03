@@ -655,7 +655,7 @@
 					"presentation_rect" : [ 706.40000057220459, 70.0, 100.0, 18.0 ],
 					"text" : "open documentation",
 					"textoncolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
-					"textovercolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"usetextovercolor" : 1
 				}
 
@@ -1049,7 +1049,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 12.0,
-					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-17",
 					"linkend" : [ "null" ],
 					"linkstart" : [ "https://" ],
@@ -1207,7 +1207,7 @@
 			}
 , 			{
 				"box" : 				{
-					"color" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
+					"color" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"elementcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
 					"id" : "obj-116",
 					"maxclass" : "ezdac~",
@@ -1582,11 +1582,22 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.change.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.contains.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.deferlow.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1621,6 +1632,10 @@
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.find.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "bach.flat.mxo",
@@ -1723,6 +1738,14 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.slice.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.sort.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.stdev.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1764,6 +1787,48 @@
 			}
 , 			{
 				"name" : "bp.corpus.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.about.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.credits.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.reference.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.tutorials.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.docs.window.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -1952,10 +2017,24 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "bp.utils.searchbar.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bp.wavesynth.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "ccm_logo.png",
+				"bootpath" : "~/Documents/bellplay/media",
+				"patcherrelativepath" : "../media",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
@@ -2171,6 +2250,13 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "gpl_logo.png",
+				"bootpath" : "~/Documents/bellplay/media",
+				"patcherrelativepath" : "../media",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "logo.png",
 				"bootpath" : "~/Documents/bellplay/media",
 				"patcherrelativepath" : "../media",
@@ -2180,6 +2266,13 @@
 , 			{
 				"name" : "ml.kdtree.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "search.png",
+				"bootpath" : "~/Documents/bellplay/media",
+				"patcherrelativepath" : "../media",
+				"type" : "PNG",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",

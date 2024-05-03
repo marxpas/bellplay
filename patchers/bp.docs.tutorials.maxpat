@@ -491,6 +491,7 @@
 					"presentation_rect" : [ 8.5, 579.5, 96.0, 18.0 ],
 					"text" : "change folder",
 					"textoncolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"usetextovercolor" : 1
 				}
 
@@ -1307,6 +1308,7 @@
 					"presentation_rect" : [ 721.5, 344.0, 79.0, 18.0 ],
 					"text" : "open tutorial",
 					"textoncolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"usetextovercolor" : 1
 				}
 
@@ -1316,7 +1318,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-50",
 					"linecount" : 5,
 					"maxclass" : "bach.hypercomment",
@@ -1336,7 +1338,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-46",
 					"linecount" : 5,
 					"maxclass" : "bach.hypercomment",
@@ -1416,7 +1418,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.443137254901961, 0.592156862745098, 0.611764705882353, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-72",
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
@@ -1580,14 +1582,14 @@
 					"alternatecolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
 					"bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
-					"clickedstripcolor" : [ 0.145098039215686, 0.776470588235294, 0.635294117647059, 1.0 ],
+					"clickedstripcolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"clickedtextcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
 					"embed" : 0,
 					"firsteleminllllisllllname" : 1,
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hoverstripcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 0.41 ],
+					"hoverstripcolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 0.5 ],
 					"id" : "obj-21",
 					"maxclass" : "bach.tree",
 					"mode" : 1,
@@ -1610,7 +1612,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-19",
 					"linecount" : 3,
 					"maxclass" : "bach.hypercomment",
@@ -2040,7 +2042,7 @@
 					"patching_rect" : [ 342.0, 1266.0, 270.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 284.5, 340.0, 516.0, 26.0 ],
-					"textcolor" : [ 0.086274509803922, 0.674509803921569, 0.537254901960784, 1.0 ]
+					"textcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ]
 				}
 
 			}

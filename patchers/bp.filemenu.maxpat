@@ -442,7 +442,7 @@
 					"alternatecolor" : [ 0.964705882352941, 0.964705882352941, 0.964705882352941, 1.0 ],
 					"bordercolor" : [ 0.0, 0.0, 0.0, 0.0 ],
 					"checkcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
-					"clickedtextcolor" : [ 0.0, 0.694117647058824, 0.454901960784314, 1.0 ],
+					"clickedtextcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"embed" : 0,
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Medium",
@@ -849,7 +849,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 5.0, 145.0, 18.0 ],
 					"style" : "bellplay-gui",
-					"text" : "Macin...ing dataset/sources/"
+					"text" : " "
 				}
 
 			}
@@ -1293,24 +1293,6 @@
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
-				"name" : "subtle",
-				"default" : 				{
-					"bgfillcolor" : 					{
-						"color" : [ 0.2, 0.2, 0.2, 1 ],
-						"color1" : [ 0.301961, 0.301961, 0.301961, 1 ],
-						"color2" : [ 0.2, 0.2, 0.2, 1 ],
-						"type" : "gradient"
-					}
-,
-					"color" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
-					"fontname" : [ "Ableton Sans Medium" ],
-					"locked_bgcolor" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ]
-				}
-,
-				"parentstyle" : "",
-				"multi" : 0
-			}
-, 			{
 				"name" : "bellplay-gui",
 				"default" : 				{
 					"accentcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
@@ -1330,6 +1312,24 @@
 					"fontname" : [ "Ableton Sans Medium" ],
 					"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "subtle",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"color" : [ 0.2, 0.2, 0.2, 1 ],
+						"color1" : [ 0.301961, 0.301961, 0.301961, 1 ],
+						"color2" : [ 0.2, 0.2, 0.2, 1 ],
+						"type" : "gradient"
+					}
+,
+					"color" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
+					"fontname" : [ "Ableton Sans Medium" ],
+					"locked_bgcolor" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
