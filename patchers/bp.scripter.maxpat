@@ -133,7 +133,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 958.0, 259.0 ],
+						"rect" : [ 59.0, 106.0, 879.0, 266.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -168,7 +168,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 9.0, 179.5, 72.0, 22.0 ],
+									"patching_rect" : [ 9.0, 181.0, 72.0, 23.0 ],
 									"text" : "prepend set"
 								}
 
@@ -180,8 +180,8 @@
 									"numinlets" : 5,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 9.0, 137.0, 305.0, 22.0 ],
-									"text" : "combine min : sec : ms @padding 2 0 2 0 3 @triggers 0"
+									"patching_rect" : [ 9.0, 138.0, 305.0, 23.0 ],
+									"text" : "combine min : sec . ms @padding 2 0 2 0 3 @triggers 0"
 								}
 
 							}
@@ -192,7 +192,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 9.0, 97.0, 305.0, 22.0 ],
+									"patching_rect" : [ 9.0, 98.0, 305.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -205,12 +205,11 @@
 								"box" : 								{
 									"code" : "$mins = floor($f1 / 60000); $secs = floor(($f1 - $mins * 60000) / 1000.); $ms = floor($f1 - ($mins * 60000 + $secs * 1000.)); int($mins $secs $ms) ",
 									"id" : "obj-63",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 9.0, 56.0, 828.0, 22.0 ],
+									"patching_rect" : [ 9.0, 56.0, 852.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1,
 										"versionnumber" : 80300
@@ -241,7 +240,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 9.0, 218.5, 30.0, 30.0 ]
+									"patching_rect" : [ 9.0, 220.0, 30.0, 30.0 ]
 								}
 
 							}
