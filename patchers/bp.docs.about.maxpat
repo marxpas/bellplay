@@ -137,7 +137,7 @@
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Light",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 10,
 					"linkend" : [ "null" ],
