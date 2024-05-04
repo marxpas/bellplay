@@ -41,13 +41,13 @@
 		"title" : "bellplay~ | algorithmic audio in bell",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-46",
+					"id" : "obj-19",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 984.0, 927.0, 29.5, 23.0 ],
-					"text" : "t l l"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 1033.0, 926.0, 29.5, 23.0 ],
+					"text" : "int"
 				}
 
 			}
@@ -88,7 +88,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 945.0, 811.0, 100.0, 23.0 ],
+					"patching_rect" : [ 945.0, 811.0, 159.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 617.0, 59.0, 189.0, 23.0 ],
 					"style" : "bellplay-gui",
@@ -512,7 +512,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 994.5, 970.0, 31.0, 23.0 ],
+					"patching_rect" : [ 1033.0, 963.0, 31.0, 23.0 ],
 					"text" : "qlim"
 				}
 
@@ -525,7 +525,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 994.5, 1000.0, 131.0, 23.0 ],
+					"patching_rect" : [ 1033.0, 997.0, 131.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1407,6 +1407,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-41", 0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-116", 0 ],
 					"source" : [ "obj-195", 0 ]
 				}
@@ -1575,22 +1582,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-46", 0 ],
-					"source" : [ "obj-45", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-41", 0 ],
-					"source" : [ "obj-46", 1 ]
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-45", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-44", 0 ],
-					"source" : [ "obj-46", 0 ]
+					"source" : [ "obj-45", 0 ]
 				}
 
 			}
@@ -1799,6 +1799,13 @@
 , 			{
 				"name" : "bach.print.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.rdiv.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "bach.reg.mxo",
@@ -2030,6 +2037,13 @@
 			}
 , 			{
 				"name" : "bp.process.retune~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.process.round~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

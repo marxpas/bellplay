@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Add missing bpf/envelope formatting in `resample` function.
+- Fix sampling rate conflict when auto-creating envelopes in `bp.getcontroller~` by resampling when necessary.
+
 ### Removed
 
 ## [v0.1.3-beta] - 2024-05-03

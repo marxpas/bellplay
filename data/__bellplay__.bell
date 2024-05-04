@@ -1597,9 +1597,7 @@ BP_OSC_GEN_FUNC = (
         $pitch = f2mc($frequency);
         bp_makebuffer(
             @source BP_TMP_BUFF
-            @numchannels 1
-            @sr BP_SR
-            @duration $duration
+            @info 1
             @pitchsalience $isnoise == 0 && $frequency > 30
             @loudness 1.0, 
             @pitch $pitch 
@@ -1809,9 +1807,7 @@ envelope = (
         );
         bp_makebuffer(
             @source BP_TMP_BUFF
-            @sr BP_SR
-            @numchannels 1
-            @duration $duration
+            @info 1
         )
     )
 );
@@ -2993,6 +2989,7 @@ resample = (
     $antimeunit = 1,
     $resamplingmode = "sinc",
     $resamplingfiltersize = 11 -> (
+        if length($duration) > 1 || depth($duration) > 1 then ($duration = [ bpf($duration) ]);
         [
             [ "fx" "resample" ]
             [ "params"
