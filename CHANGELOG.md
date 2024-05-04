@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New processor: `degrade` with docs.
 - Add sampling rate menu in main UI window.
 - Add `getonsets` function, with docs.
 - Include functional sqlite hyperlink in `query` docs.

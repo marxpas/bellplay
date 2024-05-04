@@ -2286,6 +2286,34 @@ $addref(
 
 ## ------------------------------------------------------------
 
+degrade = (
+    $bits = 8,
+    $ratio = 1 -> (
+        $bits = $bits.getkey("source") ||| [ bpf($bits) ];
+        $ratio = $ratio.getkey("source") ||| [ bpf($ratio) ];
+        [
+            [ "fx" "degrade" ]
+            [ "params"
+                [ "bits" $bits ]
+                [ "ratio" $ratio ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "degrade",
+    @description "Audio process command for reducing sampling rate and bit-depth of a buffer. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "bits", @default 8, @type "int/float/llll", @description "bit depth.")
+        $addarg(@name "ratio", @default 1, @type "int/float/llll", @description "sampling rate ratio.")
+    ),
+    @output $addout(@description "degrade command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 pong = (
     $low = -1,
     $high = 1,
