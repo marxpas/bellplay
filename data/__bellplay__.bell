@@ -2314,6 +2314,38 @@ $addref(
 
 ## ------------------------------------------------------------
 
+rounding = (
+    $value = 1,
+    $nearest = 1 -> (
+        $value = $value.getkey("source") ||| [ bpf($value) ];
+        [
+            [ "fx" "round" ]
+            [ "params"
+                [ "round" 
+                    [ "nearest" $nearest ]
+                ]
+                [ "value" $value ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "rounding",
+    @description "Audio process command for applying signal rounding to a buffer. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "value", @default 1, @type "int/float/list/llll", @description "rounding value, as either a single number, envelope, or buffer.")
+        $addarg(@name "nearest", @default 1, @type "int", @description "rounding behavior" @options
+            $addopt(@value 0 @description "floor")
+            $addopt(@value 1 @description "nearest")
+        )
+    ),
+    @output $addout(@description "rounding command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 pong = (
     $low = -1,
     $high = 1,
