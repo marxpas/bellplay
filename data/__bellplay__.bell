@@ -297,6 +297,18 @@ getonsets = (
     )
 );
 
+$addref(
+    @name "getonsets"
+    @description "Performs transient-based onset detection on a buffer."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "buffer" @type "llll" @description "buffer to extract onsets from.")
+        $addarg(@name "threshold" @default "0.1" @type "float" @description "silence detection threshold, as linear gain.")
+        $addarg(@name "delay" @default 5 @type "int" @description "the number of frames used to compute the threshold — size of short-onset filter.")
+    )
+    @output $addout(@description "list of onsets in milliseconds", @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 addmarker = (

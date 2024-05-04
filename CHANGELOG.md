@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add sampling rate menu in main UI window.
-- Add `getonsets` function, pending docs.
+- Add `getonsets` function, with docs.
 - Include functional sqlite hyperlink in `query` docs.
 
 ### Changed
