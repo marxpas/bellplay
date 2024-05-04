@@ -1267,8 +1267,8 @@
 			}
 , 			{
 				"box" : 				{
-					"coldcolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
-					"hotcolor" : [ 0.768627450980392, 0.964705882352941, 1.0, 1.0 ],
+					"coldcolor" : [ 0.745098039215686, 0.831372549019608, 0.909803921568627, 1.0 ],
+					"hotcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-115",
 					"lastchannelcount" : 0,
 					"maxclass" : "live.gain~",
@@ -1299,7 +1299,7 @@
 ,
 					"slidercolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"varname" : "live.gain~",
-					"warmcolor" : [ 0.647058823529412, 0.882352941176471, 0.925490196078431, 1.0 ]
+					"warmcolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ]
 				}
 
 			}
@@ -1953,6 +1953,13 @@
 			}
 , 			{
 				"name" : "bp.process.cycle~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.process.degrade~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
