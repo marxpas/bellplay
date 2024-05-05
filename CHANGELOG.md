@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Add loadbangs and deferlows in `bp.docs.reference` and main bellplay file in `bach.eval` to fix missing symbol values in docs.
 - Add missing bpf/envelope formatting in `resample` function.
 - Fix sampling rate conflict when auto-creating envelopes in `bp.getcontroller~` by resampling when necessary.
 
