@@ -1990,7 +1990,6 @@ biquad = (
             ).$type
         );
         if $type == null then printerror("invalid value for @type in biquad().");
-        print($type);
         [
             [ "fx" "biquad" ]
             [ "params" 
