@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New processors: `absolute`, `squareroot` and `power`.
 - New processor: `rounding`, with docs.
 - New processor: `degrade` with docs.
 - Add sampling rate menu in main UI window.
@@ -16,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Include support for buffer input in `gain` processor.
 - Change waveform color, and color of live.gain.
 - Disable audio interrupt.
 
