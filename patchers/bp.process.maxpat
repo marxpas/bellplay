@@ -1757,7 +1757,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 282.0, 105.0, 197.0, 23.0 ],
+									"patching_rect" : [ 284.0, 105.0, 197.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
@@ -1820,12 +1820,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 144.0, 290.0, 23.0 ],
+									"patching_rect" : [ 11.0, 144.0, 292.0, 23.0 ],
 									"text" : "ears.process~ bp.process.retune~ @naming dynamic"
 								}
 

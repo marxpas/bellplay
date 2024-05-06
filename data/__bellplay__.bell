@@ -2379,7 +2379,12 @@ $addref(
 ## ------------------------------------------------------------
 
 retune = (
-    $pitchgrid = 0 -> (
+    $pitchgrid = 0,
+    $quality = "basic",
+    $threshold = 0,
+    $ambiencethreshold = 0.3,
+    $amount = 100,
+    $bypass = 100 -> (
         if $pitchgrid == null then printerror("you must provide a value for @pitchgrid in retune().");
         $pitchgrid = $pitchgrid.thin().fmod(12) * 100;
         $len = $pitchgrid.length();
@@ -2398,6 +2403,11 @@ retune = (
                     [ "enablednotes" "all" ]
                     [ "notebase" $notebase ]
                     [ "notelist" $pitchgrid ]
+                    [ "correction_ambience_threshold" $ambiencethreshold ]
+                    [ "correction_amount" $amount ]
+                    [ "correction_bypass" $bypass ]
+                    [ "correction_threshold" $threshold ]
+                    [ "quality" $quality ]
                 ]
             ]
         ]
@@ -2410,6 +2420,10 @@ $addref(
     @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "pitchgrid", @default 0, @type "int/float/list", @description "pitch grid to retune to, as a list of pitch classes.")
+        $addarg(@name "threshold" @default 0 @type "int/float" @description "correction threshold.")
+        $addarg(@name "ambiencethreshold" @default "0.3" @type "int/float" @description "correction ambience threshold, between -10 and 10.")
+        $addarg(@name "amount" @default 100 @type "int/float" @description "pitch correction amount.")
+        $addarg(@name "bypass" @default 100 @type "int/float" @description "pitch correction auto-bypass threshold, at which signal passes unaffected.")
     ),
     @output $addout(@description "retune command" @type "llll")
 );
