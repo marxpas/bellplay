@@ -107,8 +107,19 @@ BP_MEDIA_FILES = (
     "drums.wav"
     "poem.wav"
     "singing.wav"
+    "trumpet.wav"
 );
 
+## ------------------------------------------------------------
+
+getmediafiles = (-> BP_MEDIA_FILES);
+
+$addref(
+    @name "getmediafiles",
+    @description "Returns a list of included media files in bellplay~.",
+    @category BP_REF_LABEL_UTILS,
+    @output $addout(@description "list of media files", @type "list")
+);
 
 ## ------------------------------------------------------------
 
