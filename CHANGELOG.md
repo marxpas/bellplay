@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v0.1.4-beta] - 2024-05-07
+
+### Added
+
 - Add `getmediafiles` function.
 - Add new sample: `trumpet.wav` from freesound.org: https://freesound.org/people/trumpetplayer/sounds/651201/ 
 - New processors: `absolute`, `squareroot` and `power`.
