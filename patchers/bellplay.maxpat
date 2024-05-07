@@ -95,7 +95,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 860.0, 812.0, 81.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 60.0, 81.0, 21.0 ],
+					"presentation_rect" : [ 617.0, 57.0, 81.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "sampling rate",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -114,7 +114,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 945.0, 811.0, 159.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 59.0, 189.0, 23.0 ],
+					"presentation_rect" : [ 617.0, 56.0, 189.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -825,7 +825,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.3-beta",
+					"text" : "v0.1.4-beta",
 					"textjustification" : 1
 				}
 
@@ -881,7 +881,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 627.0, 792.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 10.0, 53.0, 21.0 ],
+					"presentation_rect" : [ 617.0, 7.0, 53.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "driver",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -896,7 +896,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 483.0, 841.0, 43.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 35.0, 56.0, 21.0 ],
+					"presentation_rect" : [ 617.0, 32.0, 56.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "device",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -928,7 +928,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 421.0, 816.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 9.0, 189.0, 23.0 ],
+					"presentation_rect" : [ 617.0, 6.0, 189.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -951,7 +951,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -959,7 +959,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 567.0, 816.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 617.0, 34.0, 189.0, 23.0 ],
+					"presentation_rect" : [ 617.0, 31.0, 189.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -2216,6 +2216,10 @@
 			}
 , 			{
 				"name" : "ears.essentia~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.expr~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
