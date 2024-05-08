@@ -3023,6 +3023,67 @@ $addref(
 
 ## ------------------------------------------------------------
 
+join = (
+    $buffers,
+    $timeunit = 0,
+    $xfade = 0,
+    $xfadecurve = 0,
+    $xfadetype = 1,
+    $fadeboundaries = 0,
+    $resamplingfiltersize = 11,
+    $resamplingmode = 'sinc',
+    $resamplingpolicy = 3 -> (
+        $buffers = for $buffer in $buffers collect (
+            $source = $buffer.getkey("source");
+            if $source == null then printerror("invalid buffer in join():" $buffer);
+            $source
+        );
+        [
+            [ "fx" "join" ]
+            [ "params"
+                [ "buffers" $buffers ]
+                [ "timeunit" $timeunit ]
+                [ "xfadecurve" $xfadecurve ]
+                [ "xfade" $xfade ]
+                [ "xfadetype" $xfadetype + 1 ]
+                [ "fadeboundaries" $fadeboundaries ]
+                [ "resamplingfiltersize" $resamplingfiltersize ]
+                [ "resamplingmode" $resamplingmode ]
+                [ "resamplingpolicy" $resamplingpolicy ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "join",
+    @description "Audio process command for concatenating multiple buffers. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "xfade", @default 0, @type "int/float", @description "duration of the crossfade, in samples.")
+        $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
+        $addarg(@name "xfadetype", @default 1, @type "int", @description "cross fade type." @options 
+            BP_REF_CURVE_OPTIONS
+        )
+        $addarg(@name "fadeboundaries", @default 0, @type "int", @description "fade beginning of first buffer and end of last buffer." @options
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
+        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+            BP_REF_RESAMPLINGMODE_OPTIONS
+        )
+        $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
+            BP_REF_RESAMPLINGPOLICY_OPTIONS
+        )
+    ),
+    @output $addout(@description "join command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 timesquash = (
     $duration = 1,
     $timeunit = 2, 
@@ -3030,7 +3091,7 @@ timesquash = (
     $mode = 1,
     $xfade = 4096,
     $xfadecurve = 0,
-    $xfadetype = 2,
+    $xfadetype = 1,
     $glbleed = 4,
     $glnumiter = 10,
     $glrandomize = 0,
@@ -3054,7 +3115,7 @@ timesquash = (
                 [ "timeblock" $timeblock ]
                 [ "xfade" $xfade ]
                 [ "xfadecurve" $xfadecurve ]
-                [ "xfadetype" $xfadetype ]
+                [ "xfadetype" $xfadetype + 1 ]
                 [ "glbleed" $glbleed ]
                 [ "glnumiter" $glnumiter ]
                 [ "glrandomize" $glrandomize ]
@@ -3091,12 +3152,8 @@ $addref(
         )
         $addarg(@name "xfade", @default 4096, @type "int/float", @description "duration of the crossfade, in samples.")
         $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
-        $addarg(@name "xfadetype", @default 2, @type "int", @description "cross fade type.." @options 
-            $addopt(@value 0, @description "none")
-            $addopt(@value 1, @description "linear")
-            $addopt(@value 2, @description "sine")
-            $addopt(@value 3, @description "curve")
-            $addopt(@value 4, @description "s-curve")
+        $addarg(@name "xfadetype", @default 1, @type "int", @description "cross fade type." @options 
+            BP_REF_CURVE_OPTIONS
         )
         $addarg(@name "glbleed", @default 4, @type "int", @description "number of frames of invalidation for the Griffin-Lim algorithm, when @phasehandling is 2.")
         $addarg(@name "glnumiter", @default 10, @type "int", @description "number of Griffin-Lim iterations, when @phasehandling is 2.")
