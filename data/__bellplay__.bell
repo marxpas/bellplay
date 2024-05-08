@@ -1504,8 +1504,8 @@ $addref(
 
 
 crop = (
-    $start,
-    $end,
+    $start = 0,
+    $end = 1000,
     $timeunit = 0 -> (
         if $end == null || $start == null then printerror("you must provide values for @start and @end in crop()");
         if $end <= $start then printerror("@end must be greater than @start in crop()");
@@ -1524,8 +1524,8 @@ $addref(
     @description "Audio process command for cropping a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "start", @type "int/float", @description "start time.")
-        $addarg(@name "end", @type "int/float", @description "end time.")
+        $addarg(@name "start" @default 0 @type "int/float", @description "start time.")
+        $addarg(@name "end" @default 1000 @type "int/float", @description "end time.")
         $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
             BP_REF_TIMEUNIT_OPTIONS
         )
