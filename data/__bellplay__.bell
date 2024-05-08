@@ -181,7 +181,7 @@ $addref(
     @description "Casts input value as a symbol.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "x",  @type "anything",@description "value to cast")
+        $addarg(@name "x",  @type "anything" @description "value to cast")
     ),
     @output $addout(@description "symbol", @type "symbol")
 );
@@ -417,6 +417,32 @@ $addref(
         $addarg(@name "i", @type "list", @description "normalized sampling index.")
     ),
     @output $addout(@description "interpolated sample", @type "int/float/list")
+);
+
+## ------------------------------------------------------------
+
+median = (
+    $x -> (
+        $x = $x.sort($sortfunc);
+        $n = length($x);
+        $odd = $n % 2;
+        if $odd == 0 then (
+            $i = ($n // 2);
+            ($x:$i + $x:($i + 1)) * 0.5
+        ) else (
+            $x:(($n + 1) // 2)
+        )
+    )
+);
+
+$addref(
+    @name "median",
+    @description "Returns the median element of a list.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "x",  @type "list" @description "numeric list.")
+    ),
+    @output $addout(@description "median element", @type "list")
 );
 
 ## ------------------------------------------------------------
