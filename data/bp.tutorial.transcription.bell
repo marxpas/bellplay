@@ -45,4 +45,4 @@ for $i in 0...$N do (
 );
 
 ## render transcribed buffers
-render(@play 1)
+render()

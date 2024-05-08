@@ -34,7 +34,7 @@ for $fq $i in $harmonics do (
     )
 );
 
-## render transcribed buffers and apply reverb after processing
-render(@play 1 @process freeverb(@roomsize .85 @tail 3000))
+## render transcribed buffers
+render(@play 1)
 
 
