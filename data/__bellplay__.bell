@@ -2985,6 +2985,44 @@ $addref(
 
 ## ------------------------------------------------------------
 
+mixdown = (
+    $numchannels = 1,
+    $channelmode = 3,
+    $autogain = 0 -> (
+        [
+            [ "fx" "mixdown" ]
+            [ "params"
+                [ "numchannels" $numchannels ]
+                [ "channelmode" $channelmode ]
+                [ "autogain" $autogain ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "mixdown",
+    @description "Audio process command for mixing down (or up) the number of channels of a buffer. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "numchannels", @default 1, @type "int", @description "number of output channels.")
+        $addarg(@name "channelmode", @default 3, @type "int", @description "downmixing channel conversion type." @options 
+            $addopt(@value 0, @description "delete all samples")
+            $addopt(@value 1, @description "only keep existing channels")
+            $addopt(@value 2, @description "pad last channel")
+            $addopt(@value 3, @description "cyclic repetition of channels while upmixing.")
+            $addopt(@value 4, @description "palindrome cycling of channels while upmixing.")
+            $addopt(@value 5, @description "pan channels to new configuration")
+        )
+        $addarg(@name "autogain", @default 0, @type "int", @description "apply audio compensation, based on ratio between input and output channels." @options
+            BP_REF_SWITCH_OPTIONS
+        )
+    ),
+    @output $addout(@description "onepole command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 timesquash = (
     $duration = 1,
     $timeunit = 2, 
