@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add basic version of `bp.bufferinspector` with `inspectbuffer` function.
 - New processor: `trim`.
 - Add `mean` function, with optional @weights arg.
 - Add binary search function, named `nearest`.
