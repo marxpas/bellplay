@@ -140,7 +140,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer" @type "llll" @description "media file type.")
-        $addarg(@name "label" @type "symbol/null" @description "optional buffer inspector label.")
+        $addarg(@name "label" @default "null" @type "symbol/null" @description "optional buffer inspector label.")
     )
 );
 
