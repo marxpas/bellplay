@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
-- Fix missing `trumpet.wav` dependency for standalone.
+- Fix missing dependencies for standalone: `trumpet.wav`, and `bp.tutorial.bufferinspector` and `bp.tutorial.postprocessing`.
 - Fix pitchsalience value for oscillator function.
 
 ### Removed

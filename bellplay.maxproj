@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3798137271,
+	"modificationdate" : 3798142543,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -301,7 +301,12 @@
 ,
 			"trumpet.wav" : 			{
 				"kind" : "audiofile",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/bellplay/media",
+					"projectrelativepath" : "./media"
+				}
+
 			}
 
 		}
@@ -388,6 +393,16 @@
 			}
 ,
 			"bp.tutorial.importingmidi.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.bufferinspector.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.postprocessing.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}

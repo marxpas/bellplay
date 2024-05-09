@@ -825,7 +825,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.4-beta",
+					"text" : "v0.1.5-beta",
 					"textjustification" : 1
 				}
 
@@ -1691,6 +1691,13 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "bach.+.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.-.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
@@ -1786,7 +1793,18 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.length.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.lookup.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.m2jitcellblock.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
@@ -1907,6 +1925,13 @@
 			}
 , 			{
 				"name" : "bp.analysis.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.bufferinspector.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2251,6 +2276,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.join~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.mc.in~.mxo",
 				"type" : "iLaX"
 			}
@@ -2376,6 +2405,10 @@
 			}
 , 			{
 				"name" : "ears.times~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.trim~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
