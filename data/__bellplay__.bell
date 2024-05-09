@@ -127,7 +127,7 @@ inspectbuffer = (
         ) else (
             BP_BUFFER_INSPECTOR _= [
                 [ "label" $label ||| $source ]
-                [ "data" $buffer ]
+                [ "data" left($buffer, 1) ]
             ]
         );
         null
