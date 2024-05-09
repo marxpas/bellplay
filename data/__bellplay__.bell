@@ -437,12 +437,37 @@ median = (
 
 $addref(
     @name "median",
-    @description "Returns the median element of a list.",
+    @description "Returns the median element of a numeric list.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x",  @type "list" @description "numeric list.")
     ),
-    @output $addout(@description "median element", @type "list")
+    @output $addout(@description "median element", @type "int/float")
+);
+
+## ------------------------------------------------------------
+
+mean = (
+    $x, $weights = null -> (
+        $N = length($x);
+        if $weights != null then (
+            if length($weights) != $N then printerror("the number of weights must match the number of elements in mean().");
+            $x *= $weights;
+            $N = reduce($weights, #+)
+        );
+        float(reduce($x, #+) / $N)
+    )
+);
+
+$addref(
+    @name "mean",
+    @description "Returns the mean value of a numeric list.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "x",  @type "list" @description "numeric list.")
+        $addarg(@name "weights",  @type "list/null" @description "optional weights.")
+    ),
+    @output $addout(@description "mean value", @type "float")
 );
 
 ## ------------------------------------------------------------
