@@ -1727,6 +1727,7 @@ BP_OSC_GEN_FUNC = (
     $params = null -> (
         $source = $frequency.getkey("source");
         $isnoise = $name == "noise";
+        $salience = $isnoise == 0 && $source == null;
         if $isnoise == 1 then (
             $frequency = rand(40, 1500)
         ) else if $source == null then (
@@ -1756,7 +1757,7 @@ BP_OSC_GEN_FUNC = (
         bp_makebuffer(
             @source BP_TMP_BUFF
             @info 1
-            @pitchsalience $isnoise == 0 && $source == null
+            @pitchsalience $salience
             @loudness 1.0, 
             @pitch $pitch 
             @centroid $frequency
