@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Add `nearest` function.
+- Add binary search function, named `nearest`.
 - New processor: `join`.
 - New tutorial: `postprocessing`.
 - New processor: `mixdown`.
