@@ -148,7 +148,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 551.0, 1449.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 412.0, 10.0, 51.0, 22.0 ],
+					"presentation_rect" : [ 351.0, 10.5, 37.0, 22.0 ],
 					"text" : "play",
 					"texton" : "stop",
 					"textoncolor" : [ 0.561, 0.71, 0.843, 1.0 ],
@@ -761,14 +761,14 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.717647058823529, 0.717647058823529, 0.717647058823529, 1.0 ],
+					"bgcolor" : [ 0.717647058823529, 0.717647058823529, 0.717647058823529, 0.33 ],
 					"id" : "obj-133",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 90.0, 583.0, 85.0, 21.0 ],
+					"patching_rect" : [ 90.0, 583.0, 86.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 465.0, 11.0, 85.0, 21.0 ],
+					"presentation_rect" : [ 390.0, 11.0, 70.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "buffer label",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -787,7 +787,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 180.0, 582.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 465.0, 10.0, 189.0, 23.0 ],
+					"presentation_rect" : [ 390.0, 10.0, 264.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -969,6 +969,7 @@
 					"coldef" : [ [ 1, 500, 1, 0.0, 0.0, 0.0, 1.0, 1, 0.0, 0.0, 0.0, 1.0, -1, -1, -1 ] ],
 					"cols" : 2,
 					"colwidth" : 86,
+					"fgcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"fontface" : 0,
 					"fontname" : "Ableton Sans Medium",
 					"fontsize" : 12.0,

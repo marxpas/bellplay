@@ -1735,7 +1735,8 @@ BP_OSC_GEN_FUNC = (
                 $frequency = trans(bpf($frequency))::(2 1)
             )
         ) else (
-            $duration = $frequency.getkey("duration")
+            $duration = $frequency.getkey("duration");
+            $frequency = mc2f(6000)
         );
         msg("generate", 
             [
@@ -1755,7 +1756,7 @@ BP_OSC_GEN_FUNC = (
         bp_makebuffer(
             @source BP_TMP_BUFF
             @info 1
-            @pitchsalience $isnoise == 0 && $frequency > 30
+            @pitchsalience $isnoise == 0 && $source == null
             @loudness 1.0, 
             @pitch $pitch 
             @centroid $frequency

@@ -103,6 +103,13 @@ $addtutorial(
 );
 
 $addtutorial(
+    @name "inspecting buffers"
+    @file "bufferinspector"
+    @description "This tutorial shows how to inspect buffer information as a debugging tool in bellplay~."
+    @tags "debugging"
+);
+
+$addtutorial(
     @name "using audio features"
     @file "features"
     @description "This tutorial explains how to use buffer features for audio processing. In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection."

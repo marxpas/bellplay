@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add `bp.tutorial.bufferinspector`.
 - Add basic version of `bp.bufferinspector` with `inspectbuffer` function.
 - New processor: `trim`.
 - Add `mean` function, with optional @weights arg.
@@ -22,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Set default values for `crop`.
 
 ### Fixed
+
+- Fix `frequency` buffer value in `BP_OSC_GEN_FUNC` bug for buffer-based frequencies.
 
 ### Removed
 
