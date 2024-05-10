@@ -318,7 +318,7 @@ analyze = (
     $buffer -> (
         $source = $buffer.getkey("source");
         if $source == null then printerror($buffer "is not a valid buffer");
-        $source = $buffer.process(fade(1, 1)).getkey("source");
+        $source = $buffer.process(bpthru()).getkey("source");
         bp_makebuffer(
             @source $source
             @analyze 1
@@ -345,7 +345,7 @@ getonsets = (
     $delay = 5 -> (
         $source = $buffer.getkey("source");
         if $source == null then printerror($buffer "is not a valid buffer");
-        $source = $buffer.process(plus(0)).getkey("source");
+        $source = $buffer.process(bpthru()).getkey("source");
         msg("onsets", 
             [ "threshold" $threshold ]
             [ "delay" $delay ]
@@ -1653,6 +1653,9 @@ $addref(
     @output $addout(@description "processed buffer" @type "llll")
 );
 
+## ------------------------------------------------------------
+
+bpthru = ( -> [ [ "fx" "thru" ] ]);
 
 ## ------------------------------------------------------------
 
@@ -2722,10 +2725,19 @@ mix = (
     $normalize = 0 -> (
         if $buffers == null then printerror("you must provide a values for @buffers in mix()");
         $numbuffers = length($buffers) + 1;
+        $buffers = for $buffer in $buffers collect (
+            $source = $buffer.getkey("source");
+            $info = getpathinfo($source);
+            if $info."extension" == null then (
+                $source
+            ) else (
+                $buffer.process(bpthru()).getkey("source")
+            )
+        );
         [
             [ "fx" "mix" ]
             [ "params"
-                [ "buffers" for $g in $buffers collect $g.getkey("source") ]
+                [ "buffers" $buffers ]
                 [ "gains" right(1 $gains, -$numbuffers) ]
                 [ "offsets" right(0 $offsets, -$numbuffers) ]
                 [ "resamplingfiltersize" $resamplingfiltersize ]
@@ -3157,8 +3169,18 @@ join = (
     $resamplingpolicy = 3 -> (
         $buffers = for $buffer in $buffers collect (
             $source = $buffer.getkey("source");
-            if $source == null then printerror("invalid buffer in join():" $buffer);
-            $source
+            if $source == null then (
+                printerror("invalid buffer in join():" $buffer) 
+            ) else (
+                ## check if source is path or buffer
+                $info = getpathinfo($source);
+                if $info."extension" == null then (
+                    $source
+                ) else (
+                    ## if source is path, apply pass through and get source
+                    $buffer.process(bpthru()).getkey("source")
+                )
+            )
         );
         [
             [ "fx" "join" ]
