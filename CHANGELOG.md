@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Add missing `@quality` arg in `retune` docs.
 - Fix missing dependencies for standalone: `trumpet.wav`, and `bp.tutorial.bufferinspector` and `bp.tutorial.postprocessing`.
 - Fix pitchsalience value for oscillator function.
 

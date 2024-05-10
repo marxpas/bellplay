@@ -2586,6 +2586,12 @@ $addref(
         $addarg(@name "ambiencethreshold" @default "0.3" @type "int/float" @description "correction ambience threshold, between -10 and 10.")
         $addarg(@name "amount" @default 100 @type "int/float" @description "pitch correction amount.")
         $addarg(@name "bypass" @default 100 @type "int/float" @description "pitch correction auto-bypass threshold, at which signal passes unaffected.")
+        $addarg(@name "quality" @default "basic" @type "symbol" @description "pitch correction quality." @options
+            $addopt(@value "basic")
+            $addopt(@value "good")
+            $addopt(@value "better")
+            $addopt(@value "best")
+        )
     ),
     @output $addout(@description "retune command" @type "llll")
 );
