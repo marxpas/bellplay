@@ -3088,6 +3088,34 @@ $addref(
 
 ## ------------------------------------------------------------
 
+rampsmooth = (
+    $up = 1024,
+    $down = 1024 -> (
+        $up = $up.getkey("source") ||| [ bpf($up) ];
+        $down = $down.getkey("source") ||| [ bpf($down) ];
+        [
+            [ "fx" "rampsmooth" ]
+            [ "params"
+                [ "up" $up ]
+                [ "down" $down ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "rampsmooth",
+    @description "Audio process command for applying rampsmoothing to a buffer. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "up", @default 1024, @type "int", @description "ramp up, in samples.")
+        $addarg(@name "down", @default 1024, @type "int", @description "ramp down, in samples.")
+    ),
+    @output $addout(@description "rampsmooth command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 onepole = (
     $cutoff,
     $highpass = 0 -> (
