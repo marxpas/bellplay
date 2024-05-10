@@ -3108,8 +3108,8 @@ $addref(
     @description "Audio process command for applying rampsmoothing to a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "up", @default 1024, @type "int", @description "ramp up, in samples.")
-        $addarg(@name "down", @default 1024, @type "int", @description "ramp down, in samples.")
+        $addarg(@name "up", @default 1024, @type "int/list/llll", @description "ramp up, in samples, as either a single number, envelope, or buffer.")
+        $addarg(@name "down", @default 1024, @type "int/list/llll", @description "ramp down, in samples, as either a single number, envelope, or buffer.")
     ),
     @output $addout(@description "rampsmooth command" @type "llll")
 );
