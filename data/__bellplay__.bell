@@ -2181,7 +2181,7 @@ $addref(
             $addopt(@value 7 @description "resonant")
             $addopt(@value 8 @description "allpass")
         )
-        $addarg(@name "freq", @default 2000, @type "int/float", @description "cutoff/center frequency.")
+        $addarg(@name "frequency", @default 2000, @type "int/float", @description "cutoff/center frequency.")
         $addarg(@name "gain", @default 1, @type "int/float", @description "linear gain.")
         $addarg(@name "q", @default 80, @type "int/float", @description "resonance or slope, depending on @type.")
     ),
