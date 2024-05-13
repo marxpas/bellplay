@@ -71,6 +71,42 @@ getpathinfo = (
 
 ## ------------------------------------------------------------
 
+readfolder = (
+    $path,
+    $filetype = "audio" -> (
+        BP_TMP_FOLDER = null;
+        $info = getpathinfo($path);
+        if $info."extension" != null then printerror("invalid folder path:" $path);
+        $path = $info."path";
+        $types = (
+            [ "audio" "WAVE" ]
+            [ "midi" "Midi" ]
+        ).$filetype;
+        if $types == null then printerror("invalid file type:" $filetype);
+        msg("folder",
+            [ "types" $types ]
+            [ $path ]
+        );
+        for $x in BP_TMP_FOLDER collect $path + $x
+    )
+);
+
+$addref(
+    @name "readfolder",
+    @description "Returns a list of file paths in specified folder directory.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "path" @type "symbol" @description "folder path.")
+        $addarg(@name "filetype" @default "audio" @type "symbol" @description "file type." @options
+            $addopt(@value "audio" @description "audio files")
+            $addopt(@value "midi" @description "midi files")
+        )
+    )
+    @output $addout(@description "list of file paths", @type "list")
+);
+
+## ------------------------------------------------------------
+
 getbufferinfo = (
     $buffer -> (
         msg("bufferinfo", $buffer);
