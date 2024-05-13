@@ -87,7 +87,7 @@ readfolder = (
             [ "types" $types ]
             [ $path ]
         );
-        for $x in BP_TMP_FOLDER collect $path + $x
+        BP_TMP_FOLDER
     )
 );
 
