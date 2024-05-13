@@ -1632,8 +1632,9 @@ crop = (
         [
             ["fx" "crop"]
             ["params" 
-                ["start" $start ]
-                ["end" $end ]
+                [ "timeunit" $timeunit ]
+                [ "start" $start ]
+                [ "end" $end ]
             ]
         ]
     )
