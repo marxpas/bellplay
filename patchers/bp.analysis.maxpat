@@ -101,6 +101,7 @@
 								"box" : 								{
 									"code" : "$info = getbufferinfo($x1); for $x in $info collect (if $x.'duration' != null then $x:(1 1) = 'source_end'; $x) ",
 									"id" : "obj-38",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -189,6 +190,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Ableton Sans Medium",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -544,7 +546,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 102.0, 113.0, 23.0 ],
+					"patching_rect" : [ 27.0, 102.0, 114.0, 23.0 ],
 					"text" : "bp.utils.debugmode"
 				}
 
@@ -581,7 +583,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.5, 1846.0, 68.0, 23.0 ],
+					"patching_rect" : [ 29.5, 1846.0, 70.0, 23.0 ],
 					"text" : "bp.features"
 				}
 
@@ -839,6 +841,7 @@
 				"box" : 				{
 					"cantchange" : 1,
 					"format" : 6,
+					"htricolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"id" : "obj-17",
 					"maxclass" : "flonum",
 					"maximum" : 1000.0,
@@ -858,6 +861,7 @@
 				"box" : 				{
 					"cantchange" : 1,
 					"format" : 6,
+					"htricolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"id" : "obj-16",
 					"maxclass" : "flonum",
 					"maximum" : 4.0,
@@ -876,6 +880,7 @@
 , 			{
 				"box" : 				{
 					"format" : 6,
+					"htricolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"id" : "obj-133",
 					"maxclass" : "flonum",
 					"maximum" : 1.0,
@@ -897,9 +902,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 812.0, 585.0, 112.0, 21.0 ],
+					"patching_rect" : [ 812.0, 585.0, 118.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 84.0, 80.0, 115.0, 21.0 ],
+					"presentation_rect" : [ 84.0, 80.0, 118.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "buffer duration (ms)"
 				}
@@ -950,6 +955,7 @@
 , 			{
 				"box" : 				{
 					"format" : 6,
+					"htricolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
 					"id" : "obj-26",
 					"maxclass" : "flonum",
 					"maximum" : 1.0,
@@ -967,7 +973,7 @@
 			}
 , 			{
 				"box" : 				{
-					"htabcolor" : [ 0.545098039215686, 0.905882352941176, 0.823529411764706, 1.0 ],
+					"htabcolor" : [ 0.745098039215686, 0.831372549019608, 0.909803921568627, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "tab",
 					"numinlets" : 1,
@@ -1092,7 +1098,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 312.0, 1804.0, 64.0, 23.0 ],
+					"patching_rect" : [ 312.0, 1804.0, 83.0, 23.0 ],
 					"text" : "r #0source_id"
 				}
 
@@ -1103,7 +1109,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 333.0, 422.0, 65.0, 23.0 ],
+					"patching_rect" : [ 333.0, 422.0, 84.0, 23.0 ],
 					"text" : "s #0source_id"
 				}
 
@@ -1115,7 +1121,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 406.0, 1804.0, 47.0, 23.0 ],
+					"patching_rect" : [ 406.0, 1804.0, 66.0, 23.0 ],
 					"text" : "r #0source"
 				}
 
@@ -1126,7 +1132,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 714.0, 738.0, 48.0, 23.0 ],
+					"patching_rect" : [ 714.0, 738.0, 67.0, 23.0 ],
 					"text" : "s #0source"
 				}
 
@@ -2527,6 +2533,20 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bp.features.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.utils.debugmode.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "ears.crop~.mxo",
 				"type" : "iLaX"
 			}
@@ -2549,20 +2569,6 @@
 , 			{
 				"name" : "ears.split~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bp.features.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bp.utils.debugmode.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
