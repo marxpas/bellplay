@@ -825,7 +825,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.5-beta",
+					"text" : "v0.1.6-beta",
 					"textjustification" : 1
 				}
 
@@ -2079,6 +2079,13 @@
 			}
 , 			{
 				"name" : "bp.process.pong~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.process.rampsmooth~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

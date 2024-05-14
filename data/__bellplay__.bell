@@ -1,4 +1,4 @@
-BP_VERSION = "v0.1.5-beta";
+BP_VERSION = "v0.1.6-beta";
 BP_QUERY_BUFFERS = null;
 BP_TREE_NORM = null;
 BP_REF_LABEL_UTILS = "utilities";
