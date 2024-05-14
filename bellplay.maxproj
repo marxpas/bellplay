@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3798194864,
+	"modificationdate" : 3798548889,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -408,6 +408,11 @@
 			}
 ,
 			"bp.tutorial.postprocessing.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.kdtree.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
