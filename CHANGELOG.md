@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New tutorial: `kdtree.bell`.
 - New function: `r2mc'.
 - Add `readfolder` function with docs.
 - New processor: `rampsmooth`.
