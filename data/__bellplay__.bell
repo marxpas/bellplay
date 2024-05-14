@@ -924,6 +924,26 @@ $addref(
 
 ## ------------------------------------------------------------
 
+r2mc = (
+    $ratios,
+    $mc = 6000 -> (
+        f2mc(mc2f($mc) * $ratios)
+    )
+);
+
+$addref(
+    @name "r2mc",
+    @description "Ratio to midicent conversion.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "ratios", @type "list/int/float", @description "ratios to convert.")
+        $addarg(@name "mc", @default 6000 @type "int/float", @description "fundamental in midicents")
+    ),
+    @output $addout(@description "list of midicents", @type "list/int/float")
+);
+
+## ------------------------------------------------------------
+
 r2c = (
     $ratios -> log2($ratios) * 1200
 );

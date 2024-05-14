@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New function: `r2mc'.
 - Add `readfolder` function with docs.
 - New processor: `rampsmooth`.
 - Use `bpthru` to fix `join` and `mix` bug, when using corpora-based buffers.
