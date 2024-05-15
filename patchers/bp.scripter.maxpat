@@ -15,7 +15,7 @@
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
-		"default_fontname" : "Ableton Sans Medium",
+		"default_fontname" : "Lato",
 		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"gridsnaponopen" : 1,
@@ -60,7 +60,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -302,7 +302,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -318,7 +318,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -492,7 +492,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -689,7 +689,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -705,7 +705,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -778,7 +778,7 @@
 , 			{
 				"box" : 				{
 					"bgcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 0.0 ],
-					"fontname" : "Ableton Sans Medium",
+					"fontname" : "Lato",
 					"fontsize" : 10.0,
 					"id" : "obj-131",
 					"maxclass" : "comment",
@@ -815,7 +815,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -989,7 +989,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -1005,7 +1005,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -1076,7 +1076,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -1301,7 +1301,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -1317,7 +1317,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "subtlelight",
 						"tags" : ""
@@ -1362,7 +1362,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -1519,7 +1519,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -1535,7 +1535,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -1700,7 +1700,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -1836,7 +1836,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -1852,7 +1852,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -1911,7 +1911,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -2215,7 +2215,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -2231,7 +2231,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -2263,7 +2263,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -2923,7 +2923,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -2939,7 +2939,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -3001,7 +3001,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -3198,7 +3198,7 @@
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
 										"default_fontface" : 0,
-										"default_fontname" : "Ableton Sans Medium",
+										"default_fontname" : "Lato",
 										"gridonopen" : 1,
 										"gridsize" : [ 15.0, 15.0 ],
 										"gridsnaponopen" : 1,
@@ -3308,7 +3308,7 @@
 ,
 													"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 													"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-													"fontname" : [ "Ableton Sans Medium" ],
+													"fontname" : [ "Lato" ],
 													"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 													"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 													"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -3324,7 +3324,7 @@
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
-										"fontname" : "Ableton Sans Medium",
+										"fontname" : "Lato",
 										"globalpatchername" : "",
 										"style" : "bellplay-gui",
 										"tags" : ""
@@ -3631,7 +3631,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -3647,7 +3647,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -3714,7 +3714,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -3903,7 +3903,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -3919,7 +3919,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -4251,7 +4251,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -4426,7 +4426,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -4442,7 +4442,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -4474,7 +4474,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -4556,7 +4556,7 @@
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
 										"default_fontface" : 0,
-										"default_fontname" : "Ableton Sans Medium",
+										"default_fontname" : "Lato",
 										"gridonopen" : 1,
 										"gridsize" : [ 15.0, 15.0 ],
 										"gridsnaponopen" : 1,
@@ -4675,7 +4675,7 @@
 ,
 													"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 													"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-													"fontname" : [ "Ableton Sans Medium" ],
+													"fontname" : [ "Lato" ],
 													"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 													"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 													"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -4691,7 +4691,7 @@
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
-										"fontname" : "Ableton Sans Medium",
+										"fontname" : "Lato",
 										"globalpatchername" : "",
 										"style" : "bellplay-gui",
 										"tags" : ""
@@ -4766,7 +4766,7 @@
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
 										"default_fontface" : 0,
-										"default_fontname" : "Ableton Sans Medium",
+										"default_fontname" : "Lato",
 										"gridonopen" : 1,
 										"gridsize" : [ 15.0, 15.0 ],
 										"gridsnaponopen" : 1,
@@ -5180,7 +5180,7 @@
 ,
 													"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 													"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-													"fontname" : [ "Ableton Sans Medium" ],
+													"fontname" : [ "Lato" ],
 													"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 													"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 													"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -5196,7 +5196,7 @@
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
-										"fontname" : "Ableton Sans Medium",
+										"fontname" : "Lato",
 										"globalpatchername" : "",
 										"style" : "bellplay-gui",
 										"tags" : ""
@@ -5484,7 +5484,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -5500,7 +5500,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -6798,7 +6798,7 @@
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
-						"default_fontname" : "Ableton Sans Medium",
+						"default_fontname" : "Lato",
 						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
 						"gridsnaponopen" : 1,
@@ -6892,7 +6892,7 @@
 ,
 									"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 									"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-									"fontname" : [ "Ableton Sans Medium" ],
+									"fontname" : [ "Lato" ],
 									"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 									"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 									"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
@@ -6908,7 +6908,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
-						"fontname" : "Ableton Sans Medium",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -6973,7 +6973,7 @@
 			}
 , 			{
 				"box" : 				{
-					"annotationsfont" : "Ableton Sans Light",
+					"annotationsfont" : "Lato Light",
 					"bwcompatibility" : 80300,
 					"clefs" : [ "FFGG" ],
 					"defaultnoteslots" : [ "null" ],
@@ -6989,8 +6989,8 @@
 					"linknotecolortoslot" : 6,
 					"linknotesizetoslot" : 4,
 					"loop" : [ 0.0, 1000.0 ],
-					"lyricsfont" : "Ableton Sans Light",
-					"markersfont" : "Ableton Sans Light",
+					"lyricsfont" : "Lato Light",
+					"markersfont" : "Lato Light",
 					"maxclass" : "bach.roll",
 					"numinlets" : 6,
 					"numoutlets" : 8,
@@ -7014,7 +7014,7 @@
 					"tonedivision" : 8,
 					"versionnumber" : 80300,
 					"voicenames" : [ "output" ],
-					"voicenamesfont" : "Ableton Sans Light",
+					"voicenamesfont" : "Lato Light",
 					"voicespacing" : [ 1.0, 17.0 ],
 					"vzoom" : 115.0,
 					"zoom" : 115.0
@@ -7051,7 +7051,7 @@
 				"box" : 				{
 					"allowdrag" : 0,
 					"buffername" : "",
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Lato Light",
 					"gridcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 0.49 ],
 					"id" : "obj-25",
 					"ignoreclick" : 1,
@@ -8524,7 +8524,7 @@
 ,
 					"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-					"fontname" : [ "Ableton Sans Medium" ],
+					"fontname" : [ "Lato" ],
 					"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
 				}
@@ -8543,7 +8543,7 @@
 					}
 ,
 					"color" : [ 0.807843137254902, 0.898039215686275, 0.909803921568627, 1.0 ],
-					"fontname" : [ "Ableton Sans Medium" ],
+					"fontname" : [ "Lato" ],
 					"locked_bgcolor" : [ 0.850980392156863, 0.850980392156863, 0.850980392156863, 1.0 ]
 				}
 ,

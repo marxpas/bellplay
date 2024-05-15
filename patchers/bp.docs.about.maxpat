@@ -15,7 +15,7 @@
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
-		"default_fontname" : "Ableton Sans Medium",
+		"default_fontname" : "Lato",
 		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"gridsnaponopen" : 1,
@@ -135,7 +135,7 @@
 				"box" : 				{
 					"drop" : 0,
 					"fontface" : 0,
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Lato Light",
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-9",
@@ -189,7 +189,7 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Ableton Sans Light",
+					"fontname" : "Lato Light",
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.443, 0.592, 0.612, 1.0 ],
 					"id" : "obj-3",
@@ -278,7 +278,7 @@
 ,
 					"color" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"editing_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
-					"fontname" : [ "Ableton Sans Medium" ],
+					"fontname" : [ "Lato" ],
 					"locked_bgcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ],
 					"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
 					"textcolor_inverse" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ]
