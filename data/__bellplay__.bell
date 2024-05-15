@@ -3250,11 +3250,11 @@ $addref(
 
 join = (
     $buffers,
-    $timeunit = 0,
     $xfade = 0,
     $xfadecurve = 0,
     $xfadetype = 1,
     $fadeboundaries = 0,
+    $timeunit = 0,
     $resamplingfiltersize = 11,
     $resamplingmode = 'sinc',
     $resamplingpolicy = 3 -> (
@@ -3295,9 +3295,7 @@ $addref(
     @description "Audio process command for concatenating one or more buffers to the processed buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
-            BP_REF_TIMEUNIT_OPTIONS
-        )
+        $addarg(@name "buffers", @type "llll", @description "buffers to concatenate.")
         $addarg(@name "xfade", @default 0, @type "int/float", @description "duration of the crossfade, in samples.")
         $addarg(@name "xfadecurve", @default 0, @type "int/float", @description "curve parameter for the crossfade.")
         $addarg(@name "xfadetype", @default 1, @type "int", @description "cross fade type." @options 
@@ -3305,6 +3303,9 @@ $addref(
         )
         $addarg(@name "fadeboundaries", @default 0, @type "int", @description "fade beginning of first buffer and end of last buffer." @options
             BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
+            BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
         $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
