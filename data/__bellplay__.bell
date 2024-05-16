@@ -7,6 +7,7 @@ BP_REF_LABEL_GEN = "audio generation";
 BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN collect [ $i ]);
 BP_REF_TIMEUNIT_OPTIONS = null;
 BP_REF_AUDIO_DOMAIN_OPTIONS = null;
+BP_BELLPLAY_CORPUS = null;
 
 BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
@@ -462,6 +463,7 @@ setcorpus = (
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
         BP_QUERY_BUFFERS = null;
+        BP_BELLPLAY_CORPUS = $pathinfo."type" == 3;
         msg("db", "read" $path + $extension)
     )
 );
@@ -562,6 +564,13 @@ query = (
         );
         msg("db", "query" $x);
         (if BP_QUERY_BUFFERS == null then printerror("query did not yield any results:" tosymbol($x)));
+        ## check if current corpus is a built-in file and replace media file with loaded buffer
+        (if BP_BELLPLAY_CORPUS == 1 then (
+                $sources = thin(for $buff in BP_QUERY_BUFFERS collect $buff.getkey("source"));
+                $sourcemap = for $source in $sources collect [ $source importaudio($source).getkey("source") ];
+                BP_QUERY_BUFFERS = for $buff in BP_QUERY_BUFFERS collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x)
+            )
+        );
         BP_QUERY_BUFFERS
     )
 );

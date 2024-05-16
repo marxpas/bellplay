@@ -117,6 +117,13 @@ $addtutorial(
 );
 
 $addtutorial(
+    @name "audio corpora"
+    @file "corpus"
+    @description "One of the core features of bellplay~ is the ability to handle audio corpora — i.e., large collections of audio data. The first step is to create audio corpora through bellplay~'s corpus lab window. These audio corpora, which are saved as .llll files, can then be loaded into our scripts. In turn, this makes it possible to make queries on a corpus, in SQLite3 syntax, to retrieve buffers according to certain criteria. This tutorial shows how to use a pre-existing corpus to retrieve buffers with enough pitch salience, order them in pitch-wise descending order, and retune each buffer to conform to a Cm7 chord."
+    @tags "corpora" "concatenative+synthesis" "sqlite3" "databases"
+);
+
+$addtutorial(
     @name "multi-rendering"
     @file "multirendering"
     @description "This tutorial demonstrates a very simple but consequential feature in bellplay~ — namely, the ablity to reuse rendered buffers multiple times to further refine and sculpt the final output into complex and intricate sounds."

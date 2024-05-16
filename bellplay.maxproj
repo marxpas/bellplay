@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3798660336,
+	"modificationdate" : 3798741722,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -416,6 +416,11 @@
 				"kind" : "textfile",
 				"local" : 1
 			}
+,
+			"bp.tutorial.corpus.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
 
 		}
 ,
@@ -467,6 +472,11 @@
 ,
 			"Lato-Regular.ttf" : 			{
 				"kind" : "file",
+				"local" : 1
+			}
+,
+			"test_corpus.llll" : 			{
+				"kind" : "llllfile",
 				"local" : 1
 			}
 
