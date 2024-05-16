@@ -314,7 +314,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 548.0, 781.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 723.0, 13.5, 79.0, 18.0 ],
+					"presentation_rect" : [ 718.75, 13.5, 84.5, 18.0 ],
 					"text" : "default editor",
 					"textoncolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
 					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
@@ -1723,8 +1723,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 890.0, 21.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 754.0, 320.0, 46.0, 18.0 ],
-					"text" : "tutorials",
+					"presentation_rect" : [ 762.0, 320.0, 38.0, 18.0 ],
+					"text" : "details",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textjustification" : 2
 				}
@@ -1738,7 +1738,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 890.0, 48.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 754.0, 320.0, 46.0, 18.0 ],
+					"presentation_rect" : [ 760.0, 320.0, 40.0, 18.0 ],
 					"rounded" : 12,
 					"style" : "bellplay-gui"
 				}

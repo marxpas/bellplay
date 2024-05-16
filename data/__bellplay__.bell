@@ -98,8 +98,8 @@ $addref(
     @arguments (
         $addarg(@name "path" @type "symbol" @description "folder path.")
         $addarg(@name "filetype" @default "'audio'" @type "symbol" @description "file type." @options
-            $addopt(@value "audio" @description "audio files")
-            $addopt(@value "midi" @description "midi files")
+            $addopt(@value "'audio'" @description "audio files")
+            $addopt(@value "'midi'" @description "midi files")
         )
     )
     @output $addout(@description "list of file paths", @type "list")
@@ -197,8 +197,8 @@ $addref(
     @arguments (
         $addarg(@name "type" @default "null" @type "symbol/null" @description "media file type" @options
             $addopt(@value "null" @description "all files")
-            $addopt(@value "audio" @description "audio files")
-            $addopt(@value "midi" @description "midi files")
+            $addopt(@value "'audio'" @description "audio files")
+            $addopt(@value "'midi'" @description "midi files")
         )
     ),
     @output $addout(@description "list of media files", @type "list")
@@ -305,18 +305,18 @@ BP_REF_NORMALIZE_OPTIONS = (
 );
 
 BP_REF_WINDOW_OPTIONS = (
-    $addopt(@value "rectangular")
-    $addopt(@value "triangular")
-    $addopt(@value "sine")
-    $addopt(@value "hann")
-    $addopt(@value "hamming")
-    $addopt(@value "blackman")
-    $addopt(@value "nuttall")
-    $addopt(@value "blackmannuttall")
-    $addopt(@value "blackmanharris")
-    $addopt(@value "gaussian")
-    $addopt(@value "sqrthann")
-    $addopt(@value "sqrthamming")
+    $addopt(@value "'rectangular'")
+    $addopt(@value "'triangular'")
+    $addopt(@value "'sine'")
+    $addopt(@value "'hann'")
+    $addopt(@value "'hamming'")
+    $addopt(@value "'blackman'")
+    $addopt(@value "'nuttall'")
+    $addopt(@value "'blackmannuttall'")
+    $addopt(@value "'blackmanharris'")
+    $addopt(@value "'gaussian'")
+    $addopt(@value "'sqrthann'")
+    $addopt(@value "'sqrthamming'")
 );
 
 BP_REF_AMPUNIT_OPTIONS = (
@@ -332,12 +332,12 @@ BP_REF_CURVE_OPTIONS = (
 );
 
 BP_REF_RESAMPLINGMODE_OPTIONS = (
-    $addopt(@value "sinc")
-    $addopt(@value "nearest neighbor")
-    $addopt(@value "sample and hold")
-    $addopt(@value "linear")
-    $addopt(@value "quad")
-    $addopt(@value "cubic")
+    $addopt(@value "'sinc'")
+    $addopt(@value "'nearest" "neighbor'")
+    $addopt(@value "'sample" "and" "hold'")
+    $addopt(@value "'linear'")
+    $addopt(@value "'quad'")
+    $addopt(@value "'cubic'")
 );
 
 BP_REF_RESAMPLINGPOLICY_OPTIONS = (
@@ -1313,28 +1313,28 @@ $addref(
     @arguments (
         $addarg(@name "voicenames", @default "'output'" @type "list/symbol", @description "voice names.")
         $addarg(@name "clefs", @default "'FFGG'" @type "list/symbol", @description "clef type for each voice, as a symbol." @options
-            $addopt(@value "G" @description "treble clef")
-            $addopt(@value "F" @description "bass clef")
-            $addopt(@value "FG" @description "grand staff")
-            $addopt(@value "FFGG" @description "full staff")
-            $addopt(@value "FGG" @description "bass + treble clef")
-            $addopt(@value "FFG" @description "double bass + treble clef")
-            $addopt(@value "FF" @description "double bass clef")
-            $addopt(@value "GG" @description "double treble clef")
-            $addopt(@value "G8va" @description "8va treble clef")
-            $addopt(@value "G8vb" @description "8vb treble clef")
-            $addopt(@value "G15ma" @description "15ma treble clef")
-            $addopt(@value "G15mb" @description "15mb treble clef")
-            $addopt(@value "F8va" @description "8va bass clef")
-            $addopt(@value "F8vb" @description "8vb bass clef")
-            $addopt(@value "F15ma" @description "15ma bass clef")
-            $addopt(@value "F15mb" @description "15mb bass clef")
-            $addopt(@value "Tenor" @description "Tenor clef")
-            $addopt(@value "Barytone" @description "Baritone clef")
-            $addopt(@value "Alto" @description "Alto clef")
-            $addopt(@value "Mezzo" @description "Mezzo clef")
-            $addopt(@value "Soprano" @description "Soprano clef")
-            $addopt(@value "Percussion" @description "Percussion clef")
+            $addopt(@value "'G'" @description "treble clef")
+            $addopt(@value "'F'" @description "bass clef")
+            $addopt(@value "'FG'" @description "grand staff")
+            $addopt(@value "'FFGG'" @description "full staff")
+            $addopt(@value "'FGG'" @description "bass + treble clef")
+            $addopt(@value "'FFG'" @description "double bass + treble clef")
+            $addopt(@value "'FF'" @description "double bass clef")
+            $addopt(@value "'GG'" @description "double treble clef")
+            $addopt(@value "'G8va'" @description "8va treble clef")
+            $addopt(@value "'G8vb'" @description "8vb treble clef")
+            $addopt(@value "'G15ma'" @description "15ma treble clef")
+            $addopt(@value "'G15mb'" @description "15mb treble clef")
+            $addopt(@value "'F8va'" @description "8va bass clef")
+            $addopt(@value "'F8vb'" @description "8vb bass clef")
+            $addopt(@value "'F15ma'" @description "15ma bass clef")
+            $addopt(@value "'F15mb'" @description "15mb bass clef")
+            $addopt(@value "'Tenor'" @description "Tenor clef")
+            $addopt(@value "'Barytone'" @description "Baritone clef")
+            $addopt(@value "'Alto'" @description "Alto clef")
+            $addopt(@value "'Mezzo'" @description "Mezzo clef")
+            $addopt(@value "'Soprano'" @description "Soprano clef")
+            $addopt(@value "'Percussion'" @description "Percussion clef")
         )
         $addarg(@name "tonedivision", @default 8 @type "int", @description "symbolic tone division." @options
             $addopt(@value 2 @description "semitones")
@@ -2171,7 +2171,7 @@ $addref(
     @description "Audio process command for applying a windowing function to a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "wintype", @default "hann", @type "symbol", @description "window type, as a symbol" @options
+        $addarg(@name "wintype", @default "'hann'", @type "symbol", @description "window type, as a symbol" @options
             BP_REF_WINDOW_OPTIONS
         )
         $addarg(@name "winnormalized", @default 0, @type "int", @description "normalize window samples to sum up to 1 and multiply by a factor of 2." @options 
@@ -2643,11 +2643,11 @@ $addref(
         $addarg(@name "ambiencethreshold" @default "0.3" @type "int/float" @description "correction ambience threshold, between -10 and 10.")
         $addarg(@name "amount" @default 100 @type "int/float" @description "pitch correction amount.")
         $addarg(@name "bypass" @default 100 @type "int/float" @description "pitch correction auto-bypass threshold, at which signal passes unaffected.")
-        $addarg(@name "quality" @default "basic" @type "symbol" @description "pitch correction quality." @options
-            $addopt(@value "basic")
-            $addopt(@value "good")
-            $addopt(@value "better")
-            $addopt(@value "best")
+        $addarg(@name "quality" @default "'basic'" @type "symbol" @description "pitch correction quality." @options
+            $addopt(@value "'basic'")
+            $addopt(@value "'good'")
+            $addopt(@value "'better'")
+            $addopt(@value "'best'")
         )
     ),
     @output $addout(@description "retune command" @type "llll")
@@ -2826,7 +2826,7 @@ $addref(
         $addarg(@name "gains", @default "null" @type "list/llll/null", @description "gain values for each buffer to mix, as either a single number or envelope.")
         $addarg(@name "offsets", @default "null", @type "list/null", @description "time offset values for each buffer to mix.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+        $addarg(@name "resamplingmode", @default "'sinc'", @type "symbol", @description "resampling mode." @options
             BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
@@ -2895,7 +2895,7 @@ BP_BUFFER_ARITHMETIC_FUNC = (
 
 BP_BUFFER_ARITHMETIC_ARGS = (
     $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
-    $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+    $addarg(@name "resamplingmode", @default "'sinc'", @type "symbol", @description "resampling mode." @options
         BP_REF_RESAMPLINGMODE_OPTIONS
     )
     $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
@@ -3308,7 +3308,7 @@ $addref(
             BP_REF_TIMEUNIT_OPTIONS
         )
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+        $addarg(@name "resamplingmode", @default "'sinc'", @type "symbol", @description "resampling mode." @options
             BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "resamplingpolicy", @default 3, @type "int", @description "resampling policy." @options
@@ -3504,7 +3504,7 @@ $addref(
         $addarg(@name "antimeunit", @default 1, @type "int", @description "time unit for analysis." @options 
             BP_REF_TIMEUNIT_OPTIONS
         )
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+        $addarg(@name "resamplingmode", @default "'sinc'", @type "symbol", @description "resampling mode." @options
             BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size.")
@@ -3651,7 +3651,7 @@ $addref(
     @arguments (
         $addarg(@name "gain", @type "int/float/llll", @description "gain amount, as either a single number or envelope.")
         $addarg(@name "resamplingfiltersize", @default 11, @type "int", @description "resampling filter size, in samples.")
-        $addarg(@name "resamplingmode", @default "sinc", @type "symbol", @description "resampling mode." @options
+        $addarg(@name "resamplingmode", @default "'sinc'", @type "symbol", @description "resampling mode." @options
             BP_REF_RESAMPLINGMODE_OPTIONS
         )
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
