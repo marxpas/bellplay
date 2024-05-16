@@ -70,8 +70,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 14.0, 90.0, 56.0, 23.0 ],
-					"text" : "del 1000"
+					"patching_rect" : [ 14.0, 90.0, 55.0, 23.0 ],
+					"text" : "del 4000"
 				}
 
 			}
@@ -1819,7 +1819,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 126.0, 105.0, 23.0 ],
+					"patching_rect" : [ 14.0, 125.0, 105.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300

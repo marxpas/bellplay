@@ -97,7 +97,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path" @type "symbol" @description "folder path.")
-        $addarg(@name "filetype" @default "audio" @type "symbol" @description "file type." @options
+        $addarg(@name "filetype" @default "'audio'" @type "symbol" @description "file type." @options
             $addopt(@value "audio" @description "audio files")
             $addopt(@value "midi" @description "midi files")
         )
@@ -548,7 +548,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "x",  @type "list" @description "numeric list.")
-        $addarg(@name "weights",  @type "list/null" @description "optional weights.")
+        $addarg(@name "weights" @default "null" @type "list/null" @description "optional weights.")
     ),
     @output $addout(@description "mean value", @type "float")
 );
@@ -2491,7 +2491,7 @@ $addref(
     @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "shift", @type "int/float/list/llll", @description "frequency shift in Hertz, as either a single number, an envelope or buffer.")
-        $addarg(@name "negative", @type "int", @description "Include negative sideband  in output." @options
+        $addarg(@name "negative" @default 0 @type "int", @description "Include negative sideband  in output." @options
             BP_REF_SWITCH_OPTIONS
         )
     ),
