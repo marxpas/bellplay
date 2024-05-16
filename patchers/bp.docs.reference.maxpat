@@ -41,12 +41,36 @@
 		"title" : "bellplay~ | bell reference",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-87",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"patching_rect" : [ 14.0, 162.0, 74.0, 23.0 ],
+					"text" : "bach.change"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-85",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 158.0, 309.0, 88.0, 23.0 ],
+					"text" : "routepass bang"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-41",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 14.0, 101.5, 56.0, 23.0 ],
+					"patching_rect" : [ 14.0, 90.0, 56.0, 23.0 ],
 					"text" : "del 1000"
 				}
 
@@ -58,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 63.0, 55.0, 23.0 ],
+					"patching_rect" : [ 14.0, 59.0, 56.0, 23.0 ],
 					"text" : "deferlow"
 				}
 
@@ -252,7 +276,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 391.0, 55.0, 23.0 ],
+					"patching_rect" : [ 14.0, 391.0, 56.0, 23.0 ],
 					"text" : "deferlow"
 				}
 
@@ -276,7 +300,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 48.0, 208.0, 66.0, 23.0 ],
+					"patching_rect" : [ 48.0, 232.0, 66.0, 23.0 ],
 					"text" : "r #0search"
 				}
 
@@ -530,7 +554,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 14.0, 179.0, 74.0, 23.0 ],
+					"patching_rect" : [ 14.0, 197.0, 74.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -551,7 +575,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 158.0, 173.0, 134.0, 23.0 ],
+					"patching_rect" : [ 158.0, 197.0, 134.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
@@ -567,7 +591,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 158.0, 208.0, 88.0, 23.0 ],
+					"patching_rect" : [ 158.0, 232.0, 88.0, 23.0 ],
 					"text" : "string.contains"
 				}
 
@@ -588,7 +612,7 @@
 					"numoutlets" : 3,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 14.0, 247.0, 163.0, 28.0 ],
+					"patching_rect" : [ 14.0, 267.0, 163.0, 28.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 7.0, 65.0, 160.0, 25.0 ],
 					"viewvisibility" : 1
@@ -1227,7 +1251,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 314.0, 84.0, 23.0 ],
+					"patching_rect" : [ 14.0, 309.0, 84.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80300
 					}
@@ -1278,7 +1302,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1156.0, 1034.0, 71.0, 23.0 ],
+					"patching_rect" : [ 1156.0, 1034.0, 72.0, 23.0 ],
 					"text" : "fromsymbol"
 				}
 
@@ -1460,7 +1484,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 572.0, 1186.0, 184.0, 52.0 ],
+					"patching_rect" : [ 572.0, 1186.0, 186.0, 52.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1601,7 +1625,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 343.0, 276.0, 193.0, 23.0 ],
+					"patching_rect" : [ 343.0, 271.0, 193.0, 23.0 ],
 					"text" : "title \"bellplay~ | bell reference\""
 				}
 
@@ -1613,7 +1637,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 343.0, 242.0, 58.0, 23.0 ],
+					"patching_rect" : [ 343.0, 237.0, 58.0, 23.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1625,7 +1649,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 343.0, 314.0, 70.0, 23.0 ],
+					"patching_rect" : [ 343.0, 309.0, 70.0, 23.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
@@ -1638,7 +1662,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 343.0, 202.0, 307.0, 35.0 ],
+					"patching_rect" : [ 343.0, 197.0, 307.0, 35.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 5.0, 307.0, 35.0 ],
 					"text" : "bell reference"
@@ -1795,7 +1819,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 140.0, 105.0, 23.0 ],
+					"patching_rect" : [ 14.0, 126.0, 105.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1936,7 +1960,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-59", 1 ],
+					"destination" : [ "obj-85", 0 ],
 					"source" : [ "obj-12", 2 ]
 				}
 
@@ -2461,7 +2485,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-92", 0 ],
+					"destination" : [ "obj-87", 0 ],
 					"source" : [ "obj-8", 0 ]
 				}
 
@@ -2531,6 +2555,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-59", 1 ],
+					"source" : [ "obj-85", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-85", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
 					"source" : [ "obj-86", 1 ]
 				}
@@ -2540,6 +2578,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-83", 1 ],
 					"source" : [ "obj-86", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-92", 0 ],
+					"source" : [ "obj-87", 0 ]
 				}
 
 			}
@@ -2598,6 +2643,13 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.change.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "bach.deferlow.mxo",
 				"type" : "iLaX"
 			}
@@ -2634,6 +2686,10 @@
 			}
 , 			{
 				"name" : "bach.mapelem.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.neq.mxo",
 				"type" : "iLaX"
 			}
 , 			{

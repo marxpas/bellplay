@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Increase delay in loading docs and include doc retrigger on clear.
 - Include missing @buffers arg in `join` docs.
 - Fix old green color in analysis window.
 
