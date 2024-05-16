@@ -1,7 +1,8 @@
 #( 
     --------------------------------
-    MULTIPLE RENDERING
+    MULTI-RENDERING
     --------------------------------
+    This tutorial demonstrates a very simple but consequential feature in bellplay~ — namely, the ablity to reuse rendered buffers multiple times to further refine and sculpt the final output into complex and intricate sounds.
 )#
 
 ## generate granular sequence

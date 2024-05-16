@@ -2,6 +2,8 @@
     --------------------------------
     EXPORTING
     --------------------------------
+    Although the bellplay~ graphical user-interface (GUI) allows us to export the final output of each script, it's sometimes useful being able to programmatically do the same through our scripts. 
+    This tutorial shows how to do this for audio and MIDI files.
 )#
 
 ## generate a 1-second buffer of white noise and transcribe

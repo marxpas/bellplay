@@ -2,6 +2,8 @@
     --------------------------------
     AUDIO FEATURES
     --------------------------------
+    This tutorial explains how to use buffer features for audio processing. 
+    In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection.
 )#
 
 ## path to built-in audio file
