@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 264.0, 279.0, 55.0, 23.0 ],
+					"patching_rect" : [ 264.0, 279.0, 56.0, 23.0 ],
 					"text" : "deferlow"
 				}
 
@@ -326,6 +326,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-46",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
@@ -647,7 +648,7 @@
 						"midisupport" : 1,
 						"noloadbangdefeating" : 0,
 						"overdrive" : 1,
-						"preffilename" : "",
+						"preffilename" : "bellplay preferences",
 						"searchformissingfiles" : 1,
 						"statusvisible" : 0,
 						"usesearchpath" : 1
@@ -837,7 +838,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 703.0, 130.0, 55.0, 23.0 ],
+					"patching_rect" : [ 703.0, 130.0, 56.0, 23.0 ],
 					"text" : "deferlow"
 				}
 
