@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Split option descriptions to avoid quotation marks in docs.
 - Add missing single quotes in docs options to make symbol type more explicit.
 - Set name for standalone preferences folder.
 - Use Lato font instead of Ableton fonts.
