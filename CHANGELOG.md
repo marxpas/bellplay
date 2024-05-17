@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Use `adstatus switch` to ensure audio on at launch.
 - Stale reference documentation now updates upon tab clicking.
 - Include missing @buffers arg in `join` docs.
 - Fix old green color in analysis window.
