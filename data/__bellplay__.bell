@@ -1847,7 +1847,7 @@ $addref(
     @description "Generates white noise as a buffer.",
     @category BP_REF_LABEL_GEN,
     @arguments (
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -1867,7 +1867,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -1888,7 +1888,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "phase", @default "0.5", @type "int/float", @description "initial phase, in the 0–1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
@@ -1916,7 +1916,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
@@ -1937,7 +1937,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -1964,7 +1964,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
@@ -1987,7 +1987,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "phase", @default 0, @type "int/float", @description "initial phase, in the 0-1 range.")
         $addarg(@name "offset", @default "0.5", @type "int/float", @description "peak position offset, in the 0-1 range.")
     ),
@@ -2010,7 +2010,7 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
-        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration")
+        $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "phase", @default 0, @type "int/float", @description "initial phase, in the 0-1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
