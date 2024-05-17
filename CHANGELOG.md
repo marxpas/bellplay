@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Always open max console after script evaluation.
 - Add duration unit in synth functions.
 - Split option descriptions to avoid quotation marks in docs.
 - Add missing single quotes in docs options to make symbol type more explicit.
