@@ -99,8 +99,8 @@ $addref(
     @arguments (
         $addarg(@name "path" @type "symbol" @description "folder path.")
         $addarg(@name "filetype" @default "'audio'" @type "symbol" @description "file type." @options
-            $addopt(@value "'audio'" @description "audio files")
-            $addopt(@value "'midi'" @description "midi files")
+            $addopt(@value "'audio'" @description "audio" "files")
+            $addopt(@value "'midi'" @description "midi" "files")
         )
     )
     @output $addout(@description "list of file paths", @type "list")
@@ -197,9 +197,9 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "type" @default "null" @type "symbol/null" @description "media file type" @options
-            $addopt(@value "null" @description "all files")
-            $addopt(@value "'audio'" @description "audio files")
-            $addopt(@value "'midi'" @description "midi files")
+            $addopt(@value "null" @description "all" "files")
+            $addopt(@value "'audio'" @description "audio" "files")
+            $addopt(@value "'midi'" @description "midi" "files")
         )
     ),
     @output $addout(@description "list of media files", @type "list")
@@ -283,15 +283,15 @@ BP_REF_TIMEUNIT_OPTIONS = (
 );
 
 BP_REF_AUDIO_DOMAIN_OPTIONS = (
-    $addopt(@value 0, @description "frequency domain")
-    $addopt(@value 1, @description "time domain")
+    $addopt(@value 0, @description "frequency" "domain")
+    $addopt(@value 1, @description "time" "domain")
 );
 
 BP_REF_PITCH_FORMAT_OPTIONS = (
     $addopt(@value 0 @description "cents")
     $addopt(@value 1 @description "MIDI" )
     $addopt(@value 2 @description "Hertz")
-    $addopt(@value 3 @description "frequency ratio")
+    $addopt(@value 3 @description "frequency" "ratio")
 );
 
 BP_REF_SWITCH_OPTIONS = (
@@ -302,7 +302,7 @@ BP_REF_SWITCH_OPTIONS = (
 BP_REF_NORMALIZE_OPTIONS = (
     $addopt(@value 0 @description "never")
     $addopt(@value 1 @description "always")
-    $addopt(@value 2 @description "overload protection only" )
+    $addopt(@value 2 @description "overload" "protection" "only" )
 );
 
 BP_REF_WINDOW_OPTIONS = (
@@ -343,10 +343,10 @@ BP_REF_RESAMPLINGMODE_OPTIONS = (
 
 BP_REF_RESAMPLINGPOLICY_OPTIONS = (
     $addopt(@value 0 @description "don't")
-    $addopt(@value 1 @description "to lowest")
-    $addopt(@value 2 @description "to highest")
-    $addopt(@value 3 @description "to most common")
-    $addopt(@value 4 @description "to max. current")
+    $addopt(@value 1 @description "to" "lowest")
+    $addopt(@value 2 @description "to" "highest")
+    $addopt(@value 3 @description "to" "most" "common")
+    $addopt(@value 4 @description "to" "max." "current")
 );
 
 ## ------------------------------------------------------------
@@ -1322,33 +1322,33 @@ $addref(
     @arguments (
         $addarg(@name "voicenames", @default "'output'" @type "list/symbol", @description "voice names.")
         $addarg(@name "clefs", @default "'FFGG'" @type "list/symbol", @description "clef type for each voice, as a symbol." @options
-            $addopt(@value "'G'" @description "treble clef")
-            $addopt(@value "'F'" @description "bass clef")
-            $addopt(@value "'FG'" @description "grand staff")
-            $addopt(@value "'FFGG'" @description "full staff")
-            $addopt(@value "'FGG'" @description "bass + treble clef")
-            $addopt(@value "'FFG'" @description "double bass + treble clef")
-            $addopt(@value "'FF'" @description "double bass clef")
-            $addopt(@value "'GG'" @description "double treble clef")
-            $addopt(@value "'G8va'" @description "8va treble clef")
-            $addopt(@value "'G8vb'" @description "8vb treble clef")
-            $addopt(@value "'G15ma'" @description "15ma treble clef")
-            $addopt(@value "'G15mb'" @description "15mb treble clef")
-            $addopt(@value "'F8va'" @description "8va bass clef")
-            $addopt(@value "'F8vb'" @description "8vb bass clef")
-            $addopt(@value "'F15ma'" @description "15ma bass clef")
-            $addopt(@value "'F15mb'" @description "15mb bass clef")
-            $addopt(@value "'Tenor'" @description "Tenor clef")
-            $addopt(@value "'Barytone'" @description "Baritone clef")
-            $addopt(@value "'Alto'" @description "Alto clef")
-            $addopt(@value "'Mezzo'" @description "Mezzo clef")
-            $addopt(@value "'Soprano'" @description "Soprano clef")
-            $addopt(@value "'Percussion'" @description "Percussion clef")
+            $addopt(@value "'G'" @description "treble" "clef")
+            $addopt(@value "'F'" @description "bass" "clef")
+            $addopt(@value "'FG'" @description "grand" "staff")
+            $addopt(@value "'FFGG'" @description "full" "staff")
+            $addopt(@value "'FGG'" @description "bass" "+" "treble" "clef")
+            $addopt(@value "'FFG'" @description "double" "bass" "+" "treble" "clef")
+            $addopt(@value "'FF'" @description "double" "bass" "clef")
+            $addopt(@value "'GG'" @description "double" "treble" "clef")
+            $addopt(@value "'G8va'" @description "8va" "treble" "clef")
+            $addopt(@value "'G8vb'" @description "8vb" "treble" "clef")
+            $addopt(@value "'G15ma'" @description "15ma" "treble" "clef")
+            $addopt(@value "'G15mb'" @description "15mb" "treble" "clef")
+            $addopt(@value "'F8va'" @description "8va" "bass" "clef")
+            $addopt(@value "'F8vb'" @description "8vb" "bass" "clef")
+            $addopt(@value "'F15ma'" @description "15ma" "bass" "clef")
+            $addopt(@value "'F15mb'" @description "15mb" "bass" "clef")
+            $addopt(@value "'Tenor'" @description "tenor" "clef")
+            $addopt(@value "'Barytone'" @description "baritone" "clef")
+            $addopt(@value "'Alto'" @description "alto" "clef")
+            $addopt(@value "'Mezzo'" @description "mezzo" "clef")
+            $addopt(@value "'Soprano'" @description "soprano" "clef")
+            $addopt(@value "'Percussion'" @description "percussion" "clef")
         )
         $addarg(@name "tonedivision", @default 8 @type "int", @description "symbolic tone division." @options
             $addopt(@value 2 @description "semitones")
-            $addopt(@value 4 @description "quarter tones")
-            $addopt(@value 8 @description "eighth tones")
+            $addopt(@value 4 @description "quarter" "tones")
+            $addopt(@value 8 @description "eighth" "tones")
         )
         $addarg(@name "showdurations", @default 0 @type "int", @description "show note durations as lines" @options
             BP_REF_SWITCH_OPTIONS
@@ -1778,8 +1778,8 @@ $addref(
         $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
         $addarg(@name "tail", @default -1, @type "int/float", @description "duration of reverb tail in ms." @options 
             $addopt(@value -1 @description "auto")
-            $addopt(@value 0 @description "no tail")
-            $addopt(@value ">0" @description "duration in ms")
+            $addopt(@value 0 @description "no" "tail")
+            $addopt(@value ">0" @description "duration" "in" "ms")
         )
         $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
         $addarg(@name "wet", @default "0.16", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
@@ -2345,9 +2345,9 @@ $addref(
             $addopt(@value 1 @description "precise") 
         )
         $addarg(@name "pitchmode", @default 2, @type "int", @description "pitch shift mode." @options
-            $addopt(@value 0 @description "high speed") 
-            $addopt(@value 1 @description "high quality") 
-            $addopt(@value 2 @description "high consistency") 
+            $addopt(@value 0 @description "high" "speed") 
+            $addopt(@value 1 @description "high" "quality") 
+            $addopt(@value 2 @description "high" "consistency") 
         )
         $addarg(@name "formants", @default 0, @type "int", @description "formant processing." @options
             BP_REF_SWITCH_OPTIONS
@@ -3241,12 +3241,12 @@ $addref(
     @arguments (
         $addarg(@name "numchannels", @default 1, @type "int", @description "number of output channels.")
         $addarg(@name "channelmode", @default 3, @type "int", @description "downmixing channel conversion type." @options 
-            $addopt(@value 0, @description "delete all samples")
-            $addopt(@value 1, @description "only keep existing channels")
-            $addopt(@value 2, @description "pad last channel")
-            $addopt(@value 3, @description "cyclic repetition of channels while upmixing.")
-            $addopt(@value 4, @description "palindrome cycling of channels while upmixing.")
-            $addopt(@value 5, @description "pan channels to new configuration")
+            $addopt(@value 0, @description "delete" "all" "samples")
+            $addopt(@value 1, @description "only" "keep" "existing channels")
+            $addopt(@value 2, @description "pad" "last" "channel")
+            $addopt(@value 3, @description "cyclic" "repetition" "of" "channels" "while" "upmixing.")
+            $addopt(@value 4, @description "palindrome" "cycling" "of" "channels" "while" "upmixing.")
+            $addopt(@value 5, @description "pan" "channels" "to" "new" "configuration")
         )
         $addarg(@name "autogain", @default 0, @type "int", @description "apply audio compensation, based on ratio between input and output channels." @options
             BP_REF_SWITCH_OPTIONS
@@ -3450,7 +3450,7 @@ $addref(
         $addarg(@name "batchinterrupt", @default 0, @type "int", @description "interrupt batch when crossing.")
         $addarg(@name "energy", @default 2, @type "int", @description "energy function used for computing seams." @options
             $addopt(@value 0, @description "magnitude")
-            $addopt(@value 1, @description "gradient magnitude")
+            $addopt(@value 1, @description "gradient" "magnitude")
             $addopt(@value 2, @description "Sobel")
         )
         $addarg(@name "forwardenergy", @default "1.", @type "int/float", @description "amount of forward energy contribution.")
@@ -3458,8 +3458,8 @@ $addref(
             BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "forwardenergytype", @default 1, @type "int", @description "forward energy type." @options
-            $addopt(@value 0, @description "gradient L1 norm")
-            $addopt(@value 1, @description "energy L2 norm")
+            $addopt(@value 0, @description "gradient" "L1" "norm")
+            $addopt(@value 1, @description "energy" "L2" "norm")
         )
         $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
         $addarg(@name "hopsize", @default 1024, @type "int", @description "hop size, in samples")
@@ -3568,15 +3568,15 @@ $addref(
             $addopt(@value 1, @description "circular")
         )
         $addarg(@name "panlaw", @default 1, @type "int", @description "panning law." @options 
-            $addopt(@value 0 @description "nearest neighbor")
+            $addopt(@value 0 @description "nearest" "neighbor")
             $addopt(@value 1 @description "cosine")
         )
         $addarg(@name "rangetype", @default 1, @type "int", @description "panning range type." @options
             $addopt(@value 0 @description "custom")
-            $addopt(@value 1 @description "0 to 1")
-            $addopt(@value 2 @description "-1 to 1")
-            $addopt(@value 3 @description "loudspeaker number — 0-based")
-            $addopt(@value 4 @description "loudspeaker number — 1-based")
+            $addopt(@value 1 @description "0" "to" "1")
+            $addopt(@value 2 @description "-1" "to" "1")
+            $addopt(@value 3 @description "loudspeaker" "number" "—" "0-based")
+            $addopt(@value 4 @description "loudspeaker" "number" "—" "1-based")
         )
         $addarg(@name "range", @default 0 1, @type "list", @description "panning range, as a <min> <max> value pair. Ignored unless @rangetype is 0")
         $addarg(@name "compensate", @default 1, @type "int", @description "Reduce gain for multichannel files by a factor of the number of channels." @options
@@ -3784,7 +3784,7 @@ $addref(
         $addarg(@name "wintype", @default "'hann'", @type "sym/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
         $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode." @options
             $addopt(@value 0 @description "sinusoidal")
-            $addopt(@value 1 @description "stochastic + sinusoidal")
+            $addopt(@value 1 @description "stochastic" "+" "sinusoidal")
         )
         $addarg(@name "stocf", @default '0.2', @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
     ),
