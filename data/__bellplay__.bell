@@ -272,7 +272,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy")::1 collect $addopt(@value $x::(1 1)));
+BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy")::1 collect $addopt(@value "'" + $x::(1 1) + "'"));
 
 BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 0, @description "milliseconds")
