@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New processor: `teeth`.
 - Add button for setting default text editor in tutorials.
 - New tutorial: `bp.tutorial.corpus.bell`.
 - New data file: `test_corpus.llll`.

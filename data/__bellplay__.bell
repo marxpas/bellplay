@@ -2569,6 +2569,46 @@ $addref(
 
 ## ------------------------------------------------------------
 
+teeth = (
+    $feedforward = 5,
+    $feedback = 10,
+    $gain = 0.5,
+    $feedforwardgain = 0.5,
+    $feedbackgain = -0.5 -> (
+        $feedforward = $feedforward.getkey("source") ||| [ bpf($feedforward) ];
+        $feedback = $feedback.getkey("source") ||| [ bpf($feedback) ];
+        $gain = $gain.getkey("source") ||| [ bpf($gain) ];
+        $feedforwardgain = $feedforwardgain.getkey("source") ||| [ bpf($feedforwardgain) ];
+        $feedbackgain = $feedbackgain.getkey("source") ||| [ bpf($feedbackgain) ];
+        [
+            [ "fx" "teeth" ]
+            [ "params"
+                [ "feedforward" $feedforward ]
+                [ "feedback" $feedback ]
+                [ "gain" $gain ]
+                [ "feedforwardgain" $feedforwardgain ]
+                [ "feedbackgain" $feedbackgain ]
+            ]
+        ]
+    )
+);
+
+$addref(
+    @name "teeth",
+    @description "Audio process command for applying comb filtering to a buffer, with feedforward and feedback delay control. See #process.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "feedforward", @default 5, @type "int/float/llll", @description "feedforward delay time, in milliseconds, as either a single number, envelope, or buffer.")
+        $addarg(@name "feedback", @default 10, @type "int/float/llll", @description "feedback delay time, in milliseconds, as either a single number, envelope, or buffer.")
+        $addarg(@name "gain", @default "0.5", @type "int/float/llll", @description "linear gain, as either a single number, envelope, or buffer.")
+        $addarg(@name "feedforwardgain", @default "0.5", @type "int/float/llll", @description "linear feedforward gain, as either a single number, envelope, or buffer.")
+        $addarg(@name "feedbackgain", @default "-0.5", @type "int/float/llll", @description "linear feedback gain, as either a single number, envelope, or buffer.")
+    ),
+    @output $addout(@description "teeth command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 pong = (
     $low = -1,
     $high = 1,
