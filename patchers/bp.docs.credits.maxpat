@@ -40,6 +40,53 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 416.0, 408.0, 383.0, 23.0 ],
+					"text" : "https://www.paypal.com/donate/?hosted_button_id=9A265VMJBYANE"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"drop" : 0,
+					"fontface" : 0,
+					"fontname" : "Lato Light",
+					"fontsize" : 14.0,
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
+					"id" : "obj-8",
+					"linkend" : [ "null" ],
+					"linkstart" : [ "https://", "#" ],
+					"maxclass" : "bach.hypercomment",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 416.0, 369.0, 791.0, 23.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 8.0, 299.358826144953298, 791.0, 23.0 ],
+					"text" : "You can support the development of bellplay~ by making a #donation."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 24.0,
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 309.0, 520.0, 91.0, 35.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 8.0, 262.358826144953298, 307.0, 35.0 ],
+					"text" : "support"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -62,7 +109,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 46.5, 548.0, 150.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 554.0, 790.0, 23.0 ],
+					"presentation_rect" : [ 11.0, 546.0, 790.0, 23.0 ],
 					"text" : "algorithmic audio in bell",
 					"textjustification" : 1
 				}
@@ -76,9 +123,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 103.5, 509.0, 85.0, 35.0 ],
+					"patching_rect" : [ 718.0, 269.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 390.0, 517.0, 67.0, 35.0 ],
+					"presentation_rect" : [ 391.0, 515.0, 66.0, 35.0 ],
 					"text" : "play~"
 				}
 
@@ -91,9 +138,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.5, 509.0, 72.0, 35.0 ],
+					"patching_rect" : [ 718.0, 269.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 354.0, 517.0, 45.0, 35.0 ],
+					"presentation_rect" : [ 355.0, 515.0, 45.0, 35.0 ],
 					"text" : "bell"
 				}
 
@@ -107,10 +154,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 516.0, 407.29457536682969, 100.0, 100.0 ],
+					"patching_rect" : [ 722.0, 152.0, 100.0, 100.0 ],
 					"pic" : "logo.png",
 					"presentation" : 1,
-					"presentation_rect" : [ 328.0, 364.0, 151.0, 151.0 ]
+					"presentation_rect" : [ 355.0, 412.0, 102.0, 102.0 ]
 				}
 
 			}
@@ -139,7 +186,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 26.0, 229.0, 199.0, 48.577590040017782 ],
+					"patching_rect" : [ 638.0, 47.0, 199.0, 48.577590040017782 ],
 					"pic" : "ccm_logo.png",
 					"presentation" : 1,
 					"presentation_rect" : [ 267.0, 7.0, 321.0, 78.358826144953312 ]
@@ -202,7 +249,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "" ],
-					"patching_rect" : [ 9.0, 369.0, 393.0, 23.0 ],
+					"patching_rect" : [ 9.0, 369.0, 389.0, 23.0 ],
 					"text" : "sel #bach #ml.star"
 				}
 
@@ -235,7 +282,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 505.0, 121.0, 604.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 299.358826144953298, 790.0, 23.0 ],
+					"presentation_rect" : [ 8.0, 361.358826144953298, 790.0, 23.0 ],
 					"text" : "bellplay~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). "
 				}
 
@@ -281,7 +328,7 @@
 					"patching_rect" : [ 10.0, 121.0, 438.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 8.0, 124.358826144953312, 793.0, 57.0 ],
+					"presentation_rect" : [ 8.0, 124.358826144953312, 796.0, 57.0 ],
 					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/bellplay "
 				}
 
@@ -309,7 +356,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 47.0, 307.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 262.358826144953298, 307.0, 35.0 ],
+					"presentation_rect" : [ 8.0, 324.358826144953298, 307.0, 35.0 ],
 					"text" : "license"
 				}
 
@@ -373,6 +420,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"source" : [ "obj-2", 0 ]
 				}
@@ -389,6 +443,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
@@ -428,7 +489,7 @@
  ],
 		"autosave" : 0,
 		"boxgroups" : [ 			{
-				"boxes" : [ "obj-145", "obj-52", "obj-5" ]
+				"boxes" : [ "obj-5", "obj-145", "obj-52" ]
 			}
  ],
 		"styles" : [ 			{
