@@ -886,7 +886,7 @@
 					"patching_rect" : [ 703.0, 276.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.6-beta",
+					"text" : "v0.1.7-beta",
 					"textjustification" : 1
 				}
 
@@ -1012,7 +1012,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
