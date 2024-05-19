@@ -109,7 +109,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 46.5, 548.0, 150.0, 40.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 11.0, 546.0, 790.0, 23.0 ],
+					"presentation_rect" : [ 7.5, 568.0, 790.0, 23.0 ],
 					"text" : "algorithmic audio in bell",
 					"textjustification" : 1
 				}
@@ -125,7 +125,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 718.0, 269.0, 85.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 391.0, 515.0, 66.0, 35.0 ],
+					"presentation_rect" : [ 389.0, 537.0, 66.0, 35.0 ],
 					"text" : "play~"
 				}
 
@@ -140,7 +140,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 718.0, 269.0, 72.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 355.0, 515.0, 45.0, 35.0 ],
+					"presentation_rect" : [ 353.0, 537.0, 45.0, 35.0 ],
 					"text" : "bell"
 				}
 
@@ -157,7 +157,7 @@
 					"patching_rect" : [ 722.0, 152.0, 100.0, 100.0 ],
 					"pic" : "logo.png",
 					"presentation" : 1,
-					"presentation_rect" : [ 355.0, 412.0, 102.0, 102.0 ]
+					"presentation_rect" : [ 341.5, 412.0, 123.0, 123.0 ]
 				}
 
 			}
@@ -488,10 +488,6 @@
 			}
  ],
 		"autosave" : 0,
-		"boxgroups" : [ 			{
-				"boxes" : [ "obj-5", "obj-145", "obj-52" ]
-			}
- ],
 		"styles" : [ 			{
 				"name" : "bellplay-gui",
 				"default" : 				{
