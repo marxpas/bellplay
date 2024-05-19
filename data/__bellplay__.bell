@@ -704,12 +704,12 @@ x2dx = ($x -> for $a in left($x, -1), $b in right($x, 1) collect $b - $a);
 
 $addref(
     @name "x2dx",
-    @description "Given a numeric list, outputs the difference between adjacent elements. Inverse of #dx2x.",
+    @description "Takes a list of numbers and returns the differences — i.e., deltas — between adjacent elements. Inverse of #dx2x.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "x", @type "list", @description "list for compute differences for.")
+        $addarg(@name "x", @type "list", @description "list of numeric values.")
     ),
-    @output $addout(@description "dx", @type "list")
+    @output $addout(@description "difference between adjacent elements, as a list.", @type "list")
 );
 
 ## ------------------------------------------------------------
@@ -718,13 +718,42 @@ dx2x = ($dx, $st = 0 -> $st for $x in $dx collect $st += $x);
 
 $addref(
     @name "dx2x",
-    @description "Outputs a numeric list where each element is the result of the cumulative sum of the input list, given a starting value. Inverse of #x2dx.",
+    @description "Takes a list of differences — i.e., deltas — and an optional starting value, and returns the cumulative sum between adjacent elements, as a list. Inverse of #x2dx.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "dx", @type "list", @description "list of differences/deltas.")
-        $addarg(@name "st", @default 0 @type "int/float", @description "starting value")
+        $addarg(@name "st", @default 0 @type "int/float", @description "optional starting value.")
     ),
-    @output $addout(@description "x", @type "list")
+    @output $addout(@description "cumulative sum of differences from starting value.", @type "list")
+);
+
+## ------------------------------------------------------------
+
+r2dr = ($r -> for $a in $r.left(-1), $b in $r.right(1) collect $b / $a);
+
+$addref(
+    @name "r2dr",
+    @description "Takes a list of ratios or factors and returns the quotients between adjacent elements. Inverse of #dr2r.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "r", @type "list", @description "list of ratios.")
+    ),
+    @output $addout(@description "list of quotients between adjacent elements", @type "list")
+);
+
+## ------------------------------------------------------------
+
+dr2r = ($dr, $st = 1 -> ($r = $st; $r for $d in $dr collect ($r *= $d)));
+
+$addref(
+    @name "dr2r",
+    @description "Takes a list of ratios and an optional starting value, and returns the cumulative multiplication between adjacent elements, as a list. Inverse of #r2dr.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "dr", @type "list", @description "list of ratios.")
+        $addarg(@name "st", @default 1 @type "int/float", @description "starting value")
+    ),
+    @output $addout(@description "cumulative multiplication between adjacent elements.", @type "list")
 );
 
 ## ------------------------------------------------------------
