@@ -1738,7 +1738,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 890.0, 48.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 760.0, 320.0, 40.0, 18.0 ],
+					"presentation_rect" : [ 761.5, 320.0, 38.5, 18.0 ],
 					"rounded" : 12,
 					"style" : "bellplay-gui"
 				}
