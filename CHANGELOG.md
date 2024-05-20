@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Try `stop` `start` on load to fix audio off issue.
 - Change @N to @n in `hanning`.
   
 ### Fixed
