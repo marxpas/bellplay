@@ -1614,6 +1614,24 @@ $addref(
 
 ## ------------------------------------------------------------
 
+essentia = (
+    $buffer, 
+    $extractors -> (
+        if $extractors == null then printerror("you must provide a value for @extractors in essentia().");
+        if $buffer == null then printerror("you must provide a value for @buffer in essentia().");
+        BP_ESSENTIA_OUTPUT = null;
+        [ "buffer" $buffer ]
+        [ "extractors"
+            $extractors
+        ];
+        BP_ESSENTIA_OUTPUT
+    )
+);
+
+envmaxtime = ( -> ( [ "name" "envmaxtime" ] [ "settings" ] [ "output" "envmaxtime" ]));
+
+## ------------------------------------------------------------
+
 process = (
     $buffer, 
     $commands, 

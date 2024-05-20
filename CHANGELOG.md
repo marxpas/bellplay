@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add draft version of `np.essentia~`, pending integration.
 - New functions: `r2dr` and `dr2r` with docs.
 
 ### Changed
