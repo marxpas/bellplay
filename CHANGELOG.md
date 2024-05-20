@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - New functions: `r2dr` and `dr2r` with docs.
 
 ### Changed
+
+- Change @N to @n in `hanning`.
   
 ### Fixed
 

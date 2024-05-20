@@ -1510,14 +1510,14 @@ $addref(
 
 ## ------------------------------------------------------------
 
-hanning = ($N = 16 -> ($N -= 1; sin((pi * (0...$N)) / $N) ** 2.));
+hanning = ($length = 16 -> ($length -= 1; sin((pi * (0...$length)) / $length) ** 2.));
 
 $addref(
     @name "hanning",
     @description "Generates a hanning window as a numeric list.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "N", @type "int", @default 16, @description "window resolution.")
+        $addarg(@name "length", @type "int", @default 16, @description "window length.")
     ),
     @output $addout(@description "hanning window" @type "list")
 );
