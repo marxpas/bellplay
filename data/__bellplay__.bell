@@ -4,7 +4,8 @@ BP_TREE_NORM = null;
 BP_REF_LABEL_UTILS = "utilities";
 BP_REF_LABEL_PROCESS = "audio processing";
 BP_REF_LABEL_GEN = "audio generation";
-BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN collect [ $i ]);
+BP_REF_LABEL_ANALYSIS = "audio analysis";
+BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN BP_REF_LABEL_ANALYSIS collect [ $i ]);
 BP_REF_TIMEUNIT_OPTIONS = null;
 BP_REF_AUDIO_DOMAIN_OPTIONS = null;
 BP_BELLPLAY_CORPUS = null;
@@ -347,6 +348,13 @@ BP_REF_RESAMPLINGPOLICY_OPTIONS = (
     $addopt(@value 2 @description "to" "highest")
     $addopt(@value 3 @description "to" "most" "common")
     $addopt(@value 4 @description "to" "max." "current")
+);
+
+BP_REF_ANALYSIS_OPTIONS = (
+    $addopt(@value 0 @description "global")
+    $addopt(@value 1 @description "time" "series")
+    $addopt(@value 2 @description "time-tagged" "time" "series")
+    $addopt(@value 3 @description "buffer")
 );
 
 ## ------------------------------------------------------------
@@ -1690,6 +1698,17 @@ essentia = (
     )
 );
 
+$addref(
+    @name "essentia",
+    @description "Applies a sequence of audio analysis operations to the input buffer, via audio descriptors. These descriptors are generated through functions (e.g., see #flux, #dissonance, #spectrum), which contain the parameters for that specific audio analysis.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "buffer", @type "llll", @description "buffer to analyze.")
+        $addarg(@name "extractors", @type "llll", @description "list of audio descriptors.")
+    ),
+    @output $addout(@description "analyzed buffer" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 BP_ESSENTIA_WRAPPER_FUNC = (
@@ -1713,21 +1732,71 @@ BP_ESSENTIA_WRAPPER_FUNC = (
 
 envmaxtime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmaxtime"));
 
+$addref(
+    @name "envmaxtime",
+    @description "Audio descriptor to extract the time at which the global maxima of the buffer's envelope occurs. See #essentia.",
+    @category BP_REF_LABEL_ANALYSIS,
+    @output $addout(@description "envmaxtime descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 envmintime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmintime"));
+
+$addref(
+    @name "envmintime",
+    @description "Audio descriptor to extract the time at which the global minima of the buffer's envelope occurs. See #essentia.",
+    @category BP_REF_LABEL_ANALYSIS,
+    @output $addout(@description "envmintime descriptor" @type "llll")
+);
 
 ## ------------------------------------------------------------
 
 dissonance = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance" @mode $mode));
 
+$addref(
+    @name "dissonance"
+    @description "Audio descriptor to compute the sensory dissonance of a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "dissonance descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 inharmonicity = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "inharmonicity" @mode $mode));
 
+$addref(
+    @name "inharmonicity"
+    @description "Audio descriptor to calculate the inharmonicity of a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "inharmonicity descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 strongdecay = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "strongdecay"));
+
+$addref(
+    @name "strongdecay"
+    @description "Audio descriptor to compute the strong decay of a buffer. The strong decay is built from the non-linear combination of the signal energy and the signal temporal centroid, the latter being the balance of the absolute value of the signal. A signal containing a temporal centroid near its start boundary and a strong energy is said to have a strong decay. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "strongdecay descriptor" @type "llll")
+);
 
 ## ------------------------------------------------------------
 
@@ -1762,12 +1831,24 @@ spectrum = (
     )
 );
 
+$addref(
+    @name "spectrum"
+    @description "Audio descriptor to compute the magnitude spectrum of a buffer. The resulting magnitude spectrum has a size which is half the size of the input array plus one. Bins contain raw (linear) magnitude values. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "strongdecay descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 rhythmextractor = (
     $maxtempo = 208,
-    $method = 'multifeature',
-    $mintempo = 40 -> (
+    $mintempo = 40,
+    $method = 'multifeature' -> (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "rhythmextractor2013" 
             @settings (
@@ -1785,6 +1866,21 @@ rhythmextractor = (
     )
 );
 
+$addref(
+    @name "rhythmextractor"
+    @description "Audio descriptor for extract the beat positions and estimate their confidence as well as tempo in bpm for a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "maxtempo", @type "int", @description "fastest tempo to detect, between 60 and 250.")
+        $addarg(@name "mintempo", @type "int", @description "slowest tempo to detect, between 40 and 180.")
+        $addarg(@name "method", @type "symbol", @description "method used for beat tracking." @options
+            $addopt(@value "degara" @description "degara method")
+            $addopt(@value "multifeature" @description "multifeature method")
+        )
+    )
+    @output $addout(@description "rhythmextractor descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
@@ -1795,6 +1891,13 @@ logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
             "logattackend"
         )
     )
+);
+
+$addref(
+    @name "logattacktime"
+    @description "Audio descriptor to compute the log (base 10) of the attack time of buffer's envelope. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @output $addout(@description "logattacktime descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1808,16 +1911,101 @@ chordsdetection = (
     )
 );
 
+$addref(
+    @name "chordsdetection"
+    @description "Audio descriptor to perform chord estimation on a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "chordsdetection descriptor" @type "llll")
+);
+
 ## ------------------------------------------------------------
 
 pitchmelodia = (
+    $binresolution = 10,
+    $filteriterations = 3,
+    $framesize = 2048,
+    $guessunvoiced = 0,
+    $harmonicweight = 0.8,
+    $hopsize = 128,
+    $magnitudecompression = 1,
+    $magnitudethreshold = 40,
+    $maxfrequency = 20000,
+    $minduration = 100,
+    $minfrequency = 40,
+    $numberharmonics = 20,
+    $peakdistributionthreshold = 0.9,
+    $peakframethreshold = 0.9,
+    $pitchcontinuity = 27.5625,
+    $referencefrequency = 55,
+    $samplerate = 44100,
+    $timecontinuity = 100,
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "pitchmelodia"
             @output "pitchmelodia" "pitchmelodiaconfidence"
+            @settings (
+                "@binresolution" $binresolution
+                "@filteriterations" $filteriterations
+                "@framesize" $framesize
+                "@guessunvoiced" $guessunvoiced
+                "@harmonicweight" $harmonicweight
+                "@hopsize" $hopsize
+                "@magnitudecompression" $magnitudecompression
+                "@magnitudethreshold" $magnitudethreshold
+                "@maxfrequency" $maxfrequency
+                "@minduration" $minduration
+                "@minfrequency" $minfrequency
+                "@numberharmonics" $numberharmonics
+                "@peakdistributionthreshold" $peakdistributionthreshold
+                "@peakframethreshold" $peakframethreshold
+                "@pitchcontinuity" $pitchcontinuity
+                "@referencefrequency" $referencefrequency
+                "@samplerate" $samplerate
+                "@timecontinuity" $timecontinuity
+            )
             @mode $mode
         )
     )
+);
+
+$addref(
+    @name "pitchmelodia"
+    @description "Audio descriptor to estimate the fundamental frequency corresponding to the melody of a monophonic music signal based on the MELODIA algorithm. While the algorithm is originally designed to extract the predominant melody from polyphonic music, this implementation is adapted for monophonic signals. The approach is based on the creation and characterization of pitch contours, time continuous sequences of pitch candidates grouped using auditory streaming cues. It is strongly advised to use the default parameter values which are optimized for this task, except for @minfrequency and @maxfrequency, which will be context-dependent. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "binresolution" @default 10 @type "int" @description "salience function bin resolution, cents.")
+        $addarg(@name "filteriterations" @default 3 @type "int" @description "number of iterations for the octave errors / pitch outlier filtering process.")
+        $addarg(@name "framesize" @default 2048 @type "int" @description "frame size for computing pitch salience.")
+        $addarg(@name "guessunvoiced" @default 0 @type "int" @description "estimate pitch for non-voiced segments." @options
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "harmonicweight" @default "0.8" @type "int/float" @description "weight decay ratio between two consequent harmonics. Use 1 for no decay.")
+        $addarg(@name "hopsize" @default 128 @type "int" @description "hop size with which the pitch salience function was computed.")
+        $addarg(@name "magnitudecompression" @default 1 @type "int" @description "magnitude compression parameter for the salience function." @options
+            $addopt(@value 0 @description "maximum compression")
+            $addopt(@value 1 @description "no compression")
+        )
+        $addarg(@name "magnitudethreshold" @default 40 @type "int" @description "spectral peak magnitude threshold, in decibels.")
+        $addarg(@name "maxfrequency" @default 20000 @type "int/float" @description "the maximum allowed frequency for salience function peaks.")
+        $addarg(@name "minduration" @default 100 @type "int" @description "the minimum allowed contour duration.")
+        $addarg(@name "minfrequency" @default 40 @type "int/float" @description "the minimum allowed frequency for salience function peaks.")
+        $addarg(@name "numberharmonics" @default 20 @type "int" @description "number of considered harmonics.")
+        $addarg(@name "peakdistributionthreshold" @default "0.9" @type "int/float" @description "allowed deviation below the peak salience mean over all frames.")
+        $addarg(@name "peakframethreshold" @default "0.9" @type "int/float" @description "per-frame salience threshold factor.")
+        $addarg(@name "pitchcontinuity" @default "27.5625" @type "int/float" @description "maximum allowed pitch change during 1 ms time period, in cents.")
+        $addarg(@name "referencefrequency" @default 55 @type "int/float" @description "the reference frequency to cent conversion corresponding to the 0th cent bin.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "the sampling rate of the audio signal.")
+        $addarg(@name "timecontinuity" @default 100 @type "int" @description "maximum allowed gap duration for a pitch contour, in milliseconds.")
+        $addarg(@name "mode" @default 0 @type "int" @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "pitchmelodia descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1835,6 +2023,25 @@ flux = (
             @mode $mode
         )
     )
+);
+
+$addref(
+    @name "flux"
+    @description "Audio descriptor to compute the spectral flux of a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "halfrectify" @default 0 @type "int", @description "half-rectify the differences in each spectrum bin." @options
+            BP_REF_SWITCH_OPTIONS    
+        )
+        $addarg(@name "norm" @default "L2" @type "symbol", @description "norm to use for difference computation." @options 
+            $addopt(@value "L1" @description "L1 norm")
+            $addopt(@value "L2" @description "L2 norm")
+        )
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "flux descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1970,7 +2177,7 @@ $addref(
             BP_REF_TIMEUNIT_OPTIONS
         )
     ),
-    @output $addout(@description "processed buffer" @type "llll")
+    @output $addout(@description "crop command" @type "llll")
 );
 
 ## ------------------------------------------------------------
