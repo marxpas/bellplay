@@ -2172,7 +2172,6 @@ $addref(
     @output $addout(@description "larm descriptor" @type "llll")
 );
 
-
 ## ------------------------------------------------------------
 
 flatness = (
@@ -2186,7 +2185,7 @@ flatness = (
 
 $addref(
     @name "flatness"
-    @description "Audio descriptor to calculate the flatness coefficient of a buffer envelope. See #essentia."
+    @description "Audio descriptor to compute the flatness of a buffer, defined as the ratio between the geometric mean and the arithmetic mean. See #essentia."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
