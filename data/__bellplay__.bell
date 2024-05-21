@@ -2143,6 +2143,38 @@ $addref(
 
 ## ------------------------------------------------------------
 
+larm = (
+    $attacktime = 10,
+    $power = 1.5,
+    $releasetime = 1500,
+    $samplerate = 44100,
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "larm"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "larm"
+    @description "Audio descriptor to estimate the long-term loudness of a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "attacktime" @default 10 @type "int" @description "attack time of the first order lowpass in the attack phase.")
+        $addarg(@name "power" @default "1.5" @type "int/float" @description "power used for averaging.")
+        $addarg(@name "releasetime" @default 1500 @type "int" @description "release time of the first order lowpass in the release phase.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "larm descriptor" @type "llll")
+);
+
+
+## ------------------------------------------------------------
+
 flatness = (
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
