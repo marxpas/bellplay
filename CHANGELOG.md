@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New extractor: `spectralcontrast`.
 - Complete docs for `essentia` function.
 - New extractor: `tonalkey`.
 - New extractor: `flatness`, `rolloff`, `onsets`.
