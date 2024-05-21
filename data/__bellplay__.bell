@@ -1616,13 +1616,71 @@ $addref(
 
 essentia = (
     $buffer, 
-    $extractors -> (
+    $extractors,
+    $winstartfromzero = 0,
+    $framesize = 2048,
+    $hopsize = 1024,
+    $numframes = "auto",
+    $overlap = 2.,
+    $wintype = 'hann',
+    $winnormalized = 1,
+    $envattack = 10,
+    $envrelease = 100,
+    $onsetdetectionmethod = 'complex',
+    $peaksmaxnum = 100,
+    $peaksorderby = 'complex',
+    $peaksmagthresh = 0,
+    $peaksmaxfreq = 5000,
+    $peaksminfreq = 0,
+    $summary = 3,
+    $summaryweight = 1,
+    $summarypositive = 0,
+    $ampunit = 0,
+    $antimeunit = 1,
+    $envtimeunit = 0,
+    $frequnit = 0,
+    $pitchunit = 0,
+    $timeunit = 0,
+    $yinmaxfreq = 22050,
+    $yinminfreq = 20,
+    $yintolerance = 1,
+    $bufinterp = 0 -> (
         $source = $buffer.process(bpthru()).getkey("source");
         if $source == null then printerror("you must provide a value for @buffer in essentia().");
         if $extractors == null then printerror("you must provide a value for @extractors in essentia().");
         BP_ESSENTIA_OUTPUT = null;
         msg("essentia",
             [ "buffer" $source ]
+            [ "settings"
+                [ "@winstartfromzero" $winstartfromzero ]
+                [ "@framesize" $framesize ]
+                [ "@hopsize" $hopsize ]
+                [ "@numframes" $numframes ]
+                [ "@overlap" $overlap ]
+                [ "@wintype" $wintype ]
+                [ "@winnormalized" $winnormalized ]
+                [ "@envattack" $envattack ]
+                [ "@envrelease" $envrelease ]
+                [ "@onsetdetectionmethod" $onsetdetectionmethod ]
+                [ "@peaksmaxnum" $peaksmaxnum ]
+                [ "@peaksorderby" $peaksorderby ]
+                [ "@peaksmagthresh" $peaksmagthresh ]
+                [ "@peaksmaxfreq" $peaksmaxfreq ]
+                [ "@peaksminfreq" $peaksminfreq ]
+                [ "@summary" $summary ]
+                [ "@summaryweight" $summaryweight ]
+                [ "@summarypositive" $summarypositive ]
+                [ "@ampunit" $ampunit ]
+                [ "@antimeunit" $antimeunit ]
+                [ "@envtimeunit" $envtimeunit ]
+                [ "@frequnit" $frequnit ]
+                [ "@pitchunit" $pitchunit ]
+                [ "@timeunit" $timeunit ]
+                [ "@yinmaxfreq" $yinmaxfreq ]
+                [ "@yinminfreq" $yinminfreq ]
+                [ "@yintolerance" $yintolerance ]
+                [ "@bufinterp" $bufinterp ]
+            ]
             [ "extractors"
                 $extractors
             ]
