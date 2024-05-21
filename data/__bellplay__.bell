@@ -283,6 +283,26 @@ BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 4, @description "samples" "difference")
 );
 
+BP_REF_ANTIMEUNIT_OPTIONS = (
+    $addopt(@value 0, @description "milliseconds")
+    $addopt(@value 1, @description "samples")
+    $addopt(@value 2, @description "duration" "ratio")
+);
+
+BP_REF_FREQUNIT_OPTIONS = (
+    $addopt(@value 0 @description "Hertz")
+    $addopt(@value 1 @description "BPM")
+    $addopt(@value 2 @description "midicents")
+    $addopt(@value 3 @description "MIDI")
+);
+
+BP_REF_PITCHUNIT_OPTIONS = (
+    $addopt(@value 0 @description "midicents")
+    $addopt(@value 1 @description "MIDI")
+    $addopt(@value 2 @description "Hertz")
+    $addopt(@value 3 @description "ratio")
+);
+
 BP_REF_AUDIO_DOMAIN_OPTIONS = (
     $addopt(@value 0, @description "frequency" "domain")
     $addopt(@value 1, @description "time" "domain")
@@ -350,11 +370,20 @@ BP_REF_RESAMPLINGPOLICY_OPTIONS = (
     $addopt(@value 4 @description "to" "max." "current")
 );
 
-BP_REF_ANALYSIS_OPTIONS = (
+BP_REF_ESSENTIA_ANALYSIS_OPTIONS = (
     $addopt(@value 0 @description "global")
     $addopt(@value 1 @description "time" "series")
     $addopt(@value 2 @description "time-tagged" "time" "series")
     $addopt(@value 3 @description "buffer")
+);
+
+BP_REF_ESSENTIA_ONSET_METHOD = (
+    $addopt(@value "'hfc'" @description "high frequency content.")
+    $addopt(@value "'complex'" @description "the complex-domain spectral difference function.")
+    $addopt(@value "'complex_phase'" @description "the simplified complex-domain spectral difference function taking into account phase changes, weighted by magnitude.")
+    $addopt(@value "'flux'" @description "spectral flux.")
+    $addopt(@value "'melflux'" @description "similar to spectral flux, but using half-rectified energy changes in Mel-frequency bands.")
+    $addopt(@value "'rms'" @description "the difference function, measuring the half-rectified change of the RMS of the magnitude spectrum.")
 );
 
 ## ------------------------------------------------------------
@@ -1703,8 +1732,76 @@ $addref(
     @description "Applies a sequence of audio analysis operations to the input buffer, via audio descriptors. These descriptors are generated through functions (e.g., see #flux, #dissonance, #spectrum), which contain the parameters for that specific audio analysis.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "buffer", @type "llll", @description "buffer to analyze.")
-        $addarg(@name "extractors", @type "llll", @description "list of audio descriptors.")
+        $addarg(@name "buffer" @type "llll", @description "buffer to analyze.")
+        $addarg(@name "extractors" @type "llll" @description "list of audio descriptors.")
+        $addarg(@name "winstartfromzero" @default 0 @type "int" @description "center first window at @framesize / 2 instead of 0." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "framesize" @default 2048 @type "int" @description "analysis frame size or window size.")
+        $addarg(@name "hopsize" @default 1024 @type "int" @description "analysis hop size.")
+        $addarg(@name "numframes" @default "'auto'" @type "int/symbol" @description "number of analysis frames." @options
+            $addopt(@value "'auto'" @description "infer from @framesize and @hopsize.")
+            $addopt(@value ">0" @description "ignores @hopsize.")
+        )
+        $addarg(@name "overlap" @default 2 @type "int" @description "overlap factor between analysis window size and hop size.")
+        $addarg(@name "wintype" @default "'hann'" @type "int" @description "window type" @options
+            BP_REF_WINDOW_OPTIONS
+        )
+        $addarg(@name "winnormalized" @default 1 @type "int" @description "normalize analysis windows to have an area of 1 and then scaled by a factor of 2.")
+        $addarg(@name "envattack" @default 10 @type "int/float" @description "attack time for computing envelopes.")
+        $addarg(@name "envrelease" @default 100 @type "int" @description "release time for computing envelopes.")
+        $addarg(@name "onsetdetectionmethod" @default "'complex'" @type "symbol" @description "onset detection method." @options
+            BP_REF_ESSENTIA_ONSET_METHOD
+        )
+        $addarg(@name "peaksmaxnum" @default 100 @type "int" @description "maximum number of peaks for peaks analyis.")
+        $addarg(@name "peaksorderby" @default "'complex'" @type "symbol" @description "ordering method of the peaks in the peaks analysis." @options 
+            BP_REF_ESSENTIA_ONSET_METHOD
+        )
+        $addarg(@name "peaksmagthresh" @default 0 @type "int/float" @description "magnitude threshold for the peaks analyis.")
+        $addarg(@name "peaksmaxfreq" @default 5000 @type "int/float" @description "maximum frequency for the peaks analyis.")
+        $addarg(@name "peaksminfreq" @default 0 @type "int/float" @description "minimum frequency for the peaks analyis.")
+        $addarg(@name "summary" @default 3 @type "int" @description "summarization mode, for global analyses that are computed on a frame-by-frame basis." @options 
+            $addopt(@value 0 @description "use" "first" "frame.")
+            $addopt(@value 1 @description "use" "last" "frame.")
+            $addopt(@value 2 @description "use" "middle" "frame.")
+            $addopt(@value 3 @description "average" "through" "frames.")
+            $addopt(@value 4 @description "median" "through" "frames.")
+            $addopt(@value 5 @description "mode" "through" "frames.")
+        )
+        $addarg(@name "summaryweight" @default 1 @type "int" @description "summarization weight, when @summary is 4." @options 
+            $addopt(@value 0 @description "none.")
+            $addopt(@value 1 @description "rms.")
+            $addopt(@value 2 @description "loudness.")
+        )
+        $addarg(@name "summarypositive" @default 0 @type "int" @description "only summarize with positive values." @options
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "ampunit" @default 0 @type "int" @description "amplitude unit" @options
+            BP_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "antimeunit" @default 1 @type "int" @description "analysis time unit" @options
+            BP_REF_ANTIMEUNIT_OPTIONS
+        )
+        $addarg(@name "envtimeunit" @default 0 @type "int" @description "envelope time unit" @options
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "frequnit" @default 0 @type "int" @description "frequency unit" @options 
+            BP_REF_FREQUNIT_OPTIONS   
+        )
+        $addarg(@name "pitchunit" @default 0 @type "int" @description "pitch unit" @options 
+            BP_REF_PITCHUNIT_OPTIONS
+        )
+        $addarg(@name "timeunit" @default 0 @type "int" @description "time unit"
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "yinmaxfreq" @default 22050 @type "int/float" @description "maximum frequency for the YIN analysis.")
+        $addarg(@name "yinminfreq" @default 20 @type "int/float" @description "minimum frequency for the YIN analysis.")
+        $addarg(@name "yintolerance" @default 1 @type "int/float" @description "tolerance for the YIN analysis.")
+        $addarg(@name "bufinterp" @default 0 @type "int" @description "interpolation mode" @options 
+            $addopt(@value 0 @description "no" "interpolation")
+            $addopt(@value 1 @description "lower" "neighbor")
+            $addopt(@value 2 @description "linear")
+        )
     ),
     @output $addout(@description "analyzed buffer" @type "llll")
 );
@@ -1760,7 +1857,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "dissonance descriptor" @type "llll")
@@ -1776,7 +1873,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "inharmonicity descriptor" @type "llll")
@@ -1792,7 +1889,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "strongdecay descriptor" @type "llll")
@@ -1837,7 +1934,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "strongdecay descriptor" @type "llll")
@@ -1917,7 +2014,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "chordsdetection descriptor" @type "llll")
@@ -2002,7 +2099,7 @@ $addref(
         $addarg(@name "samplerate" @default 44100 @type "int" @description "the sampling rate of the audio signal.")
         $addarg(@name "timecontinuity" @default 100 @type "int" @description "maximum allowed gap duration for a pitch contour, in milliseconds.")
         $addarg(@name "mode" @default 0 @type "int" @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "pitchmelodia descriptor" @type "llll")
@@ -2038,7 +2135,7 @@ $addref(
             $addopt(@value "L2" @description "L2 norm")
         )
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "flux descriptor" @type "llll")
@@ -2061,7 +2158,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "flatness descriptor" @type "llll")
@@ -2092,7 +2189,7 @@ $addref(
         $addarg(@name "cutoff" @default "0.85" @type "float" @description "the ratio of total energy to attain before yielding the roll-off frequency.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "rolloff descriptor" @type "llll")
@@ -2188,7 +2285,7 @@ $addref(
             BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ANALYSIS_OPTIONS
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
     @output $addout(@description "tonalkey descriptor" @type "llll")
@@ -4420,10 +4517,7 @@ $addref(
     @arguments (
         $addarg(@name "func", @type "function", @description "pitch/frequency lambda function, with signature $oldpartials -> $newpartials.")
         $addarg(@name "frequnit", @default 2, @type "int", @description "unit for frequency components in @func." @options 
-            $addopt(@value 0 @description "Hertz")
-            $addopt(@value 1 @description "BPM")
-            $addopt(@value 2 @description "midicents")
-            $addopt(@value 3 @description "MIDI")
+            BP_REF_FREQUNIT_OPTIONS
         )
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
