@@ -1715,9 +1715,40 @@ envmaxtime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmaxtime"));
 
 ## ------------------------------------------------------------
 
+envmintime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmintime"));
+
+## ------------------------------------------------------------
+
+dissonance = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance"));
+
+## ------------------------------------------------------------
+
+rhythmextractor = (
+    $maxtempo = 208,
+    $method = 'multifeature',
+    $mintempo = 40 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "rhythmextractor2013" 
+            @settings (
+                "@maxtempo" $maxtempo
+                "@method" $method
+                "@mintempo" $mintempo
+            )
+            @output (
+                "bpm"
+                "ticks"
+                "estimates"
+                "bpmintervals"
+            )
+        )
+    )
+);
+
+## ------------------------------------------------------------
+
 logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
         @name "logattacktime" 
-        @outputs (
+        @output (
             "logattacktime"
             "logattackstart"
             "logattackend"
@@ -1731,8 +1762,6 @@ chordsdetection = (
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "chordsdetection"
-            @settings (
-            )
             @mode $mode
         )
     )
@@ -1744,8 +1773,6 @@ pitchmelodia = (
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "pitchmelodia"
-            @settings (
-            )
             @output "pitchmelodia" "pitchmelodiaconfidence"
             @mode $mode
         )
@@ -1761,8 +1788,8 @@ flux = (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "flux"
             @settings (
-                [ "halfrectify" $halfrectify ]
-                [ "norm" $norm ]
+                "@halfrectify" $halfrectify
+                "@norm" $norm
             )
             @mode $mode
         )
