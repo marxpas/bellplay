@@ -144,24 +144,6 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "for $x in $x1 collect [ $x.flat() ] ",
-					"id" : "obj-77",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.5, 386.0, 223.0, 23.0 ],
-					"saved_object_attributes" : 					{
-						"embed" : 1,
-						"versionnumber" : 80300
-					}
-,
-					"text" : "bach.eval for $x in $x1 collect [ $x.flat() ]"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"code" : "for $i in $x1 do ($do1 = 'script' 'connect' 'analyzer' $i 'packer' $i ) ",
 					"id" : "obj-59",
 					"linecount" : 3,
@@ -468,7 +450,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.5, 435.0, 30.0, 30.0 ]
+					"patching_rect" : [ 18.0, 383.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -492,7 +474,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.5, 339.0, 67.0, 23.0 ],
+					"patching_rect" : [ 18.0, 339.0, 67.0, 23.0 ],
 					"text" : "r #0output",
 					"varname" : "output[1]"
 				}
@@ -735,7 +717,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-77", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -884,13 +866,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-23", 0 ],
 					"source" : [ "obj-7", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"source" : [ "obj-77", 0 ]
 				}
 
 			}

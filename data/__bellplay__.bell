@@ -1617,18 +1617,99 @@ $addref(
 essentia = (
     $buffer, 
     $extractors -> (
+        $source = $buffer.process(bpthru()).getkey("source");
+        if $source == null then printerror("you must provide a value for @buffer in essentia().");
         if $extractors == null then printerror("you must provide a value for @extractors in essentia().");
-        if $buffer == null then printerror("you must provide a value for @buffer in essentia().");
         BP_ESSENTIA_OUTPUT = null;
-        [ "buffer" $buffer ]
-        [ "extractors"
-            $extractors
-        ];
-        BP_ESSENTIA_OUTPUT
+        msg("essentia",
+            [ "buffer" $source ]
+            [ "extractors"
+                $extractors
+            ]
+        );
+        $features = for $x in BP_ESSENTIA_OUTPUT collect [($x::1).flat(1)];
+        $buffer = [ $buffer.flat(1) $features ]
     )
 );
 
-envmaxtime = ( -> ( [ "name" "envmaxtime" ] [ "settings" ] [ "output" "envmaxtime" ]));
+## ------------------------------------------------------------
+
+BP_ESSENTIA_WRAPPER_FUNC = (
+    $name,
+    $settings,
+    $output,
+    $mode = 0 -> (
+        $mode = ("" "..." ":::" "~"):($mode + 1);
+        if $mode == null then printerror("invalid value for @mode in" $name "extractor");
+        [ 
+            [ "name" $name + $mode ] 
+            [ "settings" 
+                $settings
+            ] 
+            [ "output" $output ||| $name ] 
+        ]
+    )
+);
+
+## ------------------------------------------------------------
+
+envmaxtime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmaxtime"));
+
+## ------------------------------------------------------------
+
+logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
+        @name "logattacktime" 
+        @outputs (
+            "logattacktime"
+            "logattackstart"
+            "logattackend"
+        )
+    )
+);
+
+## ------------------------------------------------------------
+
+chordsdetection = (
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "chordsdetection"
+            @settings (
+            )
+            @mode $mode
+        )
+    )
+);
+
+## ------------------------------------------------------------
+
+pitchmelodia = (
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "pitchmelodia"
+            @settings (
+            )
+            @output "pitchmelodia" "pitchmelodiaconfidence"
+            @mode $mode
+        )
+    )
+);
+
+## ------------------------------------------------------------
+
+flux = (
+    $halfrectify = 0,
+    $norm = "L2",
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "flux"
+            @settings (
+                [ "halfrectify" $halfrectify ]
+                [ "norm" $norm ]
+            )
+            @mode $mode
+        )
+    )
+);
 
 ## ------------------------------------------------------------
 
@@ -3611,7 +3692,7 @@ $addref(
 ## ------------------------------------------------------------
 
 panning = (
-    $position,
+    $position = 0.5,
     $numchannels = 2,
     $panmode = 0,
     $panlaw = 1,
