@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- New extractor: `flatness`.
+- New extractor: `flatness`, `rolloff`.
 - New extractors: `spectrum`, `dissonance`, `inharmonicity` and `strongdecay`.
 - New extractors: `flux` `envmaxtime` `logattacktime` `chordsdetection` and `pitchmelodia`, pending docs.
 - Add draft version of `np.essentia~`, with all arg definitions.

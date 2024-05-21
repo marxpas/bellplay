@@ -2069,6 +2069,37 @@ $addref(
 
 ## ------------------------------------------------------------
 
+rolloff = (
+    $cutoff = 0.85,
+    $samplerate = 44100,
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "rolloff"
+            @settings (
+                "@cutoff" $cutoff
+                "@samplerate" $samplerate
+            )
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "rolloff"
+    @description "Audio descriptor to compute the roll-off frequency of a spectrum. The roll-off frequency is defined as the frequency under which some percentage (cutoff) of the total energy of the spectrum is contained. The roll-off frequency can be used to distinguish between harmonic (below roll-off) and noisy sounds (above roll-off). See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "cutoff" @default "0.85" @type "float" @description "the ratio of total energy to attain before yielding the roll-off frequency.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "rolloff descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 process = (
     $buffer, 
     $commands, 
