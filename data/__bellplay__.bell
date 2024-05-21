@@ -2046,6 +2046,29 @@ $addref(
 
 ## ------------------------------------------------------------
 
+flatness = (
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "flatness"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "flatness"
+    @description "Audio descriptor to calculate the flatness coefficient of a buffer envelope. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "flatness descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 process = (
     $buffer, 
     $commands, 
