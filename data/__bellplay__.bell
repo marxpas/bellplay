@@ -1874,8 +1874,8 @@ $addref(
         $addarg(@name "maxtempo", @type "int", @description "fastest tempo to detect, between 60 and 250.")
         $addarg(@name "mintempo", @type "int", @description "slowest tempo to detect, between 40 and 180.")
         $addarg(@name "method", @type "symbol", @description "method used for beat tracking." @options
-            $addopt(@value "degara" @description "degara method")
-            $addopt(@value "multifeature" @description "multifeature method")
+            $addopt(@value "degara" @description "degara" "method")
+            $addopt(@value "multifeature" @description "multifeature" "method")
         )
     )
     @output $addout(@description "rhythmextractor descriptor" @type "llll")
