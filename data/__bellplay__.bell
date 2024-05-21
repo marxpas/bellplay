@@ -1652,34 +1652,34 @@ essentia = (
         msg("essentia",
             [ "buffer" $source ]
             [ "settings"
-                [ "@winstartfromzero" $winstartfromzero ]
-                [ "@framesize" $framesize ]
-                [ "@hopsize" $hopsize ]
-                [ "@numframes" $numframes ]
-                [ "@overlap" $overlap ]
-                [ "@wintype" $wintype ]
-                [ "@winnormalized" $winnormalized ]
-                [ "@envattack" $envattack ]
-                [ "@envrelease" $envrelease ]
-                [ "@onsetdetectionmethod" $onsetdetectionmethod ]
-                [ "@peaksmaxnum" $peaksmaxnum ]
-                [ "@peaksorderby" $peaksorderby ]
-                [ "@peaksmagthresh" $peaksmagthresh ]
-                [ "@peaksmaxfreq" $peaksmaxfreq ]
-                [ "@peaksminfreq" $peaksminfreq ]
-                [ "@summary" $summary ]
-                [ "@summaryweight" $summaryweight ]
-                [ "@summarypositive" $summarypositive ]
-                [ "@ampunit" $ampunit ]
-                [ "@antimeunit" $antimeunit ]
-                [ "@envtimeunit" $envtimeunit ]
-                [ "@frequnit" $frequnit ]
-                [ "@pitchunit" $pitchunit ]
-                [ "@timeunit" $timeunit ]
-                [ "@yinmaxfreq" $yinmaxfreq ]
-                [ "@yinminfreq" $yinminfreq ]
-                [ "@yintolerance" $yintolerance ]
-                [ "@bufinterp" $bufinterp ]
+                "@winstartfromzero" $winstartfromzero
+                "@framesize" $framesize
+                "@hopsize" $hopsize
+                "@numframes" $numframes
+                "@overlap" $overlap
+                "@wintype" $wintype
+                "@winnormalized" $winnormalized
+                "@envattack" $envattack
+                "@envrelease" $envrelease
+                "@onsetdetectionmethod" $onsetdetectionmethod
+                "@peaksmaxnum" $peaksmaxnum
+                "@peaksorderby" $peaksorderby
+                "@peaksmagthresh" $peaksmagthresh
+                "@peaksmaxfreq" $peaksmaxfreq
+                "@peaksminfreq" $peaksminfreq
+                "@summary" $summary
+                "@summaryweight" $summaryweight
+                "@summarypositive" $summarypositive
+                "@ampunit" $ampunit
+                "@antimeunit" $antimeunit
+                "@envtimeunit" $envtimeunit
+                "@frequnit" $frequnit
+                "@pitchunit" $pitchunit
+                "@timeunit" $timeunit
+                "@yinmaxfreq" $yinmaxfreq
+                "@yinminfreq" $yinminfreq
+                "@yintolerance" $yintolerance
+                "@bufinterp" $bufinterp
             ]
             [ "extractors"
                 $extractors
