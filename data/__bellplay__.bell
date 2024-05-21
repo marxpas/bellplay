@@ -1937,7 +1937,7 @@ $addref(
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
-    @output $addout(@description "strongdecay descriptor" @type "llll")
+    @output $addout(@description "spectrum descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
