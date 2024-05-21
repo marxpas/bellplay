@@ -1719,7 +1719,48 @@ envmintime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmintime"));
 
 ## ------------------------------------------------------------
 
-dissonance = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance"));
+dissonance = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance" @mode $mode));
+
+## ------------------------------------------------------------
+
+inharmonicity = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "inharmonicity" @mode $mode));
+
+## ------------------------------------------------------------
+
+strongdecay = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "strongdecay"));
+
+## ------------------------------------------------------------
+
+## BUGGY
+## harmonicpeaks = (
+##     $maxharmonics = 20,
+##     $tolerance = 0.2,
+##     $mode = 0 -> (
+##         BP_ESSENTIA_WRAPPER_FUNC(
+##             @name "harmonicpeaks" 
+##             @mode $mode
+##             @settings (
+##                 "@maxharmonics" $maxharmonics
+##                 "@tolerance" $tolerance
+##             )
+##         )
+##     )
+## );
+
+## ------------------------------------------------------------
+
+spectrum = (
+    $size = 2048,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectrum" 
+            @mode $mode
+            @settings (
+                "@size" $size
+            )
+        )
+    )
+);
 
 ## ------------------------------------------------------------
 
