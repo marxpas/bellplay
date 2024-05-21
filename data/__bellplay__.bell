@@ -2100,6 +2100,38 @@ $addref(
 
 ## ------------------------------------------------------------
 
+onsets = (
+    $alpha = 0.1,
+    $delay = 5,
+    $framerate = 86.1328,
+    $silencethreshold = 0.02 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "onsets"
+            @settings (
+                "@alpha" $alpha
+                "@delay" $delay
+                "@framerate" $framerate
+                "@silencethreshold" $silencethreshold
+            )
+        )
+    )
+);
+
+$addref(
+    @name "onsets"
+    @description "Audio descriptor to compute the onset positions in a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "alpha" @default "0.1" @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
+        $addarg(@name "delay" @default 5 @type "int" @description "number of frames used to compute the threshold — size of short-onset filter.")
+        $addarg(@name "framerate" @default "86.1328" @type "float" @description "frames per second.")
+        $addarg(@name "silencethreshold" @default "0.02" @type "float" @description "threshold for silence.")
+    )
+    @output $addout(@description "onsets descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 process = (
     $buffer, 
     $commands, 
