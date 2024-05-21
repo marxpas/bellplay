@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `bp.utils.searchbar`: Hide X when bar is empty.
 - Try `stop` `start` on load to fix audio off issue.
 - Change @N to @n in `hanning`.
   
