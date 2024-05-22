@@ -1681,6 +1681,7 @@ essentia = (
     $yinmaxfreq = 22050,
     $yinminfreq = 20,
     $yintolerance = 1,
+    $frametime = 0,
     $bufinterp = 0 -> (
         $source = $buffer.process(bpthru()).getkey("source");
         if $source == null then printerror("you must provide a value for @buffer in essentia().");
@@ -1720,6 +1721,9 @@ essentia = (
             ]
             [ "extractors"
                 $extractors
+                (if $frametime then 
+                    BP_ESSENTIA_WRAPPER_FUNC(@name 'frametime' @mode 1)
+                )
             ]
         );
         $features = for $x in BP_ESSENTIA_OUTPUT collect [($x::1).flat(1)];
@@ -1797,6 +1801,9 @@ $addref(
         $addarg(@name "yinmaxfreq" @default 22050 @type "int/float" @description "maximum frequency for the YIN analysis.")
         $addarg(@name "yinminfreq" @default 20 @type "int/float" @description "minimum frequency for the YIN analysis.")
         $addarg(@name "yintolerance" @default 1 @type "int/float" @description "tolerance for the YIN analysis.")
+        $addarg(@name "frametime" @default 0 @type "int" @description "retrieve analysis window time positions as a separate feature." @options
+            BP_REF_SWITCH_OPTIONS
+        )
         $addarg(@name "bufinterp" @default 0 @type "int" @description "interpolation mode" @options 
             $addopt(@value 0 @description "no" "interpolation")
             $addopt(@value 1 @description "lower" "neighbor")
