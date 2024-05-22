@@ -1721,9 +1721,7 @@ essentia = (
             ]
             [ "extractors"
                 $extractors
-                (if $frametime then 
-                    BP_ESSENTIA_WRAPPER_FUNC(@name 'frametime' @mode 1)
-                )
+                (if $frametime then BP_ESSENTIA_WRAPPER_FUNC(@name 'frametime' @mode 1))
             ]
         );
         $features = for $x in BP_ESSENTIA_OUTPUT collect [($x::1).flat(1)];
@@ -2181,29 +2179,6 @@ $addref(
 
 ## ------------------------------------------------------------
 
-flatness = (
-    $mode = 0 -> ( 
-        BP_ESSENTIA_WRAPPER_FUNC(
-            @name "flatness"
-            @mode $mode
-        )
-    )
-);
-
-$addref(
-    @name "flatness"
-    @description "Audio descriptor to compute the flatness of a buffer, defined as the ratio between the geometric mean and the arithmetic mean. See #essentia."
-    @category BP_REF_LABEL_ANALYSIS
-    @arguments (
-        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
-        )
-    )
-    @output $addout(@description "flatness descriptor" @type "llll")
-);
-
-## ------------------------------------------------------------
-
 spectralcentroid = (
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
@@ -2215,7 +2190,7 @@ spectralcentroid = (
 
 $addref(
     @name "spectralcentroid"
-    @description "Audio descriptor to calculate the spectral centroid of a buffer. See #essentia."
+    @description "Audio descriptor to calculate the spectral centroid of a buffer, defined as the 'center of mass' of the spectrum, in Hertz. Perceptually, it has a robust connection with the impression of 'brightness' of a sound, and therefore is used to characterize musical timbre. It is calculated as the weighted mean of the frequencies present in the signal, with their magnitudes as the weights. See #essentia."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -2223,6 +2198,67 @@ $addref(
         )
     )
     @output $addout(@description "spectralcentroid descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalcentroid = ( 
+    -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "temporalcentroid"
+        )
+    )
+);
+
+$addref(
+    @name "temporalcentroid"
+    @description "Audio descriptor to calculate the temporal centroid of a buffer, defined as the point in time that is a temporal balancing point of the sound's energy. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+    )
+    @output $addout(@description "temporalcentroid descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+spectralflatness = (
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralflatness"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "spectralflatness"
+    @description "Audio descriptor to calculate the spectral flatness of a buffer, defined as the ratio between the spectrum's geometric mean and arithmetic mean. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralflatness descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalflatness = ( 
+    -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "temporalflatness"
+        )
+    )
+);
+
+$addref(
+    @name "temporalflatness"
+    @description "Audio descriptor to calculate the temporal flatness of a buffer, defined as the ratio between the buffer envelope's geometric mean and arithmetic mean. Flatness is undefined for empty input and negative values, therefore an exception is thrown in any both cases. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+    )
+    @output $addout(@description "temporalflatness descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------

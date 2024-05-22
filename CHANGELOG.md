@@ -8,12 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New extractors: `temporalcentroid` `spectralflatness` and `temporalflatness`. 
 - New extractor: `spectralcentroid` .
 - New extractor: `larm`.
 - New extractor: `spectralcontrast`.
 - Complete docs for `essentia` function, with `@frametime` arg.
 - New extractor: `tonalkey`.
-- New extractor: `flatness`, `rolloff`, `onsets`.
+- New extractor: `rolloff`, `onsets`.
 - New extractors: `spectrum`, `dissonance`, `inharmonicity` and `strongdecay`.
 - New extractors: `flux` `envmaxtime` `logattacktime` `chordsdetection` and `pitchmelodia`.
 - Add draft version of `np.essentia~`, with all arg definitions and docs.
