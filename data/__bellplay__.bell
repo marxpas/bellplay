@@ -2197,6 +2197,29 @@ $addref(
 
 ## ------------------------------------------------------------
 
+spectralcentroid = (
+    $mode = 0 -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralcentroid"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "spectralcentroid"
+    @description "Audio descriptor to calculate the spectral centroid of a buffer. See #essentia."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralcentroid descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 spectralcontrast = (
     $framesize = 2048,
     $highfrequencybound = 11000,
