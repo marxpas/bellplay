@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- New extractors: `temporalcentroid` `spectralflatness` and `temporalflatness`. 
+- New extractors: `temporalcentroid` `spectralflatness` and `temporalflatness`.  
 - New extractor: `spectralcentroid` .
 - New extractor: `larm`.
 - New extractor: `spectralcontrast`.
