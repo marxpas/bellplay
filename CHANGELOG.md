@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Removed
 
 - Remove: `analyze`, `getonsets`, `getfeatures`, `detuning`, `wavesynth`.
+- Remove `bp.wavesynth` and unused script routers in `bach.keys`.
 
 ## [v0.1.7-beta] - 2024-05-19
 
