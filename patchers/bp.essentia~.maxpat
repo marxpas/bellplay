@@ -385,7 +385,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.keys buffer extractors settings @nullmode 1"
+					"text" : "bach.keys buffer descriptors settings @nullmode 1"
 				}
 
 			}

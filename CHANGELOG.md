@@ -6,23 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+- MAJOR UPDATE: except for `pitch`, buffers no longer come with dummy features, only basic info (chans, sr, duration, source_end, and offset).
+  
 ### Added
 
-- New extractor: `maxmagfreq`.
-- New extractors: `temporalcentroid` `spectralflatness` and `temporalflatness`.  
-- New extractor: `spectralcentroid` .
-- New extractor: `larm`.
-- New extractor: `spectralcontrast`.
+- Add: `isnan` function, pending docs.
+- New descriptor: `maxmagfreq`.
+- New descriptors: `temporalcentroid` `spectralflatness` and `temporalflatness`.  
+- New descriptor: `spectralcentroid` .
+- New descriptor: `larm`.
+- New descriptor: `spectralcontrast`.
 - Complete docs for `essentia` function, with `@frametime` arg.
-- New extractor: `tonalkey`.
-- New extractor: `rolloff`, `onsets`.
-- New extractors: `spectrum`, `dissonance`, `inharmonicity` and `strongdecay`.
-- New extractors: `flux` `envmaxtime` `logattacktime` `chordsdetection` and `pitchmelodia`.
+- New descriptor: `tonalkey`.
+- New descriptor: `rolloff`, `onsets`.
+- New descriptors: `spectrum`, `dissonance`, `inharmonicity` and `strongdecay`.
+- New descriptors: `flux` `envmaxtime` `logattacktime` `chordsdetection` and `pitchmelodia`.
 - Add draft version of `np.essentia~`, with all arg definitions and docs.
 - New functions: `r2dr` and `dr2r` with docs.
 
 ### Changed
 
+- Change: Change tutorials involving analysis to conform to essentia API: `corpus`, `features`, and `kdtree`.
 - `bp.utils.searchbar`: Hide X when bar is empty.
 - Try `stop` `start` on load to fix audio off issue.
 - Change @N to @n in `hanning`.
@@ -30,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 ### Removed
+
+- Remove: `analyze`, `getonsets`, `getfeatures`, `detuning`, `wavesynth`.
 
 ## [v0.1.7-beta] - 2024-05-19
 

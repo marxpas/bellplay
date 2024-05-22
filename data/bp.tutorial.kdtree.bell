@@ -17,8 +17,12 @@
 ## load source buffer
 $source = importaudio("trumpet.wav");
 
+$source = $source.essentia(
+    onsets()
+);
+
 ## get list of transient-based onset times
-$markers = $source.getonsets();
+$markers = $source.getkey("onsets");
 
 ## get inter-onset durations — we include total duration at the end to compute duration between last onset and end of file
 $durations = x2dx($markers $source.getkey("duration"));
@@ -35,11 +39,14 @@ $segments = for $marker in $markers, $dur in $durations collect (
     $seg = $seg.setkey("offset", $marker);
 
     ## analyze segment and collect
-    $seg.analyze()
+    $seg = $seg.essentia(
+        pitchmelodia()
+    );
+    if $seg.getkey("pitchmelodia") > 0 then $seg
 );
 
 ## build k-dimensional tree on segments' pitch values.
-buildtree($segments, "pitch");
+buildtree($segments, "pitchmelodia");
 
 ## import MIDI file
 $events = importmidi("bach.mid");
@@ -63,9 +70,9 @@ for $event in $events do (
 
     ## find best match given MIDI event's pitch (apply random deviation to get slightly different matches for a given pitch)
     $match = searchtree($pitch + rand(-$tolerance/2, $tolerance/2));
-
+    
     ## get cents deviation between target pitch and buffer match
-    $detune = $match.detuning($pitch);
+    $detune = pitchdiff($match.getkey("pitchmelodia"), $pitch);
     
     ## adjust duration to make up for resampling-based detuning
     $duration /= c2r($detune);
@@ -79,6 +86,7 @@ for $event in $events do (
         @detune $detune
         @gain $gainenv
         @pan rand()
+        @pitchkey "pitchmelodia"
     )
 );
 

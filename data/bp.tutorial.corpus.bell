@@ -21,7 +21,7 @@ setcorpus($corpuspath);
 
 ## perform a SQLite3 query on the corpus, choosing buffers with pitch salience above 0.15 
 ## and ordering the results by pitch, in descending order.
-$buffers = query("SELECT * FROM buffers WHERE pitchsalience > 0.15 ORDER BY pitch DESC");
+$buffers = query("SELECT * FROM buffers WHERE pitchmelodiaconfidence > 0.15 ORDER BY pitchmelodia DESC");
 
 ## iterate through each buffer and transcribe them
 for $buffer $i in $buffers do (
@@ -29,8 +29,10 @@ for $buffer $i in $buffers do (
     ## evenly-spaced onset for current buffer
     $onset = ($i - 1) * 50;
 
+    $pitch = $buffer.getkey("pitchmelodia");
+
     ## get pitch deviation in cents from a Cm7 chord;
-    $detune = $buffer.detuning(0 3 7 10);
+    $detune = $pitch.pitchdiff(0 3 7 10);
 
     ## transcribe buffer, and apply deviation and hanning-shaped gain envelope
     $buffer.transcribe(
@@ -38,6 +40,7 @@ for $buffer $i in $buffers do (
         @detune $detune
         @gain hanning()
         @pan rand()
+        @pitchkey "pitchmelodia"
     )
 );
 

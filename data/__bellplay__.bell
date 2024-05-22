@@ -9,10 +9,8 @@ BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN BP_
 BP_REF_TIMEUNIT_OPTIONS = null;
 BP_REF_AUDIO_DOMAIN_OPTIONS = null;
 BP_BELLPLAY_CORPUS = null;
-
 BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
-BP_TMP_FEATURES = null;
 BP_TMP_ROLL_OUTPUT = null;
 
 ## ------------------------------------------------------------
@@ -118,15 +116,6 @@ getbufferinfo = (
 
 ## ------------------------------------------------------------
 
-getfeatures = (
-    $buffer -> (
-        msg("features", $buffer);
-        BP_TMP_FEATURES
-    )
-);
-
-## ------------------------------------------------------------
-
 printerror = (
     $text, $stop = 1 -> (
         msg("console",
@@ -210,43 +199,25 @@ $addref(
 
 bp_makebuffer = (
     $source,
-    $duration = 50,  
-    $numchannels = 1,
-    $sr = BP_SR,
     $offset = 0,
-    $source_id = -1,
-    $mfcc = 0. :* 13,
-    $pitch = 0,
-    $pitchsalience = 0,
-    $centroid = 0,
-    $loudness = 0,
-    $zerox = 0,
-    $analyze = 0,
-    $info = 0 -> (
+    $info = 1,
+    $pitch = 6000 -> (
         if $source == null then printerror("null buffer encountered");
         $buffer = (
             [ "source" $source ]
-            [ "sr" $sr ]
-            [ "numchannels" $numchannels ]
-            [ "duration" $duration ]
+            [ "sr" BP_SR ]
+            [ "numchannels" 1 ]
+            [ "duration" 50 ]
             [ "offset" $offset ]
-            [ "source_id" $source_id ]
-            [ "mfcc" $mfcc ]
-            [ "centroid" $centroid ]
-            [ "loudness" $loudness ]
-            [ "zerox" $zerox ]
-            [ "pitchsalience" $pitchsalience ]
             [ "pitch" $pitch ]
         );
-        $features = if $analyze then getfeatures($source);
-        $info = if $info then getbufferinfo($source);
-        for $x in $info $features do (
+        $info = if $info == 1 then getbufferinfo($source);
+        for $x in $info do (
             $key = $x:(1 1);
             $key &&& ($buffer.$key = $x.$key)
         );
         [
             $buffer 
-            [ "pitchclass" fmod($buffer."pitch" / 100.0, 12) ] 
             [ "source_end" $buffer."duration" ]
         ]
     )
@@ -273,7 +244,21 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy")::1 collect $addopt(@value "'" + $x::(1 1) + "'"));
+isnan = ($x -> tosymbol($x) == 'nan');
+
+$addref(
+    @name "isnan",
+    @description "Checks if the input argument is strictly a nan — i.e., 'not a number' — value.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "x",  @type "anything" @description "value to check")
+    ),
+    @output $addout(@description "0 if false, 1 if true", @type "int")
+);
+
+## ------------------------------------------------------------
+
+BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy" @info 0)::1 collect $addopt(@value "'" + $x::(1 1) + "'"));
 
 BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 0, @description "milliseconds")
@@ -384,61 +369,6 @@ BP_REF_ESSENTIA_ONSET_METHOD = (
     $addopt(@value "'flux'" @description "spectral flux.")
     $addopt(@value "'melflux'" @description "similar to spectral flux, but using half-rectified energy changes in Mel-frequency bands.")
     $addopt(@value "'rms'" @description "the difference function, measuring the half-rectified change of the RMS of the magnitude spectrum.")
-);
-
-## ------------------------------------------------------------
-
-analyze = (
-    $buffer -> (
-        $source = $buffer.getkey("source");
-        if $source == null then printerror($buffer "is not a valid buffer");
-        $source = $buffer.process(bpthru()).getkey("source");
-        bp_makebuffer(
-            @source $source
-            @analyze 1
-            @info 1
-        )
-    )
-);
-
-$addref(
-    @name "analyze"
-    @description "Performs an audio feature analysis on a buffer and returns a new buffer with updated keys, based on that analysis."
-    @category BP_REF_LABEL_UTILS
-    @arguments (
-        $addarg(@name "buffer" @type "llll",@description "buffer to analyze.")
-    )
-    @output $addout(@description "analyzed buffer", @type "llll")
-);
-
-## ------------------------------------------------------------
-
-getonsets = (
-    $buffer,
-    $threshold = 0.1,
-    $delay = 5 -> (
-        $source = $buffer.getkey("source");
-        if $source == null then printerror($buffer "is not a valid buffer");
-        $source = $buffer.process(bpthru()).getkey("source");
-        msg("onsets", 
-            [ "threshold" $threshold ]
-            [ "delay" $delay ]
-            [ "source" $source ]
-        );
-        BP_BUFF_ONSETS
-    )
-);
-
-$addref(
-    @name "getonsets"
-    @description "Performs transient-based onset detection on a buffer."
-    @category BP_REF_LABEL_UTILS
-    @arguments (
-        $addarg(@name "buffer" @type "llll" @description "buffer to extract onsets from.")
-        $addarg(@name "threshold" @default "0.1" @type "float" @description "silence detection threshold, as linear gain.")
-        $addarg(@name "delay" @default 5 @type "int" @description "the number of frames used to compute the threshold — size of short-onset filter.")
-    )
-    @output $addout(@description "list of onsets in milliseconds", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1072,14 +1002,16 @@ pitchdiff = (
         if $targets == null then (
             printerror("you must provide @targets in pitchdiff")
         );
-        $distances = (
-            if $targets:1 < 12 then (
-                pcdiff($source / 100., $targets) * 100
-            ) else (
-                $targets - $source
-            )
-        );
-        $distances:(minmax(abs($distances)):2)
+        if $source > 0 && $source.isnan() == 0 then (
+            $distances = (
+                if $targets:1 < 12 then (
+                    pcdiff($source / 100., $targets) * 100
+                ) else (
+                    $targets - $source
+                )
+            );
+            $distances:(minmax(abs($distances)):2)
+        ) else 0
     )
 );
 
@@ -1096,34 +1028,14 @@ $addref(
 
 ## ------------------------------------------------------------
 
-detuning = (
-    $buffer, $targets -> (
-        if $buffer == null || $targets == null then (
-            printerror("you must provide values for both @buffer and @targets in detuning()")
-        );
-        $source = getkey($buffer, "pitch");
-        if $source < 0 then (
-            $source = mc2f(getkey($buffer, "centroid"))
-        );
-        pitchdiff($source, $targets)
-    )
-);
-
-$addref(
-    @name "detuning",
-    @description "Given a list of target midicents and/or pitch classes, returns the difference between a buffers' original pitch and the nearest midicent/pitch class target. See #transcribe, and #scoreconfig functions.",
-    @category BP_REF_LABEL_UTILS,
-    @arguments (
-        $addarg(@name "buffer", @type "llll", @description "reference buffer.")
-        $addarg(@name "targets", @type "int/float/list", @description "list of midicent or pitch class targets.")
-    ),
-    @output $addout(@description "pitch shifting amount in cents", @type "int/float")
-);
-
-## ------------------------------------------------------------
-
 transcribe = (
-    $buffer, $onset = 0, $pan = null, $gain = null, $detune = null, $voice = 1 -> (
+    $buffer, 
+    $onset = 0, 
+    $pan = null, 
+    $gain = null, 
+    $detune = null, 
+    $voice = 1, 
+    $pitchkey = "pitch" -> (
         if $voice > BP_SCORE_CONFIG."numvoices" then printerror("@voice value in transcribe() exceeds the number of voices. Use scoreconfig() to change the number of voices.");
         if $buffer == null then (
             printerror("attempt to pass a null value as @buffer in transcribe()")
@@ -1135,13 +1047,16 @@ transcribe = (
         $rate = [ 11 (if $detune && $detune != 0 then c2r($detune)) ];
 
         ## get pitch value
-        $mc = $buffer."pitch";
+        $mc = $pitchkey &&& ($buffer.$pitchkey).flat().left(1);
 
-        ## assign notehead based on pitch salience
-        $notehead = [ 23 (if $buffer."pitchsalience" <= 0.01 then 88 else 85) ];
+        $notehead = 85;
+        
+        if $mc == null || $mc <= 0 || $mc.isnan() then (
+            $mc = 6000;
+            $notehead = 88
+        );
 
-        ## replace pitch with mc centroid if unpitched.
-        $mc = if $mc < 0 then f2mc($buffer."centroid") else $mc;
+        $notehead = [ 23 $notehead ];
 
         ## keep copy before pitch shifting
         $mccopy = $mc; 
@@ -1162,7 +1077,7 @@ transcribe = (
         $gain = if $gain != null then [ 1 bpf($gain, @yfunc ($y -> max(1, $y * 127.))) ];
 
         ## get chord velocity and duration
-        $vel = if $gain then maximum(trans($gain.1)::2) else min(127, $buffer."loudness" * 512);
+        $vel = if $gain then maximum(trans($gain.1)::2) else 64;
         $dur = $buffer."duration";
         
         ## make size slot based on duration
@@ -1190,102 +1105,6 @@ $addref(
 
 ## ------------------------------------------------------------
 
-wavesynth = (
-    $frequency = 440,
-    $amplitude = 0.5,
-    $duration = 50,
-    $waveform = 0,
-    $normalize = 0,
-    $iterationmode = 1,
-    $analyze = 0 -> (
-        $pitch = null;
-        $loudness = null;
-        $maxduration = null;
-        $notes = for $fq in $frequency, $a in $amplitude, $d in $duration with @iterationmode $iterationmode @maxdepth 1 @unwrap 1 collect (
-            ## reset bpf for each note
-            $bpf = null;
-
-            ## check for frequency envelopes
-            if length($fq) > 1 then (
-                ## get starting frequency, assuming envelope is a depth 1 list
-                $start = $fq:1;
-
-                ## if not, it's likely a bpf
-                if depth($fq) > 1 then (
-                    $start = $start:(1 2)
-                );
-                ## generate breakpoint relative to starting frequency and convert to cents
-                $bpf = [ "breakpoints" bpf($fq, @yfunc ($y -^ $start -> r2c($y/$start))) ];
-                
-                ## replace @fq with starting frequency
-                $fq = $start
-            );
-
-            ## check if amp is a bpf
-            if length($a) > 1 || depth($a) > 1 then (
-                $bpf = bpf($a, @yfunc ($y -> max(1, $y * 127.)));
-                $gain = [ 1 $bpf ];
-                $a = maximum((trans($bpf)::2) ||| 1)
-            ) else (
-                $a *= 127.
-            );
-
-            ## convert to midicents
-            $mc = f2mc($fq);
-
-            ## collect pitch and loudness if analysis is skipped
-            if $analyze != 1 then (
-                $pitch _= $mc;
-                $loudness _= $a;
-                $maxduration _= $d
-            );
-
-            ## format note
-            [ $mc $d $a $bpf [ "slots" $gain ]]
-        );
-        msg("wavesynth", 
-            [ "synth" 
-                [ "normalize" $normalize ]
-                [ "waveform" $waveform + 1 ]
-                [ "sr" BP_SR ]
-            ]
-            [ 'roll' 'addchord' [ 0 $notes ] ] 
-        );        
-        bp_makebuffer(
-            @source BP_TMP_BUFF
-            @pitch minimum($pitch ||| 1)
-            @loudness minimum($loudness ||| 1)
-            @duration maximum($maxduration ||| 1)
-            @centroid reduce(mc2f($pitch) * $loudness, #+) / reduce($loudness, #+)
-            @analyze $analyze
-            @info $analyze
-        )
-    )
-);
-
-$addref(
-    @name "wavesynth",
-    @description "Generates a buffer through additive wave synthesis, given frequency, amplitude, and duration values for each partial.",
-    @category BP_REF_LABEL_GEN,
-    @arguments (
-        $addarg(@name "frequency", @type "int/float/list/llll", @default 440, @description "frequency values for each partial. Each value can be a single number or envelope.")
-        $addarg(@name "amplitude", @type "int/float/list", @default "0.5", @description "linear amplitude values for each partial. Each value can be a single number or envelope.")
-        $addarg(@name "duration", @type "int/float/list", @default 100, @description "duration values for each partial, in milliseconds.")
-        $addarg(@name "waveform", @type "int", @default 0, @description "waveform type.", @options 
-            $addopt(@value 0, @description "sinusoid")
-            $addopt(@value 1, @description "triangular")
-            $addopt(@value 2, @description "rectangular")
-            $addopt(@value 3, @description "sawtooth")
-        )
-        $addarg(@name "normalize", @type "int", @default 0, @description "audio normalization.", @options 
-            BP_REF_NORMALIZE_OPTIONS
-        )
-    ),
-    @output $addout(@description "synthesized buffer" @type "llll")
-);
-
-## ------------------------------------------------------------
-
 render = (
    $numchannels = 2, 
    $panmode = 0, 
@@ -1294,7 +1113,6 @@ render = (
    $play = 0, 
    $spread = 0,
    $fade = 5,
-   $analyze = 0,
    $reset = 0,
    $process = null -> (
         if $numchannels < 1 then printerror("number of channels must be greater than 0");
@@ -1312,7 +1130,7 @@ render = (
         ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1));
         ($reset == 1 && msg("roll", "clear"));
-        bp_makebuffer(@source BP_RENDER_BUFF @info 1 @analyze $analyze @pitch 6000)
+        bp_makebuffer(@source BP_RENDER_BUFF)
     )
 );
 
@@ -1335,9 +1153,6 @@ $addref(
         )
         $addarg(@name "spread" @default 0 @type "int/float" @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "fade" @default 5 @type "int/float" @description "fade in/out applied to every buffer, in milliseconds")
-        $addarg(@name "analyze" @default 0 @type "int", @description "analyze rendered output." @options 
-            BP_REF_SWITCH_OPTIONS
-        )
         $addarg(@name "reset", @default 0 @type "int", @description "remove all previously transcribed buffers after rendering." @options
             BP_REF_SWITCH_OPTIONS
         )
@@ -1475,8 +1290,7 @@ $addref(
 ## ------------------------------------------------------------
 
 importaudio = (
-    $path, 
-    $analyze = 0 -> (
+    $path -> (
         BP_TMP_BUFF = null;
         if $path == null then printerror("You must provide a value for @path in importaudio()");
         $pathinfo = getpathinfo($path);
@@ -1491,12 +1305,7 @@ importaudio = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        bp_makebuffer(
-            @source BP_TMP_BUFF
-            @pitch 6000
-            @info 1
-            @analyze $analyze
-        )
+        bp_makebuffer(@source BP_TMP_BUFF)
     )
 );
 
@@ -1506,9 +1315,6 @@ $addref(
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input audio file path.")
-        $addarg(@name "analyze", @default 0 @type "int", @description "analyze audio file." @options
-            BP_REF_SWITCH_OPTIONS
-        )
     ),
     @output $addout(@description "buffer" @type "llll")
 );
@@ -1653,10 +1459,10 @@ $addref(
 
 essentia = (
     $buffer, 
-    $extractors,
+    $descriptors,
     $winstartfromzero = 0,
-    $framesize = 2048,
-    $hopsize = 1024,
+    $framesize = 512,
+    $hopsize = 512,
     $numframes = "auto",
     $overlap = 2.,
     $wintype = 'hann',
@@ -1683,10 +1489,11 @@ essentia = (
     $yintolerance = 1,
     $frametime = 0,
     $bufinterp = 0 -> (
-        $source = $buffer.process(bpthru()).getkey("source");
+        $source = $buffer.getkey("source");
         if $source == null then printerror("you must provide a value for @buffer in essentia().");
-        if $extractors == null then printerror("you must provide a value for @extractors in essentia().");
+        if $descriptors == null then printerror("you must provide a value for @descriptors in essentia().");
         BP_ESSENTIA_OUTPUT = null;
+        $source = $buffer.process(bpthru()).getkey("source");
         msg("essentia",
             [ "buffer" $source ]
             [ "settings"
@@ -1719,12 +1526,12 @@ essentia = (
                 "@yintolerance" $yintolerance
                 "@bufinterp" $bufinterp
             ]
-            [ "extractors"
-                $extractors
+            [ "descriptors"
+                $descriptors
                 (if $frametime then BP_ESSENTIA_WRAPPER_FUNC(@name 'frametime' @mode 1))
             ]
         );
-        $features = for $x in BP_ESSENTIA_OUTPUT collect [($x::1).flat(1)];
+        $features = for $x in BP_ESSENTIA_OUTPUT collect [ ($x::1).flat(1) ];
         $buffer = [ $buffer.flat(1) $features ]
     )
 );
@@ -1735,7 +1542,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer" @type "llll", @description "buffer to analyze.")
-        $addarg(@name "extractors" @type "llll" @description "list of audio descriptors.")
+        $addarg(@name "descriptors" @type "llll" @description "list of audio descriptors.")
         $addarg(@name "winstartfromzero" @default 0 @type "int" @description "center first window at @framesize / 2 instead of 0." @options 
             BP_REF_SWITCH_OPTIONS
         )
@@ -1819,7 +1626,7 @@ BP_ESSENTIA_WRAPPER_FUNC = (
     $output,
     $mode = 0 -> (
         $mode = ("" "..." ":::" "~"):($mode + 1);
-        if $mode == null then printerror("invalid value for @mode in" $name "extractor");
+        if $mode == null then printerror("invalid value for @mode in" $name "descriptor");
         [ 
             [ "name" $name + $mode ] 
             [ "settings" 
@@ -2033,11 +1840,11 @@ pitchmelodia = (
     $framesize = 2048,
     $guessunvoiced = 0,
     $harmonicweight = 0.8,
-    $hopsize = 128,
+    $hopsize = 1024,
     $magnitudecompression = 1,
     $magnitudethreshold = 40,
     $maxfrequency = 20000,
-    $minduration = 100,
+    $minduration = 50,
     $minfrequency = 40,
     $numberharmonics = 20,
     $peakdistributionthreshold = 0.9,
@@ -2087,7 +1894,7 @@ $addref(
             BP_REF_SWITCH_OPTIONS
         )
         $addarg(@name "harmonicweight" @default "0.8" @type "int/float" @description "weight decay ratio between two consequent harmonics. Use 1 for no decay.")
-        $addarg(@name "hopsize" @default 128 @type "int" @description "hop size with which the pitch salience function was computed.")
+        $addarg(@name "hopsize" @default 1024 @type "int" @description "hop size with which the pitch salience function was computed.")
         $addarg(@name "magnitudecompression" @default 1 @type "int" @description "magnitude compression parameter for the salience function." @options
             $addopt(@value 0 @description "maximum compression")
             $addopt(@value 1 @description "no compression")
@@ -2373,7 +2180,7 @@ onsets = (
     $alpha = 0.1,
     $delay = 5,
     $framerate = 86.1328,
-    $silencethreshold = 0.02 -> ( 
+    $silencethreshold = 0.1 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "onsets"
             @settings (
@@ -2468,8 +2275,7 @@ $addref(
 process = (
     $buffer, 
     $commands, 
-    $prefade = 0, 
-    $analyze = 0 -> (
+    $prefade = 0 -> (
         if $buffer == null then (
             printerror("attempt to pass null value as @buffer in process()")
         );
@@ -2487,17 +2293,7 @@ process = (
                 $commands 
             ]
         );
-        bp_makebuffer(
-            @source BP_TMP_BUFF
-            @pitch $buffer.getkey("pitch")
-            @pitchsalience $buffer.getkey("pitchsalience")
-            @loudness $buffer.getkey("loudness")
-            @zerox $buffer.getkey("zerox")
-            @centroid $buffer.getkey("centroid")
-            @mfcc $buffer.getkey("mfcc")
-            @info 1
-            @analyze $analyze
-        )   
+        bp_makebuffer(@source BP_TMP_BUFF @pitch $buffer.getkey("pitch"))
     )
 );
 
@@ -2509,9 +2305,6 @@ $addref(
         $addarg(@name "buffer", @type "llll", @description "buffer to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
         $addarg(@name "prefade", @default 0 @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
-        $addarg(@name "analyze", @default 0 @type "int", @description "post-processing feature analysis." @options
-            BP_REF_SWITCH_OPTIONS
-        )
     ),
     @output $addout(@description "processed buffer" @type "llll")
 );
@@ -2677,14 +2470,17 @@ BP_OSC_GEN_FUNC = (
         $source = $frequency.getkey("source");
         $isnoise = $name == "noise";
         $salience = $isnoise == 0 && $source == null;
+        ## if generator is noise
         if $isnoise == 1 then (
             $frequency = rand(40, 1500)
         ) else if $source == null then (
+            ## if @frequency is an envelope
             $source = envelope($frequency, @duration $duration).getkey("source");
             if depth($frequency) > 1 || length($frequency) > 1 then (
                 $frequency = trans(bpf($frequency))::(2 1)
             )
         ) else (
+            ## if @frequency is a buffer
             $duration = $frequency.getkey("duration");
             $frequency = mc2f(6000)
         );
@@ -2703,14 +2499,7 @@ BP_OSC_GEN_FUNC = (
             ]
         );
         $pitch = f2mc($frequency);
-        bp_makebuffer(
-            @source BP_TMP_BUFF
-            @info 1
-            @pitchsalience $salience
-            @loudness 1.0, 
-            @pitch $pitch 
-            @centroid $frequency
-        )
+        bp_makebuffer(@source BP_TMP_BUFF @pitch $pitch)
     )
 );
 
@@ -2913,10 +2702,7 @@ envelope = (
                 ]
             ]
         );
-        bp_makebuffer(
-            @source BP_TMP_BUFF
-            @info 1
-        )
+        bp_makebuffer(@source BP_TMP_BUFF)
     )
 );
 
