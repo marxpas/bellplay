@@ -16,11 +16,26 @@ BP_TMP_ROLL_OUTPUT = null;
 ## ------------------------------------------------------------
 
 $addref = (
-    $name, $description, $arguments, $output, $category = BP_REF_LABEL_UTILS -> (
+    $name, $description, $arguments, $output, $category = BP_REF_LABEL_UTILS, $anmodes = 0...3, $ankeys = null -> (
+        if $category == BP_REF_LABEL_ANALYSIS then (
+            $mode = $arguments."@mode";
+            if $mode != null then (
+                $mode."options:" = for $i in $anmodes collect ($mode."options:"):($i + 1)
+            );
+            $arguments."@mode" = $mode
+        );
         BP_REF.$category _= [
             $name
             [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
+            (
+                if $category == BP_REF_LABEL_ANALYSIS then (
+                    $ankeys = $ankeys ||| $name;
+                    $ankeys = for $k in $ankeys collect [ "'" + $k + "'" ];
+                    ## if $ankeys.length() == 1 then ($ankeys = [ $ankeys ]);
+                    [ "feature keys:" $ankeys ]
+                )
+            )
             [ "output:" ($output ||| "null") ]
         ]
     )
@@ -1624,16 +1639,21 @@ BP_ESSENTIA_WRAPPER_FUNC = (
     $name,
     $settings,
     $output,
-    $mode = 0 -> (
-        $mode = ("" "..." ":::" "~"):($mode + 1);
-        if $mode == null then printerror("invalid value for @mode in" $name "descriptor");
-        [ 
-            [ "name" $name + $mode ] 
-            [ "settings" 
-                $settings
-            ] 
-            [ "output" $output ||| $name ] 
-        ]
+    $mode = 0,
+    $modes = 0...3 -> (
+        $mode = intersection($mode, $modes);
+        if $mode == null then (
+            printerror("invalid value for @mode in" $name "descriptor.")
+        ) else (
+            $mode = ("" "..." ":::" "~"):($mode + 1);
+            [ 
+                [ "name" $name + $mode ] 
+                [ "settings" 
+                    $settings
+                ] 
+                [ "output" $output ||| $name ] 
+            ]
+        )
     )
 );
 
@@ -1733,9 +1753,7 @@ spectrum = (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "spectrum" 
             @mode $mode
-            @settings (
-                "@size" $size
-            )
+            @settings "@size" $size
         )
     )
 );
@@ -1754,7 +1772,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-rhythmextractor = (
+rhythm = (
     $maxtempo = 208,
     $mintempo = 40,
     $method = 'multifeature' -> (
@@ -1766,19 +1784,20 @@ rhythmextractor = (
                 "@mintempo" $mintempo
             )
             @output (
-                "bpm"
-                "ticks"
-                "estimates"
-                "bpmintervals"
+                "rhythm_bpm"
+                "rhythm_ticks"
+                "rhythm_estimates"
+                "rhythm_intervals"
             )
         )
     )
 );
 
 $addref(
-    @name "rhythmextractor"
+    @name "rhythm"
     @description "Audio descriptor for extract the beat positions and estimate their confidence as well as tempo in bpm for a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
+    @ankeys "rhythm_bpm" "rhythm_ticks" "rhythm_estimates" "rhythm_intervals"
     @arguments (
         $addarg(@name "maxtempo", @type "int", @description "fastest tempo to detect, between 60 and 250.")
         $addarg(@name "mintempo", @type "int", @description "slowest tempo to detect, between 40 and 180.")
@@ -1787,26 +1806,27 @@ $addref(
             $addopt(@value "multifeature" @description "multifeature" "method")
         )
     )
-    @output $addout(@description "rhythmextractor descriptor" @type "llll")
+    @output $addout(@description "rhythm descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
 
-logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
-        @name "logattacktime" 
+logattack = ( -> BP_ESSENTIA_WRAPPER_FUNC(
+        @name "logattacktime"
         @output (
-            "logattacktime"
-            "logattackstart"
-            "logattackend"
+            "logattack"
+            "logattack_start"
+            "logattack_stop"
         )
     )
 );
 
 $addref(
-    @name "logattacktime"
-    @description "Audio descriptor to compute the log (base 10) of the attack time of buffer's envelope. See #analyze."
+    @name "logattack"
+    @description "Audio descriptor to compute the log (base 10) of the attack time of buffer's envelope. The attack time is defined as the time duration from when the sound becomes perceptually audible to when it reaches its maximum intensity. By default, the start of the attack is estimated as the point where the signal envelope reaches 20% of its maximum value in order to account for possible noise presence. Also by default, the end of the attack is estimated as as the point where the signal envelope has reached 90% of its maximum value, in order to account for the possibility that the max value occurres after the log-attack, as in trumpet sounds. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
-    @output $addout(@description "logattacktime descriptor" @type "llll")
+    @ankeys "logattack" "logattack_start" "logattack_stop"
+    @output $addout(@description "logattack descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -1816,6 +1836,7 @@ chordsdetection = (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "chordsdetection"
             @mode $mode
+            @modes 0...2
         )
     )
 );
@@ -1824,6 +1845,7 @@ $addref(
     @name "chordsdetection"
     @description "Audio descriptor to perform chord estimation on a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
+    @anmodes 0...2
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
@@ -1856,7 +1878,7 @@ pitchmelodia = (
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "pitchmelodia"
-            @output "pitchmelodia" "pitchmelodiaconfidence"
+            @output "pitchmelodia" "pitchmelodia_confidence"
             @settings (
                 "@binresolution" $binresolution
                 "@filteriterations" $filteriterations
@@ -1886,6 +1908,7 @@ $addref(
     @name "pitchmelodia"
     @description "Audio descriptor to estimate the fundamental frequency corresponding to the melody of a monophonic music signal based on the MELODIA algorithm. While the algorithm is originally designed to extract the predominant melody from polyphonic music, this implementation is adapted for monophonic signals. The approach is based on the creation and characterization of pitch contours, time continuous sequences of pitch candidates grouped using auditory streaming cues. It is strongly advised to use the default parameter values which are optimized for this task, except for @minfrequency and @maxfrequency, which will be context-dependent. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
+    @ankeys "pitchmelodia" "pitchmelodia_confidence"
     @arguments (
         $addarg(@name "binresolution" @default 10 @type "int" @description "salience function bin resolution, cents.")
         $addarg(@name "filteriterations" @default 3 @type "int" @description "number of iterations for the octave errors / pitch outlier filtering process.")
@@ -2229,7 +2252,7 @@ tonalkey = (
                 "@usethreechords" $usethreechords
             )
             @mode $mode
-            @output "tonalkey"
+            @modes 0...2
         )
     )
 );
@@ -2238,6 +2261,7 @@ $addref(
     @name "tonalkey"
     @description "Audio descriptor to perform tonal key signature estimation on a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
+    @anmodes 0...2
     @arguments (
         $addarg(@name "numharmonics" @default 4 @type "int" @description "number of harmonics that should contribute to the polyphonic profile.")
         $addarg(@name "pcpsize" @default 36 @type "int" @description "pitch class profile size.")

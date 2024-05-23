@@ -21,7 +21,7 @@ setcorpus($corpuspath);
 
 ## perform a SQLite3 query on the corpus, choosing buffers with pitch salience above 0.15 
 ## and ordering the results by pitch, in descending order.
-$buffers = query("SELECT * FROM buffers WHERE pitchmelodiaconfidence > 0.15 ORDER BY pitchmelodia DESC");
+$buffers = query("SELECT * FROM buffers WHERE pitchmelodia_confidence > 0.15 ORDER BY pitchmelodia DESC");
 
 ## iterate through each buffer and transcribe them
 for $buffer $i in $buffers do (

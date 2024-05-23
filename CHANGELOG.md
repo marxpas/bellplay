@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change doc utility functions to include info about audio descriptors. Docs now show supported modes and feature key names.
 - Change `essentia` function name to `analyze`.
 - Change: Change tutorials involving analysis to conform to essentia API: `corpus`, `features`, and `kdtree`.
 - `bp.utils.searchbar`: Hide X when bar is empty.
