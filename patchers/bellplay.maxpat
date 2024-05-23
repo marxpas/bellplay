@@ -2013,13 +2013,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.rminus.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "bach.roll.mxo",
 				"type" : "iLaX"
 			}
@@ -2063,13 +2056,6 @@
 , 			{
 				"name" : "bach.wrap.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bp.analysis.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "bp.bufferinspector.maxpat",
@@ -2128,14 +2114,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.features.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bp.filemenu.maxpat",
+				"name" : "bp.essentia~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2345,13 +2324,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.wavesynth.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "ccm_logo.png",
 				"bootpath" : "~/Documents/bellplay/media",
 				"patcherrelativepath" : "../media",
@@ -2392,10 +2364,6 @@
 			}
 , 			{
 				"name" : "ears.envelope~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.essentia~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2539,19 +2507,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "ears.roll.synthesis~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "ears.rubberband~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "ears.soundtouch~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.split~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -44,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Removed
 
+- Remove `bp.analysis` and `bp.features`.
 - Remove: `analyze`, `getonsets`, `getfeatures`, `detuning`, `wavesynth`.
 - Remove `bp.wavesynth` and unused script routers in `bach.keys`.
 
