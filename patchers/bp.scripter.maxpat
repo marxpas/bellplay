@@ -4070,20 +4070,20 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "BP_QUERY_BUFFERS = $x1 ",
+									"code" : "BP_DATABASE_OUTPUT = $x1 ",
 									"id" : "obj-164",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 188.0, 208.0, 23.0 ],
+									"patching_rect" : [ 11.0, 188.0, 224.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"embed" : 1,
 										"versionnumber" : 80300
 									}
 ,
 									"style" : "bellplay-gui",
-									"text" : "bach.eval BP_QUERY_BUFFERS = $x1"
+									"text" : "bach.eval BP_DATABASE_OUTPUT = $x1"
 								}
 
 							}

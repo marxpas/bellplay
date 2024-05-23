@@ -1,5 +1,5 @@
 BP_VERSION = "v0.1.7-beta";
-BP_QUERY_BUFFERS = null;
+BP_DATABASE_OUTPUT = null;
 BP_TREE_NORM = null;
 BP_REF_LABEL_UTILS = "utilities";
 BP_REF_LABEL_PROCESS = "audio processing";
@@ -461,7 +461,7 @@ buildcorpus = (
             $outpath = $pathinfo."path" + $pathinfo."extension"
         );
 
-        BP_QUERY_BUFFERS = null;
+        BP_DATABASE_OUTPUT = null;
         BP_DEMO_CORPUS = 0;
 
         $corpus = null;
@@ -569,7 +569,7 @@ setcorpus = (
         $path = $pathinfo."path";
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
-        BP_QUERY_BUFFERS = null;
+        BP_DATABASE_OUTPUT = null;
         BP_DEMO_CORPUS = $pathinfo."type" == 3;
         msg("db", [ "read" $path + $extension ])
     )
@@ -582,6 +582,28 @@ $addref(
     @arguments (
         $addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")
     )
+);
+
+## ------------------------------------------------------------
+
+getcorpuskeys = (
+   $typed = 1 -> (
+        msg('db', [ "getcols" ]);
+        $keys = (BP_DATABASE_OUTPUT::1).right(1);
+        if $typed == 1 then $keys else for $x in $keys collect $x.flat():1
+    )
+);
+
+$addref(
+    @name "getcorpuskeys",
+    @description "Returns a list with the current corpus' keys. See #setcorpus, #buildcorpus, and #query.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "typed", @default 1 @type "int", @description "include the data type for each key." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+    ),
+    @output $addout(@description "corpus keys", @type "list/llll")
 );
 
 ## ------------------------------------------------------------
@@ -670,15 +692,15 @@ query = (
             printerror("you must provide a value for @x in query()")
         );
         msg("db", [ "query" $x ]);
-        (if BP_QUERY_BUFFERS == null then printerror("query did not yield any results:" tosymbol($x)));
+        (if BP_DATABASE_OUTPUT == null then printerror("query did not yield any results:" tosymbol($x)));
         ## check if current corpus is a built-in file and replace media file with loaded buffer
         (if BP_DEMO_CORPUS == 1 then (
-                $sources = thin(for $buff in BP_QUERY_BUFFERS collect $buff.getkey("source"));
+                $sources = thin(for $buff in BP_DATABASE_OUTPUT collect $buff.getkey("source"));
                 $sourcemap = for $source in $sources collect [ $source importaudio($source).getkey("source") ];
-                BP_QUERY_BUFFERS = for $buff in BP_QUERY_BUFFERS collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x)
+                BP_DATABASE_OUTPUT = for $buff in BP_DATABASE_OUTPUT collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x)
             )
         );
-        BP_QUERY_BUFFERS
+        BP_DATABASE_OUTPUT
     )
 );
 

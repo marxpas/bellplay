@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Added
 
+- Add `getcorpuskeys` function.
 - Add `buildcorpus` function, pending testing and refinement.
 - New tutorials: `analysis` and `analysismodes`.
 - Add: `isnan` function, pending docs.
