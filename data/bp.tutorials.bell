@@ -124,7 +124,7 @@ $addtutorial(
 );
 
 $addtutorial(
-    @name "using audio features"
+    @name "more audio features"
     @file "features"
     @description "This tutorial explains how to use buffer features for audio processing. In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection."
     @tags "sampling" "importaudio" "setkey" "getkey" "analyze" "detuning" "hanning" "concatenative+synthesis"

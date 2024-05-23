@@ -1,9 +1,9 @@
 #( 
     --------------------------------
-    AUDIO FEATURES
+    MORE AUDIO FEATURES
     --------------------------------
-    This tutorial explains how to use buffer features for audio processing. 
-    In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection.
+    This tutorial provides an additional example for using buffer analysis features for audio processing. 
+    Particularly, it shows how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection.
 )#
 
 ## path to built-in audio file
@@ -32,11 +32,14 @@ while $offset < $maxduration - $dur do (
     ## change the buffer's offset key and store in grain variable
     $grain = $buffer.setkey("offset", $offset);
 
-    ## analyze grain, in this case to know what the detected pitch is.
+    ## analyze grain
     $grain = $grain.analyze(
+
+        ## pitch analysis, in midicents
         pitchmelodia()
     );
     
+    ## extract pitch analysis value
     $pitch = $grain.getkey("pitchmelodia");
     
     ## this function gives us the amount of detuning in cents we need to apply to a grain in order to reach a given pitch collection.
