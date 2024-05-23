@@ -2569,12 +2569,6 @@ rect = (
     $frequency = 440, 
     $duration = 50,
     $duty = 0.5 -> (
-        $source = $duty.getkey("source");
-        if $source == null then (
-            $duty = envelope($duty, @duration $duration).getkey("source")
-        ) else (
-            $duty = $source
-        );
         BP_OSC_GEN_FUNC("rect", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
 );
@@ -2617,12 +2611,6 @@ tri = (
     $frequency = 440, 
     $duration = 50,
     $duty = 0.5 -> (
-        $source = $duty.getkey("source");
-        if $source == null then (
-            $duty = envelope($duty, @duration $duration).getkey("source")
-        ) else (
-            $duty = $source
-        );
         BP_OSC_GEN_FUNC("tri", @frequency $frequency, @duration $duration, @params [ "duty" $duty ])
     )
 );

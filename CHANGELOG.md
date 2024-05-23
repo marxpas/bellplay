@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Added
 
+- New tutorial: `bp.tutorial.analysis`. Add draft of `analysismodes`, pending completion.
 - Add: `isnan` function, pending docs.
 - New descriptor: `maxmagfreq`.
 - New descriptors: `temporalcentroid` `spectralflatness` and `temporalflatness`.  
@@ -33,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Change @N to @n in `hanning`.
   
 ### Fixed
+
+- Fix duration bug in `tri` and `rect` generations when using buffers as @frequency.
 
 ### Removed
 

@@ -55,7 +55,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 579.0, 106.0, 558.0, 213.0 ],
+						"rect" : [ 579.0, 106.0, 558.0, 260.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -85,6 +85,30 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 265.0, 133.0, 100.0, 23.0 ],
+									"text" : "bp.getcontroller~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 7.0, 97.0, 358.0, 23.0 ],
+									"text" : "t l l"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -106,7 +130,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 58.0, 92.0, 58.0, 23.0 ],
+									"patching_rect" : [ 58.0, 133.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -118,7 +142,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 7.0, 134.0, 277.0, 23.0 ],
+									"patching_rect" : [ 7.0, 175.0, 277.0, 23.0 ],
 									"text" : "ears.process~ bp.process.rect~ @naming dynamic"
 								}
 
@@ -129,7 +153,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 178.0, 63.0, 23.0 ],
+									"patching_rect" : [ 7.0, 219.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -149,15 +173,15 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 1 ],
-									"source" : [ "obj-1", 1 ]
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-1", 0 ]
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-1", 1 ]
 								}
 
 							}
@@ -179,6 +203,27 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 1 ],
+									"source" : [ "obj-5", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 1 ],
+									"source" : [ "obj-6", 0 ]
 								}
 
 							}
@@ -589,7 +634,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 532.0, 226.0 ],
+						"rect" : [ 206.0, 374.0, 530.0, 277.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -619,6 +664,30 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 255.0, 152.0, 100.0, 23.0 ],
+									"text" : "bp.getcontroller~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 7.0, 104.0, 348.0, 23.0 ],
+									"text" : "t l l"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -640,7 +709,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 63.0, 99.0, 58.0, 23.0 ],
+									"patching_rect" : [ 63.0, 152.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -652,7 +721,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 7.0, 143.0, 267.0, 23.0 ],
+									"patching_rect" : [ 7.0, 196.0, 267.0, 23.0 ],
 									"text" : "ears.process~ bp.process.tri~ @naming dynamic"
 								}
 
@@ -663,7 +732,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 187.0, 63.0, 23.0 ],
+									"patching_rect" : [ 7.0, 240.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -683,15 +752,15 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 1 ],
-									"source" : [ "obj-1", 1 ]
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-1", 0 ]
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-1", 1 ]
 								}
 
 							}
@@ -713,6 +782,27 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 1 ],
+									"source" : [ "obj-5", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 1 ],
+									"source" : [ "obj-6", 0 ]
 								}
 
 							}
@@ -2087,7 +2177,30 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "bach.args.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.eq.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.eval.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.filter.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.is.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2103,28 +2216,38 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "bach.neq.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.pick.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.portal.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.rdiv.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
+				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bach.reg.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.rev.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "ears.envelope~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.in.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.in~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.out~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.process~.mxo",
-				"type" : "iLaX"
+				"name" : "bp.getcontroller~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "bp.process.cycle~.maxpat",
@@ -2181,6 +2304,34 @@
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "ears.envelope~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.in.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.info~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.out~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.process~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.resample~.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0,

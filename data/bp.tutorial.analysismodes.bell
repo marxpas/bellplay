@@ -1,0 +1,22 @@
+$buff = importaudio("singing.wav");
+
+$buff = $buff.analyze(
+    pitchmelodia(@mode 1)
+    @pitchunit 2
+);
+
+$melody = $buff.getkey("pitchmelodia");
+
+$melbuff = envelope($melody @duration $buff.getkey("duration"));
+
+$env = 0.1 0.9;
+tri(
+    @frequency $melbuff
+).transcribe(
+    @pan 0.1
+    @gain $env
+);
+
+$buff.transcribe(@pan 0.9 @gain 1 - $env);
+
+render(@play 1 @process normalize())
