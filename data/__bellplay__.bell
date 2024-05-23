@@ -1457,7 +1457,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-essentia = (
+analyze = (
     $buffer, 
     $descriptors,
     $winstartfromzero = 0,
@@ -1490,8 +1490,8 @@ essentia = (
     $frametime = 0,
     $bufinterp = 0 -> (
         $source = $buffer.getkey("source");
-        if $source == null then printerror("you must provide a value for @buffer in essentia().");
-        if $descriptors == null then printerror("you must provide a value for @descriptors in essentia().");
+        if $source == null then printerror("you must provide a value for @buffer in analyze().");
+        if $descriptors == null then printerror("you must provide a value for @descriptors in analyze().");
         BP_ESSENTIA_OUTPUT = null;
         $source = $buffer.process(bpthru()).getkey("source");
         msg("essentia",
@@ -1537,7 +1537,7 @@ essentia = (
 );
 
 $addref(
-    @name "essentia",
+    @name "analyze",
     @description "Applies a sequence of audio analysis operations to the input buffer, via audio descriptors. These descriptors are generated through functions (e.g., see #flux, #dissonance, #spectrum), which contain the parameters for that specific audio analysis.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
@@ -1643,7 +1643,7 @@ envmaxtime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmaxtime"));
 
 $addref(
     @name "envmaxtime",
-    @description "Audio descriptor to extract the time at which the global maxima of the buffer's envelope occurs. See #essentia.",
+    @description "Audio descriptor to extract the time at which the global maxima of the buffer's envelope occurs. See #analyze.",
     @category BP_REF_LABEL_ANALYSIS,
     @output $addout(@description "envmaxtime descriptor" @type "llll")
 );
@@ -1654,7 +1654,7 @@ envmintime = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "envmintime"));
 
 $addref(
     @name "envmintime",
-    @description "Audio descriptor to extract the time at which the global minima of the buffer's envelope occurs. See #essentia.",
+    @description "Audio descriptor to extract the time at which the global minima of the buffer's envelope occurs. See #analyze.",
     @category BP_REF_LABEL_ANALYSIS,
     @output $addout(@description "envmintime descriptor" @type "llll")
 );
@@ -1665,7 +1665,7 @@ dissonance = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance" @mode $mo
 
 $addref(
     @name "dissonance"
-    @description "Audio descriptor to compute the sensory dissonance of a buffer. See #essentia."
+    @description "Audio descriptor to compute the sensory dissonance of a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -1681,7 +1681,7 @@ inharmonicity = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "inharmonicity" @mo
 
 $addref(
     @name "inharmonicity"
-    @description "Audio descriptor to calculate the inharmonicity of a buffer. See #essentia."
+    @description "Audio descriptor to calculate the inharmonicity of a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -1697,7 +1697,7 @@ strongdecay = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "strongdecay"));
 
 $addref(
     @name "strongdecay"
-    @description "Audio descriptor to compute the strong decay of a buffer. The strong decay is built from the non-linear combination of the signal energy and the signal temporal centroid, the latter being the balance of the absolute value of the signal. A signal containing a temporal centroid near its start boundary and a strong energy is said to have a strong decay. See #essentia."
+    @description "Audio descriptor to compute the strong decay of a buffer. The strong decay is built from the non-linear combination of the signal energy and the signal temporal centroid, the latter being the balance of the absolute value of the signal. A signal containing a temporal centroid near its start boundary and a strong energy is said to have a strong decay. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -1742,7 +1742,7 @@ spectrum = (
 
 $addref(
     @name "spectrum"
-    @description "Audio descriptor to compute the magnitude spectrum of a buffer. The resulting magnitude spectrum has a size which is half the size of the input array plus one. Bins contain raw (linear) magnitude values. See #essentia."
+    @description "Audio descriptor to compute the magnitude spectrum of a buffer. The resulting magnitude spectrum has a size which is half the size of the input array plus one. Bins contain raw (linear) magnitude values. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -1777,7 +1777,7 @@ rhythmextractor = (
 
 $addref(
     @name "rhythmextractor"
-    @description "Audio descriptor for extract the beat positions and estimate their confidence as well as tempo in bpm for a buffer. See #essentia."
+    @description "Audio descriptor for extract the beat positions and estimate their confidence as well as tempo in bpm for a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "maxtempo", @type "int", @description "fastest tempo to detect, between 60 and 250.")
@@ -1804,7 +1804,7 @@ logattacktime = ( -> BP_ESSENTIA_WRAPPER_FUNC(
 
 $addref(
     @name "logattacktime"
-    @description "Audio descriptor to compute the log (base 10) of the attack time of buffer's envelope. See #essentia."
+    @description "Audio descriptor to compute the log (base 10) of the attack time of buffer's envelope. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @output $addout(@description "logattacktime descriptor" @type "llll")
 );
@@ -1822,7 +1822,7 @@ chordsdetection = (
 
 $addref(
     @name "chordsdetection"
-    @description "Audio descriptor to perform chord estimation on a buffer. See #essentia."
+    @description "Audio descriptor to perform chord estimation on a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -1884,7 +1884,7 @@ pitchmelodia = (
 
 $addref(
     @name "pitchmelodia"
-    @description "Audio descriptor to estimate the fundamental frequency corresponding to the melody of a monophonic music signal based on the MELODIA algorithm. While the algorithm is originally designed to extract the predominant melody from polyphonic music, this implementation is adapted for monophonic signals. The approach is based on the creation and characterization of pitch contours, time continuous sequences of pitch candidates grouped using auditory streaming cues. It is strongly advised to use the default parameter values which are optimized for this task, except for @minfrequency and @maxfrequency, which will be context-dependent. See #essentia."
+    @description "Audio descriptor to estimate the fundamental frequency corresponding to the melody of a monophonic music signal based on the MELODIA algorithm. While the algorithm is originally designed to extract the predominant melody from polyphonic music, this implementation is adapted for monophonic signals. The approach is based on the creation and characterization of pitch contours, time continuous sequences of pitch candidates grouped using auditory streaming cues. It is strongly advised to use the default parameter values which are optimized for this task, except for @minfrequency and @maxfrequency, which will be context-dependent. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "binresolution" @default 10 @type "int" @description "salience function bin resolution, cents.")
@@ -1936,7 +1936,7 @@ flux = (
 
 $addref(
     @name "flux"
-    @description "Audio descriptor to compute the spectral flux of a buffer. See #essentia."
+    @description "Audio descriptor to compute the spectral flux of a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "halfrectify" @default 0 @type "int", @description "half-rectify the differences in each spectrum bin." @options
@@ -1970,7 +1970,7 @@ larm = (
 
 $addref(
     @name "larm"
-    @description "Audio descriptor to estimate the long-term loudness of a buffer. See #essentia."
+    @description "Audio descriptor to estimate the long-term loudness of a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "attacktime" @default 10 @type "int" @description "attack time of the first order lowpass in the attack phase.")
@@ -1997,7 +1997,7 @@ spectralcentroid = (
 
 $addref(
     @name "spectralcentroid"
-    @description "Audio descriptor to calculate the spectral centroid of a buffer, defined as the 'center of mass' of the spectrum, in Hertz. Perceptually, it has a robust connection with the impression of 'brightness' of a sound, and therefore is used to characterize musical timbre. It is calculated as the weighted mean of the frequencies present in the signal, with their magnitudes as the weights. See #essentia."
+    @description "Audio descriptor to calculate the spectral centroid of a buffer, defined as the 'center of mass' of the spectrum, in Hertz. Perceptually, it has a robust connection with the impression of 'brightness' of a sound, and therefore is used to characterize musical timbre. It is calculated as the weighted mean of the frequencies present in the signal, with their magnitudes as the weights. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -2019,7 +2019,7 @@ temporalcentroid = (
 
 $addref(
     @name "temporalcentroid"
-    @description "Audio descriptor to calculate the temporal centroid of a buffer, defined as the point in time that is a temporal balancing point of the sound's energy. See #essentia."
+    @description "Audio descriptor to calculate the temporal centroid of a buffer, defined as the point in time that is a temporal balancing point of the sound's energy. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
     )
@@ -2039,7 +2039,7 @@ spectralflatness = (
 
 $addref(
     @name "spectralflatness"
-    @description "Audio descriptor to calculate the spectral flatness of a buffer, defined as the ratio between the spectrum's geometric mean and arithmetic mean. See #essentia."
+    @description "Audio descriptor to calculate the spectral flatness of a buffer, defined as the ratio between the spectrum's geometric mean and arithmetic mean. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -2061,7 +2061,7 @@ temporalflatness = (
 
 $addref(
     @name "temporalflatness"
-    @description "Audio descriptor to calculate the temporal flatness of a buffer, defined as the ratio between the buffer envelope's geometric mean and arithmetic mean. Flatness is undefined for empty input and negative values, therefore an exception is thrown in any both cases. See #essentia."
+    @description "Audio descriptor to calculate the temporal flatness of a buffer, defined as the ratio between the buffer envelope's geometric mean and arithmetic mean. Flatness is undefined for empty input and negative values, therefore an exception is thrown in any both cases. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
     )
@@ -2098,7 +2098,7 @@ spectralcontrast = (
 
 $addref(
     @name "spectralcontrast"
-    @description "Audio descriptor to calculate the spectral contrast of a buffer. See #essentia."
+    @description "Audio descriptor to calculate the spectral contrast of a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "framesize" @default 2048 @type "int" @description "size of the fft frames.")
@@ -2134,7 +2134,7 @@ rolloff = (
 
 $addref(
     @name "rolloff"
-    @description "Audio descriptor to compute the roll-off frequency of a spectrum. The roll-off frequency is defined as the frequency under which some percentage — i.e., cutoff — of the total energy of the spectrum is contained. The roll-off frequency can be used to distinguish between harmonic — i.e., below roll-off — and noisy sounds — i.e., above roll-off. See #essentia."
+    @description "Audio descriptor to compute the roll-off frequency of a spectrum. The roll-off frequency is defined as the frequency under which some percentage — i.e., cutoff — of the total energy of the spectrum is contained. The roll-off frequency can be used to distinguish between harmonic — i.e., below roll-off — and noisy sounds — i.e., above roll-off. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "cutoff" @default "0.85" @type "float" @description "the ratio of total energy to attain before yielding the roll-off frequency.")
@@ -2163,7 +2163,7 @@ maxmagfreq = (
 
 $addref(
     @name "maxmagfreq"
-    @description "Audio descriptor to compute the frequency with the largest magnitude in a spectrum. See #essentia."
+    @description "Audio descriptor to compute the frequency with the largest magnitude in a spectrum. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
@@ -2195,7 +2195,7 @@ onsets = (
 
 $addref(
     @name "onsets"
-    @description "Audio descriptor to compute the onset positions in a buffer. See #essentia."
+    @description "Audio descriptor to compute the onset positions in a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "alpha" @default "0.1" @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
@@ -2236,7 +2236,7 @@ tonalkey = (
 
 $addref(
     @name "tonalkey"
-    @description "Audio descriptor to perform tonal key signature estimation on a buffer. See #essentia."
+    @description "Audio descriptor to perform tonal key signature estimation on a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "numharmonics" @default 4 @type "int" @description "number of harmonics that should contribute to the polyphonic profile.")

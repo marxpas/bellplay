@@ -17,7 +17,7 @@
 ## load source buffer
 $source = importaudio("trumpet.wav");
 
-$source = $source.essentia(
+$source = $source.analyze(
     onsets()
 );
 
@@ -39,7 +39,7 @@ $segments = for $marker in $markers, $dur in $durations collect (
     $seg = $seg.setkey("offset", $marker);
 
     ## analyze segment and collect
-    $seg = $seg.essentia(
+    $seg = $seg.analyze(
         pitchmelodia()
     );
     if $seg.getkey("pitchmelodia") > 0 then $seg

@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change `essentia` function name to `analyze`.
 - Change: Change tutorials involving analysis to conform to essentia API: `corpus`, `features`, and `kdtree`.
 - `bp.utils.searchbar`: Hide X when bar is empty.
 - Try `stop` `start` on load to fix audio off issue.

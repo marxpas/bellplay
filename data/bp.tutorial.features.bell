@@ -33,7 +33,7 @@ while $offset < $maxduration - $dur do (
     $grain = $buffer.setkey("offset", $offset);
 
     ## analyze grain, in this case to know what the detected pitch is.
-    $grain = $grain.essentia(
+    $grain = $grain.analyze(
         pitchmelodia()
     );
     
