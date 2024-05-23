@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Make corpus lab playback softer.
 - Change `bp.corpus` to only display and not build or write corpora.
 - Change doc utility functions to include info about audio descriptors. Docs now show supported modes and feature key names.
 - Change `essentia` function name to `analyze`.

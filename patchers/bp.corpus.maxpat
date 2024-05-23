@@ -41,6 +41,18 @@
 		"title" : "bellplay~ | corpus lab",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-101",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 1262.0, 2856.0, 46.0, 23.0 ],
+					"text" : "*~ 0.25"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-63",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -893,18 +905,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-77",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1157.0, 2815.0, 89.0, 23.0 ],
-					"text" : "receive~ #0out"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-148",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1424,7 +1424,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1262.0, 2855.0, 30.0, 30.0 ],
+					"patching_rect" : [ 1262.0, 2896.0, 30.0, 30.0 ],
 					"style" : "bellplay-gui"
 				}
 
@@ -1580,7 +1580,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1576.0, 1561.0, 31.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 601.0, 398.0, 29.0, 21.0 ],
+					"presentation_rect" : [ 601.0, 398.0, 63.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "size",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1595,7 +1595,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1455.0, 1561.0, 38.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 601.0, 423.0, 36.0, 21.0 ],
+					"presentation_rect" : [ 601.0, 423.0, 63.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "color",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1610,7 +1610,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1334.0, 1561.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 455.0, 423.0, 38.0, 21.0 ],
+					"presentation_rect" : [ 455.0, 423.0, 77.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "y axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -2150,6 +2150,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-75", 0 ],
 					"source" : [ "obj-100", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-101", 0 ]
 				}
 
 			}
@@ -2778,7 +2785,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-101", 0 ],
 					"source" : [ "obj-59", 0 ]
 				}
 
@@ -2962,13 +2969,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-112", 0 ],
 					"source" : [ "obj-76", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"source" : [ "obj-77", 0 ]
 				}
 
 			}
