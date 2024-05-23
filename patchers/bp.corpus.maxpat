@@ -885,8 +885,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.0, 85.0, 181.0, 23.0 ],
-					"text" : "erase, addtable buffers [ x f ] [ y f ]"
+					"patching_rect" : [ 460.0, 85.0, 128.0, 23.0 ],
+					"text" : "erase, addtable buffers"
 				}
 
 			}
