@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3799265019,
+	"modificationdate" : 3799284355,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -423,6 +423,16 @@
 			}
 ,
 			"bp.tutorial.corpus.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.analysismodes.bell" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
+,
+			"bp.tutorial.analysis.bell" : 			{
 				"kind" : "textfile",
 				"local" : 1
 			}
