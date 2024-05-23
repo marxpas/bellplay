@@ -15,14 +15,9 @@ $melody = for $p in $buff.getkey("pitchmelodia") collect (
 $melbuff = envelope($melody @duration $buff.getkey("duration")).process(rampsmooth(1024, 1024));
 
 $env = 0.1 0.9;
-tri(
-    @frequency $melbuff
-).transcribe(
-    @gain $env
-);
 
-$buff.transcribe(
-    @gain 1 - $env
-);
+tri(@frequency $melbuff).transcribe();
+
+$buff.transcribe();
 
 render(@play 1 @process normalize())
