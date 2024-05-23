@@ -8,7 +8,7 @@ BP_REF_LABEL_ANALYSIS = "audio analysis";
 BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN BP_REF_LABEL_ANALYSIS collect [ $i ]);
 BP_REF_TIMEUNIT_OPTIONS = null;
 BP_REF_AUDIO_DOMAIN_OPTIONS = null;
-BP_BELLPLAY_CORPUS = null;
+BP_DEMO_CORPUS = null;
 BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
 BP_TMP_ROLL_OUTPUT = null;
@@ -435,6 +435,131 @@ $addref(
 
 ## ------------------------------------------------------------
 
+buildcorpus = (
+    $files,
+    $descriptors,
+    $outpath = null,
+    $segmode = 1,
+    $overlap = 2,
+    $segsize = 100,
+    $alpha = 0.1,
+    $delay = 5,
+    $framerate = 86.1328,
+    $silencethreshold = 0.02 -> (
+        if $files == null || $descriptors == null then printerror("You must provide a value for @files and @descriptors in buildcorpus().");
+        if $files.contains() != 16 then printerror('All elements in @files must by of type symbol in buildcorpus().');
+        if $segmode.intersection(0...2) == null then printerror("Invalid value for @segmode in buildcorpus():" $segmode);
+        if $segsize <= 0 then printerror("segmentation size must be greater than zero in buildcorpus().");
+
+        if $outpath != null then (
+            $pathinfo = getpathinfo($outpath);
+            if $pathinfo."extension" != ".llll" then (
+                printerror($outpath "is not a valid corpus extension.")
+            ) else if $path."type" == 3 then (
+                printerror($outpath "is not a valid @outpath in buildcorpus().")
+            );
+            $outpath = $pathinfo."path" + $pathinfo."extension"
+        );
+
+        BP_QUERY_BUFFERS = null;
+        BP_DEMO_CORPUS = 0;
+
+        $corpus = null;
+        for $file in $files do (
+            $pathinfo = getpathinfo($file);
+            if ($pathinfo."extension").intersection(".wav" ".aif" ".aiff") == null then (
+                printerror($file "is not a valid audio file.")
+            ) else (
+                $path = $pathinfo."path" + $pathinfo."extension";
+                $buff = importaudio($path);
+                $segref = $buff;
+                $segments = null;
+                if $segmode != 0 then (
+                    if $segmode == 1 then (
+                        $buff = $buff.analyze(
+                            @descriptors onsets(
+                                @alpha $alpha
+                                @delay $delay
+                                @framerate $framerate
+                                @silencethreshold $silencethreshold
+                            )
+                        );
+                        $onsets = $buff.getkey("onsets") ||| 0;
+                        $durations = ($onsets $buff.getkey("source_end")).x2dx()
+                    ) else if $segmode == 2 then (
+                        $hopsize = $segsize / $overlap;
+                        $numsegs = max(1, ceil($buff.getkey("duration") / $hopsize));
+                        $onsets = (0...($numsegs - 1)) * $hopsize;
+                        $durations = $segsize :* $onsets.length()
+                    );
+                    for $onset in $onsets, $duration in $durations do (
+                        $segments _= $segref.setkey("offset", $onset).setkey("duration", $duration)
+                    )
+                ) else (
+                    $segments _= $buff
+                );
+                for $seg in $segments do (
+                    $corpus _= $seg.analyze(
+                        @descriptors $descriptors
+                    ).setkey("source", $path)
+                )
+            )
+        );
+        $template = for $keyval in $corpus::1 with @unwrap 1 collect (
+            $key = $keyval.left(1);
+            $val = $keyval.right(1);
+            $type = null;
+            $contains = $val.contains();
+            $type = if $val == null || $val.length() > 1 || $val.depth() > 1 then (
+                "l"
+            ) else if $contains == 2 then (
+                "i"
+            ) else if $contains == 4 then (
+                "r"
+            ) else if $contains == 8 then (
+                "f"
+            ) else if $contains == 16 then (
+                "s"
+            ) else if $contains == 256 then (
+                "p"
+            ) else (
+                "l"
+            );
+            [ $key $type ]
+        );
+        msg("db", [ "erase" ] [ "addtable" "buffers" $template ]);
+        for $entry in $corpus do msg("db", [ "addentry" "buffers" $entry::1 ]);
+
+        if $outpath != null then (
+            msg("db", [ "write" $outpath ] )
+        )
+    )
+);
+
+$addref(
+    @name "buildcorpus",
+    @description "Creates a buffer corpus from a list of audio file paths, and writes it into disk as a .llll file. See #analyze and #onsets.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "files" @type "symbol/list" @description "list of audio file paths.")
+        $addarg(@name "descriptors" @type "llll" @description "list of audio descriptors.")
+        $addarg(@name "outpath" @default "null" @type "symbol/null" @description "optional output corpus path, as an .llll file. If null, the corpus is not written into memory.")
+        $addarg(@name "segmode" @default 1 @type "int" @description "buffer segmentation mode." @options 
+            $addopt(@value 0 @description "no" "segmentation")
+            $addopt(@value 1 @description "'onsets'-based" "segmentation")
+            $addopt(@value 2 @description "blind" "segmentation")
+        )
+        $addarg(@name "overlap" @default 2 @type "int/float" @description "segment overlap factor, when @segmode is 2.")
+        $addarg(@name "segsize" @default 100 @type "int" @description "segment duration in milliseconds, when @segmode is 2.")
+        $addarg(@name "alpha" @default "0.1" @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
+        $addarg(@name "delay" @default 5 @type "int" @description "number of frames used to compute the threshold — size of short-onset filter.")
+        $addarg(@name "framerate" @default "86.1328" @type "float" @description "frames per second.")
+        $addarg(@name "silencethreshold" @default "0.02" @type "float" @description "threshold for silence.")
+    )
+);
+
+## ------------------------------------------------------------
+
 setcorpus = (
     $filepath -> (
         if $filepath == null then (
@@ -445,8 +570,8 @@ setcorpus = (
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
         BP_QUERY_BUFFERS = null;
-        BP_BELLPLAY_CORPUS = $pathinfo."type" == 3;
-        msg("db", "read" $path + $extension)
+        BP_DEMO_CORPUS = $pathinfo."type" == 3;
+        msg("db", [ "read" $path + $extension ])
     )
 );
 
@@ -544,10 +669,10 @@ query = (
         if $x == null then (
             printerror("you must provide a value for @x in query()")
         );
-        msg("db", "query" $x);
+        msg("db", [ "query" $x ]);
         (if BP_QUERY_BUFFERS == null then printerror("query did not yield any results:" tosymbol($x)));
         ## check if current corpus is a built-in file and replace media file with loaded buffer
-        (if BP_BELLPLAY_CORPUS == 1 then (
+        (if BP_DEMO_CORPUS == 1 then (
                 $sources = thin(for $buff in BP_QUERY_BUFFERS collect $buff.getkey("source"));
                 $sourcemap = for $source in $sources collect [ $source importaudio($source).getkey("source") ];
                 BP_QUERY_BUFFERS = for $buff in BP_QUERY_BUFFERS collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x)

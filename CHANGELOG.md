@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Added
 
+- Add `buildcorpus` function, pending testing and refinement.
 - New tutorials: `analysis` and `analysismodes`.
 - Add: `isnan` function, pending docs.
 - New descriptor: `maxmagfreq`.
@@ -22,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - New descriptor: `rolloff`, `onsets`.
 - New descriptors: `spectrum`, `dissonance`, `inharmonicity` and `strongdecay`.
 - New descriptors: `flux` `envmaxtime` `logattacktime` `chordsdetection` and `pitchmelodia`.
-- Add draft version of `np.essentia~`, with all arg definitions and docs.
+- Add draft version of `bp.essentia~`, with all arg definitions and docs.
 - New functions: `r2dr` and `dr2r` with docs.
 
 ### Changed
