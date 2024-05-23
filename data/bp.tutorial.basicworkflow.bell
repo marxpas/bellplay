@@ -4,7 +4,7 @@
     --------------------------------
     The general workflow of a bell script in bellplay~ is the following:
 
-    1.  Generation: buffers are created and processed using synthesis or sampling techniques.
+    1.  Generation: buffers are created using synthesis or sampling techniques, and optionally analyzed/processed.
     2.  Transcription: buffers are queued for rendering, each symbolically represented as a note in staff notation.
     3.  Rendering: All transcribed buffers are compiled and rendered into a single audio buffer. 
         This buffer can then be used for subsequent iterations of this workflow to refine the final output as needed. 

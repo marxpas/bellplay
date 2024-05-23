@@ -7,7 +7,7 @@
 
     These keys contain relevant information about the underlying audio data. 
     For instance, the buffer's channel count, sampling rate, duration, source (i.e., where to find the audio data), and more.
-    This also includes more interesting information, such as estimated pitch, pitch salience, zero crossing rate, etc., which will be discussed in later tutorials.
+    This may also include more interesting information, such as estimated pitch, pitch salience, zero crossing rate, etc., which will be discussed in later tutorials.
 
     Relevant to this tutorial is our ability to access and/or modify this buffer properties or keys. 
 
@@ -18,11 +18,11 @@
         "mapkey": overrides the value of a given key, based on the current value, via lambda functions (modification).
 
     Crucially, modifications to buffer keys via "setkey" and "mapkey" do not actually modify the underlaying audio data - at least not directly.
-    Instead, the information contained in each of these key-value pairs is used by functions like transcribe() or process() use to determine how to treat the buffer.
+    Instead, the information contained in each of these key-value pairs is used by functions like transcribe(), process(), or analyze() use to determine how to treat the buffer.
     
     For instance, in the case of the 'transcribe' function, the 'pitch' key simply defines how the buffer is notated in staff notation, but has no impact in the audio data.
     
-    Other properties, however, like duration, tell functions like 'transcribe' or 'process' how much of the audio data should be used.
+    Other properties, however, like duration, tell functions like 'transcribe', 'process' or 'analyze' how much of the audio data should be used.
     In other words, they are "lazy" modifications, because it delays real modifications until it's actually needed.
     In 'transcribe', this is specifically the case with the 'duration' and 'offset' keys.
     As such, these setter-based modifications are not destructive or irreversible, and only take effect once the buffer goes through transcription or processing.

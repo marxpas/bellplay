@@ -117,6 +117,13 @@ $addtutorial(
 );
 
 $addtutorial(
+    @name "audio descriptor modes"
+    @file "analysismodes"
+    @description "Many of the available audio descriptors allow us to specify the output format for each of the audio analyses. This tutorial shows how to generate a time-series pitch analysis to control an oscillator."
+    @tags "analyze" "music+information+retrieval" "audio+descriptors" "pitchmelodia"
+);
+
+$addtutorial(
     @name "using audio features"
     @file "features"
     @description "This tutorial explains how to use buffer features for audio processing. In this case, how to perform targeted transposition on an audio buffer, such that it fits a specific pitch class collection."
