@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `live.gain~` now uses Lato font.
+- `getpathinfo` API now checks if path exists, and optionally raises an error if not. Used in importing functions to minimize errors at render.
   
 ### Fixed
 

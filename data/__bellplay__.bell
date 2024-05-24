@@ -92,9 +92,14 @@ msg = (
 ## ------------------------------------------------------------
 
 getpathinfo = (
-    $x -> (
+    $x,
+    $locate = 0 -> (
         msg("pathinfo", $x);
-        if BP_PATH_INFO == null then printerror("invalid path:" $x);
+        if BP_PATH_INFO == null then (
+            printerror("invalid path:" $x) 
+        ) else if $locate == 1 && BP_PATH_INFO."exists" == 0 then (
+            printerror("file not found:" $x)
+        );
         BP_PATH_INFO
     )
 );
@@ -105,7 +110,7 @@ readfolder = (
     $path,
     $filetype = "audio" -> (
         BP_TMP_FOLDER = null;
-        $info = getpathinfo($path);
+        $info = getpathinfo($path @locate 1);
         if $info."extension" != null then printerror("invalid folder path:" $path);
         $path = $info."path";
         $types = (
@@ -583,7 +588,7 @@ setcorpus = (
         if $filepath == null then (
             printerror("you must provide a value for @filepath in setcorpus()")
         );
-        $pathinfo = getpathinfo($filepath);
+        $pathinfo = getpathinfo($filepath @locate 1);
         $path = $pathinfo."path";
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
@@ -1473,7 +1478,7 @@ importaudio = (
     $path -> (
         BP_TMP_BUFF = null;
         if $path == null then printerror("You must provide a value for @path in importaudio()");
-        $pathinfo = getpathinfo($path);
+        $pathinfo = getpathinfo($path @locate 1);
         $ext = $pathinfo."extension";
         $path = $pathinfo."path";
         $filepath = $path + $ext;
@@ -1505,7 +1510,7 @@ importmidi = (
     $path -> (
         BP_TMP_ROLL_OUTPUT = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
-        $pathinfo = getpathinfo($path);
+        $pathinfo = getpathinfo($path @locate 1);
         $ext = $pathinfo."extension";
         $path = $pathinfo."path";
         $filepath = $path + $ext;
