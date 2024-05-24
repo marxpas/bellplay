@@ -32,13 +32,14 @@ $addref = (
         if $arguments != null then (
             $required = null;
             $optional = null;
-            for $arg in $arguments do if $arg."default:" == null then (
-                $optional _= $arg 
+            for $arg in $arguments do if ($arg::1)."default:" == null then (
+                $required _= $arg 
             ) else (
-                $required _= $arg
+                $optional _= $arg
             );
             $arguments = ($required &&& [ "required:" $required ]) ($optional &&& [ "optional:" $optional ])
         );
+        $arguments.print();
         BP_REF.$category _= [
             $name
             [ "description:" $description ] 
