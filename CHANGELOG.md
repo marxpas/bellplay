@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Improve buffer inspector.
 - Small optimization in `buildtree`: assign onset descriptor to variable to prevent regeneration with each file.
 - Make corpus lab playback softer.
 - Change `bp.corpus` to only display and not build or write corpora.
