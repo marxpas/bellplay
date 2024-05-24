@@ -27,6 +27,9 @@ $offset = 0;
 ## get the duration of the underlying buffer source (i.e., the total file duration)
 $maxduration = $buffer.getkey("source_end");
 
+## audio descriptor for pitch analysis
+$descriptor = pitchmelodia();
+
 ## start loop until we reach the end of the buffer's original source (i.e., the imported file)
 while $offset < $maxduration - $dur do (
     ## change the buffer's offset key and store in grain variable
@@ -36,7 +39,7 @@ while $offset < $maxduration - $dur do (
     $grain = $grain.analyze(
 
         ## pitch analysis, in midicents
-        pitchmelodia()
+        $descriptor
     );
     
     ## extract pitch analysis value
