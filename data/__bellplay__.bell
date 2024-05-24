@@ -39,7 +39,7 @@ $addref = (
             );
             $arguments = ($required &&& [ "required:" $required ]) ($optional &&& [ "optional:" $optional ])
         );
-        $arguments.print();
+        
         BP_REF.$category _= [
             $name
             [ "description:" $description ] 
