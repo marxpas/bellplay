@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+  
+### Fixed
+
+### Removed
+
+## [v0.2.0-beta] - 2024-05-24
+
 - MAJOR UPDATE: except for `pitch`, buffers no longer come with dummy features, only basic info (chans, sr, duration, source_end, and offset).
   
 ### Added
