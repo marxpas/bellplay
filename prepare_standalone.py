@@ -26,7 +26,15 @@ def edit_max_interface(path: str):
         data = json.load(f)
 
     def fun(menu):
-        test = menu['id'] not in ['filemenu', 'editmenu', 'windowmenu', 'helpmenu']
+        test = menu['id'] not in [
+            'filemenu', 
+            "customfilemenu", 
+            "customeditmenu", 
+            'editmenu', 
+            'windowmenu', 
+            'helpmenu', 
+            'customhelpmenu'
+        ]
         if test == 0:
             print(f"removing {menu['id']} from {path}")
         return test
