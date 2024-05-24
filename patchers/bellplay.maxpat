@@ -922,7 +922,7 @@
 					"patching_rect" : [ 688.0, 357.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.1.7-beta",
+					"text" : "v0.2.0-beta",
 					"textjustification" : 1
 				}
 
@@ -1377,6 +1377,7 @@
 , 			{
 				"box" : 				{
 					"coldcolor" : [ 0.745098039215686, 0.831372549019608, 0.909803921568627, 1.0 ],
+					"fontname" : "Lato",
 					"hotcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-115",
 					"lastchannelcount" : 0,
@@ -1386,9 +1387,9 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"overloadcolor" : [ 0.815686274509804, 0.188235294117647, 0.188235294117647, 1.0 ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 264.0, 727.0, 139.0, 515.0 ],
+					"patching_rect" : [ 264.0, 727.0, 135.0, 515.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 89.0, 37.0, 320.0 ],
+					"presentation_rect" : [ 8.0, 89.0, 36.0, 320.0 ],
 					"saved_attribute_attributes" : 					{
 						"slidercolor" : 						{
 							"expression" : ""
@@ -1934,18 +1935,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "bach.length.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "bach.lookup.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "bach.m2jitcellblock.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
 				"patcherrelativepath" : "../../Max 8/Packages/bach/patchers",
 				"type" : "JSON",
