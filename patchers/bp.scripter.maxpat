@@ -4106,7 +4106,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1169.0, 2375.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 23.0, 143.5, 22.0 ],
+					"presentation_rect" : [ 148.75, 23.0, 143.5, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "corpus lab"
 				}
@@ -6302,7 +6302,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 197.642857142857139, 540.5, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 71.0, 143.0, 22.0 ],
+					"presentation_rect" : [ 4.25, 47.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "reload script"
 				}
@@ -6473,7 +6473,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 13.0, 39.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 47.0, 143.5, 22.0 ],
+					"presentation_rect" : [ 4.25, 23.0, 143.5, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "load script"
 				}
@@ -6599,7 +6599,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 936.0, 490.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 149.0, 23.0, 144.0, 22.0 ],
+					"presentation_rect" : [ 3.0, 71.0, 144.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "play",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
