@@ -176,6 +176,9 @@ BP_MEDIA_FILES = [
         "bach.mid"
         "satie.mid"
     ]
+    [ "llll"
+        "test_corpus.llll"
+    ]
 ];
 
 ## ------------------------------------------------------------

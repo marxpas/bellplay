@@ -2076,7 +2076,7 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"code" : "$x1.intersection(getmediafiles('audio')) != null ",
+									"code" : "$x1.intersection(getmediafiles()) != null ",
 									"id" : "obj-15",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -2088,7 +2088,7 @@
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.eval $x1.intersection(getmediafiles('audio')) != null @out m"
+									"text" : "bach.eval $x1.intersection(getmediafiles()) != null @out m"
 								}
 
 							}
