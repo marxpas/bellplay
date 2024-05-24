@@ -46,6 +46,6 @@ for root, dirs, files in os.walk(app_path):
             edit_max_interface(file_path)
         if file_ext == ".mxe64":
             print(f'deleting file: {file_path}')
-            # os.remove(file_path)
+            os.remove(file_path)
 
 print(f"DONE")
