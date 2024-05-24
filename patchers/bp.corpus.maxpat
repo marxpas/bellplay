@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 49.0, 54.0, 749.0, 498.0 ],
+		"rect" : [ 49.0, 54.0, 755.0, 502.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -522,7 +522,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 12.0, 10.0, 481.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 4.5, 291.0, 18.0 ],
+					"presentation_rect" : [ 6.0, 7.0, 291.0, 18.0 ],
 					"style" : "bellplay-gui",
 					"text" : "Load a corpus as a .llll file to visualize it."
 				}
@@ -536,7 +536,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 502.0, 10.0, 139.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 3.0, 448.0, 21.0 ],
+					"presentation_rect" : [ 300.0, 5.0, 448.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "CORPUS SCATTERPLOT",
 					"textcolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 1.0 ],
@@ -591,7 +591,7 @@
 					"outputllllnames" : 1,
 					"patching_rect" : [ 811.0, 639.0, 191.0, 146.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.5, 49.0, 290.5, 343.0 ],
+					"presentation_rect" : [ 7.0, 51.0, 290.5, 343.0 ],
 					"preventedit" : 1,
 					"rowvpad" : 2.5,
 					"showfocus" : 0,
@@ -1049,7 +1049,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 699.0, 1131.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 637.0, 475.0, 53.0, 18.0 ],
+					"presentation_rect" : [ 189.0, 477.0, 53.0, 18.0 ],
 					"text" : "clear",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textovercolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
@@ -1069,7 +1069,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 699.0, 1517.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 692.0, 475.0, 53.0, 18.0 ],
+					"presentation_rect" : [ 244.0, 477.0, 53.0, 18.0 ],
 					"text" : "apply",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textovercolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 1.0 ],
@@ -1228,7 +1228,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.0, 1381.0, 95.0, 93.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 26.0, 448.0, 467.0 ],
+					"presentation_rect" : [ 300.0, 28.0, 448.0, 467.0 ],
 					"proportion" : 0.5,
 					"style" : "bellplay-gui"
 				}
@@ -1454,7 +1454,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1262.0, 2461.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 600.0, 25.0, 145.0, 22.0 ],
+					"presentation_rect" : [ 152.0, 27.0, 145.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "playback OFF",
 					"texton" : "playback ON"
@@ -1497,7 +1497,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 341.0, 51.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 25.0, 145.0, 22.0 ],
+					"presentation_rect" : [ 6.0, 27.0, 145.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "load corpus"
 				}
@@ -1538,7 +1538,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1576.0, 2550.0, 72.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 68.0, 475.0, 384.0, 18.0 ],
+					"presentation_rect" : [ 364.0, 477.0, 384.0, 18.0 ],
 					"style" : "bellplay-gui",
 					"text" : "0 buffers",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
@@ -1580,7 +1580,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1576.0, 1561.0, 31.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 601.0, 398.0, 63.0, 21.0 ],
+					"presentation_rect" : [ 153.0, 400.0, 63.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "size",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1595,7 +1595,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1455.0, 1561.0, 38.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 601.0, 423.0, 63.0, 21.0 ],
+					"presentation_rect" : [ 153.0, 425.0, 63.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "color",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1610,7 +1610,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1334.0, 1561.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 455.0, 423.0, 77.0, 21.0 ],
+					"presentation_rect" : [ 7.0, 425.0, 77.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "y axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1625,7 +1625,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1193.0, 1559.0, 40.0, 21.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 455.0, 398.0, 77.0, 21.0 ],
+					"presentation_rect" : [ 7.0, 400.0, 77.0, 21.0 ],
 					"style" : "bellplay-gui",
 					"text" : "x axis",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
@@ -1642,7 +1642,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 979.0, 1245.0, 107.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 475.0, 291.0, 18.0 ],
+					"presentation_rect" : [ 6.0, 477.0, 291.0, 18.0 ],
 					"style" : "bellplay-gui",
 					"text" : "scatterplot filter",
 					"textcolor" : [ 0.925490196078431, 0.925490196078431, 0.925490196078431, 1.0 ]
@@ -1739,7 +1739,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 876.0, 1265.0, 211.0, 54.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 447.0, 291.0, 30.0 ],
+					"presentation_rect" : [ 6.0, 449.0, 291.0, 30.0 ],
 					"rounded" : 0.0,
 					"style" : "bellplay-gui"
 				}
@@ -1754,7 +1754,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1487.0, 2733.0, 158.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 475.0, 336.0, 18.0 ],
+					"presentation_rect" : [ 301.0, 477.0, 336.0, 18.0 ],
 					"style" : "bellplay-gui"
 				}
 
@@ -1983,7 +1983,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1575.0, 1558.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 600.0, 397.0, 145.0, 23.0 ],
+					"presentation_rect" : [ 152.0, 399.0, 145.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -2001,7 +2001,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1455.0, 1558.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 600.0, 422.0, 145.0, 23.0 ],
+					"presentation_rect" : [ 152.0, 424.0, 145.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -2019,7 +2019,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1334.0, 1558.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 422.0, 145.0, 23.0 ],
+					"presentation_rect" : [ 6.0, 424.0, 145.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -2037,7 +2037,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1214.0, 1558.0, 100.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 454.0, 397.0, 145.0, 23.0 ],
+					"presentation_rect" : [ 6.0, 399.0, 145.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"textjustification" : 2
 				}
@@ -2109,7 +2109,7 @@
 					"outlettype" : [ "", "", "", "bang" ],
 					"patching_rect" : [ 1255.0, 1840.0, 500.0, 481.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 5.0, 25.0, 447.0, 448.0 ],
+					"presentation_rect" : [ 301.0, 27.0, 447.0, 448.0 ],
 					"query" : "SELECT * FROM buffers",
 					"showaxeslabels" : 1,
 					"showborder" : 1,
