@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Name change: `inspectbuffer` to `inspect`. Now returns buffer for easy debugging.
 - Update dependencies in all patchers.
 - Minor changes in `about` text.
 - Remove underline from hyperlinks.
@@ -138,7 +139,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add `bp.tutorial.bufferinspector`.
-- Add basic version of `bp.bufferinspector` with `inspectbuffer` function.
+- Add basic version of `bp.bufferinspector` with `inspect` function.
 - New processor: `trim`.
 - Add `mean` function, with optional @weights arg.
 - Add binary search function, named `nearest`.

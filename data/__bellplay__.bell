@@ -184,30 +184,31 @@ BP_MEDIA_FILES = [
 
 ## ------------------------------------------------------------
 
-inspectbuffer = (
+inspect = (
     $buffer, 
     $label = null -> (
         $source = $buffer.getkey("source");
         if $source == null then (
-            printerror("invalid buffer in inspectbuffer():" $buffer)
+            printerror("invalid buffer in inspect():" $buffer)
         ) else (
             BP_BUFFER_INSPECTOR _= [
                 [ "label" $label ||| $source ]
                 [ "data" left($buffer, 1) ]
             ]
         );
-        null
+        $buffer
     )
 );
 
 $addref(
-    @name "inspectbuffer",
+    @name "inspect",
     @description "Opens buffer inspector window, displaying relevant buffer information — useful for debugging.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer" @type "llll" @description "media file type.")
         $addarg(@name "label" @default "null" @type "symbol/null" @description "optional buffer inspector label.")
     )
+    @output $addout(@description "buffer", @type "llll")
 );
 
 ## ------------------------------------------------------------
@@ -2098,7 +2099,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @ankeys "pitchmelodia" "pitchmelodia_confidence"
     @arguments (
-        $addarg(@name "binresolution" @default 10 @type "int" @description "salience function bin resolution, cents.")
+        $addarg(@name "binresolution" @default 10 @type "int" @description "salience function bin resolution, in cents.")
         $addarg(@name "filteriterations" @default 3 @type "int" @description "number of iterations for the octave errors / pitch outlier filtering process.")
         $addarg(@name "framesize" @default 2048 @type "int" @description "frame size for computing pitch salience.")
         $addarg(@name "guessunvoiced" @default 0 @type "int" @description "estimate pitch for non-voiced segments." @options

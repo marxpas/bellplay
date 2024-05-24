@@ -5,7 +5,7 @@
 
     An essential part of writing code is being able to debug unwanted or unexpected behaviors.
     This is particularly necessary when dealing with audio data — i.e., buffers.
-    In bellscript~, we can use the inspectbuffer() function to check the contents of any buffer we create.
+    In bellscript~, we can use the inspect() function to check the contents of any buffer we create.
     This function opens a pop-up window displaying useful information about the inspected buffers, once the code finished evaluation.
     
     This tutorial shows a simple example where every buffer that is not rendered can still be visualized through the buffer inspector.
@@ -15,19 +15,19 @@
 $buff = importaudio("trumpet.wav");
 
 ## queue original sample for inspection
-inspectbuffer($buff @label "pre-processing buffer");
+inspect($buff @label "pre-processing buffer");
 
 ## create envelope buffer, based on audio file duration
 $env = envelope([0 4 0] [1 100 0.25] @duration $buff.getkey("duration"));
 
 ## queue envelope for inspection (label is optional)
-inspectbuffer($env, @label "frequency envelope");
+inspect($env, @label "frequency envelope");
 
 ## create oscillator using envelope as frequency
 $osc = cycle($env).process(plus(1));
 
 ## queue oscillator for inspection
-inspectbuffer($osc @label "frequency oscillator");
+inspect($osc @label "frequency oscillator");
 
 ## process and transcribe buffer
 $buff.process(
