@@ -40,6 +40,94 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-114",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 604.5, 223.0, 35.0, 23.0 ],
+					"text" : "open"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-85",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 594.0, 131.0, 49.0, 23.0 ],
+					"text" : "read $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-174",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 684.0, 131.0, 83.0, 23.0 ],
+					"text" : "prepend write"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-173",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "clear" ],
+					"patching_rect" : [ 504.0, 91.0, 289.0, 23.0 ],
+					"text" : "t l l l clear"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-111",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "bang", "int" ],
+					"patching_rect" : [ 594.0, 186.0, 40.0, 23.0 ],
+					"text" : "text"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "bang" ],
+					"patching_rect" : [ 504.0, 54.0, 93.0, 23.0 ],
+					"text" : "savedialog BELL"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-44",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 504.0, 12.0, 100.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 4.0, 23.0, 143.0, 22.0 ],
+					"style" : "bellplay-gui",
+					"text" : "new script"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"code" : "BP_ESSENTIA_OUTPUT = $x1 ",
 					"id" : "obj-172",
 					"maxclass" : "newobj",
@@ -4098,22 +4186,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-83",
-					"maxclass" : "textbutton",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 1169.0, 2375.0, 100.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 148.75, 23.0, 143.5, 22.0 ],
-					"style" : "bellplay-gui",
-					"text" : "corpus lab"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-84",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -6137,36 +6209,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-50",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1440.5, 814.0, 130.0, 23.0 ],
-					"style" : "bellplay-gui",
-					"text" : "r #0exportbutton"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"active" : 0,
-					"id" : "obj-44",
-					"maxclass" : "textbutton",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 1440.5, 857.0, 100.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 149.0, 71.0, 143.0, 22.0 ],
-					"style" : "bellplay-gui",
-					"text" : "export roll"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-43",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -6261,23 +6303,6 @@
 			}
 , 			{
 				"box" : 				{
-					"active" : 0,
-					"id" : "obj-20",
-					"maxclass" : "textbutton",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 1812.0, 1910.0, 100.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 149.0, 47.0, 143.0, 22.0 ],
-					"style" : "bellplay-gui",
-					"text" : "export audio"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 10.0,
 					"id" : "obj-32",
 					"maxclass" : "comment",
@@ -6302,7 +6327,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 197.642857142857139, 540.5, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.25, 47.0, 143.0, 22.0 ],
+					"presentation_rect" : [ 3.75, 71.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "reload script"
 				}
@@ -6473,7 +6498,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 13.0, 39.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.25, 23.0, 143.5, 22.0 ],
+					"presentation_rect" : [ 4.0, 47.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "load script"
 				}
@@ -6599,7 +6624,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 936.0, 490.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 3.0, 71.0, 144.0, 22.0 ],
+					"presentation_rect" : [ 149.0, 47.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "play",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
@@ -7111,19 +7136,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-45",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1440.5, 894.0, 36.0, 23.0 ],
-					"style" : "bellplay-gui",
-					"text" : "write"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
 					"fontsize" : 10.0,
 					"id" : "obj-1",
@@ -7137,6 +7149,39 @@
 					"text" : " ",
 					"textcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
 					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-83",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1169.0, 2375.0, 100.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 148.75, 71.0, 143.5, 22.0 ],
+					"style" : "bellplay-gui",
+					"text" : "corpus lab"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"active" : 0,
+					"id" : "obj-20",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1812.0, 1910.0, 100.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 149.0, 23.0, 143.0, 22.0 ],
+					"style" : "bellplay-gui",
+					"text" : "export audio"
 				}
 
 			}
@@ -7229,6 +7274,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-21", 0 ],
 					"source" : [ "obj-110", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-114", 0 ],
+					"source" : [ "obj-111", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-111", 0 ],
+					"source" : [ "obj-114", 0 ]
 				}
 
 			}
@@ -7768,6 +7827,41 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-111", 0 ],
+					"source" : [ "obj-173", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-174", 0 ],
+					"source" : [ "obj-173", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-60", 0 ],
+					"source" : [ "obj-173", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-85", 0 ],
+					"source" : [ "obj-173", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-111", 0 ],
+					"source" : [ "obj-174", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-185", 0 ],
 					"source" : [ "obj-189", 0 ]
 				}
@@ -8076,7 +8170,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
+					"destination" : [ "obj-173", 0 ],
 					"source" : [ "obj-45", 0 ]
 				}
 
@@ -8106,13 +8200,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"source" : [ "obj-49", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-44", 0 ],
-					"source" : [ "obj-50", 0 ]
 				}
 
 			}
@@ -8416,6 +8503,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-82", 0 ],
 					"source" : [ "obj-84", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-111", 0 ],
+					"source" : [ "obj-85", 0 ]
 				}
 
 			}
