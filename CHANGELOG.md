@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Better formatting in `bp.corpus`.
+- Better formatting and filtering time in `bp.corpus`, with silent errors in `dada.cartesian`.
 - Swapp of scatterplot with bach.tree in `corpus.lab UI`.
 - Change `bp_makebuffer` name to `BP_NEWBUFF_FUNC`.
 - `live.gain~` now uses Lato font.
