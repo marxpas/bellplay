@@ -8959,6 +8959,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.essentia~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.expr~.mxo",
 				"type" : "iLaX"
 			}
