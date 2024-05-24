@@ -67,7 +67,8 @@
 					"patching_rect" : [ 416.0, 369.0, 791.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 299.358826144953298, 791.0, 23.0 ],
-					"text" : "You can support the development of bellplay~ by making a #donation."
+					"text" : "You can support the development of bellplay~ by making a #donation.",
+					"underline" : 0
 				}
 
 			}
@@ -283,7 +284,8 @@
 					"patching_rect" : [ 505.0, 121.0, 604.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 361.358826144953298, 790.0, 23.0 ],
-					"text" : "bellplay~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). "
+					"text" : "bellplay~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). ",
+					"underline" : 0
 				}
 
 			}
@@ -306,7 +308,8 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 8.0, 220.358826144953298, 791.0, 40.0 ],
-					"text" : "This project relies primarily on the #bach ecosystem — a family of packages for computer-assisted composition in Max, developed by Andrea Agostini and Daniele Ghisi. It also relies, to a lesser degree, on the #ml.star library, developed by Benjamin D. Smith."
+					"text" : "This project relies primarily on the #bach ecosystem — a family of packages for computer-assisted composition in Max, developed by Andrea Agostini and Daniele Ghisi. It also relies, to a lesser degree, on the #ml.star library, developed by Benjamin D. Smith.",
+					"underline" : 0
 				}
 
 			}
@@ -329,7 +332,8 @@
 					"presentation" : 1,
 					"presentation_linecount" : 3,
 					"presentation_rect" : [ 8.0, 124.358826144953312, 796.0, 57.0 ],
-					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/bellplay "
+					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/bellplay ",
+					"underline" : 0
 				}
 
 			}

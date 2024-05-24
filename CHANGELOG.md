@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Remove underline from hyperlinks.
 - New arrangement of buttons in `bp.script` .
 - Better formatting and filtering time in `bp.corpus`, with silent errors in `dada.cartesian`.
 - Swapp of scatterplot with bach.tree in `corpus.lab UI`.

@@ -1328,7 +1328,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1261.0, 1139.0, 311.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ]
+					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ],
+					"underline" : 0
 				}
 
 			}
@@ -1354,7 +1355,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1783.0, 1059.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 763.0, 132.0, 38.0, 18.0 ],
+					"presentation_rect" : [ 763.0, 115.0, 38.0, 18.0 ],
 					"text" : "details",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"textjustification" : 2
@@ -1369,7 +1370,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1932.0, 1059.0, 55.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 763.0, 132.0, 38.0, 18.0 ],
+					"presentation_rect" : [ 763.0, 115.0, 38.0, 18.0 ],
 					"rounded" : 12,
 					"style" : "bellplay-gui"
 				}
@@ -1492,7 +1493,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 572.0, 1200.5, 208.0, 52.0 ],
+					"patching_rect" : [ 572.0, 1200.5, 211.0, 52.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1529,7 +1530,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1797.0, 1250.0, 170.0, 5.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 138.0, 629.0, 5.0 ],
+					"presentation_rect" : [ 169.0, 121.0, 629.0, 5.0 ],
 					"saved_attribute_attributes" : 					{
 						"linecolor" : 						{
 							"expression" : ""
@@ -1735,12 +1736,12 @@
 					"outlettype" : [ "", "", "", "", "bang" ],
 					"patching_rect" : [ 1010.0, 1600.0, 345.0, 250.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 151.0, 632.0, 450.0 ],
+					"presentation_rect" : [ 169.0, 134.0, 632.0, 467.0 ],
 					"preventedit" : 1,
 					"rowvpad" : 2.5,
 					"showfocus" : 0,
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
-					"textdecayfactor" : 0.95,
+					"textdecayfactor" : 0.975,
 					"tricolor" : [ 0.501960784313725, 0.501960784313725, 0.501960784313725, 0.0 ],
 					"versionnumber" : 80300
 				}
@@ -1848,7 +1849,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1111.0, 849.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 91.0, 632.0, 40.0 ],
+					"presentation_rect" : [ 169.0, 91.0, 632.0, 23.0 ],
 					"proportion" : 0.5
 				}
 

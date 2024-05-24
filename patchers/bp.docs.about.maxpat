@@ -146,11 +146,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4.0, 839.0, 698.0, 175.0 ],
+					"patching_rect" : [ 4.0, 839.0, 698.0, 174.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 9,
 					"presentation_rect" : [ 8.0, 430.0, 796.0, 158.0 ],
-					"text" : "\nWith a wide variety of bell functions, bellplay~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis. To start learning bellplay~, please follow the tutorials and refer to the bell reference documentation, where all available functions in bellplay~ are listed. \n\nAdditionally, to learn more about the bell programming language, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176"
+					"text" : "\nWith a wide variety of bell functions, bellplay~ offers an extensive and flexible approach to algorithmic audio, enabling users to design intricate and complex sounds with granular precision. Moreover, its feature-based representation of buffers allows for more advanced audio techniques such as audio mosaicing and concatentive synthesis. To start learning bellplay~, please follow the tutorials and refer to the bell reference documentation, where all available functions in bellplay~ are listed. \n\nAdditionally, to learn more about the bell programming language, please refer to its introductory publication: \nGiavitto, J.-L., & Agostini, A. (2019, June). Bell, a textual language for the bach library. ICMC 2019 - International Computer Music Conference. https://hal.science/hal-02348176",
+					"underline" : 0
 				}
 
 			}
@@ -198,10 +199,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5.0, 153.0, 817.0, 242.0 ],
+					"patching_rect" : [ 5.0, 153.0, 820.0, 242.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 13,
-					"presentation_rect" : [ 8.0, 42.0, 796.0, 242.0 ],
+					"presentation_rect" : [ 8.0, 42.0, 798.0, 242.0 ],
 					"text" : "bellplay~ is a flexible application and framework for offline algorithmic audio in the bell programming language. Central to bellplay~ is the concept of the buffer — a structured data representation of an audio file. Buffers can be dynamically generated, processed, and manipulated using bell scripts. Each buffer encapsulates relevant audio information such as channel count, sampling rate, and duration, alongside analysis-based features like pitch, loudness, spectral centroid, and more.\n\nThe general workflow of a bell script in bellplay~ is the following:\n\n      1. Generation: buffers are created and processed using synthesis or sampling techniques.\n      2. Transcription: buffers are queued for rendering, each symbolically represented as a note in staff notation.\n      3. Rendering: All transcribed buffers are compiled and rendered into a single audio buffer. This buffer can then be used for \n           subsequent iterations of this workflow to refine the final output as needed. \n\nHere’s an introductory example of a bell script in bellplay~, which generates 1 second of a sinusoidal wave at 440 Hz:\n"
 				}
 

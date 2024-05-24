@@ -942,6 +942,7 @@
 			}
 , 			{
 				"box" : 				{
+					"drop" : 0,
 					"fontface" : 0,
 					"fontname" : "Lato",
 					"fontsize" : 12.0,
@@ -954,7 +955,8 @@
 					"patching_rect" : [ 606.0, 988.0, 664.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 319.5, 561.0, 481.0, 21.0 ],
-					"textcolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ]
+					"textcolor" : [ 0.831372549019608, 0.831372549019608, 0.831372549019608, 1.0 ],
+					"underline" : 0
 				}
 
 			}
@@ -1612,7 +1614,8 @@
 					"presentation" : 1,
 					"presentation_linecount" : 5,
 					"presentation_rect" : [ 6.0, 211.0, 794.0, 90.0 ],
-					"text" : "\nIt is highly recommended that you use an external code editor when writing bell code, preferrably #VisualStudioCode or #Atom. If you use #VisualStudioCode, make sure to install the #bell-syntax extension, which provides syntax highlighting in bell. If you use #Atom, you can click #here to install the syntax highlighting package for you. Lastly, as you follow the tutorials, make sure to also check the reference documentation to further understand what each of the functions you encounter do. Happy coding!"
+					"text" : "\nIt is highly recommended that you use an external code editor when writing bell code, preferrably #VisualStudioCode or #Atom. If you use #VisualStudioCode, make sure to install the #bell-syntax extension, which provides syntax highlighting in bell. If you use #Atom, you can click #here to install the syntax highlighting package for you. Lastly, as you follow the tutorials, make sure to also check the reference documentation to further understand what each of the functions you encounter do. Happy coding!",
+					"underline" : 0
 				}
 
 			}
@@ -1709,7 +1712,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 447.0, 1122.0, 738.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 285.0, 368.0, 516.0, 23.0 ]
+					"presentation_rect" : [ 285.0, 368.0, 516.0, 23.0 ],
+					"underline" : 0
 				}
 
 			}
