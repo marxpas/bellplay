@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Split required vs optional arguments in docs.
 - Improve buffer inspector.
 - Small optimization in `buildtree`: assign onset descriptor to variable to prevent regeneration with each file.
 - Make corpus lab playback softer.

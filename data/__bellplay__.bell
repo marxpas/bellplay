@@ -17,22 +17,37 @@ BP_TMP_ROLL_OUTPUT = null;
 
 $addref = (
     $name, $description, $arguments, $output, $category = BP_REF_LABEL_UTILS, $anmodes = 0...3, $ankeys = null -> (
+        ## check if reference belongs to analysis/descriptor function
         if $category == BP_REF_LABEL_ANALYSIS then (
+            ## check if descriptor supports multiple modes
             $mode = $arguments."@mode";
             if $mode != null then (
+                ## if so, filter out unsupported modes
                 $mode."options:" = for $i in $anmodes collect ($mode."options:"):($i + 1)
             );
+            ## re-assign modified arguments
             $arguments."@mode" = $mode
+        );
+        ## if function has arguments, split required from optional ones.
+        if $arguments != null then (
+            $required = null;
+            $optional = null;
+            for $arg in $arguments do if $arg."default:" == null then (
+                $optional _= $arg 
+            ) else (
+                $required _= $arg
+            );
+            $arguments = ($required &&& [ "required:" $required ]) ($optional &&& [ "optional:" $optional ])
         );
         BP_REF.$category _= [
             $name
             [ "description:" $description ] 
             [ "arguments:" ($arguments ||| "none") ] 
             (
+                ## if function is a descriptor, show name of analysis keys
                 if $category == BP_REF_LABEL_ANALYSIS then (
                     $ankeys = $ankeys ||| $name;
                     $ankeys = for $k in $ankeys collect [ "'" + $k + "'" ];
-                    ## if $ankeys.length() == 1 then ($ankeys = [ $ankeys ]);
                     [ "feature keys:" $ankeys ]
                 )
             )
