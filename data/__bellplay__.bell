@@ -235,7 +235,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-bp_makebuffer = (
+BP_NEWBUFF_FUNC = (
     $source,
     $offset = 0,
     $info = 1,
@@ -296,7 +296,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in bp_makebuffer("dummy" @info 0)::1 collect $addopt(@value "'" + $x::(1 1) + "'"));
+BP_REF_BUFFER_KEYS_OPTIONS = sort(for $x in BP_NEWBUFF_FUNC("dummy" @info 0)::1 collect $addopt(@value "'" + $x::(1 1) + "'"));
 
 BP_REF_TIMEUNIT_OPTIONS = (
     $addopt(@value 0, @description "milliseconds")
@@ -1318,7 +1318,7 @@ render = (
         ($process &&& msg("sampler", [ "process" $process ] ));
         ($play == 1 && msg("playtoggle", 1));
         ($reset == 1 && msg("roll", "clear"));
-        bp_makebuffer(@source BP_RENDER_BUFF)
+        BP_NEWBUFF_FUNC(@source BP_RENDER_BUFF)
     )
 );
 
@@ -1493,7 +1493,7 @@ importaudio = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        bp_makebuffer(@source BP_TMP_BUFF)
+        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF)
     )
 );
 
@@ -2490,7 +2490,7 @@ process = (
                 $commands 
             ]
         );
-        bp_makebuffer(@source BP_TMP_BUFF @pitch $buffer.getkey("pitch"))
+        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF @pitch $buffer.getkey("pitch"))
     )
 );
 
@@ -2696,7 +2696,7 @@ BP_OSC_GEN_FUNC = (
             ]
         );
         $pitch = f2mc($frequency);
-        bp_makebuffer(@source BP_TMP_BUFF @pitch $pitch)
+        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF @pitch $pitch)
     )
 );
 
@@ -2887,7 +2887,7 @@ envelope = (
                 ]
             ]
         );
-        bp_makebuffer(@source BP_TMP_BUFF)
+        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF)
     )
 );
 
