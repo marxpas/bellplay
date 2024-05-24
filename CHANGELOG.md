@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New `mc2pc` function.
+
 ### Changed
 
 - New arrangement of buttons in `bp.script` .

@@ -1118,6 +1118,20 @@ $addref(
 
 ## ------------------------------------------------------------
 
+mc2pc = ($mc -> fmod($mc, 1200.) / 100);
+
+$addref(
+    @name "mc2pc",
+    @description "midicent to pitch class conversion.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "mc", @type "list/int/float", @description "midicents to convert.")
+    ),
+    @output $addout(@description "list of pitch classes", @type "list/int/float")
+);
+
+## ------------------------------------------------------------
+
 r2mc = (
     $ratios,
     $mc = 6000 -> (
