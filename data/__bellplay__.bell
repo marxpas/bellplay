@@ -465,6 +465,14 @@ buildcorpus = (
         BP_DEMO_CORPUS = 0;
 
         $corpus = null;
+
+        $onsetdescriptor = onsets(
+            @alpha $alpha
+            @delay $delay
+            @framerate $framerate
+            @silencethreshold $silencethreshold
+        );
+        
         for $file in $files do (
             $pathinfo = getpathinfo($file);
             if ($pathinfo."extension").intersection(".wav" ".aif" ".aiff") == null then (
@@ -477,12 +485,7 @@ buildcorpus = (
                 if $segmode != 0 then (
                     if $segmode == 1 then (
                         $buff = $buff.analyze(
-                            @descriptors onsets(
-                                @alpha $alpha
-                                @delay $delay
-                                @framerate $framerate
-                                @silencethreshold $silencethreshold
-                            )
+                            @descriptors $onsetdescriptor
                         );
                         $onsets = $buff.getkey("onsets") ||| 0;
                         $durations = ($onsets $buff.getkey("source_end")).x2dx()
