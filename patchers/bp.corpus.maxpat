@@ -2682,7 +2682,7 @@
 					"where" : [ "null" ],
 					"xlabel" : "none",
 					"ylabel" : "none",
-					"zoom" : 8108.843537414965795
+					"zoom" : 1000.0
 				}
 
 			}

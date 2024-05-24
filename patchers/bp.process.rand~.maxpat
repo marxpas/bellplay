@@ -68,7 +68,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 11.0, 12.0, 52.0, 22.0 ],
+					"patching_rect" : [ 11.0, 12.0, 52.0, 23.0 ],
 					"text" : "ears.in~"
 				}
 

@@ -56,7 +56,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 88.0, 60.0, 22.0 ],
+					"patching_rect" : [ 8.0, 88.0, 60.0, 23.0 ],
 					"text" : "ears.out~"
 				}
 
@@ -80,7 +80,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 8.0, 8.0, 52.0, 22.0 ],
+					"patching_rect" : [ 8.0, 8.0, 52.0, 23.0 ],
 					"text" : "ears.in~"
 				}
 

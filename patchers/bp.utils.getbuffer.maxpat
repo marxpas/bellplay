@@ -56,7 +56,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 98.0, 58.0, 102.0, 22.0 ],
+					"patching_rect" : [ 98.0, 58.0, 102.0, 23.0 ],
 					"text" : "t l l"
 				}
 
@@ -68,7 +68,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 13.0, 193.0, 104.0, 22.0 ],
+					"patching_rect" : [ 13.0, 193.0, 104.0, 23.0 ],
 					"text" : "gate 2 0"
 				}
 
@@ -80,7 +80,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 311.0, 134.0, 29.5, 22.0 ],
+					"patching_rect" : [ 311.0, 134.0, 29.5, 23.0 ],
 					"text" : "1"
 				}
 
@@ -92,7 +92,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 268.0, 134.0, 29.5, 22.0 ],
+					"patching_rect" : [ 268.0, 134.0, 29.5, 23.0 ],
 					"text" : "2"
 				}
 
@@ -104,7 +104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 181.0, 94.0, 192.0, 22.0 ],
+					"patching_rect" : [ 181.0, 94.0, 192.0, 23.0 ],
 					"text" : "regexp .*\\\\.wav"
 				}
 
@@ -116,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 98.0, 233.0, 66.0, 22.0 ],
+					"patching_rect" : [ 98.0, 233.0, 66.0, 23.0 ],
 					"text" : "ears.read~"
 				}
 

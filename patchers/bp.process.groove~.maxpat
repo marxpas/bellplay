@@ -180,6 +180,28 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "bach.keys.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.in.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.out~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.reg~.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "bellplay-gui",
 				"default" : 				{

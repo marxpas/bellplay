@@ -153,6 +153,20 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "ears.in.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mc.in~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.mc.out~.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "bellplay-gui",
 				"default" : 				{

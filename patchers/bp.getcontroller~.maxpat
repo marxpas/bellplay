@@ -45,7 +45,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 304.0, 423.0, 183.0, 21.0 ],
-					"presentation_linecount" : 5,
 					"text" : "store until main buffer is received"
 				}
 
@@ -68,7 +67,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 195.0, 124.0, 92.0, 21.0 ],
-					"presentation_linecount" : 4,
 					"text" : "envelope (open)"
 				}
 
@@ -262,7 +260,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 337.0, 210.0, 268.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "ignore main buffer if control param is also a buffer"
 				}
 

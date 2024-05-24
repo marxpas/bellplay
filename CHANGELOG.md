@@ -8,11 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New `About bellplay~` menu bar that opens docs.
 - New `new script` button.
 - New `mc2pc` function.
 
 ### Changed
 
+- Update dependencies in all patchers.
 - Minor changes in `about` text.
 - Remove underline from hyperlinks.
 - New arrangement of buttons in `bp.script` .
@@ -28,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ears.essentia~` dependency no longer missing, which fixes major standalone scripting bug.
 
 ### Removed
+
+- Remove `bp.filemenu.maxpat`
 
 ## [v0.2.0-beta] - 2024-05-24
 
