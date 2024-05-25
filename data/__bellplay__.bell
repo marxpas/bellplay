@@ -49,7 +49,7 @@ $addref = (
                 if $category == BP_REF_LABEL_ANALYSIS then (
                     $ankeys = $ankeys ||| $name;
                     $ankeys = for $k in $ankeys collect [ "'" + $k + "'" ];
-                    [ "feature keys:" $ankeys ]
+                    [ "resulting buffer keys:" $ankeys ]
                 )
             )
             [ "output:" ($output ||| "null") ]
