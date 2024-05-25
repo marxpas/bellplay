@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - New generator: `clicks`.
-- New descriptors: `mfcc`, `zerocrossingrate`, `strongpeak`.
+- New descriptors: `effectiveduration`, `mfcc`, `zerocrossingrate`, `strongpeak`.
 - Add test script which runs all tutorials in sequence. Known bug: causes standalone crash on script reload.
 - New `About bellplay~` menu bar that opens docs.
 - New `new script` button.
