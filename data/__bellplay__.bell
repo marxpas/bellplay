@@ -1343,7 +1343,7 @@ render = (
 $addref(
     @name "render",
     @description "Triggers audio rendering of all transcribed buffers via #transcribe, and returns the rendered buffer. Note that it's possible to apply post-rendering processing by passing audio processing commands (e.g., #reverse, #freeverb, #clip, etc.) to the @process arguments, but these audio modifications won't be accurately reflected in the score transcription. See #process function.",
-    @category BP_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "numchannels", @type "int", @default 2, @description "number of output channels.")
         $addarg(@name "panmode", @type "int", @default 0, @description "panning mode." @options 
@@ -1745,7 +1745,7 @@ analyze = (
 $addref(
     @name "analyze",
     @description "Applies a sequence of audio analysis operations to the input buffer, via audio descriptors. These descriptors are generated through functions (e.g., see #flux, #dissonance, #spectrum), which contain the parameters for that specific audio analysis.",
-    @category BP_REF_LABEL_UTILS,
+    @category BP_REF_LABEL_ANALYSIS,
     @arguments (
         $addarg(@name "buffer" @type "llll", @description "buffer to analyze.")
         $addarg(@name "descriptors" @type "llll" @description "list of audio descriptors.")
