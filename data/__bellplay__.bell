@@ -1886,6 +1886,22 @@ $addref(
 
 ## ------------------------------------------------------------
 
+strongpeak = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "strongpeak" @mode $mode));
+
+$addref(
+    @name "strongpeak"
+    @description "Audio descriptor to compute the strong peak of a buffer, defined as the ratio between the spectrum's maximum peak's magnitude and the 'bandwidth' of the peak above a threshold — i.e., half its amplitude. This ratio reveals whether the spectrum presents a very 'pronounced' maximum peak — i.e., the thinner and the higher the maximum of the spectrum is, the higher the ratio value. Note that 'bandwidth' is defined as the width of the peak in the log10-frequency domain. Using the log10-frequency domain allows this algorithm to compare strong peaks at lower frequencies with those from higher frequencies. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "strongpeak descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 inharmonicity = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "inharmonicity" @mode $mode));
 
 $addref(
