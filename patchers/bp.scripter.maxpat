@@ -7056,6 +7056,7 @@
 					"preventedit" : [ "notes", "slotinfo", "voices", "breakpoints", "markers" ],
 					"ruler" : 1,
 					"rulercolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
+					"selectioncolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"showborder" : 0,
 					"showdurations" : 0,
 					"showstems" : 0,
