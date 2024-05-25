@@ -1284,6 +1284,8 @@ transcribe = (
         $vel = if $gain then maximum(trans($gain.1)::2) else 64;
         $dur = $buffer."duration";
         
+        if $dur <= 0 then printerror("attempt to transcribe a buffer with duration of" $dur);
+        
         ## make size slot based on duration
         $size = [ 4 scale(log2(min(16384, max(1, $dur))), 0, 14, 25, 150) ];
 
@@ -3045,6 +3047,59 @@ $addref(
         $addarg(@name "duration", @default 1000, @type "int", @description "envelope duration, in milliseconds")
     ),
     @output $addout(@description "envelope" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+clicks = (
+    $onsets = 0, 
+    $gains = 1,
+    $impulse = 1,
+    $ampunit = 0,
+    $timeunit = 0 -> (
+        for $x in ["onsets" $onsets] [ "gains" $gains ] [ "impulse" $impulse ] do (
+            $k = $x::(1 2);
+            if $k == null || $k.length() > 1  then (
+                printerror($x::(1 1) "must be a flat list")
+            )
+        );
+        msg("generate", 
+            [
+                [ "fx" "clicks"]
+                [ "params" 
+                    [ "impulse" $impulse ]
+                    [ "gains" $gains ]
+                    [ "onsets" $onsets.max(1) ]
+                ]
+            ]
+        );
+        $buff = BP_NEWBUFF_FUNC(@source BP_TMP_BUFF);
+        if $buff.getkey('duration') < 2 then (
+            $buff.process(
+                join(envelope(0 @duration 2))
+            )
+        ) else (
+            $buff
+        )
+    )
+);
+
+$addref(
+    @name "clicks",
+    @description "Generates a buffer containing a set of clicks at specific onsets. Note that if the first onset value is 0, it might get silenced when the @fade argument in #render is non-zero.",
+    @category BP_REF_LABEL_GEN,
+    @arguments (
+        $addarg(@name "onsets" @default 0 @type "int/float/list" @description "onset positions.")
+        $addarg(@name "gains" @default 1 @type "int/float/list" @description "click gains.")
+        $addarg(@name "impulse" @default 1 @type "int/float/list" @description "impulse, a list of audio samples.")
+        $addarg(@name "timeunit", @default 0, @type "int", @description "time unit." @options
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit." @options
+            BP_REF_AMPUNIT_OPTIONS
+        )
+    ),
+    @output $addout(@description "clicks buffer" @type "llll")
 );
 
 ## ------------------------------------------------------------
