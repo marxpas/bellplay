@@ -2110,9 +2110,10 @@ pitchmelodia = (
     $referencefrequency = 55,
     $samplerate = 44100,
     $timecontinuity = 100,
+    $polyphonic = 0,
     $mode = 0 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
-            @name "pitchmelodia"
+            @name (if $polyphonic == 0 then "pitchmelodia" else "predominantpitchmelodia")
             @output "pitchmelodia" "pitchmelodia_confidence"
             @settings (
                 "@binresolution" $binresolution
@@ -2168,6 +2169,13 @@ $addref(
         $addarg(@name "referencefrequency" @default 55 @type "int/float" @description "the reference frequency to cent conversion corresponding to the 0th cent bin.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "the sampling rate of the audio signal.")
         $addarg(@name "timecontinuity" @default 100 @type "int" @description "maximum allowed gap duration for a pitch contour, in milliseconds.")
+        $addarg(@name "polyphonic" @default 0 @type "int" @description "optimize for polyphonic buffer." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "voicevibrato" @default 0 @type 'int' @description "detect voice vibrato, when @polyphonic is 1." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "voicingtolerance" @default '0.2' @type 'int/float' @description "voicing tolerance between -1 and 1.4, when @polyphonic is 1.")
         $addarg(@name "mode" @default 0 @type "int" @description "analysis mode." @options
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
