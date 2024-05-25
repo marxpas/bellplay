@@ -66,7 +66,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 416.0, 369.0, 791.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 299.358826144953298, 791.0, 23.0 ],
+					"presentation_rect" : [ 8.0, 316.358826144953298, 791.0, 23.0 ],
 					"text" : "You can support the development of bellplay~ by making a #donation.",
 					"underline" : 0
 				}
@@ -81,7 +81,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 309.0, 520.0, 91.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 262.358826144953298, 307.0, 35.0 ],
+					"presentation_rect" : [ 8.0, 279.358826144953298, 307.0, 35.0 ],
 					"text" : "support"
 				}
 
@@ -283,7 +283,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 505.0, 121.0, 604.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 361.358826144953298, 790.0, 23.0 ],
+					"presentation_rect" : [ 8.0, 378.358826144953298, 790.0, 23.0 ],
 					"text" : "bellplay~is distributed under the terms of the GNU General Public License version 3 (GPL-v3.0). ",
 					"underline" : 0
 				}
@@ -307,7 +307,7 @@
 					"patching_rect" : [ 9.0, 311.0, 791.0, 40.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 8.0, 220.358826144953298, 791.0, 40.0 ],
+					"presentation_rect" : [ 8.0, 237.358826144953298, 791.0, 40.0 ],
 					"text" : "This project relies primarily on the #bach ecosystem — a family of packages for computer-assisted composition in Max, developed by Andrea Agostini and Daniele Ghisi. It also relies, to a lesser degree, on the #ml.star library, developed by Benjamin D. Smith.",
 					"underline" : 0
 				}
@@ -321,18 +321,18 @@
 					"fontsize" : 14.0,
 					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-9",
-					"linecount" : 4,
+					"linecount" : 6,
 					"linkend" : [ "null" ],
 					"linkstart" : [ "https://" ],
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 121.0, 438.0, 74.0 ],
+					"patching_rect" : [ 10.0, 121.0, 438.0, 107.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 3,
-					"presentation_rect" : [ 8.0, 124.358826144953312, 796.0, 57.0 ],
-					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music. The source code can be found at https://github.com/felipetovarhenao/bellplay ",
+					"presentation_linecount" : 4,
+					"presentation_rect" : [ 8.0, 124.358826144953312, 796.0, 74.0 ],
+					"text" : "bellplay~ is developed and maintained by Felipe Tovar-Henao, as part of his residency as the Charles H. Turner Postdoctoral Fellow at the University of Cincinnati College-Conservatory of Music.\n\nThe source code can be found at https://github.com/felipetovarhenao/bellplay/ ",
 					"underline" : 0
 				}
 
@@ -346,7 +346,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 10.0, 307.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 183.358826144953298, 307.0, 35.0 ],
+					"presentation_rect" : [ 8.0, 200.358826144953298, 307.0, 35.0 ],
 					"text" : "acknowledgements"
 				}
 
@@ -360,7 +360,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 47.0, 307.0, 35.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 324.358826144953298, 307.0, 35.0 ],
+					"presentation_rect" : [ 8.0, 341.358826144953298, 307.0, 35.0 ],
 					"text" : "license"
 				}
 
