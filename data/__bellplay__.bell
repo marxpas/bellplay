@@ -4461,7 +4461,7 @@ $addref(
             $addopt(@value 2, @description "Griffin-Lim")
         )
         $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
-        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/sym", @description "window type." @options BP_REF_WINDOW_OPTIONS)
+        $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/symbol", @description "window type." @options BP_REF_WINDOW_OPTIONS)
     ),
     @output $addout(@description "timesquash command" @type "llll")
 );
@@ -4770,7 +4770,7 @@ $addref(
         $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples")
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
         $addarg(@name "maxfrequency", @default 22050, @type "int/float", @description "max. frequency of the range to evaluate")
-        $addarg(@name "wintype", @default "'hann'", @type "sym/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
+        $addarg(@name "wintype", @default "'hann'", @type "symbol/int", @description "window type. For instance, 'hann', 'sine', 'triangular', etc")
         $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode." @options
             $addopt(@value 0 @description "sinusoidal")
             $addopt(@value 1 @description "stochastic" "+" "sinusoidal")
@@ -4783,7 +4783,7 @@ $addref(
 ## ------------------------------------------------------------
 
 buildtree = (
-    $buffers, $keys = "mfcc" -> (
+    $buffers, $keys -> (
         if $keys == null then (
             printerror("you must provide a one or more features to the @keys argument in buildtree()")
         );
@@ -4797,7 +4797,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffers", @type "llll", @description "list of buffers.")
-        $addarg(@name "keys", @default "'mfcc'", @type "list/sym", @description "features to build tree on.")
+        $addarg(@name "keys" @type "list/symbol", @description "one or more features to build tree on, as a list of symbols.")
     )
 );
 
