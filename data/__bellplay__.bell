@@ -2131,6 +2131,91 @@ $addref(
 
 ## ------------------------------------------------------------
 
+mfcc = (
+    $dcttype = 2,
+    $highfrequencybound = 11000,
+    $inputsize = 1025,
+    $liftering = 0,
+    $logtype = 'dbamp',
+    $lowfrequencybound = 0,
+    $normalize = 'unit_sum',
+    $numberbands = 40,
+    $numbercoefficients = 13,
+    $samplerate = 44100,
+    $silencethreshold = 10,
+    $type = 'power',
+    $warpingformula = 'htkmel',
+    $weighting = 'warping',
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "mfcc"
+            @settings (      
+                "@dcttype" $dcttype
+                "@highfrequencybound" $highfrequencybound
+                "@inputsize" $inputsize
+                "@liftering" $liftering
+                "@logtype" $logtype
+                "@lowfrequencybound" $lowfrequencybound
+                "@normalize" $normalize
+                "@numberbands" $numberbands
+                "@numbercoefficients" $numbercoefficients
+                "@samplerate" $samplerate
+                "@silencethreshold" $silencethreshold
+                "@type" $type
+                "@warpingformula" $warpingformula
+                "@weighting" $weighting
+            )
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "mfcc"
+    @description "Audio descriptor to compute the mel-frequency cepstrum coefficients of a buffer's spectrum. As there is no standard implementation, the MFCC-FB40 is used by default. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "dcttype" @default 2 @type "int" @description "DCT type.")
+        $addarg(@name "highfrequencybound" @default 11000 @type "int/float" @description "upper bound of the frequency range, in Hz.")
+        $addarg(@name "inputsize" @default 1025 @type "int" @description "size of input spectrum.")
+        $addarg(@name "liftering" @default 0 @type "int" @description "liftering coefficient. Use '0' to bypass it.")
+        $addarg(@name "logtype" @default 'dbamp' @type "symbol" @description "logarithmic compression type." @options 
+            $addopt(@value "'natural'")
+            $addopt(@value "'dbpow'")
+            $addopt(@value "'dbamp'")
+            $addopt(@value "'log'")
+        )
+        $addarg(@name "lowfrequencybound" @default 0 @type "float" @description "lower bound of the frequency range, in Hz.")
+        $addarg(@name "normalize" @default 'unit_sum' @type "symbol" @description "spectrum bin weights to use for each mel band." @options 
+            $addopt(@value "'unit_sum'")
+            $addopt(@value "'unit_tri'")
+            $addopt(@value "'unit_max'")
+        )
+        $addarg(@name "numberbands" @default 40 @type "int" @description "number of mel-bands in the filter.")
+        $addarg(@name "numbercoefficients" @default 13 @type "int" @description "number of output mel coefficients.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the audio signal, in Hz.")
+        $addarg(@name "silencethreshold" @default 10 @type "float" @description "silence threshold for computing log-energy bands.")
+        $addarg(@name "type" @default 'power' @type "symbol" @description "use magnitude or power spectrum." @options 
+            $addopt(@value "'magnitude'")
+            $addopt(@value "'power'")
+        )
+        $addarg(@name "warpingformula" @default 'htkmel' @type "symbol" @description "scale implementation type." @options 
+            $addopt(@value "'slaneymel'")
+            $addopt(@value "'htkmel'")
+        )
+        $addarg(@name "weighting" @default 'warping' @type "symbol" @description "type of weighting function for determining triangle area." @options
+            $addopt(@value "'warping'")
+            $addopt(@value "'linear'")
+        )
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "flux descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 flux = (
     $halfrectify = 0,
     $norm = "L2",
