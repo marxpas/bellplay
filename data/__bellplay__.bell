@@ -1902,6 +1902,34 @@ $addref(
 
 ## ------------------------------------------------------------
 
+zerocrossingrate = (
+    $threshold = 0,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "zerocrossingrate" 
+            @mode $mode
+            @settings (
+                "@threshold" $threshold
+            )
+        )
+    )
+);
+
+$addref(
+    @name "zerocrossingrate"
+    @description "Audio descriptor to compute the zero-crossing rate of a buffer, defined as the number of sign changes between consecutive signal values divided by the total number of values. Noisy signals tend to have higher zero-crossing rate. In order to avoid small variations around zero caused by noise, a threshold around zero is given to consider a valid zerocrosing whenever the boundary is crossed. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "threshold" @default 0 @type "int/float" @description "the threshold which will be taken as the zero axis in both positive and negative sign.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "zerocrossingrate descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 strongdecay = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "strongdecay"));
 
 $addref(
