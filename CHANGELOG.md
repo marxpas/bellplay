@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Add missing descriptor keys for `mfcc` descriptor.
 - Mislabelled optional arguments bug in reference is fixed.
 - `ears.essentia~` dependency no longer missing, which fixes major standalone scripting bug.
 

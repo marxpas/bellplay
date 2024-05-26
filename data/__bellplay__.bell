@@ -2245,6 +2245,7 @@ mfcc = (
                 "@warpingformula" $warpingformula
                 "@weighting" $weighting
             )
+            @output "mfcc_bands" "mfcc"
             @mode $mode
         )
     )
@@ -2254,6 +2255,7 @@ $addref(
     @name "mfcc"
     @description "Audio descriptor to compute the mel-frequency cepstrum coefficients of a buffer's spectrum. As there is no standard implementation, the MFCC-FB40 is used by default. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
+    @ankeys "mfcc_bands" "mfcc"
     @arguments (
         $addarg(@name "dcttype" @default 2 @type "int" @description "DCT type.")
         $addarg(@name "highfrequencybound" @default 11000 @type "int/float" @description "upper bound of the frequency range, in Hz.")
@@ -2291,7 +2293,7 @@ $addref(
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
-    @output $addout(@description "flux descriptor" @type "llll")
+    @output $addout(@description "mfcc descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
