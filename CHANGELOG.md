@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+  
+### Fixed
+
+### Removed
+
+## [v0.2.1-beta] - 2024-05-26
+
+### Added
+
 - New generator: `clicks`.
 - New descriptors: `onsetdetection`, `effectiveduration`, `mfcc`, `zerocrossingrate`, `strongpeak`.
 - Add test script which runs all tutorials in sequence. Known bug: causes standalone crash on script reload.
