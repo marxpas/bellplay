@@ -475,7 +475,7 @@
 				"local" : 1
 			}
 ,
-			"test_corpus.llll" : 			{
+			"corpus_demo.llll" : 			{
 				"kind" : "llllfile",
 				"local" : 1
 			}

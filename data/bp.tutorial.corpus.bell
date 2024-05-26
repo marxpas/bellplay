@@ -11,7 +11,7 @@
 )#
 
 ## specify a path to a pre-existing corpus file
-$corpuspath = "test_corpus.llll";
+$corpuspath = "corpus_demo.llll";
 
 ## to use a corpus of your own, uncomment the line below
 ## $corpuspath = "path/to/your/corpus.llll";

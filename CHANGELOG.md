@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change name: `test_corpus.llll` to `corpus_demo.llll`.
 - Change `code` font from `Courier New Bold` to `Menlo`. Not sure if it will work on Windows.
   
 ### Fixed
@@ -107,7 +108,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - New processor: `teeth`.
 - Add button for setting default text editor in tutorials.
 - New tutorial: `bp.tutorial.corpus.bell`.
-- New data file: `test_corpus.llll`.
+- New data file: `corpus_demo.llll`.
 
 ### Changed
 
