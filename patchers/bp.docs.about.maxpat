@@ -182,7 +182,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 9,
 					"presentation_rect" : [ 16.0, 284.0, 780.0, 146.0 ],
-					"text" : "\n## step 1: generate a buffer through synthesis\n$buff = cycle(@frequency 440 @duration 1000);\n\n## step 2: transcribe buffer\n$buff.transcribe();\n\n## step 3: trigger audio rendering\nrender();\n",
+					"text" : "\n## step 1: generate a buffer through synthesis\n$buff = cycle(@frequency 440 @duration 1000);\n\n## step 2: transcribe buffer\n$buff.transcribe();\n\n## step 3: trigger audio rendering\nrender()\n",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}
 
