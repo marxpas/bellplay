@@ -2445,52 +2445,53 @@ $addref(
     @output $addout(@description "temporalflatness descriptor" @type "llll")
 );
 
-## ------------------------------------------------------------
+## ## ------------------------------------------------------------
+## BUGGY DESCRIPTOR
 
-spectralcontrast = (
-    $framesize = 2048,
-    $highfrequencybound = 11000,
-    $lowfrequencybound = 20,
-    $neighbourratio = 0.4,
-    $numberbands = 6,
-    $samplerate = 22050,
-    $staticdistribution = 0.15,
-    $mode = 0 -> ( 
-        BP_ESSENTIA_WRAPPER_FUNC(
-            @name "spectralcontrast"
-            @mode $mode
-            @settings (
-                "@framesize" $framesize
-                "@highfrequencybound" $highfrequencybound
-                "@lowfrequencybound" $lowfrequencybound
-                "@neighbourratio" $neighbourratio
-                "@numberbands" $numberbands
-                "@samplerate" $samplerate
-                "@staticdistribution" $staticdistribution
-            )
-            @output "spectralcontrast" "spectralvalley"
-        )
-    )
-);
+## spectralcontrast = (
+##     $framesize = 2048,
+##     $highfrequencybound = 11000,
+##     $lowfrequencybound = 20,
+##     $neighbourratio = 0.4,
+##     $numberbands = 6,
+##     $samplerate = 22050,
+##     $staticdistribution = 0.15,
+##     $mode = 0 -> ( 
+##         BP_ESSENTIA_WRAPPER_FUNC(
+##             @name "spectralcontrast"
+##             @mode $mode
+##             @settings (
+##                 "@framesize" $framesize
+##                 "@highfrequencybound" $highfrequencybound
+##                 "@lowfrequencybound" $lowfrequencybound
+##                 "@neighbourratio" $neighbourratio
+##                 "@numberbands" $numberbands
+##                 "@samplerate" $samplerate
+##                 "@staticdistribution" $staticdistribution
+##             )
+##             @output "spectralcontrast" "spectralvalley"
+##         )
+##     )
+## );
 
-$addref(
-    @name "spectralcontrast"
-    @description "Audio descriptor to calculate the spectral contrast of a buffer. See #analyze."
-    @category BP_REF_LABEL_ANALYSIS
-    @arguments (
-        $addarg(@name "framesize" @default 2048 @type "int" @description "size of the fft frames.")
-        $addarg(@name "highfrequencybound" @default 11000 @type "int" @description "upper bound of the highest band.")
-        $addarg(@name "lowfrequencybound" @default 20 @type "int" @description "lower bound of the lowest band.")
-        $addarg(@name "neighbourratio" @default "0.4" @type "int/float" @description "ratio of the bins in the sub band used to calculate the peak and valley.")
-        $addarg(@name "numberbands" @default 6 @type "int" @description "number of bands in the filter.")
-        $addarg(@name "samplerate" @default 22050 @type "int" @description "sampling rate.")
-        $addarg(@name "staticdistribution" @default "0.15" @type "int/float" @description "ratio of the bins to distribute equally.")
-        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
-            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
-        )
-    )
-    @output $addout(@description "spectralcontrast descriptor" @type "llll")
-);
+## $addref(
+##     @name "spectralcontrast"
+##     @description "Audio descriptor to calculate the spectral contrast of a buffer. See #analyze."
+##     @category BP_REF_LABEL_ANALYSIS
+##     @arguments (
+##         $addarg(@name "framesize" @default 2048 @type "int" @description "size of the fft frames.")
+##         $addarg(@name "highfrequencybound" @default 11000 @type "int" @description "upper bound of the highest band.")
+##         $addarg(@name "lowfrequencybound" @default 20 @type "int" @description "lower bound of the lowest band.")
+##         $addarg(@name "neighbourratio" @default "0.4" @type "int/float" @description "ratio of the bins in the sub band used to calculate the peak and valley.")
+##         $addarg(@name "numberbands" @default 6 @type "int" @description "number of bands in the filter.")
+##         $addarg(@name "samplerate" @default 22050 @type "int" @description "sampling rate.")
+##         $addarg(@name "staticdistribution" @default "0.15" @type "int/float" @description "ratio of the bins to distribute equally.")
+##         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+##             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+##         )
+##     )
+##     @output $addout(@description "spectralcontrast descriptor" @type "llll")
+## );
 
 ## ------------------------------------------------------------
 

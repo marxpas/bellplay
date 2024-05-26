@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Removed
 
+- `spectralcontrast` temporarily removed until `ears.essentia~` bug is fixed.
 - Remove `bp.filemenu.maxpat`
 
 ## [v0.2.0-beta] - 2024-05-24
