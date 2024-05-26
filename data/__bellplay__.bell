@@ -293,7 +293,7 @@ $addref(
     @arguments (
         $addarg(@name "x",  @type "anything" @description "value to check")
     ),
-    @output $addout(@description "0 if false, 1 if true", @type "int")
+    @output $addout(@description "0 if false, 1 if true.", @type "int")
 );
 
 ## ------------------------------------------------------------
