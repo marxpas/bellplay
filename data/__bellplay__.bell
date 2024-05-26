@@ -2222,7 +2222,7 @@ mfcc = (
     $numberbands = 40,
     $numbercoefficients = 13,
     $samplerate = 44100,
-    $silencethreshold = 10,
+    $silencethreshold = 1e-10,
     $type = 'power',
     $warpingformula = 'htkmel',
     $weighting = 'warping',
@@ -2276,7 +2276,7 @@ $addref(
         $addarg(@name "numberbands" @default 40 @type "int" @description "number of mel-bands in the filter.")
         $addarg(@name "numbercoefficients" @default 13 @type "int" @description "number of output mel coefficients.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the audio signal, in Hz.")
-        $addarg(@name "silencethreshold" @default 10 @type "float" @description "silence threshold for computing log-energy bands.")
+        $addarg(@name "silencethreshold" @default "1e-10" @type "int/float" @description "silence threshold for computing log-energy bands.")
         $addarg(@name "type" @default 'power' @type "symbol" @description "use magnitude or power spectrum." @options 
             $addopt(@value "'magnitude'")
             $addopt(@value "'power'")
@@ -2560,7 +2560,7 @@ onsets = (
     $alpha = 0.1,
     $delay = 5,
     $framerate = 86.1328,
-    $silencethreshold = 0.1 -> ( 
+    $silencethreshold = 0.02 -> ( 
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "onsets"
             @settings (
@@ -4640,7 +4640,7 @@ $addref(
             $addopt(@value 1, @description "compensate")
             $addopt(@value 2, @description "Griffin-Lim")
         )
-        $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
+        $addarg(@name "regularization", @default "0.01", @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
         $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/symbol", @description "window type." @options BP_REF_WINDOW_OPTIONS)
     ),
     @output $addout(@description "timesquash command" @type "llll")
@@ -4903,7 +4903,7 @@ resynth = (
     $frequnit = 2,
     $maxnsines = 100,
     $maxpeaks = 100,
-    $magnitudethreshold = .0002,
+    $magnitudethreshold = 2e-4,
     $framesize = 2048,
     $hopsize = 512,
     $minfrequency = 0,
@@ -4945,7 +4945,7 @@ $addref(
         )
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
-        $addarg(@name "magnitudethreshold", @default "0.0002", @type "float", @description "peak amplitude threshold.")
+        $addarg(@name "magnitudethreshold", @default "2e-4", @type "float", @description "peak amplitude threshold.")
         $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
         $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples")
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
