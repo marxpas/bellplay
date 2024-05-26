@@ -104,7 +104,7 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Courier New Bold",
+					"fontname" : "Menlo",
 					"fontsize" : 10.0,
 					"id" : "obj-2",
 					"maxclass" : "comment",
@@ -112,7 +112,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 641.0, 464.0, 87.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 712.0, 290.0, 87.0, 18.0 ],
+					"presentation_rect" : [ 709.0, 290.0, 87.0, 18.0 ],
 					"text" : "myscript.bell",
 					"textcolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ]
 				}
@@ -171,17 +171,17 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Courier New Bold",
+					"fontname" : "Menlo",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 14.0, 613.0, 692.0, 142.0 ],
+					"patching_rect" : [ 14.0, 613.0, 696.0, 146.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 9,
-					"presentation_rect" : [ 17.0, 286.0, 776.0, 142.0 ],
+					"presentation_rect" : [ 16.0, 284.0, 780.0, 146.0 ],
 					"text" : "\n## step 1: generate a buffer through synthesis\n$buff = cycle(@frequency 440 @duration 1000);\n\n## step 2: transcribe buffer\n$buff.transcribe();\n\n## step 3: trigger audio rendering\nrender();\n",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ]
 				}

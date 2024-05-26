@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 ### Changed
+
+- Change `code` font from `Courier New Bold` to `Menlo`. Not sure if it will work on Windows.
   
 ### Fixed
 
