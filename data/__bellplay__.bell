@@ -1221,7 +1221,8 @@ pitchdiff = (
                     $targets - $source
                 )
             );
-            $distances:(minmax(abs($distances)):2)
+            $diff = $distances:(minmax(abs($distances)):2);
+            if $diff.isnan() == 1 then 0 else $diff
         ) else 0
     )
 );
