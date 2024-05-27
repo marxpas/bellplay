@@ -99,7 +99,7 @@ getpathinfo = (
         msg("pathinfo", $x);
         if BP_PATH_INFO == null then (
             printerror("invalid path:" $x) 
-        ) else if $locate == 1 && BP_PATH_INFO."exists" == 0 then (
+        ) else if $locate == 1 && BP_PATH_INFO."extension" != null && BP_PATH_INFO."exists" == 0 then (
             printerror("file not found:" $x)
         );
         BP_PATH_INFO
