@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `query` automatically replaces paths with in-memory buffers. This primarily prevents issues when creating corpora with built-in sounds but hopefully also prevents other conflicts in general.
 - Change name: `test_corpus.llll` to `corpus_demo.llll`.
 - Change `code` font from `Courier New Bold` to `Menlo`. Not sure if it will work on Windows.
   

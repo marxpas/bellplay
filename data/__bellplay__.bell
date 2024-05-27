@@ -730,13 +730,11 @@ query = (
         );
         msg("db", [ "query" $x ]);
         (if BP_DATABASE_OUTPUT == null then printerror("query did not yield any results:" tosymbol($x)));
-        ## check if current corpus is a built-in file and replace media file with loaded buffer
-        (if BP_DEMO_CORPUS == 1 then (
-                $sources = thin(for $buff in BP_DATABASE_OUTPUT collect $buff.getkey("source"));
-                $sourcemap = for $source in $sources collect [ $source importaudio($source).getkey("source") ];
-                BP_DATABASE_OUTPUT = for $buff in BP_DATABASE_OUTPUT collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x)
-            )
-        );
+        
+        $sources = thin(for $buff in BP_DATABASE_OUTPUT collect $buff.getkey("source"));
+        $sourcemap = for $source in $sources collect [ $source importaudio($source).getkey("source") ];
+        BP_DATABASE_OUTPUT = for $buff in BP_DATABASE_OUTPUT collect $buff.mapkey("source", $x -^ $sourcemap -> $sourcemap.$x);    
+        
         BP_DATABASE_OUTPUT
     )
 );
