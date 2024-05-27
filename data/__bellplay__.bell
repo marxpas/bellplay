@@ -63,7 +63,7 @@ $addref = (
 $addarg = (
     $name, $description, $type = "list", $default = null, $options = null -> (
         [
-            "@" + $name 
+            "@" + $name + (if $default == null then " ?" else "")
             [ "description:" $description ]
             [ "type:" $type ]
             ($default &&& [ "default:" $default ])
@@ -588,10 +588,10 @@ $addref(
         )
         $addarg(@name "overlap" @default 2 @type "int/float" @description "segment overlap factor, when @segmode is 2.")
         $addarg(@name "segsize" @default 100 @type "int" @description "segment duration in milliseconds, when @segmode is 2.")
-        $addarg(@name "alpha" @default "0.1" @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
+        $addarg(@name "alpha" @default 0.1 @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
         $addarg(@name "delay" @default 5 @type "int" @description "number of frames used to compute the threshold — size of short-onset filter.")
-        $addarg(@name "framerate" @default "86.1328" @type "float" @description "frames per second.")
-        $addarg(@name "silencethreshold" @default "0.02" @type "float" @description "threshold for silence.")
+        $addarg(@name "framerate" @default 86.1328 @type "float" @description "frames per second.")
+        $addarg(@name "silencethreshold" @default 0.02 @type "float" @description "threshold for silence.")
     )
 );
 
@@ -1877,7 +1877,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
-        $addarg(@name "thresholdratio" @default '0.4' @type "int/float" @description "ratio of the envelope maximum to be used as the threshold.")
+        $addarg(@name "thresholdratio" @default 0.4 @type "int/float" @description "ratio of the envelope maximum to be used as the threshold.")
     )
     @output $addout(@description "effectiveduration descriptor" @type "llll")
 );
@@ -2068,9 +2068,9 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @ankeys "rhythm_bpm" "rhythm_ticks" "rhythm_estimates" "rhythm_intervals"
     @arguments (
-        $addarg(@name "maxtempo", @type "int", @description "fastest tempo to detect, between 60 and 250.")
-        $addarg(@name "mintempo", @type "int", @description "slowest tempo to detect, between 40 and 180.")
-        $addarg(@name "method", @type "symbol", @description "method used for beat tracking." @options
+        $addarg(@name "maxtempo" @default 208 @type "int", @description "fastest tempo to detect, between 60 and 250.")
+        $addarg(@name "mintempo" @default 40 @type "int", @description "slowest tempo to detect, between 40 and 180.")
+        $addarg(@name "method" @default "'multifeature'" @type "symbol", @description "method used for beat tracking." @options
             $addopt(@value "'degara'" @description "degara" "method")
             $addopt(@value "'multifeature'" @description "multifeature" "method")
         )
@@ -2186,7 +2186,7 @@ $addref(
         $addarg(@name "guessunvoiced" @default 0 @type "int" @description "estimate pitch for non-voiced segments." @options
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "harmonicweight" @default "0.8" @type "int/float" @description "weight decay ratio between two consequent harmonics. Use 1 for no decay.")
+        $addarg(@name "harmonicweight" @default 0.8 @type "int/float" @description "weight decay ratio between two consequent harmonics. Use 1 for no decay.")
         $addarg(@name "hopsize" @default 1024 @type "int" @description "hop size with which the pitch salience function was computed.")
         $addarg(@name "magnitudecompression" @default 1 @type "int" @description "magnitude compression parameter for the salience function." @options
             $addopt(@value 0 @description "maximum compression")
@@ -2197,9 +2197,9 @@ $addref(
         $addarg(@name "minduration" @default 100 @type "int" @description "the minimum allowed contour duration.")
         $addarg(@name "minfrequency" @default 40 @type "int/float" @description "the minimum allowed frequency for salience function peaks.")
         $addarg(@name "numberharmonics" @default 20 @type "int" @description "number of considered harmonics.")
-        $addarg(@name "peakdistributionthreshold" @default "0.9" @type "int/float" @description "allowed deviation below the peak salience mean over all frames.")
-        $addarg(@name "peakframethreshold" @default "0.9" @type "int/float" @description "per-frame salience threshold factor.")
-        $addarg(@name "pitchcontinuity" @default "27.5625" @type "int/float" @description "maximum allowed pitch change during 1 ms time period, in cents.")
+        $addarg(@name "peakdistributionthreshold" @default 0.9 @type "int/float" @description "allowed deviation below the peak salience mean over all frames.")
+        $addarg(@name "peakframethreshold" @default 0.9 @type "int/float" @description "per-frame salience threshold factor.")
+        $addarg(@name "pitchcontinuity" @default 27.5625 @type "int/float" @description "maximum allowed pitch change during 1 ms time period, in cents.")
         $addarg(@name "referencefrequency" @default 55 @type "int/float" @description "the reference frequency to cent conversion corresponding to the 0th cent bin.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "the sampling rate of the audio signal.")
         $addarg(@name "timecontinuity" @default 100 @type "int" @description "maximum allowed gap duration for a pitch contour, in milliseconds.")
@@ -2209,7 +2209,7 @@ $addref(
         $addarg(@name "voicevibrato" @default 0 @type 'int' @description "detect voice vibrato, when @polyphonic is 1." @options 
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "voicingtolerance" @default '0.2' @type 'int/float' @description "voicing tolerance between -1 and 1.4, when @polyphonic is 1.")
+        $addarg(@name "voicingtolerance" @default 0.2 @type 'int/float' @description "voicing tolerance between -1 and 1.4, when @polyphonic is 1.")
         $addarg(@name "mode" @default 0 @type "int" @description "analysis mode." @options
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
@@ -2284,7 +2284,7 @@ $addref(
         $addarg(@name "numberbands" @default 40 @type "int" @description "number of mel-bands in the filter.")
         $addarg(@name "numbercoefficients" @default 13 @type "int" @description "number of output mel coefficients.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the audio signal, in Hz.")
-        $addarg(@name "silencethreshold" @default "1e-10" @type "int/float" @description "silence threshold for computing log-energy bands.")
+        $addarg(@name "silencethreshold" @default 1e-10 @type "int/float" @description "silence threshold for computing log-energy bands.")
         $addarg(@name "type" @default "'power'" @type "symbol" @description "use magnitude or power spectrum." @options 
             $addopt(@value "'magnitude'")
             $addopt(@value "'power'")
@@ -2361,7 +2361,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "attacktime" @default 10 @type "int" @description "attack time of the first order lowpass in the attack phase.")
-        $addarg(@name "power" @default "1.5" @type "int/float" @description "power used for averaging.")
+        $addarg(@name "power" @default 1.5 @type "int/float" @description "power used for averaging.")
         $addarg(@name "releasetime" @default 1500 @type "int" @description "release time of the first order lowpass in the release phase.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
@@ -2525,7 +2525,7 @@ $addref(
     @description "Audio descriptor to compute the roll-off frequency of a spectrum. The roll-off frequency is defined as the frequency under which some percentage — i.e., cutoff — of the total energy of the spectrum is contained. The roll-off frequency can be used to distinguish between harmonic — i.e., below roll-off — and noisy sounds — i.e., above roll-off. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
-        $addarg(@name "cutoff" @default "0.85" @type "float" @description "the ratio of total energy to attain before yielding the roll-off frequency.")
+        $addarg(@name "cutoff" @default 0.85 @type "float" @description "the ratio of total energy to attain before yielding the roll-off frequency.")
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
         $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
@@ -2586,10 +2586,10 @@ $addref(
     @description "Audio descriptor to compute the onset positions in a buffer. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
-        $addarg(@name "alpha" @default "0.1" @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
+        $addarg(@name "alpha" @default 0.1 @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
         $addarg(@name "delay" @default 5 @type "int" @description "number of frames used to compute the threshold — size of short-onset filter.")
-        $addarg(@name "framerate" @default "86.1328" @type "float" @description "frames per second.")
-        $addarg(@name "silencethreshold" @default "0.02" @type "float" @description "threshold for silence.")
+        $addarg(@name "framerate" @default 86.1328 @type "float" @description "frames per second.")
+        $addarg(@name "silencethreshold" @default 0.02 @type "float" @description "threshold for silence.")
     )
     @output $addout(@description "onsets descriptor" @type "llll")
 );
@@ -2686,7 +2686,7 @@ $addref(
             $addopt(@value "'braw'" @description "profiles obtained by calculating the median profile for each mode from a subset of BeatPort dataset.")
             $addopt(@value "'bgate'" @description "same as braw but zeroing the 4 less relevant elements of each profile.")
         )
-        $addarg(@name "slope" @default "0.6" @type "int/float" @description "value of the slope of the exponential harmonic contribution to the polyphonic profile.")
+        $addarg(@name "slope" @default 0.6 @type "int/float" @description "value of the slope of the exponential harmonic contribution to the polyphonic profile.")
         $addarg(@name "usemajmin" @default 0  @type "int" @description "use a third profile called 'majmin' for ambiguous tracks. Only avalable for the edma, bgate and braw profiles." @options
             BP_REF_SWITCH_OPTIONS
         )
@@ -2781,8 +2781,8 @@ $addref(
         $addarg(@name "fadeouttype",@default 0, @type "int", @description "fade-out type.", @options 
             BP_REF_CURVE_OPTIONS
         )
-        $addarg(@name "fadeincurve", @default "-0.25", @type "int/float", @description "fade-in curve amount, between -1 and 1.")
-        $addarg(@name "fadeoutcurve", @default "0.25", @type "int/float", @description "fade-out curve amount, between -1 and 1.")
+        $addarg(@name "fadeincurve", @default -0.25, @type "int/float", @description "fade-in curve amount, between -1 and 1.")
+        $addarg(@name "fadeoutcurve", @default 0.25, @type "int/float", @description "fade-out curve amount, between -1 and 1.")
         $addarg(@name "timeunit", @default 0 @type "int", @description "time unit for @start and @end." @options
             BP_REF_TIMEUNIT_OPTIONS
         )
@@ -2879,16 +2879,16 @@ $addref(
     @description "Audio process command for applying reverb to a buffer. See #process function.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "roomsize", @default "0.5", @type "int/float", @description "reverb room size")
-        $addarg(@name "damp", @default "0.5", @type "int/float", @description "damping coefficient")
-        $addarg(@name "width", @default "0.5", @type "int/float", @description "panning width/spread, from 0 to 1.")
+        $addarg(@name "roomsize", @default 0.5, @type "int/float", @description "reverb room size")
+        $addarg(@name "damp", @default 0.5, @type "int/float", @description "damping coefficient")
+        $addarg(@name "width", @default 0.5, @type "int/float", @description "panning width/spread, from 0 to 1.")
         $addarg(@name "tail", @default -1, @type "int/float", @description "duration of reverb tail in ms." @options 
             $addopt(@value -1 @description "auto")
             $addopt(@value 0 @description "no" "tail")
             $addopt(@value ">0" @description "duration" "in" "ms")
         )
         $addarg(@name "dry", @default 1, @type "int/float/llll", @description "amount of dry output, as either a single number or envelope.")
-        $addarg(@name "wet", @default "0.16", @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
+        $addarg(@name "wet", @default 0.16, @type "int/float/llll", @description "amount of wet output, as either a single number or envelope.")
     ),
     @output $addout(@description "freeverb command" @type "llll")
 );
@@ -2991,7 +2991,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
-        $addarg(@name "phase", @default "0.5", @type "int/float", @description "initial phase, in the 0–1 range.")
+        $addarg(@name "phase", @default 0.5, @type "int/float", @description "initial phase, in the 0–1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -3013,7 +3013,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
-        $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
+        $addarg(@name "duty", @default 0.5, @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -3055,7 +3055,7 @@ $addref(
     @arguments (
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
-        $addarg(@name "duty", @default "0.5", @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
+        $addarg(@name "duty", @default 0.5, @type "int/float/llll", @description "duty cycle in the range of 0-1, either as a number, envelope, or buffer.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -3079,7 +3079,7 @@ $addref(
         $addarg(@name "frequency", @default 440, @type "int/float/llll", @description "frequency, either as a single number, envelope, or buffer.")
         $addarg(@name "duration", @default 50, @type "int/float", @description "buffer duration, in milliseconds")
         $addarg(@name "phase", @default 0, @type "int/float", @description "initial phase, in the 0-1 range.")
-        $addarg(@name "offset", @default "0.5", @type "int/float", @description "peak position offset, in the 0-1 range.")
+        $addarg(@name "offset", @default 0.5, @type "int/float", @description "peak position offset, in the 0-1 range.")
     ),
     @output $addout(@description "synthesized buffer" @type "llll")
 );
@@ -3669,7 +3669,7 @@ $addref(
     @description "Audio process command for reducing sampling rate and bit-depth of a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "ratio", @default "0.5", @type "int/float/llll", @description "sampling rate ratio.")
+        $addarg(@name "ratio", @default 0.5, @type "int/float/llll", @description "sampling rate ratio.")
         $addarg(@name "bits", @default 4, @type "int/float/llll", @description "bit depth.")
     ),
     @output $addout(@description "degrade command" @type "llll")
@@ -3740,9 +3740,9 @@ $addref(
     @arguments (
         $addarg(@name "feedforward", @default 5, @type "int/float/llll", @description "feedforward delay time, in milliseconds, as either a single number, envelope, or buffer.")
         $addarg(@name "feedback", @default 10, @type "int/float/llll", @description "feedback delay time, in milliseconds, as either a single number, envelope, or buffer.")
-        $addarg(@name "gain", @default "0.5", @type "int/float/llll", @description "linear gain, as either a single number, envelope, or buffer.")
-        $addarg(@name "feedforwardgain", @default "0.5", @type "int/float/llll", @description "linear feedforward gain, as either a single number, envelope, or buffer.")
-        $addarg(@name "feedbackgain", @default "-0.5", @type "int/float/llll", @description "linear feedback gain, as either a single number, envelope, or buffer.")
+        $addarg(@name "gain", @default 0.5, @type "int/float/llll", @description "linear gain, as either a single number, envelope, or buffer.")
+        $addarg(@name "feedforwardgain", @default 0.5, @type "int/float/llll", @description "linear feedforward gain, as either a single number, envelope, or buffer.")
+        $addarg(@name "feedbackgain", @default -0.5, @type "int/float/llll", @description "linear feedback gain, as either a single number, envelope, or buffer.")
     ),
     @output $addout(@description "teeth command" @type "llll")
 );
@@ -3829,7 +3829,7 @@ $addref(
     @arguments (
         $addarg(@name "pitchgrid", @default 0, @type "int/float/list", @description "pitch grid to retune to, as a list of pitch classes.")
         $addarg(@name "threshold" @default 0 @type "int/float" @description "correction threshold.")
-        $addarg(@name "ambiencethreshold" @default "0.3" @type "int/float" @description "correction ambience threshold, between -10 and 10.")
+        $addarg(@name "ambiencethreshold" @default 0.3 @type "int/float" @description "correction ambience threshold, between -10 and 10.")
         $addarg(@name "amount" @default 100 @type "int/float" @description "pitch correction amount.")
         $addarg(@name "bypass" @default 100 @type "int/float" @description "pitch correction auto-bypass threshold, at which signal passes unaffected.")
         $addarg(@name "quality" @default "'basic'" @type "symbol" @description "pitch correction quality." @options
@@ -4531,7 +4531,7 @@ $addref(
     @description "Audio process command for applying silence-based trimming to a buffer. When the entire buffer is considered silent, the resulting buffer's duration will be a single audio sample. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
-        $addarg(@name "threshold" @default "0.1" @type "int/float", @description "amplitude threshold at/below which samples are considered silence.")
+        $addarg(@name "threshold" @default 0.1 @type "int/float", @description "amplitude threshold at/below which samples are considered silence.")
         $addarg(@name "ampunit", @default 0, @type "int", @description "amplitude unit for @threshold." @options
             BP_REF_AMPUNIT_OPTIONS
         )
@@ -4633,7 +4633,7 @@ $addref(
             $addopt(@value 1, @description "gradient" "magnitude")
             $addopt(@value 2, @description "Sobel")
         )
-        $addarg(@name "forwardenergy", @default "1.", @type "int/float", @description "amount of forward energy contribution.")
+        $addarg(@name "forwardenergy", @default 1, @type "int/float", @description "amount of forward energy contribution.")
         $addarg(@name "forwardenergyembed", @default 1, @type "int", @description "embed forward energy in cumulative matrix." @options
             BP_REF_SWITCH_OPTIONS
         )
@@ -4648,7 +4648,7 @@ $addref(
             $addopt(@value 1, @description "compensate")
             $addopt(@value 2, @description "Griffin-Lim")
         )
-        $addarg(@name "regularization", @default "0.01", @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
+        $addarg(@name "regularization", @default 0.01, @type "int/float", @description "how much energy of a bin smears on the ones above and below, between 0 and 1.")
         $addarg(@name "wintype", @default "'sqrthann'" "'sqrthann'", @type "list/symbol", @description "window type." @options BP_REF_WINDOW_OPTIONS)
     ),
     @output $addout(@description "timesquash command" @type "llll")
@@ -4890,9 +4890,9 @@ $addref(
     @arguments (
         $addarg(@name "attack", @default 10, @type "int/float", @description "attack time.")
         $addarg(@name "release", @default 50, @type "int/float", @description "release time.")
-        $addarg(@name "knee", @default "0.7", @type "int/float", @description "knee width.")
+        $addarg(@name "knee", @default 0.7, @type "int/float", @description "knee width.")
         $addarg(@name "makeup", @default 0, @type "int/float", @description "make-up gain.")
-        $addarg(@name "ratio", @default "1.5", @type "int/float", @description "compression ratio.")
+        $addarg(@name "ratio", @default 1.5, @type "int/float", @description "compression ratio.")
         $addarg(@name "thresh", @default -20, @type "int/float", @description "amplitude threshold.")
         $addarg(@name "ampunit", @default 1, @type "int", @description "amplitude unit." @options
             BP_REF_AMPUNIT_OPTIONS
@@ -4953,7 +4953,7 @@ $addref(
         )
         $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
         $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
-        $addarg(@name "magnitudethreshold", @default "2e-4", @type "float", @description "peak amplitude threshold.")
+        $addarg(@name "magnitudethreshold", @default 2e-4, @type "float", @description "peak amplitude threshold.")
         $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples")
         $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples")
         $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate")
@@ -4963,7 +4963,7 @@ $addref(
             $addopt(@value 0 @description "sinusoidal")
             $addopt(@value 1 @description "stochastic" "+" "sinusoidal")
         )
-        $addarg(@name "stocf", @default '0.2', @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
+        $addarg(@name "stocf", @default 0.2, @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
     ),
     @output $addout(@description "resynth command" @type "llll")
 );
