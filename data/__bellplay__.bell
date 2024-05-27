@@ -1859,8 +1859,8 @@ BP_ESSENTIA_WRAPPER_FUNC = (
 ## ------------------------------------------------------------
 
 effectiveduration = (
-    $samplerate = 44100,
-    $thresholdratio = 0.4 -> (
+    $thresholdratio = 0.4,
+    $samplerate = 44100 -> (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "effectiveduration"
             @settings (
