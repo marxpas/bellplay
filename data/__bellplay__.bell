@@ -854,7 +854,7 @@ $addref(
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "pts", @type "list", @description "numeric list")
-        $addarg(@name "xfunc", @default "<normalization function>", @type "function/null", @description "optional lambda function for x axis")
+        $addarg(@name "xfunc", @default "<normalization_function>", @type "function/null", @description "optional lambda function for x axis")
         $addarg(@name "yfunc", @default "null", @type "function/null", @description "optional lambda function for y axis")
         $addarg(@name "sfunc", @default "null", @type "function/null", @description "optional lambda function for bpf slope")
     ),
