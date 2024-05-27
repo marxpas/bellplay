@@ -2134,7 +2134,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 241.0, 213.0, 923.0, 786.0 ],
+						"rect" : [ 241.0, 213.0, 918.0, 786.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2369,7 +2369,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 988.0, 426.0, 29.5, 23.0 ],
+									"patching_rect" : [ 1212.25, 426.0, 29.5, 23.0 ],
 									"text" : "3"
 								}
 
@@ -2425,7 +2425,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 936.0, 379.0, 54.0, 21.0 ],
+									"patching_rect" : [ 948.5, 379.0, 54.0, 21.0 ],
 									"text" : "absolute"
 								}
 
@@ -2436,7 +2436,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.0, 379.0, 49.0, 21.0 ],
+									"patching_rect" : [ 742.75, 379.0, 49.0, 21.0 ],
 									"text" : "relative"
 								}
 
@@ -2506,7 +2506,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 757.0, 481.0, 31.0, 23.0 ],
+									"patching_rect" : [ 831.75, 481.0, 31.0, 23.0 ],
 									"text" : "thru"
 								}
 
@@ -2557,7 +2557,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 887.0, 426.0, 30.0, 23.0 ],
+									"patching_rect" : [ 1090.0, 426.0, 30.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "2"
 								}
@@ -2570,7 +2570,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 757.0, 426.0, 30.0, 23.0 ],
+									"patching_rect" : [ 831.75, 426.0, 30.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "1"
 								}
@@ -2583,9 +2583,9 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 855.0, 378.0, 83.0, 23.0 ],
+									"patching_rect" : [ 1004.5, 378.0, 190.0, 23.0 ],
 									"style" : "bellplay-gui",
-									"text" : "regexp ^~?/.*"
+									"text" : "regexp ^(~?/.*|Macintosh\\\\sHD:|C:)"
 								}
 
 							}
@@ -2596,7 +2596,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 722.0, 378.0, 89.0, 23.0 ],
+									"patching_rect" : [ 796.75, 378.0, 89.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "regexp ^(\\\\.).*"
 								}
@@ -2609,7 +2609,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "bang", "" ],
-									"patching_rect" : [ 589.0, 337.0, 551.0, 23.0 ],
+									"patching_rect" : [ 589.0, 337.0, 850.0, 23.0 ],
 									"style" : "bellplay-gui",
 									"text" : "t l l l b l"
 								}
@@ -9027,6 +9027,10 @@
 			}
 , 			{
 				"name" : "ears.channel~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "ears.clicks~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
