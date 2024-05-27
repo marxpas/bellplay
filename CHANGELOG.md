@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- `buildcorpus` automatically converts `+/-inf` and `nan` values to `null`.
+
 ### Removed
 
 ## [v0.2.1-beta] - 2024-05-26

@@ -12,6 +12,7 @@ BP_DEMO_CORPUS = null;
 BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
 BP_TMP_ROLL_OUTPUT = null;
+BP_INF = 1./0;
 
 ## ------------------------------------------------------------
 
@@ -556,7 +557,15 @@ buildcorpus = (
             [ $key $type ]
         );
         msg("db", [ "erase" ] [ "addtable" "buffers" $template ]);
-        for $entry in $corpus do msg("db", [ "addentry" "buffers" $entry::1 ]);
+        for $entry in $corpus do (
+            $entry = ($entry::1).map(
+                ## nullify inf and nan values
+                $x -> (
+                    if $x.abs() == BP_INF || $x.isnan() then null else $x
+                )
+            @maxdepth -1);
+            msg("db", [ "addentry" "buffers" $entry ])
+        );
 
         if $outpath != null then (
             msg("db", [ "write" $outpath ] )
