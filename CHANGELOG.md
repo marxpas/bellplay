@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Fix regex in `pathinfo` subpatcher bug whereby `Macintosh HD:*` paths are classified as `type` 3.
 - Fix `filenotfound` issue when using `getpathinfo` on folders.
-- `buildcorpus` automatically converts `+/-inf` and `nan` values to `null`.
+- `buildcorpus` automatically converts `+/-inf` and `nan` values to `null` — added minor optimization.
 
 ### Removed
 

@@ -561,7 +561,7 @@ buildcorpus = (
             $entry = ($entry::1).map(
                 ## nullify inf and nan values
                 $x -> (
-                    if $x.abs() == BP_INF || $x.isnan() then null else $x
+                    if $x.contains() <= 8 && ($x.abs() == BP_INF || $x.isnan()) then null else $x
                 )
             @maxdepth -1);
             msg("db", [ "addentry" "buffers" $entry ])
