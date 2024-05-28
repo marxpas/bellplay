@@ -8,7 +8,6 @@ BP_REF_LABEL_ANALYSIS = "audio analysis";
 BP_REF = (for $i in BP_REF_LABEL_UTILS BP_REF_LABEL_PROCESS BP_REF_LABEL_GEN BP_REF_LABEL_ANALYSIS collect [ $i ]);
 BP_REF_TIMEUNIT_OPTIONS = null;
 BP_REF_AUDIO_DOMAIN_OPTIONS = null;
-BP_DEMO_CORPUS = null;
 BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
 BP_TMP_ROLL_OUTPUT = null;
@@ -488,7 +487,6 @@ buildcorpus = (
         );
 
         BP_DATABASE_OUTPUT = null;
-        BP_DEMO_CORPUS = 0;
 
         $corpus = null;
 
@@ -607,7 +605,6 @@ setcorpus = (
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
         BP_DATABASE_OUTPUT = null;
-        BP_DEMO_CORPUS = $pathinfo."type" == 3;
         msg("db", [ "read" $path + $extension ])
     )
 );
