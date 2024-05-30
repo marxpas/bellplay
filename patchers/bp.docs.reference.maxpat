@@ -44,9 +44,9 @@
 					"fontface" : 0,
 					"fontname" : "Menlo",
 					"fontsize" : 14.0,
-					"hyperlinkcolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"hyperlinkcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
 					"id" : "obj-75",
-					"linkstart" : [ "@" ],
+					"linkstart" : [ "@", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ],
 					"maxclass" : "bach.hypercomment",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -55,7 +55,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 169.0, 65.0, 632.0, 23.0 ],
 					"showhand" : 0,
-					"textcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
+					"textcolor" : [ 0.149019607843137, 0.149019607843137, 0.149019607843137, 1.0 ],
 					"underline" : 0
 				}
 
