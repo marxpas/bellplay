@@ -122,7 +122,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 23.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "new script"
+					"text" : "new script",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -6329,7 +6331,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 3.75, 71.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "reload script"
+					"text" : "reload script",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -6500,7 +6504,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 4.0, 47.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "load script"
+					"text" : "load script",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -6629,7 +6635,9 @@
 					"text" : "play",
 					"textcolor" : [ 0.274509803921569, 0.274509803921569, 0.274509803921569, 1.0 ],
 					"texton" : "stop",
-					"usebgoncolor" : 1
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usebgoncolor" : 1,
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -7165,7 +7173,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 148.75, 71.0, 143.5, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "corpus lab"
+					"text" : "corpus lab",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -7182,7 +7192,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 23.0, 143.0, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "export audio"
+					"text" : "export audio",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}

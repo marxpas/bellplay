@@ -2032,7 +2032,9 @@
 					"presentation_rect" : [ 152.0, 27.0, 145.0, 22.0 ],
 					"style" : "bellplay-gui",
 					"text" : "playback OFF",
-					"texton" : "playback ON"
+					"texton" : "playback ON",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
@@ -2061,7 +2063,9 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 6.0, 27.0, 145.0, 22.0 ],
 					"style" : "bellplay-gui",
-					"text" : "load corpus"
+					"text" : "load corpus",
+					"textovercolor" : [ 0.56078431372549, 0.709803921568627, 0.843137254901961, 1.0 ],
+					"usetextovercolor" : 1
 				}
 
 			}
