@@ -2502,6 +2502,152 @@ $addref(
 
 ## ------------------------------------------------------------
 
+barkbands = (
+    $numberbands = 27,
+    $samplerate = 44100,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "barkbands"
+            @settings (
+                "@numberbands" $numberbands
+                "@samplerate" $samplerate
+            )
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "barkbands"
+    @description "Audio descriptor to compute the Bark bands of a spectrum. For each bark band the power-spectrum — i.e., mag-squared — is summed. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "numberbands" @default 27 @type "int" @description "number of desired barkbands.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "barkbands descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+beatsloudness = (
+    $beats,
+    $beatduration = 0.05,
+    $beatwindowduration = 0.1,
+    $frequencybands = 20 150 400 3200 7000 22000,
+    $samplerate = 44100 -> (
+        if $beats == null then printerror("you must provide a value for @beats in beatsloudness().");
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "beatsloudness"
+            @settings (
+                "@beats" $beats
+                "@beatduration" $beatduration
+                "@beatwindowduration" $beatwindowduration
+                "@frequencybands" $frequencybands
+                "@samplerate" $samplerate
+            )
+            @output "beatsloudness" "beatsloudness_bandratio"
+        )
+    )
+);
+
+$addref(
+    @name "beatsloudness"
+    @description "Audio descriptor to compute the spectrum energy of beats in an audio signal given their positions. The energy is computed both on the whole frequency range and for each of the specified frequency bands. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @ankeys "beatsloudness" "beatsloudness_bandratio"
+    @arguments (
+        $addarg(@name "beats" @type "list" @description "duration of the window in which the beat will be restricted.")
+        $addarg(@name "beatduration" @type "int/float" @default 0.05 @description "duration of the window in which to look for the beginning of the beat, centered around the values in @beats.")
+        $addarg(@name "beatwindowduration" @type "int/float" @default 0.1 @description "list of beat positions.")
+        $addarg(@name "frequencybands"  @type "list" @default 20 150 400 3200 7000 22000 @description "list of bands to compute energy ratios.")
+        $addarg(@name "samplerate" @type "int"  @default 44100 @description "audio sampling rate.")
+        $addarg(@name "mode" @type "int" @default 0 @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "beatsloudness descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+bfcc = (
+    $dcttype = 2,
+    $highfrequencybound = 11000,
+    $inputsize = 1025,
+    $liftering = 0,
+    $logtype = 'dbamp',
+    $lowfrequencybound = 0,
+    $normalize = "unit_sum",
+    $numberbands = 40,
+    $numbercoefficients = 13,
+    $samplerate = 44100,
+    $type = 'power',
+    $weighting = 'warping',
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "bfcc"
+            @settings (
+                "@dcttype" $dcttype
+                "@highfrequencybound" $highfrequencybound
+                "@inputsize" $inputsize
+                "@liftering" $liftering
+                "@logtype" $logtype
+                "@lowfrequencybound" $lowfrequencybound
+                "@numberbands" $numberbands
+                "@numbercoefficients" $numbercoefficients
+                "@samplerate" $samplerate
+                "@type" $type
+                "@weighting" $weighting
+                "@mode" $mode
+            )
+            @output "bfcc_bands" "bfcc"
+        )
+    )
+);
+
+$addref(
+    @name "bfcc"
+    @description "Audio descriptor to compute the bark-frequency cepstrum coefficients of a spectrum. Bark bands and their subsequent usage in cepstral analysis have shown to be useful in percussive content. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @ankeys "bfcc_bands" "bfcc"
+    @arguments (
+        $addarg(@name "dcttype" @default 2 @type "int" @description "DCT type.")
+        $addarg(@name "highfrequencybound" @default 11000 @type "int/float" @description "upper bound of the frequency range.")
+        $addarg(@name "inputsize" @default 1025 @type "int" @description "size of input spectrum.")
+        $addarg(@name "liftering" @default 0 @type "int" @description "liftering coefficient. Use 0 to bypass it.")
+        $addarg(@name "logtype" @default "'dbamp'" @type "int" @description "logarithmic compression type." @options 
+            $addopt(@value "'dbpow'" @description "Use if working with power.")
+            $addopt(@value "'dbamp'" @description "Use if working with magnitudes.")
+        )
+        $addarg(@name "lowfrequencybound" @default 0 @type "int" @description "lower bound of the frequency range.")
+        $addarg(@name "normalize" @default "'unit_sum'" @type "int" @description "normalization mode" @options 
+            $addopt(@value "'unit_max'" @description "makes the vertex of all the triangles equal to 1.")
+            $addopt(@value "'unit_sum'" @description "makes the area of all the triangles equal to 1.")
+        )
+        $addarg(@name "numberbands" @default 40 @type "int" @description "number of bark bands in the filter.")
+        $addarg(@name "numbercoefficients" @default 13 @type "int" @description "number of output cepstrum coefficients.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the audio signal.")
+        $addarg(@name "type" @default "'power'" @type "int" @description "magnitude or power spectrum." @options 
+            $addopt(@value "'power'")
+            $addopt(@value "'magnitude'")
+        )
+        $addarg(@name "weighting" @default "'warping'" @type "int" @description "type of weighting function for determining triangle area." @options 
+            $addopt(@value "'warping'")
+            $addopt(@value "'linear'")
+        )
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "bfcc descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 rolloff = (
     $cutoff = 0.85,
     $samplerate = 44100,
