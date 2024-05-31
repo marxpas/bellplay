@@ -465,7 +465,7 @@ buildcorpus = (
     $descriptors,
     $outpath = null,
     $segmode = 1,
-    $overlap = 2,
+    $overlap = 1,
     $segsize = 100,
     $alpha = 0.1,
     $delay = 5,
@@ -584,7 +584,7 @@ $addref(
             $addopt(@value 1 @description "'onsets'-based" "segmentation")
             $addopt(@value 2 @description "blind" "segmentation")
         )
-        $addarg(@name "overlap" @default 2 @type "int/float" @description "segment overlap factor, when @segmode is 2.")
+        $addarg(@name "overlap" @default 1 @type "int/float" @description "segment overlap factor, when @segmode is 2.")
         $addarg(@name "segsize" @default 100 @type "int" @description "segment duration in milliseconds, when @segmode is 2.")
         $addarg(@name "alpha" @default 0.1 @type "float" @description "proportion of the mean included to reject smaller peaks — filters very short onsets.")
         $addarg(@name "delay" @default 5 @type "int" @description "number of frames used to compute the threshold — size of short-onset filter.")
@@ -1675,7 +1675,7 @@ analyze = (
     $framesize = 512,
     $hopsize = 512,
     $numframes = "auto",
-    $overlap = 2.,
+    $overlap = 1.,
     $wintype = 'hann',
     $winnormalized = 1,
     $envattack = 10,
@@ -1763,7 +1763,7 @@ $addref(
             $addopt(@value "'auto'" @description "infer from @framesize and @hopsize.")
             $addopt(@value ">0" @description "ignores @hopsize.")
         )
-        $addarg(@name "overlap" @default 2 @type "int" @description "overlap factor between analysis window size and hop size.")
+        $addarg(@name "overlap" @default 1 @type "int" @description "overlap factor between analysis window size and hop size.")
         $addarg(@name "wintype" @default "'hann'" @type "int" @description "window type" @options
             BP_REF_WINDOW_OPTIONS
         )

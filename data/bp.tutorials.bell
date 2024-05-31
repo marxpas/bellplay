@@ -130,11 +130,19 @@ $addtutorial(
     @tags "sampling" "importaudio" "setkey" "getkey" "analyze" "detuning" "hanning" "concatenative+synthesis"
 );
 
+
 $addtutorial(
     @name "audio corpora"
     @file "corpus"
-    @description "One of the core features of bellplay~ is the ability to handle audio corpora — i.e., large collections of audio data. The first step is to create audio corpora through bellplay~'s corpus lab window. These audio corpora, which are saved as .llll files, can then be loaded into our scripts. In turn, this makes it possible to make queries on a corpus, in SQLite3 syntax, to retrieve buffers according to certain criteria. This tutorial shows how to use a pre-existing corpus to retrieve buffers with enough pitch salience, order them in pitch-wise descending order, and retune each buffer to conform to a Cm7 chord."
+    @description "One of the core features of bellplay~ is the ability to handle audio corpora — i.e., large collections of audio data. The first step is to create an audio corpus, which will be covered in a later tutorial. These audio corpora, which are saved as .llll files, can then be loaded into our scripts. In turn, this makes it possible to make queries on a corpus, in SQLite3 syntax, to retrieve buffers according to certain criteria. This tutorial shows how to use a pre-existing corpus to retrieve buffers with well-defined pitch content, order them in pitch-wise descending order, and retune each buffer to conform to a Cm7 chord."
     @tags "corpora" "concatenative+synthesis" "sqlite3" "databases"
+);
+
+$addtutorial(
+    @name "creating audio corpora"
+    @file "buildcorpus"
+    @description "This tutorial provides a basic example of how to create your own audio corpora."
+    @tags "corpora" "sqlite3" "databases"
 );
 
 $addtutorial(
