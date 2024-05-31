@@ -1903,6 +1903,63 @@ $addref(
 
 ## ------------------------------------------------------------
 
+energy = (
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "energy"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "energy"
+    @description "Audio descriptor to compute the energy of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "energy descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+energyband = (
+    $startcutofffrequency = 0,
+    $stopcutofffrequency = 100,
+    $samplerate = 44100,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "energyband"
+            @settings (
+                "@startcutofffrequency" $startcutofffrequency
+                "@stopcutofffrequency" $stopcutofffrequency
+                "@samplerate" $samplerate
+            )
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "energyband"
+    @description "Audio descriptor to compute energy in a given frequency band of a spectrum including both start and stop cutoff frequencies. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "startcutofffrequency" @type "int" @default 0 @description "start frequency from which to sum the energy.")
+        $addarg(@name "stopcutofffrequency" @type "int" @default 100 @description "stop frequency to which to sum the energy.")
+        $addarg(@name "samplerate" @type "int" @default 44100 @description "audio sampling rate.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "energyband descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 dissonance = ($mode = 0 -> BP_ESSENTIA_WRAPPER_FUNC(@name "dissonance" @mode $mode));
 
 $addref(
@@ -2933,9 +2990,7 @@ $addref(
     @output $addout(@description "fade command" @type "llll")
 );
 
-
 ## ------------------------------------------------------------
-
 
 crop = (
     $start = 0,

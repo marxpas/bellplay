@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- New descriptors: `barkbands`, `beatsloudness`, and `bfcc`.
+- New descriptors: `energy`, `energyband`, `barkbands`, `beatsloudness`, and `bfcc`.
 
 ### Changed
 
