@@ -1903,6 +1903,189 @@ $addref(
 
 ## ------------------------------------------------------------
 
+snr = ( 
+    $maalpha = 0.95,
+    $mmsealpha = 0.98,
+    $noisealpha = 0.9,
+    $framesize = 512,
+    $noisethreshold = -40,
+    $samplerate = 44100,
+    $usebroadbadnoisecorrection = 1,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "snr"
+            @settings (
+                "@maalpha" $maalpha
+                "@mmsealpha" $mmsealpha
+                "@noisealpha" $noisealpha
+                "@framesize" $framesize
+                "@noisethreshold" $noisethreshold
+                "@samplerate" $samplerate
+                "@usebroadbadnoisecorrection" $usebroadbadnoisecorrection
+            )
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "snr",
+    @description "Audio descriptor to compute the signal-to-noise ratio for a buffer in a frame-wise manner. The algorithm assumes that the noise is gaussian and that there is a region of noise, without signal, at the beginning of the buffer in order to estimate the power spectral density of the noise. See #analyze.",
+    @category BP_REF_LABEL_ANALYSIS,
+    @arguments (
+        $addarg(@name "maalpha" @default 0.95 @type "int/float" @description "alpha coefficient for the EMA SNR estimation.")
+        $addarg(@name "mmsealpha" @default 0.98 @type "int/float" @description "alpha coefficient for the MMSE estimation.")
+        $addarg(@name "noisealpha" @default 0.9 @type "int/float" @description "alpha coefficient for the EMA noise estimation.")
+        $addarg(@name "framesize" @default 512 @type "int" @description "size of the input frame.")
+        $addarg(@name "noisethreshold" @default -40 @type "int/float" @description "threshold to detect frames without signal.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the audio signal.")
+        $addarg(@name "usebroadbadnoisecorrection" @default 1 @type "int" @description "flag to apply the broadband noise correction factor." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+    )
+    @output $addout(@description "snr descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+spectralkurtosis = (
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralkurtosis"
+            @mode $mode
+            @modes 0...2
+        )
+    )
+);
+
+$addref(
+    @name "spectralkurtosis"
+    @description "Audio descriptor to compute the spectral kurtosis of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @anmodes 0...2
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralkurtosis descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalkurtosis = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "temporalkurtosis"));
+
+$addref(
+    @name "temporalkurtosis"
+    @description "Audio descriptor to compute the temporal kurtosis of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @output $addout(@description "temporalkurtosis descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+spectralskewness = (
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralskewness"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "spectralskewness"
+    @description "Audio descriptor to compute the spectral skewness of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralskewness descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalskewness = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "temporalskewness"));
+
+$addref(
+    @name "temporalskewness"
+    @description "Audio descriptor to compute the temporal skewness of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @output $addout(@description "temporalskewness descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+spectralspread = (
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralspread"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "spectralspread"
+    @description "Audio descriptor to compute the spectral spread of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralspread descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalspread = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "temporalspread"));
+
+$addref(
+    @name "temporalspread"
+    @description "Audio descriptor to compute the temporal spread of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @output $addout(@description "temporalspread descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+spectralvariance = (
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "spectralvariance"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "spectralvariance"
+    @description "Audio descriptor to compute the spectral variance of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @arguments (
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "spectralvariance descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+temporalvariance = ( -> BP_ESSENTIA_WRAPPER_FUNC(@name "temporalvariance"));
+
+$addref(
+    @name "temporalvariance"
+    @description "Audio descriptor to compute the temporal variance of a buffer. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @output $addout(@description "temporalvariance descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 energy = (
     $mode = 0 -> (
         BP_ESSENTIA_WRAPPER_FUNC(
