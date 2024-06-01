@@ -3027,6 +3027,25 @@ $addref(
 
 ## ------------------------------------------------------------
 
+onsetrate = (
+    -> ( 
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "onsetrate"
+            @output "onsetrate_times" "onsetrate"
+        )
+    )
+);
+
+$addref(
+    @name "onsetrate"
+    @description "Audio descriptor to compute the number of onsets per second and their position in time for an audio signal. Onset detection functions are computed using both high frequency content and complex-domain methods available in #onsetdetection. Please note that due to a dependence on #onsets, this descriptor is only valid for audio signals with a sampling rate of 44100 Hz. See #analyze."
+    @category BP_REF_LABEL_ANALYSIS
+    @ankeys "onsetrate_times" "onsetrate"
+    @output $addout(@description "onsetrate descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 onsetdetection = (
     $method = "hfc",
     $samplerate = 44100,

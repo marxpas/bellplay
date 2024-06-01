@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- New descriptors: `pitchyin`.
+- New descriptors: `onsetrate`, `pitchyin`.
 - New tutorial: `buildcorpus`.
 - New descriptors: `spectralkurtosis`, `temporalkurtosis`, `spectralskewness`, `temporalskewness`, `spectralspread`, `temporalspread`, `spectralvariance`, and `temporalvariance`.
 - New descriptors: `energy`, `energyband`, `barkbands`, `beatsloudness`, and `bfcc`.
