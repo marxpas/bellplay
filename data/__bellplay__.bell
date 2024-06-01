@@ -802,7 +802,7 @@ mapkey = (
         if $key == null || $buffer == null || $func == null then (
             printerror("you must provide values for @buffer, @key, and @func and @key in mapkey().") 
         );
-        setkey($buffer, $key, $func(getkey($buffer, $key)))
+        setkey($buffer, $key, $func(getkey($buffer, $key), $buffer))
     )
 );
 
@@ -815,7 +815,7 @@ $addref(
         $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
             BP_REF_BUFFER_KEYS_OPTIONS
         )
-        $addarg(@name "func", @type "lambda function", @description "lambda function with signature $currentvalue -> $newvalue.")
+        $addarg(@name "func", @type "lambda function", @description "lambda function with signature $currentvalue, $currentbuffer -> $newvalue.")
     ),
     @output $addout(@description "modified buffer", @type "llll")
 );
