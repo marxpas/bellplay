@@ -408,7 +408,7 @@ BP_REF_ESSENTIA_ONSET_METHOD = (
     $addopt(@value "'complex_phase'" @description "the simplified complex-domain spectral difference function taking into account phase changes, weighted by magnitude.")
     $addopt(@value "'flux'" @description "spectral flux.")
     $addopt(@value "'melflux'" @description "similar to spectral flux, but using half-rectified energy changes in Mel-frequency bands.")
-    $addopt(@value "'rms'" @description "the difference function, measuring the half-rectified change of the RMS of the magnitude spectrum.")
+    $addopt(@value "'rms'" @description "difference function, measuring the half-rectified change of the RMS of the magnitude spectrum.")
 );
 
 ## ------------------------------------------------------------
@@ -3045,28 +3045,18 @@ onsetdetection = (
 
 $addref(
     @name "onsetdetection"
-    @description "Audio descriptor to compute buffer onsets, given various onset detection functions. 
-    'hfc' is the high frequency content detection function which accurately detects percussive events. 'complex' is the complex-domain spectral difference function, taking into account changes in magnitude and phase. It emphasizes note onsets either as a result of significant change in energy in the magnitude spectrum, and/or a deviation from the expected phase values in the phase spectrum, caused by a change in pitch.
-    'complex_phase' is the simplified complex-domain spectral difference function, taking into account phase changes, weighted by magnitude. It reacts better on tonal sounds such as bowed string, but tends to over-detect percussive events.
-    'flux', the spectral flux detection function which characterizes changes in magnitude spectrum. See #flux for details.
-    'melflux' is the spectral difference function, similar to spectral flux, but using half-rectified energy changes in Mel-frequency bands of the spectrum.
-    'rms' is the difference function, measuring the half-rectified change of the RMS of the magnitude spectrum — i.e., measuring overall energy flux. See #analyze."
+    @description "Audio descriptor to compute buffer onsets, given various onset detection functions. See #analyze."
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "method" @default "'hfc'" @description "the method used for onset detection." @options 
-            $addopt(@value "'hfc'")
-            $addopt(@value "'complex'")
-            $addopt(@value "'complex_phase'")
-            $addopt(@value "'flux'")
-            $addopt(@value "'melflux'")
-            $addopt(@value "'rms'")
+            BP_REF_ESSENTIA_ONSET_METHOD
         )
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
         $addarg(@name "mode" @default 1 @type "int", @description "analysis mode." @options
             BP_REF_ESSENTIA_ANALYSIS_OPTIONS
         )
     )
-    @output $addout(@description "onsets descriptor" @type "llll")
+    @output $addout(@description "onsetdetection descriptor" @type "llll")
 );
 
 ## ------------------------------------------------------------
