@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Reimplement `resynth` as `topartialtracks` and `frompartialtracks` functions.
 - Use `bach.hypercomment` in reference function header with hyperlink highlight for argument names.
 - Add safeguard against `nan` outputs in `pitchdiff` and `transcribe`.
 - `query` automatically replaces paths with in-memory buffers. This primarily prevents issues when creating corpora with built-in sounds but hopefully also prevents other conflicts in general.
@@ -29,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Removed
 
+- Remove `resynth`.
 - Remove unused `BP_DATABASE_OUTPUT` global.
 
 ## [v0.2.1-beta] - 2024-05-26

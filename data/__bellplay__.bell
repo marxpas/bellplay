@@ -5407,6 +5407,179 @@ $addref(
 
 ## ------------------------------------------------------------
 
+topartialtracks = (
+    $buffer,
+    $winstartfromzero = 0,
+    $framesize = 2048,
+    $hopsize = 512,
+    $freqdevoffset = 20,
+    $freqdevslope = 0.01,
+    $magnitudethreshold = 0.0002,
+    $maxfrequency = 22050,
+    $minfrequency = 0,
+    $maxpeaks = 100,
+    $maxnsines = 100,
+    $numframes = 'auto',
+    $orderby = 'frequency',
+    $overlap = 4,
+    $wintype = 'hann',
+    $ampunit = 0,
+    $antimeunit = 1,
+    $angleunit = 0,
+    $frequnit = 0,
+    $timeunit = 0,
+    $downmix = 1 -> (
+        $buffer ||| printerror("you must provide a value for @buffer in topartialtracks().");
+        $source = $buffer.getkey("source") ||| printerror($buffer "is not a buffer in topartialtracks().");
+        msg("resynth", 
+            [ "analysis" 
+                [ "winstartfromzero" $winstartfromzero ]
+                [ "framesize" $framesize ]
+                [ "freqdevoffset" $freqdevoffset ]
+                [ "freqdevslope" $freqdevslope ]
+                [ "hopsize" $hopsize ]
+                [ "magnitudethreshold" $magnitudethreshold ]
+                [ "maxfrequency" $maxfrequency ]
+                [ "maxpeaks" $maxpeaks ]
+                [ "maxnsines" $maxnsines ]
+                [ "minfrequency" $minfrequency ]
+                [ "numframes" $numframes ]
+                [ "orderby" $orderby ]
+                [ "overlap" $overlap ]
+                [ "wintype" $wintype ]
+                [ "ampunit" $ampunit ]
+                [ "antimeunit" $antimeunit ]
+                [ "angleunit" $angleunit ]
+                [ "frequnit" $frequnit ]
+                [ "timeunit" $timeunit ]
+                [ "downmix" $downmix ]
+                $source 
+            ]
+        );
+        [ BP_RESYNTH_ANALYSIS ]
+    )
+);
+
+$addref(
+    @name "topartialtracks",
+    @description "Converts a buffer into a partial track analysis.",
+    @category BP_REF_LABEL_ANALYSIS,
+    @arguments (
+        $addarg(@name "buffer" @type "llll" @description "buffer to analyze.")
+        $addarg(@name "winstartfromzero", @default 0, @type "int", @description "first window starts at zero" @options
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "framesize", @default 2048, @type "int", @description "window size, in samples.")
+        $addarg(@name "hopsize", @default 512, @type "int", @description "hop size, in samples.")
+        $addarg(@name "freqdevoffset" @default 20 @type "int" @description "frequency deviation offset.")
+        $addarg(@name "freqdevslope" @default 0.01 @type "int/float" @description "frequency deviation slope.")
+        $addarg(@name "magnitudethreshold", @default 2e-4, @type "float", @description "peak amplitude threshold.")
+        $addarg(@name "maxfrequency", @default 22050, @type "int/float", @description "max. frequency of the range to evaluate.")
+        $addarg(@name "minfrequency", @default 0, @type "int/float", @description "min. frequency of the range to evaluate.")
+        $addarg(@name "maxpeaks", @default 100, @type "int", @description "max. number of returned peaks.")
+        $addarg(@name "maxnsines", @default 100, @type "int", @description "max. number of sines per frame.")
+        $addarg(@name "numframes" @default "'auto'" @type "int/symbol" @description "number of frames.")
+        $addarg(@name "orderby" @default "'frequency'" @type "symbol" @description "ordering feature." @options 
+            $addopt(@value "'frequency'")
+            $addopt(@value "'magnitude'")
+        )
+        $addarg(@name "overlap" @default 4 @type "int" @description "overlap.")
+        $addarg(@name "wintype", @default "'hann'", @type "symbol", @description "window type." @options 
+            BP_REF_WINDOW_OPTIONS
+        )
+        $addarg(@name "ampunit" @default 0 @type "int" @description "amplitude unit." @options 
+            BP_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "antimeunit" @default 1 @type "int" @description "analysis time unit." @options 
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "angleunit" @default 0 @type "int" @description "angle unit." @options 
+            $addopt(@value 0 @description "'radians'")
+            $addopt(@value 1 @description "'degrees'")
+            $addopt(@value 2 @description "'turns'")
+        )
+        $addarg(@name "frequnit", @default 0, @type "int", @description "unit for frequency components in @func." @options 
+            BP_REF_FREQUNIT_OPTIONS
+        )
+        $addarg(@name "timeunit" @default 0 @type "int" @description "time unit." @options 
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "downmix" @default 1 @type "int" @description "downmix buffer." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        ## $addarg(@name "stochastic", @default 0, @type "int", @description "analysis/resynthesis mode." @options
+        ##     $addopt(@value 0 @description "sinusoidal")
+        ##     $addopt(@value 1 @description "stochastic" "+" "sinusoidal")
+        ## )
+        ## $addarg(@name "stocf", @default 0.2, @type "int/float", @description "decimation factor of stochastic approximation. Ignored if @stochastic is 0.")
+    ),
+    @output $addout(@description "partial track analysis" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+frompartialtracks = (
+    $frequencies,
+    $magnitudes,
+    $phases,
+    $framesize = 2048,
+    $hopsize = 512,
+    $ampunit = 0,
+    $antimeunit = 1,
+    $angleunit = 0,
+    $frequnit = 0 -> (
+        if $frequencies == null then printerror("@frequencies cannot be null in frompartialtracks().");
+        if $magnitudes == null then printerror("@magnitudes cannot be null in frompartialtracks().");
+        if $phases == null then printerror("@phases cannot be null in frompartialtracks().");
+        msg("resynth", 
+            [ "synthesis" 
+                [ "params"
+                    [ "framesize" $framesize ]
+                    [ "hopsize" $hopsize ]
+                    [ "ampunit" $ampunit ]
+                    [ "antimeunit" $antimeunit ]
+                    [ "angleunit" $angleunit ]
+                    [ "frequnit" $frequnit ]
+                ]
+                [ "phases" $phases ]
+                [ "magnitudes" $magnitudes ]
+                [ "frequencies" $frequencies ]
+            ]
+        );
+        BP_NEWBUFF_FUNC(@source BP_RESYNTH_SYNTHESIS)
+    )
+);
+
+$addref(
+    @name "frompartialtracks",
+    @description "Converts a partial track analysis into a buffer.",
+    @category BP_REF_LABEL_GEN,
+    @arguments (
+        $addarg(@name "frequencies" @type "llll")
+        $addarg(@name "magnitudes" @type "llll")
+        $addarg(@name "phases" @type "llll")
+        $addarg(@name "framesize" @default 2048 @type "int")
+        $addarg(@name "hopsize" @default 512 @type "int")
+        $addarg(@name "ampunit" @default 0 @type "int" @description "amplitude unit." @options 
+            BP_REF_AMPUNIT_OPTIONS
+        )
+        $addarg(@name "antimeunit" @default 1 @type "int" @description "analysis time unit." @options 
+            BP_REF_TIMEUNIT_OPTIONS
+        )
+        $addarg(@name "angleunit" @default 0 @type "int" @description "angle unit." @options 
+            $addopt(@value 0 @description "'radians'")
+            $addopt(@value 1 @description "'degrees'")
+            $addopt(@value 2 @description "'turns'")
+        )
+        $addarg(@name "frequnit", @default 0, @type "int", @description "unit for frequency components in @func." @options 
+            BP_REF_FREQUNIT_OPTIONS
+        )
+    ),
+    @output $addout(@description "buffer" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 buildtree = (
     $buffers, $keys -> (
         if $keys == null then (
