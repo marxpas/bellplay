@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Don't open Max console on launch.
 - Include `$buffer` as second arg in lambda function for `mapkey`.
 - Reimplement `resynth` as `topartialtracks` and `frompartialtracks` functions.
 - Use `bach.hypercomment` in reference function header with hyperlink highlight for argument names.

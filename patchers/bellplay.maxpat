@@ -959,7 +959,7 @@
 					"patching_rect" : [ 688.0, 357.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.2.0-beta",
+					"text" : "v0.2.1-beta",
 					"textjustification" : 1
 				}
 
@@ -1213,13 +1213,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-18",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 586.0, 125.0, 52.0 ],
-					"text" : ";\rmax clearmaxwindow;\rmax maxwindow"
+					"patching_rect" : [ 10.0, 586.0, 122.0, 37.0 ],
+					"text" : ";\rmax clearmaxwindow"
 				}
 
 			}
@@ -2392,6 +2392,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ears.clicks~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "ears.clip~.mxo",
 				"type" : "iLaX"
 			}
@@ -2481,14 +2485,6 @@
 			}
 , 			{
 				"name" : "ears.model.sine.synthesis~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.model.sps.analysis~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "ears.model.sps.synthesis~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
