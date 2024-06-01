@@ -1903,6 +1903,53 @@ $addref(
 
 ## ------------------------------------------------------------
 
+pitchyin = ( 
+    $framesize = 2048,
+    $interpolate = 1,
+    $maxfrequency = 22050,
+    $minfrequency = 20,
+    $samplerate = 44100,
+    $tolerance = 0.15,
+    $mode = 0 -> (
+        BP_ESSENTIA_WRAPPER_FUNC(
+            @name "pitchyin"
+            @settings (
+                "@framesize" $framesize
+                "@interpolate" $interpolate
+                "@maxfrequency" $maxfrequency
+                "@minfrequency" $minfrequency
+                "@samplerate" $samplerate
+                "@tolerance" $tolerance
+            )
+            @output "pitchyin" "pitchyin_confidence"
+            @mode $mode
+        )
+    )
+);
+
+$addref(
+    @name "pitchyin",
+    @description "Audio descriptor to estimate the fundamental frequency of a monophonic buffer. It is an implementation of the Yin algorithm for computations in the time domain. See #analyze.",
+    @category BP_REF_LABEL_ANALYSIS
+    @ankeys "pitchyin" "pitchyin_confidence"
+    @arguments (
+        $addarg(@name "framesize" @default 2048 @type "int" @description "number of samples in the input frame.")
+        $addarg(@name "interpolate" @default 1 @type "int" @description "enable interpolation." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "maxfrequency" @default 22050 @type "int/float" @description "the maximum allowed frequency.")
+        $addarg(@name "minfrequency" @default 20 @type "int/float" @description "the minimum allowed frequency.")
+        $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate of the input audio.")
+        $addarg(@name "tolerance" @default 0.15 @type "int/float" @description "tolerance for peak detection.")
+        $addarg(@name "mode" @default 0 @type "int", @description "analysis mode." @options
+            BP_REF_ESSENTIA_ANALYSIS_OPTIONS
+        )
+    )
+    @output $addout(@description "pitchyin descriptor" @type "llll")
+);
+
+## ------------------------------------------------------------
+
 ## BUGGY
 ## snr = ( 
 ##     $maalpha = 0.95,
