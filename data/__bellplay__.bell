@@ -1173,21 +1173,21 @@ $addref(
 
 ## ------------------------------------------------------------
 
-sortbuffers = (
-    $buffers, $key -> (
-        sort($buffers, ($a, $b -^ $key -> (getkey($a, $key) < getkey($b, $key))))
+sortbykey = (
+    $items, $key -> (
+        sort($items, ($a, $b -^ $key -> (getkey($a, $key) < getkey($b, $key))))
     )
 );
 
 $addref(
-    @name "sortbuffers",
-    @description "Sorts buffers by a given key (buffer_id, source_id, pitch, pitchclass, pitchsalience, duration, centroid, zerox, loudness, etc.)",
+    @name "sortbykey",
+    @description "Sorts llll items by a given key.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "buffers", @type "llll", @description "buffers to sort.")
-        $addarg(@name "key", @type "symbol", @description "buffer key to sort by.")
+        $addarg(@name "items", @type "llll", @description "items to sort.")
+        $addarg(@name "key", @type "symbol", @description "key to sort by.")
     ),
-    @output $addout(@description "list of sorted buffers", @type "llll")
+    @output $addout(@description "list of sorted items", @type "llll")
 );
 
 ## ------------------------------------------------------------
