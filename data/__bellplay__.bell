@@ -12,6 +12,7 @@ BP_TMP_BUFF = null;
 BP_TMP_BUFFINFO = null;
 BP_TMP_ROLL_OUTPUT = null;
 BP_INF = 1./0;
+BP_RAND_RES = 2147483648;
 
 ## ------------------------------------------------------------
 
@@ -964,7 +965,7 @@ $addref(
 ## ------------------------------------------------------------
 
 rand = (
-    $a = 1, $b = null, $res = 1000 -> (
+    $a = 1, $b = null -> (
         if $b == null then (
             $min = 0;
             $max = $a
@@ -972,7 +973,7 @@ rand = (
             $min = $a;
             $max = $b
         );
-        scale(random(0, $res), 0, $res, $min, $max)
+        scale(random(0, BP_RAND_RES), 0, BP_RAND_RES, $min, $max)
     )
 );
 
