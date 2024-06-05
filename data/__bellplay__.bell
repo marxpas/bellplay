@@ -1451,6 +1451,106 @@ $addref(
 
 ## ------------------------------------------------------------
 
+read = (
+    $path,
+    $ignore = null -> (
+        BP_LLLL_READ = null;
+        $info = getpathinfo($path @locate 1);
+        if (".txt" ".llll").intersection($info."extension") == null then (
+            printerror("invalid file extension for @path in read().")
+        );
+        $path = $info."path" + $info."extension";
+        msg("llllio", "read" "read" $path);
+        BP_LLLL_READ
+    )
+);
+
+$addref(
+    @name "read",
+    @description "Read .txt or native .llll data. The ignore attribute allows preventing some categories of symbols, such as parens, pitches and more, to be read according to the usual bell syntax.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "path", @type "symbol", @description "input file path.")
+        $addarg(@name "ignore" @default "null" @type "symbol/null" @description "The ignore attribute can be set to any combination of the following characters" @options 
+            $addarg(@value "'l'" @description "parens inside symbols are not llll levels, but symbols composed by parens only are kept as llll levels!")
+            $addarg(@value "'L'" @description "all parens are not parsed as llll levels")
+            $addarg(@value "'p'" @description "ignore pitches, keep them as symbols")
+            $addarg(@value "'r'" @description "ignore rationals, keep them as symbols")
+            $addarg(@value "'e'" @description "ignore floating-point scientific notation, keep it as symbol")
+            $addarg(@value "'s'" @description "keep the special symbols nil and null as symbols")
+            $addarg(@value "'b'" @description "symbols with a backtick are interpreted literally, with the backtick included")
+            $addarg(@value 0 @description "don't ignore anything")
+            $addarg(@value 1 @description "ignore everything")
+            $addarg(@value "'-'" @description "invert selection")
+        )
+    )
+    @output $addout(@description "file content" @type "anything")
+);
+
+## ------------------------------------------------------------
+
+write = (
+    $path,
+    $data,
+    $escape = 3,
+    $wrap = 0,
+    $indent = 'tab',
+    $maxdecimals = 10,
+    $maxdepth = -1,
+    $negativeoctaves = 0,
+    $parens = 0 -> (
+        $info = getpathinfo($path);
+        if (".txt" ".llll").intersection($info."extension") == null then (
+            printerror("invalid file extension for @path in write().")
+        );
+        $ext = $info."extension";
+        $path = $info."path" + $ext;
+        $cmd = if $ext == ".txt" then "writetxt" else "write";
+        msg("llllio", "write"
+            [ "data" $data ]
+            [ "config" 
+                [ "escape" $escape ]
+                [ "wrap" $wrap ]
+                [ "indent" $indent ]
+                [ "maxdecimals" $maxdecimals ]
+                [ "maxdepth" $maxdepth ]
+                [ "negativeoctaves" $negativeoctaves ]
+                [ "parens" $parens ]
+                [ $cmd $path ]
+            ]
+        );
+        BP_LLLL_READ
+    )
+);
+
+$addref(
+    @name "write",
+    @description "Writes data into disk in either .txt or native .llll format.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "path", @type "symbol", @description "output file path.")
+        $addarg(@name "data", @type "anything", @description "data to write.")
+        $addarg(@name "escape" @default 3 @type "int" @description "escaping style" @options 
+            $addopt(@value 0 @description "none")
+            $addopt(@value 1 @description "backtick")
+            $addopt(@value 2 @description "double" "quotes")
+            $addopt(@value 3 @description "smart")
+        )
+        $addarg(@name "wrap" @default 0 @type "int" @description "column at which the text should be hard-wrapped in .txt format. 0 means no wrapping")
+        $addarg(@name "indent" @default "'tab'" @type "symbol/int" @description "if value is integer, number of spaces per depth level used for indentation.")
+        $addarg(@name "maxdecimals" @default 10 @type "int" @description "maximum number of decimal digits for .txt format.")
+        $addarg(@name "maxdepth" @default -1 @type "int" @description "maximum depth level at which text indentation is performed for .txt format.")
+        $addarg(@name "negativeoctaves" @default 0 @type "int" @description "use negative octaves, when in .txt format." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+        $addarg(@name "parens" @default 0 @type "int" @description "use parens." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+    )
+);
+
+## ------------------------------------------------------------
+
 export = (
     $path, $stems = 0, $format = "float32" -> (
         ## get path info
