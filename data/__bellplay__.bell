@@ -3266,7 +3266,7 @@ process = (
                 $commands 
             ]
         );
-        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF @pitch $buffer.getkey("pitch"))
+        for $buf in BP_TMP_BUFF collect BP_NEWBUFF_FUNC(@source $buf @pitch $buffer.getkey("pitch"))
     )
 );
 
@@ -3387,6 +3387,38 @@ $addref(
     @description "Audio process command for removing DC offset from a buffer. See #process.",
     @category BP_REF_LABEL_PROCESS,
     @output $addout(@description "dcfilter command" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+getchannels = (
+    $buffer, 
+    $channels = null,
+    $all = 1 -> (
+        $buffer.process(
+            [
+                [ "fx" "channel" ]
+                [ "params"
+                    [ "all" $all ]
+                    [ "channels" $channels ]
+                ]
+            ]
+        )    
+    )
+);
+
+$addref(
+    @name "getchannels",
+    @description "Extracts one or more buffer channels as individual buffers.",
+    @category BP_REF_LABEL_PROCESS,
+    @arguments (
+        $addarg(@name "buffer", @type "llll", @description "buffer to extract channels from.")
+        $addarg(@name "channels" @default "null" @type "int/list/llll/null", @description "number to channels to extract — ignored when @all is 1.")
+        $addarg(@name "all" @default 1 @type "int", @description "extract all channels." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+    ),
+    @output $addout(@description "channels as buffers", @type "llll")
 );
 
 ## ------------------------------------------------------------
