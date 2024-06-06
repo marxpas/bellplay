@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change `spread` default value to 1.
 - Increase range in `rand` and remove `@res` arg.
 - Change `sortbuffers` to `sortbykey`.
   
