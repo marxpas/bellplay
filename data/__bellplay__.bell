@@ -1491,8 +1491,8 @@ $addref(
 ## ------------------------------------------------------------
 
 write = (
-    $path,
     $data,
+    $path,
     $escape = 3,
     $wrap = 0,
     $indent = 'tab',
@@ -1529,8 +1529,8 @@ $addref(
     @description "Writes data into disk in either .txt or native .llll format.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "path", @type "symbol", @description "output file path.")
         $addarg(@name "data", @type "anything", @description "data to write.")
+        $addarg(@name "path", @type "symbol", @description "output file path.")
         $addarg(@name "escape" @default 3 @type "int" @description "escaping style" @options 
             $addopt(@value 0 @description "none")
             $addopt(@value 1 @description "backtick")
