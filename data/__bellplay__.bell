@@ -1050,7 +1050,7 @@ BP_RANDOM_CHOICE_FUNC = (
         ) else (
             $random = srandom;
             $rand = srand
-        )
+        );
         $len = length($choices);
         $sum = if $weights == null then 0 else reduce($weights, #+);
         for $i in 1...$n collect (
