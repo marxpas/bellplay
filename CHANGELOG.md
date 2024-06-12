@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- New seed-based functions: `srand`, `srandom`, `sscramble`, and `schoose`.
 - Add `getchannels` function.
 - Add `read` and `write` functions for `txt` and `llll` data.
 - Add missing `bp.tutorial.buildcorpus.bell` dependency.
