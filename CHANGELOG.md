@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Fix `@position` bug in `paulfreeze`. Now includes separate `@jitter` argument.
+
 ### Removed
 
 ## [v0.2.2-beta] - 2024-06-01
