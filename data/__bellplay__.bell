@@ -1191,12 +1191,12 @@ $addref(
 ## ------------------------------------------------------------
 
 initurn = (
-    $limit = 10, $id = 0 -> (
-        ## print('-----');
+    $limit = 10, $id = 0, $useseed = 0 -> (
+        $shuffler = if $useseed == 0 then scramble else sscramble;
         $urn = [
             "pool" (
                 0...($limit.max(1) - 1)
-            ).sscramble()
+            ).$shuffler()
         ] ["limit" $limit];
         if BP_URN.$id == null then BP_URN _= [$id $urn] else BP_URN.$id = $urn;
         null
