@@ -1176,7 +1176,14 @@ $addref(
 
 ## ------------------------------------------------------------
 
-sscramble = ($llll -> $llll.sort(-> srandom(0, 1)));
+sscramble = (
+    $llll -> (
+        $indices = 1...$llll.length();
+        $order = for $id in $indices collect srand();
+        $indices = $indices.sort(@function $a, $b -^ $order -> $order:$a <= $order:$b);
+        $llll:[$indices]
+    )
+);
 
 $addref(
     @name "sscramble"
