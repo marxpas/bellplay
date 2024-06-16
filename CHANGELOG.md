@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v0.2.3-beta] - 2024-06-16
+
+### Added
+
 - Add system requirements in README.
 - New seed-based functions: `srand`, `srandom`, `sscramble`, and `schoose`.
 - Add `getchannels` function.
@@ -19,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Change `spread` default value to 1.
 - Increase range in `rand` and remove `@res` arg.
 - Change `sortbuffers` to `sortbykey`.
-  
+
 ### Fixed
 
 - Remove unnecessary lower limit in velocity/gain in `transcribe` when scaling gain to velocity.
@@ -46,7 +56,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `query` automatically replaces paths with in-memory buffers. This primarily prevents issues when creating corpora with built-in sounds but hopefully also prevents other conflicts in general.
 - Change name: `test_corpus.llll` to `corpus_demo.llll`.
 - Change `code` font from `Courier New Bold` to `Menlo`. Not sure if it will work on Windows.
-  
+
 ### Fixed
 
 - Fix regex in `pathinfo` subpatcher bug whereby `Macintosh HD:*` paths are classified as `type` 3.
@@ -82,7 +92,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Change `bp_makebuffer` name to `BP_NEWBUFF_FUNC`.
 - `live.gain~` now uses Lato font.
 - `getpathinfo` API now checks if path exists, and optionally raises an error if not. Used in importing functions to minimize errors at render.
-  
+
 ### Fixed
 
 - Add missing descriptor keys for `mfcc` descriptor.
@@ -97,7 +107,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [v0.2.0-beta] - 2024-05-24
 
 - MAJOR UPDATE: except for `pitch`, buffers no longer come with dummy features, only basic info (chans, sr, duration, source_end, and offset).
-  
+
 ### Added
 
 - Add `getcorpuskeys` function.
@@ -105,7 +115,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - New tutorials: `analysis` and `analysismodes`.
 - Add: `isnan` function, pending docs.
 - New descriptor: `maxmagfreq`.
-- New descriptors: `temporalcentroid` `spectralflatness` and `temporalflatness`.  
+- New descriptors: `temporalcentroid` `spectralflatness` and `temporalflatness`.
 - New descriptor: `spectralcentroid` .
 - New descriptor: `larm`.
 - New descriptor: `spectralcontrast`.
@@ -130,7 +140,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `bp.utils.searchbar`: Hide X when bar is empty.
 - Try `stop` `start` on load to fix audio off issue.
 - Change @N to @n in `hanning`.
-  
+
 ### Fixed
 
 - Fix duration bug in `tri` and `rect` generations when using buffers as @frequency.
@@ -159,7 +169,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add missing single quotes in docs options to make symbol type more explicit.
 - Set name for standalone preferences folder.
 - Use Lato font instead of Ableton fonts.
-  
+
 ### Fixed
 
 - Reimplement `bp.getcontroller~` to always compare samp rates and resample when needed.
@@ -222,7 +232,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add `getmediafiles` function.
-- Add new sample: `trumpet.wav` from freesound.org: https://freesound.org/people/trumpetplayer/sounds/651201/ 
+- Add new sample: `trumpet.wav` from freesound.org: https://freesound.org/people/trumpetplayer/sounds/651201/
 - New processors: `absolute`, `squareroot` and `power`.
 - New processor: `rounding`, with docs.
 - New processor: `degrade` with docs.
@@ -259,12 +269,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - DOCS CHANGES: Use offset window approach to have persistent state when switching between tabs — this sacrifices auto-click upon load, since click only applies when window is visible. Change name of `bp.reference` to `bp.docs`.
 - Change naming pattern of tutorial sandboxing, now matches menu name.
 - Include 'type' key in path info.
-- Switch to regex-based approach to filter out dangerous keywords (int/float/list/get) in `bp.searchbar`. 
+- Switch to regex-based approach to filter out dangerous keywords (int/float/list/get) in `bp.searchbar`.
 - Change `variables` tutorials.
 
 ### Fixed
+
 - Add missing freq arg for `randosc` docs.
-- Fix misnaming of `rect` function in docs. Previously documented as `duty`. 
+- Fix misnaming of `rect` function in docs. Previously documented as `duty`.
 
 ### Removed
 
@@ -290,6 +301,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Fix bpatcher cropping in `bp.reference`.
 
 ### Removed
+
 - Remove `getmediafile` function.
 
 ## [v0.1.1-beta] - 2024-04-28
@@ -302,7 +314,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add draft of `addmarker`.
 - Add unoptimized version of `analyze()` for ad hoc analysis.
 - Add sketchy version of tutorial files.
-- Add `getmediapath` to retrieve built-in media for tutorials. 
+- Add `getmediapath` to retrieve built-in media for tutorials.
 - Auto-center window when saving main patcher
 - Add optional pitch class argument in `r2pc`.
 - Add support for envelope and buffer input in `biquad`
@@ -315,7 +327,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Change style name from `sublelight` to `bellplay-gui`.
 - Modify `resynth` to not multiply function output, which would allow for temporal modificatinos.
 - Add optimization in `process`, to avoid cropping full files.
-  
+
 ### Fixed
 
 - Fix @type not working bug in `biquad()`.
@@ -352,7 +364,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - MAJOR REFACTORING: feature analysis is now optional in `process()` and `importsound()` and `wavesynth`, via `gs_makegrain`.
 - Support for @duty argument in `tri` function.
 - Use `getbufferinfo` in `gs.analysis`, and include `sr` and `numchannels` in `gs.corpus`.
-  
+
 ### Fixed
 
 - Fix discrepancy between default args and docs in `paulfreeze`.
@@ -379,7 +391,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Reimplement reference docs to organize functions by categories. 
+- Reimplement reference docs to organize functions by categories.
 - Include @negative arg in `freqshift`, with docs.
 - Use mc in/outlets in `freqshift` and `retune` processors.
 - Include phase resetting in cycle and phasor.
@@ -498,7 +510,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - add `fade()` function and docs.
 - standalone object with all settings.
 - first version of app logo.
-  
+
 ### Changed
 
 - Set @maxtime to 0 in `bach.eval` to allow for longer computations.

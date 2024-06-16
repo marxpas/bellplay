@@ -959,7 +959,7 @@
 					"patching_rect" : [ 688.0, 357.0, 126.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 8.0, 797.700000286102295, 18.0 ],
-					"text" : "v0.2.2-beta",
+					"text" : "v0.2.3-beta",
 					"textjustification" : 1
 				}
 
@@ -2054,6 +2054,10 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "bach.read.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.reg.mxo",
 				"type" : "iLaX"
 			}
@@ -2104,6 +2108,10 @@
 			}
 , 			{
 				"name" : "bach.wrap.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.write.mxo",
 				"type" : "iLaX"
 			}
 , 			{
