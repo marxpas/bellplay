@@ -1400,7 +1400,7 @@ transcribe = (
 
         ## clean gain and panning slots
         $pan = if $pan != null then [ 2 bpf($pan) ];
-        $gain = if $gain != null then [ 1 bpf($gain, @yfunc ($y -> max(1, $y * 127.))) ];
+        $gain = if $gain != null then [ 1 bpf($gain @yfunc $y -> $y * 127.) ];
 
         ## get chord velocity and duration
         $vel = if $gain then maximum(trans($gain.1)::2) else 64;

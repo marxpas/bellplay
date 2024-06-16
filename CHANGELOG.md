@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   
 ### Fixed
 
+- Remove unnecessary lower limit in velocity/gain in `transcribe` when scaling gain to velocity.
 - Fix `@position` bug in `paulfreeze`. Now includes separate `@jitter` argument.
 
 ### Removed
