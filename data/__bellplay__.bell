@@ -14,6 +14,7 @@ BP_TMP_ROLL_OUTPUT = null;
 BP_INF = 1./0;
 BP_RAND_RES = 2147483648;
 BP_RNG = {max.random 2147483648 @seed 1};
+BP_URN = null;
 
 ## ------------------------------------------------------------
 
@@ -1185,6 +1186,38 @@ $addref(
         $addarg(@name "llll" @type "list/llll", @description "list to scramble.")
     )
     @output $addout(@description "scrambled list", @type "integer")
+);
+
+## ------------------------------------------------------------
+
+initurn = (
+    $limit = 10, $id = 0 -> (
+        ## print('-----');
+        $urn = [
+            "pool" (
+                0...($limit.max(1) - 1)
+            ).sscramble()
+        ] ["limit" $limit];
+        if BP_URN.$id == null then BP_URN _= [$id $urn] else BP_URN.$id = $urn;
+        null
+    )
+);
+
+## ------------------------------------------------------------
+
+urn = (
+    $id = 0 -> (
+        $urn = BP_URN.$id;
+        if $urn == null then printerror("A unique random number generator with id of" $id "doesn't exist yet. Use initurn() to initialize a new unique random number generator.") else (
+            $pool = $urn."pool";
+            $next = $pool.left(1);
+            $pool = $pool.right(1);
+            if $pool == null then (initurn(
+                @limit $urn."limit" @id $id
+            )) else (BP_URN.$id."pool" = $pool);
+            $next
+        )
+    )
 );
 
 ## ------------------------------------------------------------
