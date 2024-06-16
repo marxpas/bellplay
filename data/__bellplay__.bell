@@ -1425,7 +1425,7 @@ $addref(
         $addarg(@name "buffer", @type "llll", @description "buffer to add to rendering sequence.")
         $addarg(@name "onset", @type "int/float", @default 0, @description "buffer onset in milliseconds.")
         $addarg(@name "pan", @type "int/float/list/llll", @default "null" @description "normalized panning value or envelope.")
-        $addarg(@name "gain", @type "int/float/llll", @default "null" @description "gain value or envelope.")
+        $addarg(@name "gain", @type "int/float/llll", @default "null" @description "linear gain value or envelope. Use the #gain function for values greater than 1.")
         $addarg(@name "detune", @type "int/float", @default "null" @description "detuning amount in cents.")
         $addarg(@name "voice", @type "int", @default 1 @description "voice assignment in score. See scoreconfig() function.")
     )
