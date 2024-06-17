@@ -1059,10 +1059,10 @@ BP_RANDOM_CHOICE_FUNC = (
                 $choices:$random(1, $len)
             ) else (    
                 $choice = null;
-                $rand = $rand() * $sum;
+                $prob = $rand() * $sum;
                 for $x in $choices, $w in $weights as $choice == null with @iterationmode 1 do (
-                    if $rand < $w then $choice = $x;
-                    $rand -= $w 
+                    if $prob < $w then $choice = $x;
+                    $prob -= $w 
                 );
                 $choice  
             )
@@ -1159,7 +1159,7 @@ $addref(
 ## ------------------------------------------------------------
 
 schoose = (
-    $choices, $n, $weights -> BP_RANDOM_CHOICE_FUNC($choices, $n, $weights @mode 1)
+    $choices, $n = 1, $weights = null -> BP_RANDOM_CHOICE_FUNC($choices, $n, $weights @mode 1)
 );
 
 $addref(
