@@ -1192,21 +1192,32 @@ $addref(
     @arguments (
         $addarg(@name "llll" @type "list/llll", @description "list to scramble.")
     )
-    @output $addout(@description "scrambled list", @type "integer")
+    @output $addout(@description "scrambled list", @type "list/llll")
 );
 
 ## ------------------------------------------------------------
 
 initurn = (
-    $limit = 10, $id = 0, $useseed = 0 -> (
+    $size = 10, $id = 0, $useseed = 0 -> (
         $shuffler = if $useseed == 0 then scramble else sscramble;
         $urn = [
             "pool" (
-                0...($limit.max(1) - 1)
+                0...($size.max(1) - 1)
             ).$shuffler()
-        ] ["limit" $limit];
+        ] ["size" $size];
         if BP_URN.$id == null then BP_URN _= [$id $urn] else BP_URN.$id = $urn;
         null
+    )
+);
+
+$addref(
+    @name "initurn"
+    @description "Initializes a new unique random number generator (URN), given a size and a URN identifier. Once initialized, the identifier can be used to generate unique random numbers with the #urn function. This allows for independent URNs of different sizes to be used within the same script. If a URN associated with the identifier already exists, the URN is reset. The initialized URN can be optionally be seed-based. See #setseed."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "size" @default 10 @type "int", @description "number of unique random numbers.")
+        $addarg(@name "id" @default 0 @type "int/float/symbol", @description "identifier for unique random number generator.")
+        $addarg(@name "useseed" @default 0 @type "list/llll", @description "use random seed for URN associated with @id.")
     )
 );
 
@@ -1219,12 +1230,26 @@ urn = (
             $pool = $urn."pool";
             $next = $pool.left(1);
             $pool = $pool.right(1);
-            if $pool == null then (initurn(
-                @limit $urn."limit" @id $id
-            )) else (BP_URN.$id."pool" = $pool);
+            if $pool == null then (
+                initurn(
+                    @size $urn."size" 
+                    @id $id 
+                    @useseed $urn."useseed"
+                )
+            ) else (BP_URN.$id."pool" = $pool);
             $next
         )
     )
+);
+
+$addref(
+    @name "urn"
+    @description "Returns a unique random number for a given URN identifier. Note that you must call #initurn first to initialize the URN."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "id" @default 0 @type "int/float/symbol", @description "identifier for URN.")
+    )
+    @output $addout(@description "unique random number", @type "int")
 );
 
 ## ------------------------------------------------------------

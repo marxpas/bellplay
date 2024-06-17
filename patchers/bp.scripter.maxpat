@@ -1133,19 +1133,19 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "setseed(1); BP_BUFFER_INSPECTOR = null ",
+					"code" : "setseed(1); BP_URN = null; BP_BUFFER_INSPECTOR = null ",
 					"id" : "obj-163",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 727.0, 286.0, 23.0 ],
+					"patching_rect" : [ 257.0, 727.0, 368.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval setseed(1)\\; BP_BUFFER_INSPECTOR = null"
+					"text" : "bach.eval setseed(1)\\; BP_URN = null\\; BP_BUFFER_INSPECTOR = null"
 				}
 
 			}
