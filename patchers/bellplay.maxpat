@@ -829,8 +829,8 @@
 					"patching_rect" : [ 10.0, 20.0, 901.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"allwindowsactive" : 0,
-						"appicon_mac" : "Macintosh HD:/Users/felipe-tovar-henao/Documents/bellplay/media/logo.icns",
-						"appicon_win" : "Macintosh HD:/Users/felipe-tovar-henao/Documents/bellplay/media/logo.ico",
+						"appicon_mac" : "Macintosh HD:/Users/felipetovarhenao/Documents/bellplay/media/logo.icns",
+						"appicon_win" : "Macintosh HD:/Users/felipetovarhenao/Documents/bellplay/media/logo.ico",
 						"audiosupport" : 1,
 						"bundleidentifier" : "com.felipetovarhenao.bellplay",
 						"cantclosetoplevelpatchers" : 1,
