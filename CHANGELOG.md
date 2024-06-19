@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Show `dev` in UI version legend when in Max.
 - Update logo path to new computer.
+- `prepare_standalone.py` now performs anonymous codesigning.
 
 ### Fixed
 

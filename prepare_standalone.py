@@ -1,3 +1,4 @@
+import subprocess
 from argparse import ArgumentParser
 import os
 import json
@@ -27,12 +28,12 @@ def edit_max_interface(path: str):
 
     def fun(menu):
         test = menu['id'] not in [
-            'filemenu', 
-            "customfilemenu", 
-            "customeditmenu", 
-            'editmenu', 
-            'windowmenu', 
-            'helpmenu', 
+            'filemenu',
+            "customfilemenu",
+            "customeditmenu",
+            'editmenu',
+            'windowmenu',
+            'helpmenu',
             'customhelpmenu'
         ]
         if test == 0:
@@ -45,15 +46,28 @@ def edit_max_interface(path: str):
         json.dump(data, f, indent=4)
 
 
+edited = False
 for root, dirs, files in os.walk(app_path):
     folder = os.path.basename('root')
     for file in files:
         file_name, file_ext = os.path.splitext(file)
         file_path = os.path.join(root, file)
         if file_name == "maxinterface":
+            edited = True
             edit_max_interface(file_path)
         if file_ext == ".mxe64":
+            edited = True
             print(f'deleting file: {file_path}')
             os.remove(file_path)
 
-print(f"DONE")
+if not edited:
+    raise RuntimeError("None of the deletable files were found.")
+
+cmd = f"codesign -s - -f {app_path}".split(" ")
+result = subprocess.run(cmd, capture_output=True, text=True)
+
+# Check if the command was successful
+if result.returncode == 0:
+    print(f"DONE")
+else:
+    raise ChildProcessError("code signing unsuccessful")
