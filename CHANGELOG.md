@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Change default threshold in `effectiveduration` from 0.4 to 0.02.
 - Name changes:
 	- `getpathinfo` -> `BP_GET_PATH_INFO_FUNC`.
 	- `msg` -> `BP_DISPATCH_FUNC`.

@@ -2182,7 +2182,7 @@ BP_ESSENTIA_WRAPPER_FUNC = (
 ## ------------------------------------------------------------
 
 effectiveduration = (
-    $thresholdratio = 0.4,
+    $thresholdratio = 0.02,
     $samplerate = 44100 -> (
         BP_ESSENTIA_WRAPPER_FUNC(
             @name "effectiveduration"
@@ -2200,7 +2200,7 @@ $addref(
     @category BP_REF_LABEL_ANALYSIS
     @arguments (
         $addarg(@name "samplerate" @default 44100 @type "int" @description "sampling rate.")
-        $addarg(@name "thresholdratio" @default 0.4 @type "int/float" @description "ratio of the envelope maximum to be used as the threshold.")
+        $addarg(@name "thresholdratio" @default 0.02 @type "int/float" @description "ratio of the envelope maximum to be used as the threshold.")
     )
     @output $addout(@description "effectiveduration descriptor" @type "llll")
 );
