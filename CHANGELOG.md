@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add unique random generator functions: `initurn` and `urn`.
+- Add `parsepath` and `thispath` functions, with docs.
 
 ### Changed
 

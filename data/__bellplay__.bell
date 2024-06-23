@@ -15,6 +15,7 @@ BP_INF = 1./0;
 BP_RAND_RES = 2147483648;
 BP_RNG = {max.random 2147483648 @seed 1};
 BP_URN = null;
+BP_SCRIPT_PATH = null;
 
 ## ------------------------------------------------------------
 
@@ -107,6 +108,49 @@ BP_GET_PATH_INFO_FUNC = (
         BP_PATH_INFO
     )
 );
+
+## ------------------------------------------------------------
+
+parsepath = (
+    $path -> (
+        $info = BP_GET_PATH_INFO_FUNC($path);
+        [for $key in "name" "parent" "extension" collect (
+                $val = $info.$key;
+                $val &&& [ $key $val ]
+            )
+        ]
+    )
+);
+
+$addref(
+    @name "parsepath",
+    @description "Parses a given path into its constituent parts.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "path" @type "symbol" @description "file or folder path.")
+    )
+    @output $addout(@description "parsed path" @type "llll")
+);
+
+## ------------------------------------------------------------
+
+thispath = (
+    $parse = 0
+    -> if $parse then BP_SCRIPT_PATH.parsepath() else BP_SCRIPT_PATH
+);
+
+$addref(
+    @name "thispath",
+    @description "Returns the path to the current script, either as a symbol or a parsed llll path. See #parsepath.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "parse" @type "int" @description "parse path." @options 
+            BP_REF_SWITCH_OPTIONS
+        )
+    )
+    @output $addout(@description "path to current script" @type "llll")
+);
+
 
 ## ------------------------------------------------------------
 
