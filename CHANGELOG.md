@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix `read` docs.
 - Fix `sscramble` sorting bias bug, in which last elements would be more likely to end up at the beginning.
 - Fix `schoose` bug from implementing `BP_CHOOSE_FUNCTION` and not setting arg defaults.
 
