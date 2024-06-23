@@ -151,6 +151,24 @@ $addref(
     @output $addout(@description "path to current script" @type "llll")
 );
 
+## ------------------------------------------------------------
+
+exists = (
+    $file -> (
+        $info = BP_GET_PATH_INFO_FUNC($file);
+        $info."exists"
+    )
+);
+
+$addref(
+    @name "exists",
+    @description "Checks if a file exists. Returns 1 if true or 0 if false.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "file" @type "symbol" @description "path of file to check.")
+    )
+    @output $addout(@description "1 if true, 0 if false." @type "int")
+);
 
 ## ------------------------------------------------------------
 
