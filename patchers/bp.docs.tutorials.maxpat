@@ -1561,7 +1561,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "msg('loadscript', $x1) ",
+					"code" : "BP_DISPATCH_FUNC('loadscript', $x1) ",
 					"id" : "obj-29",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1573,7 +1573,7 @@
 						"versionnumber" : 80300
 					}
 ,
-					"text" : "bach.eval msg('loadscript'\\, $x1)"
+					"text" : "bach.eval BP_DISPATCH_FUNC('loadscript'\\, $x1)"
 				}
 
 			}

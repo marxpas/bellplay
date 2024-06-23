@@ -86,7 +86,7 @@ $addout = (
 
 ## ------------------------------------------------------------
 
-msg = (
+BP_DISPATCH_FUNC = (
     $to, $msg -> (
         $do1 = [ $to $msg ];
         null
@@ -95,10 +95,10 @@ msg = (
 
 ## ------------------------------------------------------------
 
-getpathinfo = (
+BP_GET_PATH_INFO_FUNC = (
     $x,
     $locate = 0 -> (
-        msg("pathinfo", $x);
+        BP_DISPATCH_FUNC("pathinfo", $x);
         if BP_PATH_INFO == null then (
             printerror("invalid path:" $x) 
         ) else if $locate == 1 && BP_PATH_INFO."extension" != null && BP_PATH_INFO."exists" == 0 then (
@@ -114,7 +114,7 @@ readfolder = (
     $path,
     $filetype = "audio" -> (
         BP_TMP_FOLDER = null;
-        $info = getpathinfo($path @locate 1);
+        $info = BP_GET_PATH_INFO_FUNC($path @locate 1);
         if $info."extension" != null then printerror("invalid folder path:" $path);
         $path = $info."path";
         $types = (
@@ -122,7 +122,7 @@ readfolder = (
             [ "midi" "Midi" ]
         ).$filetype;
         if $types == null then printerror("invalid file type:" $filetype);
-        msg("folder",
+        BP_DISPATCH_FUNC("folder",
             [ "types" $types ]
             [ $path ]
         );
@@ -148,7 +148,7 @@ $addref(
 
 getbufferinfo = (
     $buffer -> (
-        msg("bufferinfo", $buffer);
+        BP_DISPATCH_FUNC("bufferinfo", $buffer);
         BP_TMP_BUFFINFO
     )
 );
@@ -157,7 +157,7 @@ getbufferinfo = (
 
 printerror = (
     $text, $stop = 1 -> (
-        msg("console",
+        BP_DISPATCH_FUNC("console",
             [ "code" $stop == 0 ]
             [ "type" 2 - $stop ]
             [ "text" $text ]
@@ -270,7 +270,7 @@ BP_NEWBUFF_FUNC = (
 
 tosymbol = (
     $x -> (
-        msg("sym", $x);
+        BP_DISPATCH_FUNC("sym", $x);
         BP_SYMBOL
     )
 );
@@ -420,7 +420,7 @@ addmarker = (
     $onset,
     $names = null -> (
         if $onset == null then printerror("You must provide a value for @onset in addmarker()");
-        msg("roll", "addmarker" $onset ($names &&& [ $names ]) ||| [])
+        BP_DISPATCH_FUNC("roll", "addmarker" $onset ($names &&& [ $names ]) ||| [])
     )
 );
 
@@ -480,7 +480,7 @@ buildcorpus = (
         if $segsize <= 0 then printerror("segmentation size must be greater than zero in buildcorpus().");
 
         if $outpath != null then (
-            $pathinfo = getpathinfo($outpath);
+            $pathinfo = BP_GET_PATH_INFO_FUNC($outpath);
             if $pathinfo."extension" != ".llll" then (
                 printerror($outpath "is not a valid corpus extension.")
             ) else if $path."type" == 3 then (
@@ -501,7 +501,7 @@ buildcorpus = (
         );
         
         for $file in $files do (
-            $pathinfo = getpathinfo($file);
+            $pathinfo = BP_GET_PATH_INFO_FUNC($file);
             if ($pathinfo."extension").intersection(".wav" ".aif" ".aiff") == null then (
                 printerror($file "is not a valid audio file.")
             ) else (
@@ -557,7 +557,7 @@ buildcorpus = (
             );
             [ $key $type ]
         );
-        msg("db", [ "erase" ] [ "addtable" "buffers" $template ]);
+        BP_DISPATCH_FUNC("db", [ "erase" ] [ "addtable" "buffers" $template ]);
         for $entry in $corpus do (
             $entry = ($entry::1).map(
                 ## nullify inf and nan values
@@ -565,11 +565,11 @@ buildcorpus = (
                     if $x.contains() <= 8 && ($x.abs() == BP_INF || $x.isnan()) then null else $x
                 )
             @maxdepth -1);
-            msg("db", [ "addentry" "buffers" $entry ])
+            BP_DISPATCH_FUNC("db", [ "addentry" "buffers" $entry ])
         );
 
         if $outpath != null then (
-            msg("db", [ "write" $outpath ] )
+            BP_DISPATCH_FUNC("db", [ "write" $outpath ] )
         )
     )
 );
@@ -603,12 +603,12 @@ setcorpus = (
         if $filepath == null then (
             printerror("you must provide a value for @filepath in setcorpus()")
         );
-        $pathinfo = getpathinfo($filepath @locate 1);
+        $pathinfo = BP_GET_PATH_INFO_FUNC($filepath @locate 1);
         $path = $pathinfo."path";
         $extension = $pathinfo."extension";
         if $extension != ".llll" then printerror(if $extension == null then "you must provide a file path" else "invalid corpus extension:" $extension);
         BP_DATABASE_OUTPUT = null;
-        msg("db", [ "read" $path + $extension ])
+        BP_DISPATCH_FUNC("db", [ "read" $path + $extension ])
     )
 );
 
@@ -625,7 +625,7 @@ $addref(
 
 getcorpuskeys = (
    $typed = 1 -> (
-        msg('db', [ "getcols" ]);
+        BP_DISPATCH_FUNC('db', [ "getcols" ]);
         $keys = (BP_DATABASE_OUTPUT::1).right(1);
         if $typed == 1 then $keys else for $x in $keys collect $x.flat():1
     )
@@ -728,7 +728,7 @@ query = (
         if $x == null then (
             printerror("you must provide a value for @x in query()")
         );
-        msg("db", [ "query" $x ]);
+        BP_DISPATCH_FUNC("db", [ "query" $x ]);
         (if BP_DATABASE_OUTPUT == null then printerror("query did not yield any results:" tosymbol($x)));
         
         $sources = thin(for $buff in BP_DATABASE_OUTPUT collect $buff.getkey("source"));
@@ -1049,8 +1049,8 @@ BP_RANDOM_CHOICE_FUNC = (
             $random = random;
             $rand = rand
         ) else (
-            $random = srandom;
-            $rand = srand
+            $random = xrandom;
+            $rand = xrand
         );
         $len = length($choices);
         $sum = if $weights == null then 0 else reduce($weights, #+);
@@ -1103,7 +1103,7 @@ setseed = (
 
 $addref(
     @name "setseed",
-    @description "Sets the random seed for the #srand, #srandom, #schoose, and #sscramble functions.",
+    @description "Sets the random seed for the #xrand, #xrandom, #xchoose, and #xscramble functions.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "seed", @type "int", @description "random seed")
@@ -1112,7 +1112,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-srand = (
+xrand = (
     $a = 1,
     $b = null -> (
         $min = $a;
@@ -1126,7 +1126,7 @@ srand = (
 );
 
 $addref(
-    @name "srand",
+    @name "xrand",
     @description "Seed-based random floating point number generator. See #setseed.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
@@ -1138,15 +1138,15 @@ $addref(
 
 ## ------------------------------------------------------------
 
-srandom = (
+xrandom = (
     $a = 1,
     $b = null -> (
-        srand($a, $b).round().int()
+        xrand($a, $b).round().int()
     )
 );
 
 $addref(
-    @name "srandom",
+    @name "xrandom",
     @description "Seed-based random integer number generator. See #setseed.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
@@ -1158,12 +1158,12 @@ $addref(
 
 ## ------------------------------------------------------------
 
-schoose = (
+xchoose = (
     $choices, $n = 1, $weights = null -> BP_RANDOM_CHOICE_FUNC($choices, $n, $weights @mode 1)
 );
 
 $addref(
-    @name "schoose",
+    @name "xchoose",
     @description "Choose randomly one or more elements from a list, with optional probability weights. See #setseed.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
@@ -1176,17 +1176,17 @@ $addref(
 
 ## ------------------------------------------------------------
 
-sscramble = (
+xscramble = (
     $llll -> (
         $indices = 1...$llll.length();
-        $order = for $id in $indices collect srand();
+        $order = for $id in $indices collect xrand();
         $indices = $indices.sort(@function $a, $b -^ $order -> $order:$a <= $order:$b);
         $llll:[$indices]
     )
 );
 
 $addref(
-    @name "sscramble"
+    @name "xscramble"
     @description "Seed-based random shuffling of elements. See #setseed."
     @category BP_REF_LABEL_UTILS
     @arguments (
@@ -1199,7 +1199,7 @@ $addref(
 
 initurn = (
     $size = 10, $id = 0, $useseed = 0 -> (
-        $shuffler = if $useseed == 0 then scramble else sscramble;
+        $shuffler = if $useseed == 0 then scramble else xscramble;
         $urn = [
             "pool" (
                 0...($size.max(1) - 1)
@@ -1478,7 +1478,7 @@ transcribe = (
 
         ## format note and add to roll
         $note = [ $mc $dur $vel ["slots" [ 7 $buffer."source" ] [ 10 $buffer."offset" ] $pan $rate $gain $color $notehead $size ]];
-        msg("roll", "addchord" ($voice ||| 1) [ $onset $note ])
+        BP_DISPATCH_FUNC("roll", "addchord" ($voice ||| 1) [ $onset $note ])
     )
 );
 
@@ -1509,7 +1509,7 @@ render = (
    $reset = 0,
    $process = null -> (
         if $numchannels < 1 then printerror("number of channels must be greater than 0");
-        msg("sampler", 
+        BP_DISPATCH_FUNC("sampler", 
             [ "panmode" $panmode] 
             [ "numchannels" $numchannels ] 
             [ "sr" $sr ]
@@ -1518,11 +1518,11 @@ render = (
             [ "normalize" $normalize ]
             [ "spread" $spread ]
         );
-        msg("roll", "getlength");
-        msg("roll", "dump");
-        ($process &&& msg("sampler", [ "process" $process ] ));
-        ($play == 1 && msg("playtoggle", 1));
-        ($reset == 1 && msg("roll", "clear"));
+        BP_DISPATCH_FUNC("roll", "getlength");
+        BP_DISPATCH_FUNC("roll", "dump");
+        ($process &&& BP_DISPATCH_FUNC("sampler", [ "process" $process ] ));
+        ($play == 1 && BP_DISPATCH_FUNC("playtoggle", 1));
+        ($reset == 1 && BP_DISPATCH_FUNC("roll", "clear"));
         BP_NEWBUFF_FUNC(@source BP_RENDER_BUFF)
     )
 );
@@ -1583,9 +1583,9 @@ scoreconfig = (
             if BP_SCORE_CONFIG.$key != $param.$key then $param
         );
         BP_SCORE_CONFIG = $config;
-        msg("roll", $changes);
-        msg("roll", "showdurations" $showdurations);
-        msg("roll", "tonedivision" left($tonedivision, 1))
+        BP_DISPATCH_FUNC("roll", $changes);
+        BP_DISPATCH_FUNC("roll", "showdurations" $showdurations);
+        BP_DISPATCH_FUNC("roll", "tonedivision" left($tonedivision, 1))
     )
 );
 
@@ -1637,12 +1637,12 @@ read = (
     $path,
     $ignore = null -> (
         BP_LLLL_READ = null;
-        $info = getpathinfo($path @locate 1);
+        $info = BP_GET_PATH_INFO_FUNC($path @locate 1);
         if (".txt" ".llll").intersection($info."extension") == null then (
             printerror("invalid file extension for @path in read().")
         );
         $path = $info."path" + $info."extension";
-        msg("llllio", "read" "read" $path);
+        BP_DISPATCH_FUNC("llllio", "read" "read" $path);
         BP_LLLL_READ
     )
 );
@@ -1681,14 +1681,14 @@ write = (
     $maxdepth = -1,
     $negativeoctaves = 0,
     $parens = 0 -> (
-        $info = getpathinfo($path);
+        $info = BP_GET_PATH_INFO_FUNC($path);
         if (".txt" ".llll").intersection($info."extension") == null then (
             printerror("invalid file extension for @path in write().")
         );
         $ext = $info."extension";
         $path = $info."path" + $ext;
         $cmd = if $ext == ".txt" then "writetxt" else "write";
-        msg("llllio", "write"
+        BP_DISPATCH_FUNC("llllio", "write"
             [ "data" $data ]
             [ "config" 
                 [ "escape" $escape ]
@@ -1736,7 +1736,7 @@ $addref(
 export = (
     $path, $stems = 0, $format = "float32" -> (
         ## get path info
-        $pathinfo = getpathinfo($path);
+        $pathinfo = BP_GET_PATH_INFO_FUNC($path);
         $path = $pathinfo.'path';
         $ext = $pathinfo.'extension';
         $filepath = $path + $ext;
@@ -1750,18 +1750,18 @@ export = (
             if $stems == 0 then (
                 ## send settings first
                 for $setting in $settings with @unwrap 1 do (
-                    msg("buffer", $setting)
+                    BP_DISPATCH_FUNC("buffer", $setting)
                 );
                 ## send write message
-                msg("buffer", "writewave" $filepath )
+                BP_DISPATCH_FUNC("buffer", "writewave" $filepath )
             ) else (
                 ## send stem info and let subpatcher do the rest
-                msg("stems", [ "buffer" $settings ] $pathinfo )
+                BP_DISPATCH_FUNC("stems", [ "buffer" $settings ] $pathinfo )
             )
         ) else if $ext == ".mid" || $ext == ".midi" then (
-            msg("roll", "exportmidi" $filepath)
+            BP_DISPATCH_FUNC("roll", "exportmidi" $filepath)
         ) else if $ext == ".llll" then (
-            msg("roll", "write" $filepath)
+            BP_DISPATCH_FUNC("roll", "write" $filepath)
         ) else (
             printerror("file format is not supported:" $ext)
         )
@@ -1786,12 +1786,12 @@ importaudio = (
     $path -> (
         BP_TMP_BUFF = null;
         if $path == null then printerror("You must provide a value for @path in importaudio()");
-        $pathinfo = getpathinfo($path @locate 1);
+        $pathinfo = BP_GET_PATH_INFO_FUNC($path @locate 1);
         $ext = $pathinfo."extension";
         $path = $pathinfo."path";
         $filepath = $path + $ext;
         if $ext == ".wav" || $ext == ".aif" then (
-            msg("import", [
+            BP_DISPATCH_FUNC("import", [
                 "audio"
                 $filepath
             ])
@@ -1818,12 +1818,12 @@ importmidi = (
     $path -> (
         BP_TMP_ROLL_OUTPUT = null;
         if $path == null then printerror("You must provide a value for @path in importmidi()");
-        $pathinfo = getpathinfo($path @locate 1);
+        $pathinfo = BP_GET_PATH_INFO_FUNC($path @locate 1);
         $ext = $pathinfo."extension";
         $path = $pathinfo."path";
         $filepath = $path + $ext;
         if $ext == ".midi" || $ext == ".mid" then (
-            msg("import", [
+            BP_DISPATCH_FUNC("import", [
                 "roll"
                 $filepath
             ])
@@ -1987,7 +1987,7 @@ analyze = (
         if $descriptors == null then printerror("you must provide a value for @descriptors in analyze().");
         BP_ESSENTIA_OUTPUT = null;
         $source = $buffer.process(bpthru()).getkey("source");
-        msg("essentia",
+        BP_DISPATCH_FUNC("essentia",
             [ "buffer" $source ]
             [ "settings"
                 "@winstartfromzero" $winstartfromzero
@@ -3439,7 +3439,7 @@ process = (
         $offset = $buffer.getkey("offset");
         $duration = $buffer.getkey("duration");
         $crop = $offset != 0 || $duration != $buffer.getkey("source_end");
-        msg("process",
+        BP_DISPATCH_FUNC("process",
             [ "source" $buffer.getkey("source") ]
             [ "process" 
                 (if $crop then crop(@start $offset, @end $offset + $duration))
@@ -3668,7 +3668,7 @@ BP_OSC_GEN_FUNC = (
             $duration = $frequency.getkey("duration");
             $frequency = mc2f(6000)
         );
-        msg("generate", 
+        BP_DISPATCH_FUNC("generate", 
             [
                 [ "fx" $name ]
                 [ "params" 
@@ -3865,7 +3865,7 @@ envelope = (
         $depth = depth($envelope);
         $length = length($envelope);
         if $depth > 1 || $length > 1 then ($envelope = [ bpf($envelope) ]);
-        msg("generate", 
+        BP_DISPATCH_FUNC("generate", 
             [
                 [ "fx" "envelope"]
                 [ "params" 
@@ -3903,7 +3903,7 @@ clicks = (
                 printerror($x::(1 1) "must be a flat list")
             )
         );
-        msg("generate", 
+        BP_DISPATCH_FUNC("generate", 
             [
                 [ "fx" "clicks"]
                 [ "params" 
@@ -4733,7 +4733,7 @@ mix = (
         $numbuffers = length($buffers) + 1;
         $buffers = for $buffer in $buffers collect (
             $source = $buffer.getkey("source");
-            $info = getpathinfo($source);
+            $info = BP_GET_PATH_INFO_FUNC($source);
             if $info."extension" == null then (
                 $source
             ) else (
@@ -5207,7 +5207,7 @@ join = (
                 printerror("invalid buffer in join():" $buffer) 
             ) else (
                 ## check if source is path or buffer
-                $info = getpathinfo($source);
+                $info = BP_GET_PATH_INFO_FUNC($source);
                 if $info."extension" == null then (
                     $source
                 ) else (
@@ -5684,7 +5684,7 @@ topartialtracks = (
     $downmix = 1 -> (
         $buffer ||| printerror("you must provide a value for @buffer in topartialtracks().");
         $source = $buffer.getkey("source") ||| printerror($buffer "is not a buffer in topartialtracks().");
-        msg("resynth", 
+        BP_DISPATCH_FUNC("resynth", 
             [ "analysis" 
                 [ "winstartfromzero" $winstartfromzero ]
                 [ "framesize" $framesize ]
@@ -5784,7 +5784,7 @@ frompartialtracks = (
         if $frequencies == null then printerror("@frequencies cannot be null in frompartialtracks().");
         if $magnitudes == null then printerror("@magnitudes cannot be null in frompartialtracks().");
         if $phases == null then printerror("@phases cannot be null in frompartialtracks().");
-        msg("resynth", 
+        BP_DISPATCH_FUNC("resynth", 
             [ "synthesis" 
                 [ "params"
                     [ "framesize" $framesize ]
@@ -5838,7 +5838,7 @@ buildtree = (
         if $keys == null then (
             printerror("you must provide a one or more features to the @keys argument in buildtree()")
         );
-        msg("kdtree", [ "features" $keys] ["buffers" $buffers])
+        BP_DISPATCH_FUNC("kdtree", [ "features" $keys] ["buffers" $buffers])
     )
 );
 
@@ -5856,7 +5856,7 @@ $addref(
 
 searchtree = (
     $target -> (
-        msg("kdtree", [ "query" $target]);
+        BP_DISPATCH_FUNC("kdtree", [ "query" $target]);
         BP_TREE_RESULT
     )
 );
