@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 43.0, 74.0, 813.0, 457.0 ],
+		"rect" : [ 46.0, 83.0, 813.0, 457.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -58,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 639.0, 318.0, 57.0, 23.0 ],
+					"patching_rect" : [ 639.0, 318.0, 58.0, 23.0 ],
 					"text" : "savebang"
 				}
 
@@ -119,7 +119,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 1117.0, 154.0, 32.0, 23.0 ],
+					"patching_rect" : [ 1117.0, 154.0, 33.0, 23.0 ],
 					"text" : "sel 1"
 				}
 
@@ -216,7 +216,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 492.0, 1180.0, 32.0, 23.0 ],
+					"patching_rect" : [ 492.0, 1180.0, 33.0, 23.0 ],
 					"text" : "sel 0"
 				}
 
@@ -339,7 +339,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -400,6 +400,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-45",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
@@ -424,6 +425,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-62",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -1044,7 +1046,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 695.0, 318.0, 341.0, 23.0 ],
+					"patching_rect" : [ 695.0, 318.0, 347.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1145,7 +1147,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers", ",", "Microsoft Teams Audio", ",", "ZoomAudioDevice" ],
+					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
