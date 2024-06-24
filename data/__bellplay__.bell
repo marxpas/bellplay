@@ -144,7 +144,7 @@ $addref(
     @description "Returns the path to the current script, either as a symbol or a parsed llll path. See #parsepath.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "parse" @type "int" @description "parse path." @options 
+        $addarg(@name "parse" @default 0 @type "int" @description "parse path." @options 
             BP_REF_SWITCH_OPTIONS
         )
     )
