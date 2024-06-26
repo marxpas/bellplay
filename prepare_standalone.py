@@ -2,12 +2,13 @@ import subprocess
 from argparse import ArgumentParser
 import os
 import json
-import shutil
+from pygit2 import Repository
 
+branch_name = Repository('.').head.shorthand
+is_main = branch_name == 'main'
 this_file = os.path.basename(__file__)
 script_name = " ".join(this_file.split(".")[0].split("_"))
-parser = ArgumentParser(prog=script_name, usage=f"python3 {
-                        this_file} <path to app>")
+parser = ArgumentParser(prog=script_name, usage=f"python3 {this_file} <path to app>")
 parser.add_argument("-i", action="store", help=".app path")
 args = parser.parse_args()
 
