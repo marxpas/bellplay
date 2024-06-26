@@ -2,13 +2,15 @@ import subprocess
 from argparse import ArgumentParser
 import os
 import json
+import shutil
 from pygit2 import Repository
 
 branch_name = Repository('.').head.shorthand
 is_main = branch_name == 'main'
 this_file = os.path.basename(__file__)
 script_name = " ".join(this_file.split(".")[0].split("_"))
-parser = ArgumentParser(prog=script_name, usage=f"python3 {this_file} <path to app>")
+parser = ArgumentParser(prog=script_name, usage=f"python3 {
+                        this_file} <path to app>")
 parser.add_argument("-i", action="store", help=".app path")
 args = parser.parse_args()
 
@@ -17,10 +19,25 @@ app_name, app_ext = os.path.splitext(app_path)
 if app_ext != ".app":
     raise ValueError(f"{app_ext} is not a valid app extension.")
 
-logo_path = "./media/logo.icns"
+logo_path = os.path.abspath("./media/dev_logo.icns")
 
 if not os.path.exists(logo_path):
     raise ValueError(f"Invalid logo path: {logo_path}")
+
+
+def replace_file(source_file, destination_file):
+    if not os.path.exists(source_file):
+        raise FileNotFoundError(f"Source file '{source_file}' does not exist.")
+
+    if not os.path.exists(destination_file):
+        raise FileNotFoundError(f"Destination file '{
+                                destination_file}' does not exist.")
+
+    try:
+        shutil.copyfile(source_file, destination_file)
+        print(f"'{destination_file}' has been replaced with '{source_file}'.")
+    except Exception as e:
+        print(f"An error occurred while replacing the file: {e}")
 
 
 def edit_max_interface(path: str):
@@ -53,6 +70,10 @@ for root, dirs, files in os.walk(app_path):
     for file in files:
         file_name, file_ext = os.path.splitext(file)
         file_path = os.path.join(root, file)
+        if not is_main and file in ["bellplay~.icns", "Max.icns"]:
+            edited = True
+            print(f'replacing logo: {file_name}')
+            replace_file(logo_path, file_path)
         if file_name == "maxinterface":
             edited = True
             edit_max_interface(file_path)
