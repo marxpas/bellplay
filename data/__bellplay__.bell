@@ -230,6 +230,28 @@ printerror = (
 
 ## ------------------------------------------------------------
 
+interrupt = (
+    $print = null -> (
+        BP_DISPATCH_FUNC("console",
+            [ "code" 0 ]
+            [ "type" 2 ]
+            ($print &&& [ "text" $print ])
+        );
+        null
+    )
+);
+
+$addref(
+    @name "interrupt",
+    @description "Disables communication between the current script and the bellplay~ application, interrupting any remaining operations.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "print" @default "null" @type "anything" @description "something to print.")
+    )
+);
+
+## ------------------------------------------------------------
+
 BP_MEDIA_FILES = [
     [ "audio"
         "badinerie.wav"
