@@ -1165,7 +1165,7 @@ setseed = (
 
 $addref(
     @name "setseed",
-    @description "Sets the random seed for the #xrand, #xrandom, #xchoose, and #xscramble functions.",
+    @description "Sets the random seed for the #xrand, #xrandom, #xchoose, #xscramble, and #urn functions.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "seed", @type "int", @description "random seed")
