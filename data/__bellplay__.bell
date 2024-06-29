@@ -1628,7 +1628,7 @@ $addref(
         $addarg(@name "play" @default 0 @type "int" @description "autoplay rendered buffer.", @options
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "spread" @default 0 @type "int/float" @description "multichannel panning spread, between 0 and 1.")
+        $addarg(@name "spread" @default 1 @type "int/float" @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "fade" @default 5 @type "int/float" @description "fade in/out applied to every buffer, in milliseconds")
         $addarg(@name "reset", @default 0 @type "int", @description "remove all previously transcribed buffers after rendering." @options
             BP_REF_SWITCH_OPTIONS
@@ -5600,7 +5600,7 @@ $addref(
         $addarg(@name "compensate", @default 1, @type "int", @description "Reduce gain for multichannel files by a factor of the number of channels." @options
             BP_REF_SWITCH_OPTIONS
         )
-        $addarg(@name "spread", @type "int/float", @default 0, @description "multichannel panning spread, between 0 and 1.")
+        $addarg(@name "spread", @type "int/float", @default 1, @description "multichannel panning spread, between 0 and 1.")
         $addarg(@name "envtimeunit", @default 2, @type "int", @description "time unit for @gain envelope." @options
             BP_REF_TIMEUNIT_OPTIONS
         )
