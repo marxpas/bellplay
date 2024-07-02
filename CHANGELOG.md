@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [0.2.4-beta] - 2024-07-01
+
+### Added
+
 - Add `interrupt` function.
 - Add unique random generator functions: `initurn` and `urn`.
 - Add `parsepath` and `thispath` functions, with docs.
