@@ -1458,6 +1458,20 @@ $addref(
 
 ## ------------------------------------------------------------
 
+fold = $x -> abs(fmod($x * 2 + 1, 2) - 1);
+
+$addref(
+    @name "fold",
+    @description "Triangular function. Linearly folds numeric values to the 0-to-1 range.",
+    @category BP_REF_LABEL_UTILS,
+    @arguments (
+        $addarg(@name "x", @type "int/float/list/llll", @description "input number.")
+    ),
+    @output $addout(@description "output number.", @type "int/float/list/llll")
+);
+
+## ------------------------------------------------------------
+
 filterbuffers = (
     $buffers, $func, $max = 0, $maxdepth = 1, $unwrap = 1 -> (
         $lambda = (
