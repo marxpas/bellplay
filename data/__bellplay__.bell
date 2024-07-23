@@ -4829,15 +4829,7 @@ mix = (
     $normalize = 0 -> (
         if $buffers == null then printerror("you must provide a values for @buffers in mix()");
         $numbuffers = length($buffers) + 1;
-        $buffers = for $buffer in $buffers collect (
-            $source = $buffer.getkey("source");
-            $info = BP_GET_PATH_INFO_FUNC($source);
-            if $info."extension" == null then (
-                $source
-            ) else (
-                $buffer.process(bpthru()).getkey("source")
-            )
-        );
+        $buffers = for $buffer in $buffers collect $buffer.process(bpthru()).getkey("source");
         [
             [ "fx" "mix" ]
             [ "params"
@@ -5304,14 +5296,7 @@ join = (
             if $source == null then (
                 printerror("invalid buffer in join():" $buffer) 
             ) else (
-                ## check if source is path or buffer
-                $info = BP_GET_PATH_INFO_FUNC($source);
-                if $info."extension" == null then (
-                    $source
-                ) else (
-                    ## if source is path, apply pass through and get source
-                    $buffer.process(bpthru()).getkey("source")
-                )
+                $buffer.process(bpthru()).getkey("source")
             )
         );
         [

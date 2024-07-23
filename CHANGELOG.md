@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix buffer duration bug in `join`/`mix` processors.
+
 ### Removed
 
 ## [0.2.4-beta] - 2024-07-01
