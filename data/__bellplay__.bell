@@ -4091,7 +4091,6 @@ paulfreeze = (
     $timeunit = 0,
     $spectral = 0,
     $framesize = 8192 -> (
-
         [
             [ "fx" "paulfreeze" ]
             [ "params" 
@@ -4116,7 +4115,7 @@ $addref(
         $addarg(@name "timeunit" @default 0 @type "int" @description "time unit.", @options 
             BP_REF_TIMEUNIT_OPTIONS
         )
-        $addarg(@name "spectral" @default 1, @type "int", @description "stretching mode." @options 
+        $addarg(@name "spectral" @default 0 @type "int", @description "stretching mode." @options 
             BP_REF_AUDIO_DOMAIN_OPTIONS
         )
         $addarg(@name "framesize", @default 8192, @type "int", @description "analysis frame size, in samples.")
