@@ -25,7 +25,7 @@
     Other properties, however, like duration, tell functions like 'transcribe', 'process' or 'analyze' how much of the audio data should be used.
     In other words, they are "lazy" modifications, because it delays real modifications until it's actually needed.
     In 'transcribe', this is specifically the case with the 'duration' and 'offset' keys.
-    As such, these setter-based modifications are not destructive or irreversible, and only take effect once the buffer goes through transcription or processing.
+    As such, these setter-based modifications are not destructive or irreversible, and only take effect once the buffer goes through transcription, processing, or analysis.
 
     The code below puts all this into practice
     --------------------------------
