@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Minor edit in `transcription` tutorial.
+
 ### Fixed
 
 - Fix buffer duration bug in `join`/`mix` processors.

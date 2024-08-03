@@ -21,7 +21,7 @@ $totaldur = 1500;
 ## iterate for each note
 for $i in 0...$N do (
     ## compute normalize value of temporal position within output (i.e., 0 = start, 1 = end) 
-    $progress = $i / ($numnotes - 1);
+    $progress = $i / $N;
 
     ## make onsets equally spaced within the total duration
     $onset = $progress * $totaldur;
