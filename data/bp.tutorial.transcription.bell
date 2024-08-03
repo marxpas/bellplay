@@ -32,7 +32,7 @@ for $i in 0...$N do (
     ## make gain exponentially softer
     $gain = (1 - $progress) ** 2;
 
-    ## detuning amount from 0 to 1200 (octave) with each iteration
+    ## detuning amount from 0 to 1200 (octave) midicents with each iteration
     $detune = 1200 * $progress;
     
     ## transcribe the same buffer, with different values for onset, gain, detuning amount, and panning.
