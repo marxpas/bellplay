@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 97.0, 106.0, 1096.0, 754.0 ],
+		"rect" : [ 97.0, 106.0, 816.0, 607.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -144,6 +144,7 @@
 								"box" : 								{
 									"fontname" : "Lato",
 									"id" : "obj-13",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -411,7 +412,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -972,7 +973,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1085,7 +1086,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1198,7 +1199,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1567,7 +1568,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 74.0, 1955.0, 180.0, 23.0 ],
+					"patching_rect" : [ 74.0, 1955.0, 263.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"versionnumber" : 80300
@@ -1635,7 +1636,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 5,
 					"presentation_rect" : [ 31.5, 118.0, 769.0, 90.0 ],
-					"text" : "1) A bell file titled after the tutorial will be automatically created in your documents folder. You can also specify a different directory if you wish change where the tutorial files are created by default. \n\n2) This tutorial file is also automatically loaded into bellplay~ so that you can quickly see what the code does. This enables you to edit the file as you wish and experiment by tweaking with the code, seeing the changes reflected every time to save it."
+					"text" : "1) A bell file titled after the tutorial will be automatically created in your documents folder. You can also specify a different directory if you wish to change where the tutorial files are created by default. \n\n2) This tutorial file is also automatically loaded into bellplay~ so that you can quickly see what the code does. This enables you to edit the file as you wish and experiment by tweaking with the code, seeing the changes reflected every time to save it."
 				}
 
 			}
