@@ -1345,7 +1345,7 @@ $addref(
     @description "Linear amplitude to decibels conversion."
     @category BP_REF_LABEL_UTILS
     @arguments (
-        $addarg(@name "a" @type "int/float", @description "Linear amplitude.")
+        $addarg(@name "a" @type "int/float", @description "linear amplitude.")
     )
     @output $addout(@description "decibels", @type "int/float")
 );
@@ -1359,7 +1359,7 @@ $addref(
     @description "Decibels to linear amplitude conversion."
     @category BP_REF_LABEL_UTILS
     @arguments (
-        $addarg(@name "db" @type "int/float", @description "Decibels.")
+        $addarg(@name "db" @type "int/float", @description "decibels.")
     )
     @output $addout(@description "linear amplitude.", @type "int/float")
 );
