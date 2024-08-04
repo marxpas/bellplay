@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Update `corpus_demo.llll`.
 - `buildcorpus` now includes `file` key, to ensure traceability of source.
 - Improve `buildcorpus` tutorial.
 - Minor edit in `transcription` tutorial.
