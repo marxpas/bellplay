@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- `export` now supports `mp3` `aif` and `.aiff` formats.
 - `importaudio` now supports `mp3` `aif` and `.aiff` formats.
 - Add `@keepduration` argument in `transcribe`.
 - Add `fold` function.
@@ -15,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `stems` subpatcher renamed as `audioexport`, now handles stems and multichannel audio exports. Pending removing unused `buffer` messages (previously in charge of single file export).
 - Update `corpus_demo.llll`.
 - `buildcorpus` now includes `file` key, to ensure traceability of source.
 - Improve `buildcorpus` tutorial.

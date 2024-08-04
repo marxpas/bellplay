@@ -1881,22 +1881,9 @@ export = (
         $filepath = $path + $ext;
 
         ## check file type
-        if $ext == ".wav" then (
+        if $ext.intersection(BP_SUPPORTED_AUDIO_FORMATS) != null then (
             ## get audio format
-            $settings = [ "format" $format ];
-
-            ## check if stem or single file export
-            if $stems == 0 then (
-                ## send settings first
-                for $setting in $settings with @unwrap 1 do (
-                    BP_DISPATCH_FUNC("buffer", $setting)
-                );
-                ## send write message
-                BP_DISPATCH_FUNC("buffer", "writewave" $filepath )
-            ) else (
-                ## send stem info and let subpatcher do the rest
-                BP_DISPATCH_FUNC("stems", [ "buffer" $settings ] $pathinfo )
-            )
+            BP_DISPATCH_FUNC("audioexport", [ "settings" [ "format" $format ] ] ["mode" $stems != 0] $pathinfo )
         ) else if $ext == ".mid" || $ext == ".midi" then (
             BP_DISPATCH_FUNC("roll", "exportmidi" $filepath)
         ) else if $ext == ".llll" then (
