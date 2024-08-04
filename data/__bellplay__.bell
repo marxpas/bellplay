@@ -1601,7 +1601,7 @@ transcribe = (
         $dur = $buffer."duration";
 
         if $keepduration == 0 && $rate != null then (
-            $dur /= ($rate::(1 2))
+            $dur /= $rate::(1 2)
         );
         
         if $dur <= 0 then printerror("attempt to transcribe a buffer with duration of" $dur);
