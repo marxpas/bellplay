@@ -1338,6 +1338,34 @@ $addref(
 
 ## ------------------------------------------------------------
 
+atodb = ($a -> 20 * log10($a));
+
+$addref(
+    @name "atodb"
+    @description "Linear amplitude to decibels conversion."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "a" @type "int/float", @description "Linear amplitude.")
+    )
+    @output $addout(@description "Decibels", @type "int/float")
+);
+
+## ------------------------------------------------------------
+
+dbtoa = ($db -> 10 ** ($db/20));
+
+$addref(
+    @name "dbtoa"
+    @description "Decibels to linear amplitude conversion."
+    @category BP_REF_LABEL_UTILS
+    @arguments (
+        $addarg(@name "db" @type "int/float", @description "Decibels.")
+    )
+    @output $addout(@description "Linear amplitude.", @type "int/float")
+);
+
+## ------------------------------------------------------------
+
 c2r = (
     $cents -> 2 ** ($cents / 1200)
 );
