@@ -613,9 +613,11 @@ buildcorpus = (
                     $segments _= $buff
                 );
                 for $seg in $segments do (
-                    $corpus _= $seg.analyze(
+                    $seg = $seg.analyze(
                         @descriptors $descriptors
-                    ).setkey("source", $path)
+                    ).setkey("source", $path);
+                    $seg = [$seg::1 [ "file" $file ]];
+                    $corpus _= $seg
                 )
             )
         );

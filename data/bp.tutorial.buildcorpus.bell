@@ -6,53 +6,45 @@
     This tutorial shows how to create a simple corpus based on the long-term loudness, and then load and use the corpus.
 )#
 
-## script mode
-## 1: create corpus (run first)
-## 0: load and use corpus.
-$createcorpus = 1;
-
 ## output path for corpus
 $corpuspath = "./mycorpus.llll";
 
-## when mode == 1
-if $createcorpus == 1 then (
+## create corpus if it doesn't exist yet
+if $corpuspath.exists() == 0 then (
     ## corpus files
-	$files = getmediafiles("audio");
-
+    $files = getmediafiles("audio");
+    
     ## create new corpus
-	buildcorpus(
-		@files $files
-		@descriptors (
+    buildcorpus(
+        @files $files
+        @descriptors (
             ## analyze every file in terms of its long-term loudness
-			larm()
-		)
+            larm() 
+        ) 
         ## onset-based segmentation
-		@segmode 1
-
+        @segmode 1
         ## set output path
-		@outpath $corpuspath
-	);
-
-    print("Corpus created. Now set the $createcorpus variable to 0 and re-run script to use corpus. 👌🏽")
-## when mode != 1
+        @outpath $corpuspath
+    );
+    print("Corpus created. 👌🏽") 
 ) else (
     ## load pre-existing corpus
-	setcorpus($corpuspath);
+    setcorpus($corpuspath) 
+);
 
-    ## query corpus using SQLite3 syntax
-	$buffers = query("SELECT * FROM buffers ORDER BY larm");
+## query corpus using SQLite3 syntax
+$buffers = query("SELECT * FROM buffers ORDER BY larm");
+$onset = 0;
 
-	$onset = 0;
+## transcribe buffer results from query
+for $buff in $buffers do (
+    $buff.transcribe(
+        @onset $onset @pan rand() 
+    );
+    $onset += 33
+);
 
-    ## transcribe buffer results from query
-	for $buff in $buffers do (
-		$buff.transcribe(
-			@onset $onset
-			@pan rand()
-		);
-		$onset += 33
-	);
-
-    ## trigger rendering
-	render(@play 1 @process normalize())
+## trigger rendering
+render(
+    @play 1 @process normalize() 
 )
