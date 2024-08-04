@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- `pathinfo` subpatcher now enforces terminal `/` for folder paths.
 - Add missing `pitchkey` argument in `transcribe` docs.
 - Fix typo in `tutorials` overview.
 - Fix buffer duration bug in `join`/`mix` processors.
