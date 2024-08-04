@@ -1347,7 +1347,7 @@ $addref(
     @arguments (
         $addarg(@name "a" @type "int/float", @description "Linear amplitude.")
     )
-    @output $addout(@description "Decibels", @type "int/float")
+    @output $addout(@description "decibels", @type "int/float")
 );
 
 ## ------------------------------------------------------------
@@ -1361,7 +1361,7 @@ $addref(
     @arguments (
         $addarg(@name "db" @type "int/float", @description "Decibels.")
     )
-    @output $addout(@description "Linear amplitude.", @type "int/float")
+    @output $addout(@description "linear amplitude.", @type "int/float")
 );
 
 ## ------------------------------------------------------------
