@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add `@keepduration` argument in `transcribe`.
 - Add `fold` function.
 - Add `dbtoa` and `atodb` function with docs.
 

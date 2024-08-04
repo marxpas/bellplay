@@ -1554,7 +1554,8 @@ transcribe = (
     $gain = null, 
     $detune = null, 
     $voice = 1, 
-    $pitchkey = "pitch" -> (
+    $pitchkey = "pitch",
+    $keepduration = 1 -> (
         if $voice > BP_SCORE_CONFIG."numvoices" then printerror("@voice value in transcribe() exceeds the number of voices. Use scoreconfig() to change the number of voices.");
         if $buffer == null then (
             printerror("attempt to pass a null value as @buffer in transcribe()")
@@ -1598,6 +1599,10 @@ transcribe = (
         ## get chord velocity and duration
         $vel = if $gain then maximum(trans($gain.1)::2) else 64;
         $dur = $buffer."duration";
+
+        if $keepduration == 0 && $rate != null then (
+            $dur /= ($rate::(1 2))
+        );
         
         if $dur <= 0 then printerror("attempt to transcribe a buffer with duration of" $dur);
         
@@ -1622,6 +1627,7 @@ $addref(
         $addarg(@name "detune", @type "int/float", @default "null" @description "detuning amount in cents.")
         $addarg(@name "voice", @type "int", @default 1 @description "voice assignment in score. See scoreconfig() function.")
         $addarg(@name "pitchkey", @type "symbol", @default "'pitch'" @description "key to use for pitch value in score transcription.")
+        $addarg(@name "keepduration", @type "int", @default 1 @description "keep buffer's nominal duration value when detuning buffer via @detune.")
     )
 );
 
