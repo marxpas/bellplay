@@ -590,7 +590,7 @@ buildcorpus = (
         
         for $file in $files do (
             $pathinfo = BP_GET_PATH_INFO_FUNC($file);
-            if ($pathinfo."extension").intersection(".wav" ".aif" ".aiff") == null then (
+            if ($pathinfo."extension").intersection(BP_SUPPORTED_AUDIO_FORMATS) == null then (
                 printerror($file "is not a valid audio file.")
             ) else (
                 $path = $pathinfo."path" + $pathinfo."extension";
