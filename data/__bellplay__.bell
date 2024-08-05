@@ -142,7 +142,7 @@ thispath = (
 
 $addref(
     @name "thispath",
-    @description "Returns the path to the current script, either as a symbol or a parsed llll path. See #parsepath.",
+    @description "Returns the path of the current script, as either a symbol or a parsed llll path. See #parsepath.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "parse" @default 0 @type "int" @description "parse path." @options 
@@ -155,7 +155,7 @@ $addref(
 ## ------------------------------------------------------------
 
 exists = (
-    $file -> (
+    $path -> (
         $info = BP_GET_PATH_INFO_FUNC($file);
         $info."exists"
     )
@@ -163,10 +163,10 @@ exists = (
 
 $addref(
     @name "exists",
-    @description "Checks if a file exists. Returns 1 if true or 0 if false.",
+    @description "Checks if a file or folder exists. Returns 1 if true or 0 if false.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "file" @type "symbol" @description "path of file to check.")
+        $addarg(@name "path" @type "symbol" @description "file or folder path.")
     )
     @output $addout(@description "1 if true, 0 if false." @type "int")
 );
