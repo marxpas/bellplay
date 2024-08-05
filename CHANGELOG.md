@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Minor edits in docs (primarily removing commas).
+- `setkey` now supports strict (default)/flexible mode, whereby non-existent keys can be created.
 - Minor improvements in docs. 
 - Change use of `buffer` in `getkey`, `setkey`, and `mapkey` functions, for both code and docs.
 - `stems` subpatcher renamed as `audioexport`, now handles stems and multichannel audio exports. Pending removing unused `buffer` messages (previously in charge of single file export).
