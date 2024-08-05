@@ -205,6 +205,9 @@ $addref(
         $addarg(@name "filetype" @default "'audio'" @type "symbol" @description "file type." @options
             $addopt(@value "'audio'" @description "audio" "files")
             $addopt(@value "'midi'" @description "midi" "files")
+            $addopt(@value "'text'" @description "text" "files")
+            $addopt(@value "'folder'" @description "folders")
+            $addopt(@value "'all'" @description "all" "folder" "contents")
         )
     )
     @output $addout(@description "list of file paths", @type "list")
@@ -212,7 +215,7 @@ $addref(
 
 ## ------------------------------------------------------------
 
-getbufferinfo = (
+BP_GET_BUFFER_INFO = (
     $buffer -> (
         BP_DISPATCH_FUNC("bufferinfo", $buffer);
         BP_TMP_BUFFINFO
@@ -247,7 +250,7 @@ interrupt = (
 
 $addref(
     @name "interrupt",
-    @description "Disables communication between the current script and the bellplay~ application, interrupting any remaining operations.",
+    @description "Disables communication between the current script and the bellplay~ application, interrupting any remaining script operations.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "print" @default "null" @type "anything" @description "something to print.")
@@ -293,7 +296,7 @@ inspect = (
 
 $addref(
     @name "inspect",
-    @description "Opens buffer inspector window, displaying relevant buffer information — useful for debugging.",
+    @description "Adds input buffer to the buffer inspector window, which opens up once the script evaluation is over, displaying relevant buffer information — useful for debugging buffers.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer" @type "llll" @description "media file type.")
@@ -314,13 +317,14 @@ getmediafiles = (
 
 $addref(
     @name "getmediafiles",
-    @description "Returns a list of included media files in bellplay~.",
+    @description "Returns a list of built-in media files in bellplay~.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "type" @default "null" @type "symbol/null" @description "media file type" @options
             $addopt(@value "null" @description "all" "files")
             $addopt(@value "'audio'" @description "audio" "files")
             $addopt(@value "'midi'" @description "midi" "files")
+            $addopt(@value "'llll'" @description "llll" "files")
         )
     ),
     @output $addout(@description "list of media files", @type "list")
@@ -342,7 +346,7 @@ BP_NEWBUFF_FUNC = (
             [ "offset" $offset ]
             [ "pitch" $pitch ]
         );
-        $info = if $info == 1 then getbufferinfo($source);
+        $info = if $info == 1 then BP_GET_BUFFER_INFO($source);
         for $x in $info do (
             $key = $x:(1 1);
             $key &&& ($buffer.$key = $x.$key)
@@ -517,7 +521,7 @@ $addref(
     @description "Inserts a marker into the transcription score, given an onset time and, optionally, a list of names associated with that marker, as a list."
     @category BP_REF_LABEL_UTILS
     @arguments (
-        $addarg(@name "onset" @type "int/float",@description "marker onset position.")
+        $addarg(@name "onset" @type "int/float" @description "marker onset position.")
         $addarg(@name "names" @default "null" @type "symbol/list/null" @description "optional list of marker names, each as a symbol")
     )
 );
