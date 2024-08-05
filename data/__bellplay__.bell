@@ -125,7 +125,7 @@ parsepath = (
 
 $addref(
     @name "parsepath",
-    @description "Parses a given path into its constituent parts.",
+    @description "Parses a given path into key-value pairs for the following properties: 'name' (file or folder name), 'parent' (path of parent directory), and 'extension' (file extension, if not a folder). See #getkey.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path" @type "symbol" @description "file or folder path.")
@@ -842,20 +842,20 @@ $addref(
 ## ------------------------------------------------------------
 
 getkey = (
-    $buffer, $key -> (
-        if $key == null || $buffer == null then (
-            printerror("you must provide values for both @buffer and @key in getkey()") 
-        ) else ($buffer::1).$key
+    $llll, $key -> (
+        if $key == null || $llll == null then (
+            printerror("you must provide values for both @llll and @key in getkey()") 
+        ) else ($llll::1).$key
     )
 );
 
 $addref(
+    @description "Returns value associated with an llll key.",
     @name "getkey",
-    @description "Returns value associated with a buffer's key.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "buffer", @type "llll", @description "buffer.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+        $addarg(@name "llll", @type "llll", @description "list to get key of.")
+        $addarg(@name "key", @type "symbol", @description "name of llll key." @options
             BP_REF_BUFFER_KEYS_OPTIONS
         )
     ),
@@ -865,52 +865,52 @@ $addref(
 ## ------------------------------------------------------------
 
 setkey = (
-    $buffer, $key, $val -> (
-        if $key == null || $buffer == null then (
-            printerror("you must provide values for both @buffer and @key in setkey()") 
+    $llll, $key, $val -> (
+        if $key == null || $llll == null then (
+            printerror("you must provide values for both @llll and @key in setkey()") 
         ) else (
-            [ ($buffer::1).$key = $val ]
+            [ ($llll::1).$key = $val ]
         )
     )
 );
 
 $addref(
     @name "setkey",
-    @description "Modifies the key of a buffer.",
+    @description "Modifies the key of a llll.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+        $addarg(@name "llll", @type "llll", @description "llll to modify.")
+        $addarg(@name "key", @type "symbol", @description "name of llll key." @options
             BP_REF_BUFFER_KEYS_OPTIONS
         )
-        $addarg(@name "val", @type "anything", @description "new value for buffer key.")
+        $addarg(@name "val", @type "anything", @description "new value for llll key.")
     ),
-    @output $addout(@description "modified buffer", @type "llll")
+    @output $addout(@description "modified llll", @type "llll")
 );
 
 ## ------------------------------------------------------------
 
 mapkey = (
-    $buffer, $key, $func -> (
-        if $key == null || $buffer == null || $func == null then (
-            printerror("you must provide values for @buffer, @key, and @func and @key in mapkey().") 
+    $llll, $key, $func -> (
+        if $key == null || $llll == null || $func == null then (
+            printerror("you must provide values for @llll, @key, and @func and @key in mapkey().") 
         );
-        setkey($buffer, $key, $func(getkey($buffer, $key), $buffer))
+        setkey($llll, $key, $func(getkey($llll, $key), $llll))
     )
 );
 
 $addref(
     @name "mapkey",
-    @description "Modifies the key of a buffer via a lambda function.",
+    @description "Modifies the key of a llll via a lambda function.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
-        $addarg(@name "buffer", @type "llll", @description "buffer to modify.")
-        $addarg(@name "key", @type "symbol", @description "name of buffer key." @options
+        $addarg(@name "llll", @type "llll", @description "llll to modify.")
+        $addarg(@name "key", @type "symbol", @description "name of llll key." @options
             BP_REF_BUFFER_KEYS_OPTIONS
         )
         $addarg(@name "func", @type "lambda function", @description "lambda function with signature $currentvalue, $currentbuffer -> $newvalue.")
     ),
-    @output $addout(@description "modified buffer", @type "llll")
+    @output $addout(@description "modified llll", @type "llll")
 );
 
 ## ------------------------------------------------------------
