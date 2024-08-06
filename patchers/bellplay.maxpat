@@ -1147,7 +1147,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "8-channel setup" ],
+					"items" : [ "None", ",", "Felipe’s AirPods", ",", "MacBook Pro Speakers", ",", "8-channel setup" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2455,6 +2455,20 @@
 			}
 , 			{
 				"name" : "bp.scripter.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.scrubplayer.poly~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.scrubplayer~.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
