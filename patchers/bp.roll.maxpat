@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 57.0, 119.0, 1635.0, 964.0 ],
+		"rect" : [ 233.0, 519.0, 1635.0, 964.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -980,7 +980,7 @@
 , 			{
 				"box" : 				{
 					"allowdrag" : 0,
-					"bgcolor" : [ 1.0, 1.0, 1.0, 0.3 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"buffername" : "",
 					"gridcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
 					"hidden" : 1,
@@ -995,6 +995,23 @@
 					"presentation_rect" : [ 97.0, 32.0, 10.0, 91.0 ],
 					"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 0.0 ],
 					"waveformcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"grad1" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"grad2" : [ 1.0, 1.0, 1.0, 0.0 ],
+					"id" : "obj-57",
+					"maxclass" : "panel",
+					"mode" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 759.0, 225.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 2.0, 32.0, 753.0, 91.0 ],
+					"proportion" : 0.5
 				}
 
 			}
