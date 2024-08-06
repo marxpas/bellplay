@@ -45,8 +45,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 404.0, 204.0, 110.0, 23.0 ],
-					"text" : "fill 1, apply hanning"
+					"patching_rect" : [ 404.0, 204.0, 203.0, 23.0 ],
+					"text" : "fill 1, apply hanning, apply gain 0.707"
 				}
 
 			}

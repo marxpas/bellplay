@@ -972,7 +972,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"grad1" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"grad1" : [ 1.0, 1.0, 1.0, 0.75 ],
 					"grad2" : [ 1.0, 1.0, 1.0, 0.0 ],
 					"id" : "obj-57",
 					"maxclass" : "panel",
@@ -981,8 +981,27 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 759.0, 225.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2.0, 32.0, 753.0, 91.0 ],
-					"proportion" : 0.5
+					"presentation_rect" : [ 2.0, 76.0, 753.0, 47.0 ],
+					"proportion" : 0.5,
+					"rounded" : 0
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"grad1" : [ 1.0, 1.0, 1.0, 0.0 ],
+					"grad2" : [ 1.0, 1.0, 1.0, 0.75 ],
+					"id" : "obj-3",
+					"maxclass" : "panel",
+					"mode" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 759.0, 95.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 2.0, 32.0, 753.0, 46.0 ],
+					"proportion" : 0.5,
+					"rounded" : 0
 				}
 
 			}
