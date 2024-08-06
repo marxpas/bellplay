@@ -9,8 +9,7 @@ branch_name = Repository('.').head.shorthand
 is_main = branch_name == 'main'
 this_file = os.path.basename(__file__)
 script_name = " ".join(this_file.split(".")[0].split("_"))
-parser = ArgumentParser(prog=script_name, usage=f"python3 {
-                        this_file} <path to app>")
+parser = ArgumentParser(prog=script_name, usage=f"python3 {this_file} <path to app>")
 parser.add_argument("-i", action="store", help=".app path")
 args = parser.parse_args()
 
@@ -30,8 +29,7 @@ def replace_file(source_file, destination_file):
         raise FileNotFoundError(f"Source file '{source_file}' does not exist.")
 
     if not os.path.exists(destination_file):
-        raise FileNotFoundError(f"Destination file '{
-                                destination_file}' does not exist.")
+        raise FileNotFoundError(f"Destination file '{destination_file}' does not exist.")
 
     try:
         shutil.copyfile(source_file, destination_file)
@@ -47,18 +45,30 @@ def edit_max_interface(path: str):
     def fun(menu):
         test = menu['id'] not in [
             'filemenu',
-            "customfilemenu",
             "customeditmenu",
             'editmenu',
             'windowmenu',
             'helpmenu',
             'customhelpmenu'
         ]
+
         if test == 0:
             print(f"removing {menu['id']} from {path}")
         return test
 
     data["interface"]["menus"] = list(filter(fun, data["interface"]["menus"]))
+    def keep_save(x):
+        keep = x in ["customsave"]
+        if not keep:
+            print(f"removing {x} from customfilemenu")
+        return keep
+
+    for i, menu in enumerate(data['interface']['menus']):
+        if menu['id'] == 'customfilemenu':
+            for key in ["commands", "commands_runtime_mac", "commands_runtime_windows"]:
+                data['interface']['menus'][i][key] = list(
+                    filter(keep_save, data['interface']['menus'][i][key]))
+            break
 
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
