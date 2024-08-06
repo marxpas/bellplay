@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 327.0, 193.0, 762.0, 365.0 ],
+		"rect" : [ 327.0, 193.0, 768.0, 497.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,29 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-56",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "bp.roll.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "float", "float", "" ],
+					"patching_rect" : [ 1305.5, 1033.0, 940.0, 181.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 3.75, 95.0, 758.0, 398.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"code" : "BP_SCRIPT_PATH = $x1 ",
 					"id" : "obj-50",
@@ -8115,8 +8138,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 54.0, 1185.0, 52.0 ],
-									"text" : "clear, preventedit notes slotinfo voices breakpoints markers, zoom 115, vzoom 115, showvscrollbar 1, voicespacing 1, [slotinfo [ 1 [name envelope ] [ width 100 ] [ key e ] ] [ 4 [ name \"notehead size\" ] [ type floatlist ] [ default 50 ] [ range 25 300 ] ] [ 6 [ name \"note color\" ] [ key c ] ] [ 7 [ name \"buffer source\" ] [ key s ] ] [ 10 [ name \"buffer offset \" ] [ key o ] ] [11 [name \"playback rate\" ] [key r] [type float] [range 0.0001 16.]] [23 [name \"notehead type\" ] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23, linknotesizetoslot 4"
+									"patching_rect" : [ 8.0, 54.0, 1191.0, 52.0 ],
+									"text" : "clear, preventedit notes slotinfo voices breakpoints markers, zoom 115, vzoom 115, showvscrollbar 1, voicespacing 100, [slotinfo [ 1 [name envelope ] [ width 100 ] [ key e ] ] [ 4 [ name \"notehead size\" ] [ type floatlist ] [ default 50 ] [ range 25 300 ] ] [ 6 [ name \"note color\" ] [ key c ] ] [ 7 [ name \"buffer source\" ] [ key s ] ] [ 10 [ name \"buffer offset \" ] [ key o ] ] [11 [name \"playback rate\" ] [key r] [type float] [range 0.0001 16.]] [23 [name \"notehead type\" ] [type int] [range 32 255] [width 100] [key h]]], linknoteheadtoslot 23, linknotesizetoslot 4"
 								}
 
 							}
@@ -8190,7 +8213,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 1366.5, 894.0, 56.0, 23.0 ],
+					"patching_rect" : [ 1367.0, 987.0, 56.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -8212,7 +8235,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1366.5, 855.0, 58.0, 23.0 ],
+					"patching_rect" : [ 1367.0, 948.0, 58.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"text" : "loadbang"
 				}
@@ -8254,57 +8277,6 @@
 					"patching_rect" : [ 1306.0, 1908.0, 426.0, 23.0 ],
 					"style" : "bellplay-gui",
 					"text" : "t l l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"annotationsfont" : "Lato Light",
-					"bwcompatibility" : 80300,
-					"clefs" : [ "FFGG" ],
-					"defaultnoteslots" : [ "null" ],
-					"embed" : 0,
-					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-34",
-					"linkannotationtoslot" : 0,
-					"linkarticulationstoslot" : 0,
-					"linkdynamicstoslot" : 0,
-					"linklyricstoslot" : 0,
-					"linknotecolortoslot" : 6,
-					"linknotesizetoslot" : 4,
-					"loop" : [ 0.0, 1000.0 ],
-					"lyricsfont" : "Lato Light",
-					"markersfont" : "Lato Light",
-					"maxclass" : "bach.roll",
-					"numinlets" : 6,
-					"numoutlets" : 8,
-					"numvoices" : 1,
-					"out" : "nnnnnnn",
-					"outlettype" : [ "", "", "", "", "", "", "", "bang" ],
-					"patching_rect" : [ 1305.5, 954.0, 1094.0, 225.0 ],
-					"pitcheditrange" : [ "null" ],
-					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 95.0, 754.0, 266.0 ],
-					"preventedit" : [ "notes", "slotinfo", "voices", "breakpoints", "markers" ],
-					"ruler" : 1,
-					"rulercolor" : [ 0.588235294117647, 0.588235294117647, 0.588235294117647, 1.0 ],
-					"selectioncolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ],
-					"showborder" : 0,
-					"showdurations" : 0,
-					"showstems" : 0,
-					"showvelocity" : 3,
-					"spacebarplay" : 0,
-					"stafflines" : [ 5 ],
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"tonedivision" : 8,
-					"versionnumber" : 80300,
-					"voicenames" : [ "output" ],
-					"voicenamesfont" : "Lato Light",
-					"voicespacing" : [ 1.0, 17.0 ],
-					"vzoom" : 115.0,
-					"zoom" : 115.0
 				}
 
 			}
@@ -8786,7 +8758,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
+					"destination" : [ "obj-56", 0 ],
 					"source" : [ "obj-155", 0 ]
 				}
 
@@ -8912,15 +8884,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
-					"source" : [ "obj-158", 0 ]
+					"destination" : [ "obj-36", 0 ],
+					"source" : [ "obj-158", 11 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-36", 0 ],
-					"source" : [ "obj-158", 11 ]
+					"destination" : [ "obj-56", 0 ],
+					"source" : [ "obj-158", 0 ]
 				}
 
 			}
@@ -9213,7 +9185,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
+					"destination" : [ "obj-56", 0 ],
 					"source" : [ "obj-221", 0 ]
 				}
 
@@ -9299,20 +9271,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-74", 1 ],
 					"source" : [ "obj-33", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-161", 0 ],
-					"source" : [ "obj-34", 6 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-97", 0 ],
-					"source" : [ "obj-34", 0 ]
 				}
 
 			}
@@ -9481,6 +9439,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-210", 0 ],
 					"source" : [ "obj-54", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-161", 0 ],
+					"source" : [ "obj-56", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-97", 0 ],
+					"source" : [ "obj-56", 0 ]
 				}
 
 			}
@@ -9882,6 +9854,10 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "bach.<=.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "bach.args.mxo",
 				"type" : "iLaX"
 			}
@@ -10251,6 +10227,13 @@
 			}
 , 			{
 				"name" : "bp.process.wave~.maxpat",
+				"bootpath" : "~/Documents/bellplay/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.roll.maxpat",
 				"bootpath" : "~/Documents/bellplay/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
