@@ -69,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 404.0, 245.0, 170.0, 23.0 ],
+					"patching_rect" : [ 404.0, 245.0, 191.0, 23.0 ],
 					"text" : "buffer~ #0window @size 1024"
 				}
 
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 125.0, 116.0, 23.0 ],
+					"patching_rect" : [ 56.0, 125.0, 137.0, 23.0 ],
 					"text" : "loadmess #0window"
 				}
 
@@ -117,8 +117,8 @@
 					"numinlets" : 4,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 15.0, 54.0, 593.0, 23.0 ],
-					"text" : "routepass setbuffer int float"
+					"patching_rect" : [ 15.0, 54.0, 592.999999999999886, 23.0 ],
+					"text" : "routepass set int float"
 				}
 
 			}
@@ -138,7 +138,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-14",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -150,7 +150,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-13",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -222,11 +222,11 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-3",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "float" ],
 					"patching_rect" : [ 15.0, 15.0, 30.0, 30.0 ]
 				}
 
@@ -378,15 +378,6 @@
 
 			}
  ],
-		"dependency_cache" : [ 			{
-				"name" : "bp.scrubplayer.poly~.maxpat",
-				"bootpath" : "~/Documents/bellplay/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "bellplay-gui",
 				"default" : 				{
