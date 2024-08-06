@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add `bp.scrubplayer~` for granular scrub playback in `bp.roll`.
 - Integrate draft version of `bp.roll` abstraction (waveform + roll IU).
 - `buildcorpus`/`setcorpus` now supports `mp3` `aif` and `.aiff` formats.
 - `export` now supports `mp3` `aif` and `.aiff` formats.
