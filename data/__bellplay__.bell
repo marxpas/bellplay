@@ -1623,7 +1623,7 @@ transcribe = (
 
 $addref(
     @name "transcribe",
-    @description "Adds input buffer to the rendering sequence. See #setcorpus, #query, and #render functions.",
+    @description "Adds input buffer to the rendering sequence. See #render function.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to add to rendering sequence.")
