@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 46.0, 83.0, 811.0, 589.0 ],
+		"rect" : [ 46.0, 66.0, 811.0, 589.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -300,7 +300,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-44",
-					"items" : 48000,
+					"items" : [ 44100, ",", 48000, ",", 88200, ",", 96000 ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
