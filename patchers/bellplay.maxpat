@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 46.0, 66.0, 811.0, 589.0 ],
+		"rect" : [ 46.0, 67.0, 812.0, 585.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1147,7 +1147,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "Felipe’s AirPods", ",", "MacBook Pro Speakers", ",", "8-channel setup" ],
+					"items" : [ "None", ",", "MacBook Pro Speakers", ",", "8-channel setup" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1425,7 +1425,7 @@
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 264.0, 378.0, 139.0, 288.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 46.0, 89.0, 760.0, 494.0 ],
+					"presentation_rect" : [ 46.0, 89.0, 760.0, 488.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1470,7 +1470,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 264.0, 1305.0, 49.0, 49.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 6.5, 544.0, 39.0, 39.0 ]
+					"presentation_rect" : [ 7.0, 537.0, 39.0, 39.0 ]
 				}
 
 			}
@@ -1489,7 +1489,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 264.0, 727.0, 135.0, 515.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 89.0, 36.0, 453.0 ],
+					"presentation_rect" : [ 8.5, 89.0, 36.0, 446.0 ],
 					"saved_attribute_attributes" : 					{
 						"slidercolor" : 						{
 							"expression" : ""

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 119.0, 1635.0, 964.0 ],
+		"rect" : [ 57.0, 119.0, 1635.0, 964.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -729,7 +729,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 200.0, 675.0, 266.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 97.0, 3.0, 658.0, 118.888894557952881 ],
+					"presentation_rect" : [ 97.0, 32.0, 658.0, 91.0 ],
 					"thickness" : 50.0
 				}
 
@@ -980,7 +980,7 @@
 , 			{
 				"box" : 				{
 					"allowdrag" : 0,
-					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
+					"bgcolor" : [ 1.0, 1.0, 1.0, 0.3 ],
 					"buffername" : "",
 					"gridcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.0 ],
 					"hidden" : 1,
@@ -992,7 +992,7 @@
 					"outlettype" : [ "float", "float", "float", "float", "list", "" ],
 					"patching_rect" : [ 895.0, 1028.0, 235.5, 85.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 97.0, 3.0, 10.0, 118.888894557952881 ],
+					"presentation_rect" : [ 97.0, 32.0, 10.0, 91.0 ],
 					"selectioncolor" : [ 0.533333333333333, 0.784313725490196, 0.831372549019608, 0.0 ],
 					"waveformcolor" : [ 0.368627450980392, 0.584313725490196, 0.776470588235294, 1.0 ]
 				}
