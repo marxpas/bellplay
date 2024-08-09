@@ -708,7 +708,7 @@ setcorpus = (
 
 $addref(
     @name "setcorpus",
-    @description "Loads an audio corpus, given an absolute path to a .llll file. See #query function.",
+    @description "Loads an audio corpus, given a path to a .llll file. See #query function.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "filepath", @type "symbol", @description "file path to .llll corpus file.")

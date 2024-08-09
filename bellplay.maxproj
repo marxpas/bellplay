@@ -2,7 +2,7 @@
 	"name" : "bellplay",
 	"version" : 1,
 	"creationdate" : 3792408071,
-	"modificationdate" : 3805809100,
+	"modificationdate" : 3806064236,
 	"viewrect" : [ 25.0, 105.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 1,
@@ -524,5 +524,6 @@
 	"devpath" : ".",
 	"sortmode" : 1,
 	"viewmode" : 0,
-	"includepackages" : 0
+	"includepackages" : 0,
+	"openactions_internal" : "max objectfile bach.<= bach.leq bach.leq;\n"
 }
