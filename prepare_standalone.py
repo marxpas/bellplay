@@ -96,7 +96,7 @@ if not edited:
     raise RuntimeError("None of the deletable files were found.")
 
 cmd = f"codesign -s - -f {app_path}".split(" ")
-print("code singing application...");
+print("code singing application...")
 result = subprocess.run(cmd, capture_output=True, text=True)
 
 # Check if the command was successful
