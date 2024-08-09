@@ -1899,11 +1899,11 @@ export = (
 
 $addref(
     @name "export",
-    @description "Exports the rendered output as either a .wav, .mid/midi. or .llll file, given a output path. For .wav files, mono stem files can be separately exported. See #render function.",
+    @description "Exports the rendered output as either an audio (.wav/aif/aiff/mp3), midi (.mid/midi), or roll (.llll) file, given a output path. For audio files, mono stem files can be separately exported with the @stems argument. See #render function.",
     @category BP_REF_LABEL_UTILS,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "output file path.")
-        $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for .wav files." @options
+        $addarg(@name "stems", @default 0 @type "int", @description "stem export mode for audio files." @options
             BP_REF_SWITCH_OPTIONS
         )
     )
@@ -1933,7 +1933,7 @@ importaudio = (
 
 $addref(
     @name "importaudio",
-    @description "Imports an audio file as a buffer.",
+    @description "Imports an audio file (.wav/aif/aiff/mp3) as a buffer, given a file path.",
     @category BP_REF_LABEL_GEN,
     @arguments (
         $addarg(@name "path", @type "symbol", @description "input audio file path.")
@@ -3599,7 +3599,7 @@ $addref(
         $addarg(@name "buffer", @type "llll", @description "buffer to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
         $addarg(@name "prefade", @default 0 @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
-        $addarg(@name "keepkeys", @default null @type "symbol/list/null", @description "optional list of keys to keep from input buffer.")
+        $addarg(@name "keepkeys", @default "null" @type "symbol/list/null", @description "optional list of keys to keep from input buffer.")
     ),
     @output $addout(@description "processed buffer" @type "llll")
 );
