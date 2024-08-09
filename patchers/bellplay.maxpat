@@ -1171,7 +1171,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "External Headphones", ",", "MacBook Pro Speakers" ],
+					"items" : [ "None", ",", "MacBook Pro Speakers" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
