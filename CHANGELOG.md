@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Limit spacebar playback for when window is active/hover over (now works with inspector window).
+- Limit spacebar playback for when window is active/hover over (now works with inspector window) — using [active] object for both.
 - Minor edits in docs (primarily removing commas).
 - `setkey` now supports strict (default)/flexible mode, whereby non-existent keys can be created.
 - Minor improvements in docs. 
