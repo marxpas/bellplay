@@ -336,7 +336,8 @@ BP_NEWBUFF_FUNC = (
     $source,
     $offset = 0,
     $info = 1,
-    $pitch = 6000 -> (
+    $pitch = 6000,
+    $extras = null -> (
         if $source == null then printerror("null buffer encountered");
         $buffer = (
             [ "source" $source ]
@@ -347,14 +348,13 @@ BP_NEWBUFF_FUNC = (
             [ "pitch" $pitch ]
         );
         $info = if $info == 1 then BP_GET_BUFFER_INFO($source);
-        for $x in $info do (
+        $info _= [ "source_end" if $info then $info."duration" else $buffer."duration" ];
+        $buffer = [$buffer];
+        for $x in $info $extras do (
             $key = $x:(1 1);
-            $key &&& ($buffer.$key = $x.$key)
+            ($key &&& $buffer = setkey($buffer, $key, $x.$key @mode 1))
         );
-        [
-            $buffer 
-            [ "source_end" $buffer."duration" ]
-        ]
+        $buffer
     )
 );
 
@@ -1927,7 +1927,7 @@ importaudio = (
         ) else (
             printerror(if $ext == null then "you must provide a file path" else "invalid file extension:" $ext)
         );
-        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF)
+        BP_NEWBUFF_FUNC(@source BP_TMP_BUFF @extras [ "file" $filepath ])
     )
 );
 
@@ -3558,36 +3558,48 @@ $addref(
 process = (
     $buffer, 
     $commands, 
-    $prefade = 0 -> (
+    $prefade = 0,
+    $keepkeys = null -> (
         if $buffer == null then (
             printerror("attempt to pass null value as @buffer in process()")
         );
         if $commands == null then (
             printerror("you must provide audio processing commands in process()")
         );
+        $source = $buffer.getkey("source");
+        if $source == null then printerror("attempt to process invalid buffer in process():" $buffer);
         $offset = $buffer.getkey("offset");
         $duration = $buffer.getkey("duration");
         $crop = $offset != 0 || $duration != $buffer.getkey("source_end");
         BP_DISPATCH_FUNC("process",
-            [ "source" $buffer.getkey("source") ]
+            [ "source" $source ]
             [ "process" 
                 (if $crop then crop(@start $offset, @end $offset + $duration))
                 ($prefade &&& $prefade > 0 &&& fade(@fadein $prefade, @fadeout $prefade))
                 $commands 
             ]
         );
-        for $buf in BP_TMP_BUFF collect BP_NEWBUFF_FUNC(@source $buf @pitch $buffer.getkey("pitch"))
+        $extrakeys = for $k in thin($keepkeys) collect (
+            $val = $buffer.getkey($k);
+            $val &&& [ $k $val ]
+        );
+        for $buf in BP_TMP_BUFF collect BP_NEWBUFF_FUNC(
+            @source $buf
+            @pitch $buffer.getkey("pitch") 
+            @extras $extrakeys
+        )
     )
 );
 
 $addref(
     @name "process",
-    @description "Applies a sequence of DSP operations to the input buffer, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. See @process argument in #render.",
+    @description "Applies a sequence of DSP operations to the input buffer, prior to rendering, via audio processing commands. These commands are generated through functions (e.g., see #reverse, #paulstretch, #freeverb, #rubberband), which contain the parameters for that specific DSP operation. This results in a newly created buffer, with updated keys. To keep keys from the input buffer, such as keys associated with previous feature analyses, use the @keepkeys argument by passing an optional list of keys. See @process argument in #render.",
     @category BP_REF_LABEL_PROCESS,
     @arguments (
         $addarg(@name "buffer", @type "llll", @description "buffer to process.")
         $addarg(@name "commands", @type "llll", @description "list of audio process commands.")
         $addarg(@name "prefade", @default 0 @type "llll/null", @description "optional pre-fade amount, in milliseconds.")
+        $addarg(@name "keepkeys", @default null @type "symbol/list/null", @description "optional list of keys to keep from input buffer.")
     ),
     @output $addout(@description "processed buffer" @type "llll")
 );
