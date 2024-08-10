@@ -624,7 +624,6 @@ buildcorpus = (
                     $seg = $seg.analyze(
                         @descriptors $descriptors
                     ).setkey("source", $path);
-                    $seg = [$seg::1 [ "file" $file ]];
                     $corpus _= $seg
                 )
             )
