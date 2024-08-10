@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix relative path regex bug in `scripter/pathinfo` subpatcher.
 - Remove _absolute_ path requirement in `setcorpus` docs.
 - Fix forbidden 'save' script operation when cleaning app with python script.
 - Fix faulty value from `exists` when checking folders.

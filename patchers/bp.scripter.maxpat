@@ -3346,7 +3346,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 241.0, 213.0, 918.0, 786.0 ],
+						"rect" : [ 241.0, 213.0, 705.0, 786.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3741,7 +3741,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 384.0, 190.0, 128.0, 23.0 ],
+									"patching_rect" : [ 397.0, 179.0, 128.0, 23.0 ],
 									"text" : "bach.filternull @out m"
 								}
 
@@ -3855,7 +3855,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 442.0, 133.0, 33.0, 21.0 ],
+									"patching_rect" : [ 469.0, 133.0, 33.0, 21.0 ],
 									"text" : "path"
 								}
 
@@ -4071,8 +4071,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 346.0, 132.0, 94.0, 23.0 ],
-									"text" : "regexp .*(?=\\\\.)"
+									"patching_rect" : [ 346.0, 132.0, 121.0, 23.0 ],
+									"text" : "regexp .*(?=\\\\.\\\\w+$)"
 								}
 
 							}
