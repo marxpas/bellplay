@@ -5807,7 +5807,8 @@ topartialtracks = (
     $timeunit = 0,
     $downmix = 1 -> (
         $buffer ||| printerror("you must provide a value for @buffer in topartialtracks().");
-        $source = $buffer.getkey("source") ||| printerror($buffer "is not a buffer in topartialtracks().");
+        if $buffer.getkey("source") === null then printerror($buffer "is not a buffer in topartialtracks().");
+        $source = $buffer.process(bpthru()).getkey("source");
         BP_DISPATCH_FUNC("resynth", 
             [ "analysis" 
                 [ "winstartfromzero" $winstartfromzero ]
