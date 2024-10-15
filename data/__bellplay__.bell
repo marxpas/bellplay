@@ -156,7 +156,7 @@ $addref(
 
 exists = (
     $path -> (
-        $info = BP_GET_PATH_INFO_FUNC($file);
+        $info = BP_GET_PATH_INFO_FUNC($path);
         $info."exists"
     )
 );

@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix `exists` misnamed variable bug, resulting in false every time.
+
 ### Removed
 
 ## [0.2.5-beta] - 2024-08-19
