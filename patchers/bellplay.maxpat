@@ -1171,7 +1171,7 @@
 				"box" : 				{
 					"align" : 2,
 					"id" : "obj-155",
-					"items" : [ "None", ",", "MacBook Pro Speakers" ],
+					"items" : [ "None", ",", "Felipe’s AirPods", ",", "MacBook Pro Speakers", ",", "LUDUS VOCALIS VIRTUAL OUTPUT", ",", "ZoomAudioDevice" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2206,6 +2206,10 @@
 			}
 , 			{
 				"name" : "bach.roll.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "bach.shelf.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -3815,7 +3815,7 @@ BP_OSC_GEN_FUNC = (
                     $params
                     if $isnoise == 1 then (
                         [ "tail" $duration ] 
-                        [ "bang" ]
+                        [ "trigger" ]
                     ) else (
                         [ $source ]
                     )

@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix `llll` truncation in `bp.generate~`.
 - Fix `exists` misnamed variable bug, resulting in false every time.
 
 ### Removed
