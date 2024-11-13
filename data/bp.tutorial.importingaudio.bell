@@ -5,7 +5,7 @@
     In bellplay~ we can also generate buffers by importing our own audio files into our scripts.
     For this, we use the 'importaudio' function, which takes a file path as a symbol and returns a buffer.
 
-    Since bellplay~ comes with a few built-in audio files for demonstration purposes, they will be used throughout the tutorials for demonstration purposes.
+    Since bellplay~ comes with a few built-in audio files, they will be used throughout the tutorials for demonstration purposes.
     In the tutorial below, "poem.wav" is one such file, which is why it does not require a relative or absolute path syntax.
     However, you should always experiment with your own sounds, by providing a valid path (absolute, or relative to your bell script location) to a file in your computer.
 )#

@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix typo in tutorials.
+
 ### Removed
 
 ## [0.2.6-beta] - 2024-11-12
