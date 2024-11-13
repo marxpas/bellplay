@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -44,7 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 304.0, 423.0, 183.0, 21.0 ],
+					"patching_rect" : [ 304.0, 423.0, 184.0, 21.0 ],
 					"text" : "store until main buffer is received"
 				}
 
@@ -55,7 +55,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 286.0, 467.0, 54.0, 21.0 ],
+					"patching_rect" : [ 286.0, 467.0, 55.0, 21.0 ],
 					"text" : "check sr "
 				}
 
@@ -259,7 +259,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 337.0, 210.0, 268.0, 21.0 ],
+					"patching_rect" : [ 337.0, 210.0, 271.0, 21.0 ],
 					"text" : "ignore main buffer if control param is also a buffer"
 				}
 
@@ -271,7 +271,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
-					"patching_rect" : [ 109.0, 99.0, 187.5, 23.0 ],
+					"patching_rect" : [ 112.0, 99.0, 185.0, 23.0 ],
 					"text" : "t l 1"
 				}
 
@@ -305,10 +305,15 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 278.0, 331.0, 88.0, 23.0 ],
-					"text" : "zl reg"
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 278.0, 331.0, 53.0, 23.0 ],
+					"saved_object_attributes" : 					{
+						"embed" : 0,
+						"versionnumber" : 80300
+					}
+,
+					"text" : "bach.reg"
 				}
 
 			}
@@ -355,8 +360,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 11.0, 58.0, 117.0, 23.0 ],
-					"text" : "bach.filter s @out m"
+					"patching_rect" : [ 11.0, 58.0, 120.0, 23.0 ],
+					"text" : "bach.filter s @out mn"
 				}
 
 			}

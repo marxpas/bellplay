@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Fix `bach.shelf`-related issues and test for issues running all scripts from _ludus vocalis_.
 - Fix `llll` truncation in `bp.generate~`.
 - Fix `exists` misnamed variable bug, resulting in false every time.
 

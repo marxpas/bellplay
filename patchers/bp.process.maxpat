@@ -432,12 +432,12 @@
 									"numinlets" : 1,
 									"numoutlets" : 7,
 									"outlettype" : [ "", "", "", "", "", "", "bang" ],
-									"patching_rect" : [ 12.0, 98.0, 805.0, 23.0 ],
+									"patching_rect" : [ 12.0, 98.0, 806.5, 23.0 ],
 									"saved_object_attributes" : 									{
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.keys null feedforward feedback gain feedforwardgain feedbackgain @out m"
+									"text" : "bach.keys null feedforward feedback gain feedforwardgain feedbackgain @out mn"
 								}
 
 							}
@@ -994,7 +994,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 149.0, 128.0 ],
+						"rect" : [ 59.0, 106.0, 167.0, 121.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1168,6 +1168,22 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"patching_rect" : [ 115.0, 99.0, 111.0, 23.0 ],
+									"saved_object_attributes" : 									{
+										"versionnumber" : 80300
+									}
+,
+									"text" : "bach.portal @out m"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-9",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -1190,7 +1206,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 243.0, 63.0, 58.0, 23.0 ],
+									"patching_rect" : [ 248.0, 99.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -1202,7 +1218,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 41.0, 365.0, 58.0, 23.0 ],
+									"patching_rect" : [ 41.0, 397.0, 58.0, 23.0 ],
 									"text" : "r #0reset"
 								}
 
@@ -1214,7 +1230,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 8.0, 415.0, 268.0, 23.0 ],
+									"patching_rect" : [ 8.0, 447.0, 268.0, 23.0 ],
 									"text" : "ears.envelope~ 1 @naming dynamic @timeunit 1"
 								}
 
@@ -1226,7 +1242,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 8.0, 365.0, 23.0, 23.0 ],
+									"patching_rect" : [ 8.0, 397.0, 23.0, 23.0 ],
 									"text" : "t 0"
 								}
 
@@ -1238,7 +1254,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 8.0, 325.0, 126.0, 23.0 ],
+									"patching_rect" : [ 8.0, 357.0, 126.0, 23.0 ],
 									"text" : "gate 2 0"
 								}
 
@@ -1250,7 +1266,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 159.0, 278.0, 29.5, 23.0 ],
+									"patching_rect" : [ 159.0, 310.0, 29.5, 23.0 ],
 									"text" : "+ 1"
 								}
 
@@ -1262,7 +1278,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 159.0, 234.0, 36.0, 23.0 ],
+									"patching_rect" : [ 159.0, 266.0, 36.0, 23.0 ],
 									"text" : "> 50."
 								}
 
@@ -1274,7 +1290,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 159.0, 197.0, 110.0, 23.0 ],
+									"patching_rect" : [ 159.0, 229.0, 110.0, 23.0 ],
 									"text" : "ears.info~ duration"
 								}
 
@@ -1286,7 +1302,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 115.0, 155.0, 63.0, 23.0 ],
+									"patching_rect" : [ 115.0, 187.0, 63.0, 23.0 ],
 									"text" : "t l l"
 								}
 
@@ -1309,7 +1325,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 115.0, 492.0, 63.0, 23.0 ],
+									"patching_rect" : [ 115.0, 524.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -1321,7 +1337,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 115.0, 117.0, 164.0, 23.0 ],
+									"patching_rect" : [ 115.0, 146.0, 164.0, 23.0 ],
 									"text" : "ears.trim~ @naming dynamic"
 								}
 
@@ -1338,6 +1354,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-8", 1 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-10", 0 ]
 								}
 
 							}
@@ -1420,7 +1443,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-10", 0 ],
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -1486,7 +1509,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 641.0, 352.0 ],
+						"rect" : [ 59.0, 106.0, 564.0, 317.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1838,7 +1861,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 409.0, 262.0 ],
+						"rect" : [ 59.0, 106.0, 346.0, 203.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2095,7 +2118,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 152.0, 188.0, 103.0, 23.0 ],
+									"patching_rect" : [ 153.0, 188.0, 103.0, 23.0 ],
 									"text" : "bp.getcontroller~"
 								}
 
@@ -2124,7 +2147,7 @@
 										"versionnumber" : 80300
 									}
 ,
-									"text" : "bach.keys null value round @out m"
+									"text" : "bach.keys null value round @out mn"
 								}
 
 							}
@@ -2158,7 +2181,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 227.0, 301.0, 23.0 ],
+									"patching_rect" : [ 11.0, 227.0, 303.0, 23.0 ],
 									"text" : "ears.process~ bp.process.round~ @naming dynamic"
 								}
 
@@ -5118,7 +5141,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 377.0, 476.0, 188.0, 160.0 ],
+						"rect" : [ 377.0, 476.0, 323.0, 268.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5147,6 +5170,22 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"patching_rect" : [ 11.0, 83.0, 111.0, 23.0 ],
+									"saved_object_attributes" : 									{
+										"versionnumber" : 80300
+									}
+,
+									"text" : "bach.portal @out m"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
@@ -5181,7 +5220,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 11.0, 124.0, 63.0, 23.0 ],
+									"patching_rect" : [ 11.0, 159.0, 63.0, 23.0 ],
 									"text" : "s #0global"
 								}
 
@@ -5193,7 +5232,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 11.0, 85.0, 163.0, 23.0 ],
+									"patching_rect" : [ 11.0, 120.0, 163.0, 23.0 ],
 									"text" : "ears.window~ @naming copy"
 								}
 
@@ -5201,7 +5240,7 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -5210,6 +5249,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-3", 0 ]
 								}
 
 							}
@@ -9166,6 +9212,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
@@ -10167,6 +10214,7 @@
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
+						"fontname" : "Lato",
 						"globalpatchername" : "",
 						"style" : "bellplay-gui",
 						"tags" : ""
